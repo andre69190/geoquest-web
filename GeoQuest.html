@@ -2082,6 +2082,7 @@ async function initAuth(){
       render();return;
     }
     if((event==="TOKEN_REFRESHED"||event==="SIGNED_IN")&&session?.user){
+      if(S.authMode==="new_password")return;/* keep recovery modal open */
       if(!sbUser||sbUser.id!==session.user.id){sbUser=session.user;await loadProfile();}
     }
   });
@@ -4156,7 +4157,7 @@ function renderMehrTab(){
   let authSection="";
   if(!sbOK){
     authSection=`<div class="auth-card" style="text-align:center"><p style="color:var(--text3);font-size:.85rem">Supabase nicht konfiguriert.</p></div>`;
-  } else if(isAnon||!hasName){
+  } else if(isAnon||!hasName||S.authMode==="new_password"||S.authMode==="forgot"){
     const isReg=S.authMode==="register";
     const isForgot=S.authMode==="forgot";
     const isNewPw=S.authMode==="new_password";
