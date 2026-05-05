@@ -1491,44 +1491,65 @@ const REGIONS=[
 ];
 
 const MODES=[
-  {id:"city",    icon:"\u{1F3D9}",title:"Stadt \u2192 Land",       group:"pure_geo",prompt:"In welchem Land liegt \u2026"},
-  {id:"flag",    icon:"\u{1F6A9}",title:"Flagge \u2192 Land",      group:"pure_geo",prompt:"Welches Land zeigt diese Flagge?"},
-  {id:"capital", icon:"\u{1F3DB}",title:"Hauptstadt \u2192 Land",  group:"pure_geo",prompt:"Zu welchem Land geh\u00f6rt diese Hauptstadt?"},
-  {id:"river",   icon:"\u{1F30A}",title:"Fluss \u2192 Land",       group:"pure_geo",prompt:"In welchem Land liegt dieser Fluss?"},
-  {id:"landmark",icon:"\u{1F5FD}",title:"Sehenswuerdigkeit",       group:"pure_geo",prompt:"In welchem Land liegt diese Sehenswuerdigkeit?"},
-  {id:"park",    icon:"\u{1F33F}",title:"Nationalpark",            group:"pure_geo",prompt:"In welchem Land liegt dieser Nationalpark?"},
-  {id:"unesco",  icon:"\u{1FA3A}",title:"UNESCO Welterbe",         group:"pure_geo",prompt:"In welchem Land liegt dieses UNESCO-Erbe?"},
-  {id:"citymark",icon:"\u{1F306}",title:"Wahrzeichen \u2192 Stadt",group:"pure_geo",prompt:"In welcher Stadt liegt dieses Wahrzeichen?"},
-  {id:"subway",  icon:"\u{1F687}",title:"U-Bahn-Netz",            group:"pure_geo",prompt:"Stadtverkehr-Experte"},
-  {id:"flagsel", icon:"\u{1F38C}",title:"Land \u2192 Flagge",      group:"pure_geo",prompt:"Welche Flagge geh\u00f6rt zu \u2026"},
-  {id:"rcapital",icon:"\u{1F3DF}",title:"Land \u2192 Hauptstadt",  group:"pure_geo",prompt:"Was ist die Hauptstadt von \u2026"},
-  {id:"rcity",   icon:"\u{1F3E2}",title:"Land \u2192 Stadt",       group:"pure_geo",prompt:"Welche Stadt liegt in \u2026"},
-  {id:"rriver",  icon:"\u{1F4A7}",title:"Land \u2192 Fluss",       group:"pure_geo",prompt:"Welcher Fluss fliesst durch \u2026"},
-  {id:"outline", icon:"\u{1F5FA}",title:"L\u00e4nder-Umrisse",      group:"lifestyle",prompt:"Welches Land hat diese Form?"},
-  {id:"food",    icon:"\u{1F37D}",title:"Gericht \u2192 Land",      group:"lifestyle",prompt:"Aus welchem Land kommt dieses Gericht?"},
-  {id:"brand",   icon:"\u{1F3F7}",title:"Marke \u2192 Land",        group:"lifestyle",prompt:"Aus welchem Land kommt diese Marke?"},
-  {id:"currency",icon:"\u{1F4B1}",title:"W\u00e4hrung \u2192 Land",group:"lifestyle",prompt:"Zu welchem Land geh\u00f6rt diese W\u00e4hrung?"},
-  {id:"plate_casual",icon:"\u{1F697}",title:"EU-Kennzeichen",      group:"eu_plates",prompt:"Woher kommt dieses Kennzeichen?"},
-  {id:"plate_hard",  icon:"\u{1F6A6}",title:"Kennzeichen Pro",     group:"eu_plates",prompt:"Region erkennen \u2014 kein Tipp!"},
-  {id:"curr_real",  icon:"\u{1F4B5}",title:"Land \u2192 W\u00e4hrung",group:"lifestyle",prompt:"Welche W\u00e4hrung hat …"},
-  {id:"pop_compare",icon:"\u{1F465}",title:"Mehr Einwohner?",          group:"lifestyle",prompt:"Hat [Land B] mehr oder weniger Einwohner?"},
-  {id:"river_real", icon:"\u{1F30A}",title:"Fluss \u2192 Land",       group:"pure_geo", prompt:"Durch welches Land flie\u00dft dieser Fluss?"},
-  /* Phase 30 */
-  {id:"hl_pop",   icon:"\u{1F465}",title:"H/L Einwohner",  group:"hl_compare",prompt:"Mehr Einwohner?"},
-  {id:"hl_river", icon:"\u{1F30A}",title:"H/L Flussl\u00e4nge", group:"hl_compare",prompt:"L\u00e4ngerer Fluss?"},
-  {id:"hl_area",  icon:"\u{1F5FA}",title:"H/L Landfl\u00e4che",  group:"hl_compare",prompt:"Gr\u00f6\u00dferes Land?"},
-  {id:"neighbor", icon:"\u{1F91D}",title:"Grenzg\u00e4nger",     group:"neighbors", prompt:"Grenzt an\u2026?"},
-  /* Phase 34 */
-  {id:"map_guess",icon:"\u{1F5FA}",title:"Finde das Land",group:"map_mode",prompt:"Klick auf das gesuchte Land"},
+  /* ---- Pure Geo ---- */
+  {id:"city",    icon:"\u{1F3D9}",title:"Stadt \u2192 Land",       group:"pure_geo",prompt:"In welchem Land liegt \u2026",          desc:"Ordne St\u00e4dte ihrem Land zu"},
+  {id:"flag",    icon:"\u{1F6A9}",title:"Flagge \u2192 Land",      group:"pure_geo",prompt:"Welches Land zeigt diese Flagge?",        desc:"Erkenne L\u00e4nder an ihrer Flagge"},
+  {id:"capital", icon:"\u{1F3DB}",title:"Hauptstadt \u2192 Land",  group:"pure_geo",prompt:"Zu welchem Land geh\u00f6rt diese Hauptstadt?",desc:"Welches Land geh\u00f6rt zu welcher Hauptstadt?"},
+  {id:"river",   icon:"\u{1F30A}",title:"Fluss \u2192 Land",       group:"pure_geo",prompt:"In welchem Land liegt dieser Fluss?",      desc:"Weise Fl\u00fcsse ihren L\u00e4ndern zu"},
+  {id:"landmark",icon:"\u{1F5FD}",title:"Sehenswuerdigkeit",       group:"pure_geo",prompt:"In welchem Land liegt diese Sehenswuerdigkeit?",desc:"Erkenne Sehensw\u00fcrdigkeiten weltweit"},
+  {id:"park",    icon:"\u{1F33F}",title:"Nationalpark",            group:"pure_geo",prompt:"In welchem Land liegt dieser Nationalpark?",desc:"Nationalparks aus aller Welt zuordnen"},
+  {id:"unesco",  icon:"\u{1FA3A}",title:"UNESCO Welterbe",         group:"pure_geo",prompt:"In welchem Land liegt dieses UNESCO-Erbe?", desc:"UNESCO-Welterbe-St\u00e4tten zuordnen"},
+  {id:"citymark",icon:"\u{1F306}",title:"Wahrzeichen \u2192 Stadt",group:"pure_geo",prompt:"In welcher Stadt liegt dieses Wahrzeichen?",desc:"Wahrzeichen ihrer Stadt zuordnen"},
+  {id:"subway",  icon:"\u{1F687}",title:"U-Bahn-Netz",            group:"pure_geo",prompt:"Stadtverkehr-Experte",                      desc:"U-Bahn-Netze weltweit erkennen"},
+  {id:"flagsel", icon:"\u{1F38C}",title:"Land \u2192 Flagge",      group:"pure_geo",prompt:"Welche Flagge geh\u00f6rt zu \u2026",   desc:"W\u00e4hle die richtige Flagge"},
+  {id:"rcapital",icon:"\u{1F3DF}",title:"Land \u2192 Hauptstadt",  group:"pure_geo",prompt:"Was ist die Hauptstadt von \u2026",       desc:"Nenne die Hauptstadt eines Landes"},
+  {id:"rcity",   icon:"\u{1F3E2}",title:"Land \u2192 Stadt",       group:"pure_geo",prompt:"Welche Stadt liegt in \u2026",            desc:"Nenne eine Stadt im gesuchten Land"},
+  {id:"rriver",  icon:"\u{1F4A7}",title:"Land \u2192 Fluss",       group:"pure_geo",prompt:"Welcher Fluss fliesst durch \u2026",      desc:"Nenne einen Fluss im gesuchten Land"},
+  {id:"river_real", icon:"\u{1F30A}",title:"Fluss \u2192 Land",    group:"pure_geo", prompt:"Durch welches Land flie\u00dft dieser Fluss?",desc:"Durch welches Land flie\u00dft dieser Fluss?"},
+  /* ---- Lifestyle ---- */
+  {id:"outline", icon:"\u{1F5FA}",title:"L\u00e4nder-Umrisse",      group:"lifestyle",prompt:"Welches Land hat diese Form?",           desc:"Erkenne L\u00e4nder an ihrer Umrissform"},
+  {id:"food",    icon:"\u{1F37D}",title:"Gericht \u2192 Land",      group:"lifestyle",prompt:"Aus welchem Land kommt dieses Gericht?", desc:"Gerichte ihrer Heimatk\u00fcche zuordnen"},
+  {id:"brand",   icon:"\u{1F3F7}",title:"Marke \u2192 Land",        group:"lifestyle",prompt:"Aus welchem Land kommt diese Marke?",    desc:"Marken ihrem Ursprungsland zuordnen"},
+  {id:"currency",icon:"\u{1F4B1}",title:"W\u00e4hrung \u2192 Land",group:"lifestyle",prompt:"Zu welchem Land geh\u00f6rt diese W\u00e4hrung?",desc:"W\u00e4hrungen den L\u00e4ndern zuordnen"},
+  {id:"curr_real",  icon:"\u{1F4B5}",title:"Land \u2192 W\u00e4hrung",group:"lifestyle",prompt:"Welche W\u00e4hrung hat …",     desc:"Nenne die W\u00e4hrung eines Landes"},
+  {id:"pop_compare",icon:"\u{1F465}",title:"Mehr Einwohner?",      group:"lifestyle",prompt:"Hat [Land B] mehr oder weniger Einwohner?",desc:"Vergleiche Einwohnerzahlen zweier L\u00e4nder"},
+  /* ---- EU Plates ---- */
+  {id:"plate_casual",icon:"\u{1F697}",title:"EU-Kennzeichen",      group:"eu_plates",prompt:"Woher kommt dieses Kennzeichen?",          desc:"EU-Kennzeichen mit Hinweisen erkennen"},
+  {id:"plate_hard",  icon:"\u{1F6A6}",title:"Kennzeichen Pro",     group:"eu_plates",prompt:"Region erkennen \u2014 kein Tipp!",    desc:"EU-Kennzeichen ohne Hinweise \u2014 Profi-Level"},
+  /* ---- Higher / Lower (existing) ---- */
+  {id:"hl_pop",   icon:"\u{1F465}",title:"H/L Einwohner",  group:"hl_compare",prompt:"Mehr Einwohner?",   desc:"Welches Land hat mehr Einwohner?"},
+  {id:"hl_river", icon:"\u{1F30A}",title:"H/L Flussl\u00e4nge", group:"hl_compare",prompt:"L\u00e4ngerer Fluss?",desc:"Welcher Fluss ist l\u00e4nger?"},
+  {id:"hl_area",  icon:"\u{1F5FA}",title:"H/L Landfl\u00e4che",  group:"hl_compare",prompt:"Gr\u00f6\u00dferes Land?",desc:"Welches Land ist gr\u00f6\u00dfer?"},
+  /* ---- Higher / Lower (coming soon) ---- */
+  {id:"hl_gdp",       icon:"\u{1F4B0}",title:"H/L BIP",              group:"hl_compare",prompt:"H\u00f6heres BIP?",         desc:"Welches Land hat ein h\u00f6heres BIP?",           comingSoon:true},
+  {id:"hl_density",   icon:"\u{1F3D8}",title:"H/L Bev\u00f6lkerungsdichte",group:"hl_compare",prompt:"Dichter besiedelt?",    desc:"Welches Land ist dichter besiedelt?",              comingSoon:true},
+  {id:"hl_elevation", icon:"\u{26F0}",title:"H/L H\u00f6chster Punkt",group:"hl_compare",prompt:"H\u00f6herer Gipfel?",      desc:"Welches Land hat den h\u00f6heren Gipfel?",        comingSoon:true},
+  {id:"hl_coastline", icon:"\u{1F3D6}",title:"H/L K\u00fcstенl\u00e4nge",group:"hl_compare",prompt:"L\u00e4ngere K\u00fcste?",desc:"Welches Land hat die l\u00e4ngere K\u00fcste?",   comingSoon:true},
+  {id:"hl_borders",   icon:"\u{1F30F}",title:"H/L Nachbarl\u00e4nder",group:"hl_compare",prompt:"Mehr Nachbarn?",             desc:"Welches Land hat mehr Nachbarl\u00e4nder?",        comingSoon:true},
+  {id:"hl_lifeexp",   icon:"\u2764",title:"H/L Lebenserwartung",   group:"hl_compare",prompt:"L\u00e4nger leben?",            desc:"In welchem Land lebt man l\u00e4nger?",            comingSoon:true},
+  {id:"hl_median_age",icon:"\u{1F4C5}",title:"H/L Medianalter",    group:"hl_compare",prompt:"H\u00f6heres Medianalter?",     desc:"Welches Land hat ein h\u00f6heres Medianalter?",   comingSoon:true},
+  {id:"hl_forest",    icon:"\u{1F333}",title:"H/L Waldf\u00e4che",  group:"hl_compare",prompt:"Mehr Wald?",                   desc:"Welches Land hat mehr Wald?",                      comingSoon:true},
+  /* ---- Neighbors ---- */
+  {id:"neighbor", icon:"\u{1F91D}",title:"Grenzg\u00e4nger",     group:"neighbors", prompt:"Grenzt an\u2026?",               desc:"Grenzt dieses Land an jenes?"},
+  /* ---- Map ---- */
+  {id:"map_guess",icon:"\u{1F5FA}",title:"Finde das Land",group:"map_mode",prompt:"Klick auf das gesuchte Land",             desc:"Klicke das gesuchte Land auf der Weltkarte"},
+  /* ---- New Game Modes (coming soon) ---- */
+  {id:"logic_grid",    icon:"\u{1F9E9}",title:"Logik-Gitter",          group:"new_modes",prompt:"L\u00f6se das R\u00e4tsel",                desc:"L\u00f6se geografische Logik-R\u00e4tsel",       comingSoon:true},
+  {id:"travel_route",  icon:"\u{1F5FA}",title:"Reiseroute",            group:"new_modes",prompt:"K\u00fcrzeste Route?",                      desc:"Plane die k\u00fcrzeste Route zwischen St\u00e4dten",comingSoon:true},
+  {id:"flag_fusion",   icon:"\u{1F3C1}",title:"Flaggen-Fusion",        group:"new_modes",prompt:"Welche zwei L\u00e4nder?",                  desc:"Erkenne L\u00e4nder aus verschmolzenen Flaggen",  comingSoon:true},
+  {id:"climate_mystery",icon:"\u{1F326}",title:"Klima-Krimi",          group:"new_modes",prompt:"Welches Klima?",                             desc:"Bestimme das Klima eines Landes",                  comingSoon:true},
+  {id:"alpha_sprint",  icon:"\u{1F524}",title:"Alphabet-Sprint",       group:"new_modes",prompt:"L\u00e4nder von A\u2013Z",                 desc:"Nenne L\u00e4nder f\u00fcr jeden Buchstaben",     comingSoon:true},
+  {id:"timezone_jumper",icon:"\u23F0",title:"Zeitzonen-Jumper",       group:"new_modes",prompt:"Welche Zeitzone?",                            desc:"Meistere die Zeitzonen der Welt",                  comingSoon:true},
 ];
 
 const MODE_CATS={
   pure_geo:{label:"Pure Geo",icon:"\u{1F30D}",modes:["city","flag","capital","river","landmark","park","unesco","citymark","subway","flagsel","rcapital","rcity","rriver","river_real"],cost:0},
   lifestyle:{label:"Kultur & Lifestyle",icon:"\u{1F3A8}",modes:["outline","food","brand","currency","curr_real","pop_compare"],cost:1000},
   eu_plates:{label:"EU-Kennzeichen",icon:"\u{1F697}",modes:["plate_casual","plate_hard"],cost:500},
-  hl_compare:{label:"Higher / Lower",icon:"\u2b06\ufe0f",modes:["hl_pop","hl_river","hl_area"],cost:0},
+  hl_compare:{label:"Higher / Lower",icon:"\u2b06\ufe0f",modes:["hl_pop","hl_river","hl_area","hl_gdp","hl_density","hl_elevation","hl_coastline","hl_borders","hl_lifeexp","hl_median_age","hl_forest"],cost:0},
   neighbors:{label:"Nachbarl\u00e4nder",icon:"\u{1F91D}",modes:["neighbor"],cost:0},
   map_mode:{label:"Weltkarte",icon:"\u{1F5FA}",modes:["map_guess"],cost:0},
+  new_modes:{label:"Neue Spielmodi",icon:"\u{1F680}",modes:["logic_grid","travel_route","flag_fusion","climate_mystery","alpha_sprint","timezone_jumper"],cost:0},
 };
 
 /* Phase 28: New real-data mode generators */
@@ -2253,6 +2274,8 @@ async function doSetNewPassword(){
   showToast("\u2705 Passwort erfolgreich ge\u00e4ndert!");
   S.authMode="login";S.authPassword="";S.authConfirm="";render();
 }
+/* Phase 85 — Coming Soon toast */
+function showComingSoonToast(name){showToast("\u{1F680} "+name+" kommt bald! Bleib gespannt.");}
 async function saveSession(mode,score,bs,correct,durationMs){
   /* Sanity-cap score before submitting — max honest = ROUNDS*(BASE+12*TB)*3*3 */
   const _maxScore=Math.ceil(ROUNDS*(BASE+12*TB)*3*3*1.1);
@@ -3909,9 +3932,14 @@ function renderHomeTab(){
     if(!catMatchesFilter(catId))return"";
     const catModes=MODES.filter(m=>cat.modes.includes(m.id));
     const cards=catModes.map(m=>{
-      const active=S.mode===m.id;
-      return`<div class="mode-card${active?" active":""}${!unlocked?" locked-card":""}" onclick="${unlocked?"startGame('"+m.id+"')":"S.lockModal='"+catId+"';render()"}" role="button">
+      const cs=m.comingSoon===true;
+      const active=S.mode===m.id&&!cs;
+      const cardCls="mode-card"+(active?" active":"")+(cs?" coming-soon-card":"")+(!unlocked&&!cs?" locked-card":"");
+      const clickAct=cs?"showComingSoonToast('"+m.title+"')":unlocked?"startGame('"+m.id+"')":"S.lockModal='"+catId+"';render()";
+      return`<div class="${cardCls}" onclick="${clickAct}" role="button">
+        ${cs?`<span class="cs-badge">Bald</span>`:""}
         <span class="mode-icon">${m.icon}</span><div class="mode-title">${m.title}</div>
+        ${m.desc?`<div class="mode-desc">${m.desc}</div>`:""}
       </div>`;
     }).join("");
     const lockOverlay=!unlocked?`<div class="cat-lock-overlay" onclick="S.lockModal='${catId}';render()">
@@ -3965,6 +3993,8 @@ function renderHomeTab(){
     </div>
     ${catSection("hl_compare")}
     ${catSection("neighbors")}
+    ${catSection("map_mode")}
+    ${catSection("new_modes")}
     <div class="diff-toggle">
       <button class="diff-btn ${S.diff==="casual"?"active":""}" onclick="S.diff='casual';render()">Casual</button>
       <button class="diff-btn ${S.diff==="hardcore"?"active":""}" onclick="S.diff='hardcore';render()">Hardcore</button>
