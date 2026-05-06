@@ -2218,6 +2218,9 @@ if(sbOK){
   }catch(e){
     console.error("Supabase init failed:",e);
     setTimeout(()=>showToast("\u26a0\ufe0f Supabase-Verbindung fehlgeschlagen: "+e.message),1200);
+    /* Phase 87: immer entsperren, sonst bleibt sbAuthPending=true und render() wird nie erreicht */
+    sbAuthPending=false;
+    render();
   }
 }
 
@@ -5128,7 +5131,7 @@ async function detectUserCountry(){
     const tid=setTimeout(()=>ctrl.abort(),6000);
     const res=await fetch('https://ipapi.co/json/',{signal:ctrl.signal,cache:'no-store'});
     clearTimeout(tid);
-    if(\!res.ok)return;
+    if(!res.ok){console.warn('[GQ] ipapi.co HTTP '+res.status+' — Ländererkennung übersprungen');return;}
     const d=await res.json();
     const enName=d.country_name||'';
     const deCountry=_GQ_IP_DE_MAP[enName]||enName;
@@ -5169,7 +5172,9 @@ async function detectUserCountry(){
       S.language=_al;localStorage.setItem('gq_lang',_al);
     }
     if(known&&last!==deCountry){showLocationBanner(deCountry);}
-  }catch(e){}
+  }catch(e){
+    console.warn('[GQ] detectUserCountry fehlgeschlagen (ipapi.co nicht erreichbar):',e?.message||e);
+  }
 }
 
 loadGameData().then(()=>{
