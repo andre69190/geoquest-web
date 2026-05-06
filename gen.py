@@ -4443,14 +4443,14 @@ function renderHomeTab(){
     </div>`:"";
     const chv=`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" style="transition:transform .22s;transform:${isOpen?"rotate(180deg)":"rotate(0deg)"}"><polyline points="6 9 12 15 18 9"/></svg>`;
     return`<div class="acc-item${isOpen?" acc-open":""}">
-      <button class="acc-header" onclick="S.activeCategory=S.activeCategory==='${catId}'?null:'${catId}';render()" aria-expanded="${isOpen}">
+      <div class="acc-header" role="button" tabindex="0" onclick="S.activeCategory=S.activeCategory==='${catId}'?null:'${catId}';render()" aria-expanded="${isOpen}">
         <div style="display:flex;align-items:center;gap:8px">
           <span style="font-size:1.15rem;flex-shrink:0">${cat.icon}</span>
           <span class="acc-label">${cat.label}</span>
           ${\!unlocked?`<span class="acc-lock-pill">\u{1F512} ${cat.cost.toLocaleString()} Coins</span>`:""}
         </div>
         <span style="color:var(--text3);display:flex;align-items:center">${chv}</span>
-      </button>
+      </div>
       ${isOpen?`<div class="acc-body">
         <div style="position:relative"><div class="mode-grid" style="opacity:${unlocked?1:.4}">${cards}</div>${lockOverlay}</div>
         ${catId==="eu_plates"?`<div style="background:var(--bg2);border:2px solid #3b82f6;border-radius:14px;padding:.8rem;margin-top:.5rem;cursor:pointer;display:flex;align-items:center;gap:12px;box-shadow:0 2px 10px rgba(59,130,246,.12);transition:opacity .15s" onclick="S.tab='album';render()" onmousedown="this.style.opacity='.7'" onmouseup="this.style.opacity='1'">

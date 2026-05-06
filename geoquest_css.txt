@@ -61,6 +61,16 @@ input[type=text]::placeholder{color:var(--text3)}
 .mode-card.locked-card{opacity:.35;filter:grayscale(.8);pointer-events:none}
 .cat-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:.45rem;margin-top:.5rem}
 .cat-title{color:var(--text3);font-size:.62rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase}
+/* Phase 85 accordion */
+.acc-list{display:flex;flex-direction:column;gap:4px;margin-bottom:.6rem}
+.acc-item{border-radius:14px;overflow:hidden;border:1.5px solid var(--border);background:var(--bg2)}
+.acc-item.acc-open{border-color:#10b981}
+.acc-header{width:100%;background:transparent;border:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:.7rem .85rem;text-align:left;gap:8px;transition:background .12s;-webkit-tap-highlight-color:transparent}
+.acc-header:hover{background:var(--bg3)}
+.acc-header:active{background:var(--bg4)}
+.acc-label{color:var(--text);font-size:.88rem;font-weight:800;letter-spacing:.1px}
+.acc-lock-pill{background:rgba(245,158,11,.13);border:1px solid rgba(245,158,11,.4);border-radius:10px;padding:.1rem .45rem;font-size:.58rem;font-weight:700;color:#f59e0b}
+.acc-body{padding:.4rem .6rem .65rem;border-top:1px solid var(--border)}
 .cat-lock-overlay{position:absolute;inset:-4px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(15,23,42,.72);border-radius:14px;z-index:10;cursor:pointer;gap:5px;backdrop-filter:blur(2px)}
 .hud{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
 .pill{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:5px 14px;box-shadow:var(--shadow)}

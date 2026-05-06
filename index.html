@@ -75,6 +75,16 @@ input[type=text]::placeholder{color:var(--text3)}
 .mode-card.locked-card{opacity:.35;filter:grayscale(.8);pointer-events:none}
 .cat-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:.45rem;margin-top:.5rem}
 .cat-title{color:var(--text3);font-size:.62rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase}
+/* Phase 85 accordion */
+.acc-list{display:flex;flex-direction:column;gap:4px;margin-bottom:.6rem}
+.acc-item{border-radius:14px;overflow:hidden;border:1.5px solid var(--border);background:var(--bg2)}
+.acc-item.acc-open{border-color:#10b981}
+.acc-header{width:100%;background:transparent;border:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:.7rem .85rem;text-align:left;gap:8px;transition:background .12s;-webkit-tap-highlight-color:transparent}
+.acc-header:hover{background:var(--bg3)}
+.acc-header:active{background:var(--bg4)}
+.acc-label{color:var(--text);font-size:.88rem;font-weight:800;letter-spacing:.1px}
+.acc-lock-pill{background:rgba(245,158,11,.13);border:1px solid rgba(245,158,11,.4);border-radius:10px;padding:.1rem .45rem;font-size:.58rem;font-weight:700;color:#f59e0b}
+.acc-body{padding:.4rem .6rem .65rem;border-top:1px solid var(--border)}
 .cat-lock-overlay{position:absolute;inset:-4px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(15,23,42,.72);border-radius:14px;z-index:10;cursor:pointer;gap:5px;backdrop-filter:blur(2px)}
 .hud{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
 .pill{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:5px 14px;box-shadow:var(--shadow)}
@@ -4450,14 +4460,14 @@ function renderHomeTab(){
     </div>`:"";
     const chv=`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" style="transition:transform .22s;transform:${isOpen?"rotate(180deg)":"rotate(0deg)"}"><polyline points="6 9 12 15 18 9"/></svg>`;
     return`<div class="acc-item${isOpen?" acc-open":""}">
-      <button class="acc-header" onclick="S.activeCategory=S.activeCategory==='${catId}'?null:'${catId}';render()" aria-expanded="${isOpen}">
+      <div class="acc-header" role="button" tabindex="0" onclick="S.activeCategory=S.activeCategory==='${catId}'?null:'${catId}';render()" aria-expanded="${isOpen}">
         <div style="display:flex;align-items:center;gap:8px">
           <span style="font-size:1.15rem;flex-shrink:0">${cat.icon}</span>
           <span class="acc-label">${cat.label}</span>
           ${!unlocked?`<span class="acc-lock-pill">\u{1F512} ${cat.cost.toLocaleString()} Coins</span>`:""}
         </div>
         <span style="color:var(--text3);display:flex;align-items:center">${chv}</span>
-      </button>
+      </div>
       ${isOpen?`<div class="acc-body">
         <div style="position:relative"><div class="mode-grid" style="opacity:${unlocked?1:.4}">${cards}</div>${lockOverlay}</div>
         ${catId==="eu_plates"?`<div style="background:var(--bg2);border:2px solid #3b82f6;border-radius:14px;padding:.8rem;margin-top:.5rem;cursor:pointer;display:flex;align-items:center;gap:12px;box-shadow:0 2px 10px rgba(59,130,246,.12);transition:opacity .15s" onclick="S.tab='album';render()" onmousedown="this.style.opacity='.7'" onmouseup="this.style.opacity='1'">
