@@ -440,6 +440,7 @@ input[type=text]::placeholder{color:var(--text3)}
 </head>
 <body>
 <div id="app"></div>
+<div id="gq-orient-warn" style="display:none;position:fixed;inset:0;background:rgba(10,10,20,.93);z-index:9998;flex-direction:column;align-items:center;justify-content:center;gap:1.2rem;text-align:center;padding:2rem"><div style="font-size:3.2rem;animation:orientSpin 1.8s ease-in-out infinite">&#x1F4F1;</div><div style="font-size:2rem;color:#fff">&#x27A1; &#x1F5FA;</div><div class="gq-ow-txt" style="color:#e2e8f0;font-size:.95rem;font-weight:700;max-width:280px;line-height:1.5"></div></div>
 <script>
 
 
@@ -505,7 +506,8 @@ de:{
   home_hi:"Hallo, {name} \u{1F44B}",home_guest:"Willkommen, Gast \u{1F30D}",home_save:"\u{1F510} Fortschritt sichern",home_pvp_sub:"Echtzeit gegen einen Freund spielen",
   ob_mode1_name:"Stadt → Land",ob_mode1_desc:"Welchem Land gehört diese Stadt?",ob_mode2_name:"EU-Kennzeichen",ob_mode2_desc:"Woher kommt dieses Kennzeichen?",ob_mode3_name:"U-Bahn-Netz",ob_mode3_desc:"Linien und km der Metros.",
   language_select:"SPRACHE",
-  badge_beta:"Beta",beta_warning:"Spielbar, aber es k\u00f6nnen noch Fehler auftreten."
+  badge_beta:"Beta",beta_warning:"Spielbar, aber es k\u00f6nnen noch Fehler auftreten.",
+  rotate_device:"Bitte drehe dein Ger\u00e4t ins Querformat \u{1F4F1}\u27A1\u{1F5FA}"
 },
 en:{
   play:"PLAY",again:"PLAY AGAIN",menu:"Main Menu",board:"Leaderboard",pass:"Passport",
@@ -549,7 +551,8 @@ en:{
   home_hi:"Hi, {name} \u{1F44B}",home_guest:"Welcome, Guest \u{1F30D}",home_save:"\u{1F510} Save progress",home_pvp_sub:"Play in real time against a friend",
   ob_mode1_name:"City → Country",ob_mode1_desc:"Which country does this city belong to?",ob_mode2_name:"EU Licence Plates",ob_mode2_desc:"Where does this number plate come from?",ob_mode3_name:"Metro Networks",ob_mode3_desc:"Lines and km of metro systems.",
   language_select:"LANGUAGE",
-  badge_beta:"Beta",beta_warning:"Playable, but may still contain bugs."
+  badge_beta:"Beta",beta_warning:"Playable, but may still contain bugs.",
+  rotate_device:"Please rotate your device to landscape mode \u{1F4F1}\u27A1\u{1F5FA}"
 },
 pl:{
   play:"GRAJ",again:"ZAGRAJ PONOWNIE",menu:"Menu",board:"Ranking",pass:"Paszport",
@@ -593,7 +596,8 @@ pl:{
   home_hi:"Cześć, {name} \u{1F44B}",home_guest:"Witaj, Gościu \u{1F30D}",home_save:"\u{1F510} Zapisz postęp",home_pvp_sub:"Graj w czasie rzeczywistym z przyjacielem",
   ob_mode1_name:"Miasto → Kraj",ob_mode1_desc:"Do jakiego kraju należy to miasto?",ob_mode2_name:"Tablice UE",ob_mode2_desc:"Skąd pochodzi ta tablica?",ob_mode3_name:"Sieci metra",ob_mode3_desc:"Linie i km metra.",
   language_select:"JĘZYK",
-  badge_beta:"Beta",beta_warning:"Grywalny, ale mogą wystąpić błędy."
+  badge_beta:"Beta",beta_warning:"Grywalny, ale mogą wystąpić błędy.",
+  rotate_device:"Obróć urządzenie poziomo \u{1F4F1}\u27A1\u{1F5FA}"
 },
 fr:{
   play:"JOUER",again:"REJOUER",menu:"Menu principal",board:"Classement",pass:"Passeport",
@@ -637,7 +641,8 @@ fr:{
   home_hi:"Salut, {name} \u{1F44B}",home_guest:"Bienvenue, invité \u{1F30D}",home_save:"\u{1F510} Sauvegarder la progression",home_pvp_sub:"Jouer en temps réel contre un ami",
   ob_mode1_name:"Ville → Pays",ob_mode1_desc:"À quel pays appartient cette ville ?",ob_mode2_name:"Plaques UE",ob_mode2_desc:"D'où vient cette plaque ?",ob_mode3_name:"Réseaux de métro",ob_mode3_desc:"Lignes et km des métros.",
   language_select:"LANGUE",
-  badge_beta:"B\u00eata",beta_warning:"Jouable, mais peut contenir des bugs."
+  badge_beta:"B\u00eata",beta_warning:"Jouable, mais peut contenir des bugs.",
+  rotate_device:"Veuillez faire pivoter votre appareil \u{1F4F1}\u27A1\u{1F5FA}"
 },
 es:{
   play:"JUGAR",again:"JUGAR DE NUEVO",menu:"Menú principal",board:"Clasificación",pass:"Pasaporte",
@@ -681,7 +686,8 @@ es:{
   home_hi:"Hola, {name} \u{1F44B}",home_guest:"Bienvenido, invitado \u{1F30D}",home_save:"\u{1F510} Guardar progreso",home_pvp_sub:"Jugar en tiempo real contra un amigo",
   ob_mode1_name:"Ciudad → País",ob_mode1_desc:"¿A qué país pertenece esta ciudad?",ob_mode2_name:"Matrículas UE",ob_mode2_desc:"¿De dónde viene esta matrícula?",ob_mode3_name:"Redes de metro",ob_mode3_desc:"Líneas y km de los metros.",
   language_select:"IDIOMA",
-  badge_beta:"Beta",beta_warning:"Jugable, pero puede contener errores."
+  badge_beta:"Beta",beta_warning:"Jugable, pero puede contener errores.",
+  rotate_device:"Por favor, gira tu dispositivo al modo horizontal \u{1F4F1}\u27A1\u{1F5FA}"
 },
 it:{
   play:"GIOCA",again:"GIOCA ANCORA",menu:"Menu principale",board:"Classifica",pass:"Passaporto",
@@ -725,7 +731,8 @@ it:{
   home_hi:"Ciao, {name} \u{1F44B}",home_guest:"Benvenuto, ospite \u{1F30D}",home_save:"\u{1F510} Salva i progressi",home_pvp_sub:"Gioca in tempo reale contro un amico",
   ob_mode1_name:"Città → Paese",ob_mode1_desc:"A quale paese appartiene questa città?",ob_mode2_name:"Targhe UE",ob_mode2_desc:"Da dove viene questa targa?",ob_mode3_name:"Reti metro",ob_mode3_desc:"Linee e km delle metropolitane.",
   language_select:"LINGUA",
-  badge_beta:"Beta",beta_warning:"Giocabile, ma potrebbe contenere bug."
+  badge_beta:"Beta",beta_warning:"Giocabile, ma potrebbe contenere bug.",
+  rotate_device:"Ruota il dispositivo in modalit\u00e0 orizzontale \u{1F4F1}\u27A1\u{1F5FA}"
 },
 nl:{
   play:"SPELEN",again:"OPNIEUW SPELEN",menu:"Hoofdmenu",board:"Ranglijst",pass:"Paspoort",
@@ -2201,6 +2208,7 @@ function ccFromCountry(name){const c=COUNTRIES.find(x=>x.c===name);return c?c.cc
 function flagOf(name){const cc=ccFromCountry(name);return cc?`<img src="https://flagcdn.com/w40/${cc}.png" style="height:22px;vertical-align:middle;border-radius:2px" alt="${name}" onerror="this.style.display='none'">`:"";}
 
 const sbOK=SUPABASE_URL.includes("supabase.co");
+let sbAuthPending=sbOK; /* Phase 81: true until getSession() resolves */
 if(sbOK){
   try{
     sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON);
@@ -2228,6 +2236,8 @@ async function initAuth(){
   const{data:{session}}=await sb.auth.getSession();
   if(session){sbUser=session.user;await loadProfile();}
   else{const{data,error}=await sb.auth.signInAnonymously();if(!error){sbUser=data.user;await loadProfile();}}
+  sbAuthPending=false; /* Phase 81: auth resolved */
+  render();
 }
 async function loadProfile(){
   if(!sb||!sbUser)return;
@@ -3260,9 +3270,25 @@ function renderDailyHero(){
 /* Phase 33 T2 helper: percentage for duell bar */
 function duellPct(a,b){const mx=Math.max(a,b,1);return Math.round(a/mx*100);}
 
+const _MAP_MODES_SET=new Set(["map_guess"]);
+function updateOrientationWarning(){
+  const ow=document.getElementById("gq-orient-warn");
+  if(!ow)return;
+  const isPortrait=window.matchMedia("(orientation:portrait)").matches;
+  const isMapMode=_MAP_MODES_SET.has(S.mode)&&S.ph==="playing";
+  ow.style.display=(isPortrait&&isMapMode)?"flex":"none";
+  const txt=ow.querySelector(".gq-ow-txt");if(txt)txt.textContent=t("rotate_device");
+}
 function render(){
   updateHdrGuest();
   const app=document.getElementById("app");if(!app)return;
+  /* Phase 81: thin rainbow bar while Supabase session resolves */
+  {const _bar=document.getElementById("gq-auth-bar");
+   if(sbAuthPending&&!_bar){const b=document.createElement("div");b.id="gq-auth-bar";
+     b.style="position:fixed;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#10b981,#3b82f6,#10b981);background-size:200% 100%;animation:authBarSlide 1.2s linear infinite;z-index:10000";
+     document.body.prepend(b);}
+   if(!sbAuthPending&&_bar)_bar.remove();}
+  updateOrientationWarning();
 
   /* Onboarding gate */
   const ob=loadOb();
@@ -4272,12 +4298,12 @@ function renderReiseroute(sc){
   const suggHtml=sugg.slice(0,5).map(s=>`<div class="rr-sugg-item" data-name="${esc(s)}" onclick="handleRouteSubmit(this.dataset.name)">${flagOf(s)} ${esc(s)}</div>`).join("");
   const inputHtml=(!rd.solved&&!rd.failed)?`<div class="rr-inp-wrap">
     <div style="font-size:.75rem;color:var(--text3);margin-bottom:5px">Welches Land grenzt an <strong>${esc(rd.route[rd.route.length-1])}</strong>?</div>
-    <div style="display:flex;gap:6px">
+    <div style="display:flex;gap:6px;align-items:stretch">
       <input type="text" id="rr-inp" placeholder="N\u00e4chstes Land\u2026" value="${esc(S.routeInput||'')}"
         oninput="S.routeInput=this.value;S.routeSugg=getRouteSugg(this.value);render()"
         onkeydown="if(event.key==='Enter')handleRouteSubmit(S.routeInput)"
-        style="flex:1">
-      <button class="btn-p" style="padding:.45rem .8rem;margin-bottom:0" onclick="handleRouteSubmit(S.routeInput)">\u2192</button>
+        style="flex:1;min-width:0">
+      <button class="btn-p" style="padding:.45rem 1rem;margin-bottom:0;width:auto;flex-shrink:0;min-width:2.6rem;font-size:1.1rem" onclick="handleRouteSubmit(S.routeInput)">\u2192</button>
     </div>
     <div class="rr-sugg">${suggHtml}</div>
     ${rd.errMsg?`<div style="color:#ef4444;font-size:.8rem;margin-top:4px">${esc(rd.errMsg)}</div>`:""}
@@ -5060,7 +5086,15 @@ async function detectUserCountry(){
   }catch(e){}
 }
 
-loadGameData().then(()=>{render();setTimeout(detectUserCountry,2000);}).catch((e)=>{console.error("loadGameData fatal:",e);document.getElementById("gq-loader")?.remove();render();});
+loadGameData().then(()=>{
+  /* Phase 81: if auth check still pending, initAuth() will call render() */
+  if(!sbAuthPending)render();
+  setTimeout(detectUserCountry,2000);
+}).catch((e)=>{
+  console.error("loadGameData fatal:",e);
+  document.getElementById("gq-loader")?.remove();
+  sbAuthPending=false;render();
+});
 
 
 
