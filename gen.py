@@ -2186,6 +2186,15 @@ const TITLE_THRESHOLDS=[
   {min:5000,  title:"Bronze",   coins:50,  icon:"\u{1F949}"},
   {min:0,     title:"Erkunder", coins:0,   icon:"\u{1F30D}"},
 ];
+const LEAGUES=[
+  {id:"Bronze", icon:"\u{1F949}",color:"#c2410c",bg:"rgba(194,65,12,.13)",   next:"Top 20% steigen auf"},
+  {id:"Silber", icon:"\u{1F948}",color:"#94a3b8",bg:"rgba(148,163,184,.13)", next:"Top 20% steigen auf"},
+  {id:"Gold",   icon:"\u{1F947}",color:"#f59e0b",bg:"rgba(245,158,11,.13)",  next:"Top 20% steigen auf"},
+  {id:"Platin", icon:"\u{1F48E}",color:"#38bdf8",bg:"rgba(56,189,248,.13)",  next:"Top 20% steigen auf"},
+  {id:"Diamant",icon:"\u{1F4A0}",color:"#a78bfa",bg:"rgba(167,139,250,.13)", next:"Du bist in der H\u00f6chstliga!"},
+];
+function getLeague(id){return LEAGUES.find(l=>l.id===id)||LEAGUES[0];}
+
 const TIERS=[
   {m:10,x:3.0,l:"\u{1F525}\u{1F525}\u{1F525} LEGEND\u00c4R \u2014 3\u00d7"},
   {m:5, x:2.0,l:"\u{1F525}\u{1F525} ON FIRE \u2014 2\u00d7"},
@@ -2250,6 +2259,8 @@ async function loadProfile(){
   const{data:stamps}=await sb.from("user_stamps").select("stamp_id,stamps(country_code)").eq("user_id",sbUser.id);
   if(stamps)stamps.forEach(s=>s.stamps&&sbStamps.add(s.stamps.country_code));
   render();
+  /* Phase 84: lazy weekly league evaluation */
+  evaluateWeeklyLeague().catch(()=>{});
 }
 /* Helper: get display name */
 function getDisplayName(){return sbProfile?.username||localStorage.getItem("gq_username")||null;}
@@ -2514,13 +2525,14 @@ let S={
   half_removed:false,
   freezeActive:false,
   filter:"all",
+  activeCategory:"pure_geo",
   fcIdx:0,fcFlipped:false,fcSearch:"",fcCountry:"all",
   darkMode:false,
   authMode:"login",authEmail:"",authPassword:"",authConfirm:"",authUsername:"",authError:"",authLoading:false,
   settingsModal:false,
   convModal:false,
   collectedPlates:loadCollectedPlates(),
-  ligaData:[],ligaLoading:false,
+  ligaData:[],ligaLoading:false,leagueEvalResult:null,
   titleShop:false,
   language:(()=>{const _sl=localStorage.getItem("gq_lang");if(_sl&&LANG[_sl])return _sl;const _bl=(navigator.language||"de").substring(0,2).toLowerCase();return LANG[_bl]?_bl:"de";})(),spotterInput:"",spotterMsg:"",spotterOk:null,albumView:"list",albumCountry:_smartDefaultCountry(),spotterCountry:_smartDefaultCountry(),
   collFilter:"all",collRarity:"all",collSearch:"",
@@ -3263,6 +3275,39 @@ function renderDailyHero(){
 /* Phase 33 T2 helper: percentage for duell bar */
 function duellPct(a,b){const mx=Math.max(a,b,1);return Math.round(a/mx*100);}
 
+/* Phase 84: ISO week helper */
+function getISOWeek(d){
+  const t=new Date(d);t.setHours(0,0,0,0);
+  t.setDate(t.getDate()+3-(t.getDay()+6)%7);
+  const w=new Date(t.getFullYear(),0,4);
+  return t.getFullYear()+"-W"+String(1+Math.round(((t-w)/86400000-3+(w.getDay()+6)%7)/7)).padStart(2,"0");
+}
+async function evaluateWeeklyLeague(){
+  if(\!sb||\!sbUser||\!sbProfile)return;
+  const curWeek=getISOWeek(new Date());
+  if(sbProfile.last_eval_week===curWeek)return; /* already evaluated this week */
+  const{data,error}=await sb.rpc("get_prev_week_rank",{p_user_id:sbUser.id});
+  if(error||\!data)return;
+  const{score,rank,total}=data;
+  const oldLeagueId=sbProfile.current_league||"Bronze";
+  const oldIdx=LEAGUES.findIndex(l=>l.id===oldLeagueId);
+  let newIdx=oldIdx;
+  let result="stay";
+  if(total>=5&&score>0){
+    const pct=rank/total;
+    if(pct<=0.2&&oldIdx<LEAGUES.length-1){newIdx=oldIdx+1;result="up";}
+    else if(pct>=0.8&&oldIdx>0){newIdx=oldIdx-1;result="down";}
+  } else if(score===0&&oldIdx>0){newIdx=oldIdx-1;result="down"; /* inaktive Spieler steigen ab */}
+  const newLeagueId=LEAGUES[newIdx].id;
+  await sb.rpc("update_league",{p_user_id:sbUser.id,p_new_league:newLeagueId,p_eval_week:curWeek});
+  sbProfile.current_league=newLeagueId;
+  sbProfile.last_eval_week=curWeek;
+  if(sbProfile.last_eval_week!=="") /* not first-ever login */ {
+    S.leagueEvalResult={result,oldLeague:LEAGUES[oldIdx],newLeague:LEAGUES[newIdx],rank,total,score};
+    render();
+  }
+}
+
 const _MAP_MODES_SET=new Set(["map_guess"]);
 function updateOrientationWarning(){
   const ow=document.getElementById("gq-orient-warn");
@@ -3289,6 +3334,7 @@ function render(){
     if(S.obStep<0)S.obStep=0;
     app.innerHTML=renderOnboarding(S.obStep);return;
   }
+  if(S.leagueEvalResult){app.innerHTML=renderLeagueEvalModal(S.leagueEvalResult);return;}
   if(S.mpModal){app.innerHTML=renderMultiplayerLobby();return;}
   if(S.payModal){app.innerHTML=renderPayModal();return;}
   if(S.lockModal){app.innerHTML=renderLockModal(S.lockModal);return;}
@@ -4341,32 +4387,43 @@ function renderReiseroute(sc){
   </div>`;
 }
 
+function renderLeagueEvalModal(ev){
+  const{result,oldLeague,newLeague,rank,total,score}=ev;
+  const isUp=result==="up",isDown=result==="down";
+  const emoji=isUp?"\u{1F389}":isDown?"\u{1F4C9}":"\u{1F6E1}\uFE0F";
+  const headline=isUp
+    ?`Aufgestiegen\u2197\uFE0F`
+    :isDown?`Abgestiegen\u2198\uFE0F`:"Klassenerhalt \u{1F91D}";
+  const sub=isUp
+    ?`Du hast die ${oldLeague.icon} ${oldLeague.id}-Liga verlassen.`
+    :isDown?`Du steigst aus der ${oldLeague.icon} ${oldLeague.id}-Liga ab.`
+    :`Du bleibst in der ${newLeague.icon} ${newLeague.id}-Liga.`;
+  const rankTxt=total>0
+    ?`Vorwoche: Platz ${rank} von ${total} \u00b7 ${score.toLocaleString()} Punkte`
+    :`Keine Spiele letzte Woche.`;
+  return`<div class="scr" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;text-align:center;padding:2rem">
+    <div style="font-size:3.5rem;margin-bottom:.5rem">${emoji}</div>
+    <div style="font-size:1.4rem;font-weight:900;color:var(--text);margin-bottom:.35rem">${headline}</div>
+    <div style="font-size:.88rem;color:var(--text2);margin-bottom:1.4rem">${sub}</div>
+    <div style="background:${newLeague.bg};border:2px solid ${newLeague.color};border-radius:20px;padding:1.2rem 2.5rem;margin-bottom:1.4rem">
+      <div style="font-size:2.6rem">${newLeague.icon}</div>
+      <div style="font-size:1.3rem;font-weight:900;color:${newLeague.color}">${newLeague.id}-Liga</div>
+    </div>
+    <div style="font-size:.76rem;color:var(--text3);margin-bottom:1.5rem">${rankTxt}</div>
+    <button class="btn-p" onclick="S.leagueEvalResult=null;render()">\u{1F680} Zur neuen Woche!</button>
+  </div>`;
+}
+
 function renderHomeTab(){
-  const FILTERS=[
-    {id:"all",lbl:"Alle"},
-    {id:"europe",lbl:"Europa"},
-    {id:"asia",lbl:"Asien"},
-    {id:"america",lbl:"Amerika"},
-    {id:"africa",lbl:"Afrika"},
-    {id:"oceania",lbl:"Ozeanien"},
-    {id:"eu_plates",lbl:"\u{1F697} Kennzeichen"},
-  ];
-  function catMatchesFilter(catId){
-    if(S.filter==="all")return true;
-    if(S.filter==="eu_plates")return catId==="eu_plates";
-    if(catId==="eu_plates")return false;
-    return true;
-  }
-  const chips=FILTERS.map(f=>`<span class="chip${S.filter===f.id?" active":""}" onclick="S.filter='${f.id}';render()">${f.lbl}</span>`).join("");
   function catSection(catId){
     const cat=MODE_CATS[catId];const unlocked=isCategoryUnlocked(catId);
-    if(\!catMatchesFilter(catId))return"";
+    const isOpen=S.activeCategory===catId;
     const catModes=MODES.filter(m=>cat.modes.includes(m.id));
     const cards=catModes.map(m=>{
       const cs=m.comingSoon===true;
       const bt=m.beta===true&&\!cs;
       const active=S.mode===m.id&&\!cs;
-      const cardCls="mode-card"+(active?" active":"")+(cs?" coming-soon-card":"")+(bt?" beta-card":"")+(!unlocked&&\!cs?" locked-card":"");
+      const cardCls="mode-card"+(active?" active":"")+(cs?" coming-soon-card":"")+(bt?" beta-card":"")+(\!unlocked&&\!cs?" locked-card":"");
       const clickAct=cs?"showComingSoonToast('"+m.title+"')":unlocked?"startGame('"+m.id+"')":"S.lockModal='"+catId+"';render()";
       return`<div class="${cardCls}" onclick="${clickAct}" role="button">
         ${cs?`<span class="cs-badge">Bald</span>`:""}
@@ -4384,12 +4441,27 @@ function renderHomeTab(){
         <button class="btn-p" style="width:auto;padding:.4rem .9rem;font-size:.78rem;margin-bottom:0" onclick="event.stopPropagation();S.lockModal='${catId}';render()">Freischalten</button>
       </div>
     </div>`:"";
-    return`<div style="margin-bottom:.75rem">
-      <div class="cat-header"><div class="cat-title">${cat.icon} ${cat.label.toUpperCase()}</div>${\!unlocked?`<span style="color:#f59e0b;font-size:.65rem;font-weight:700">\u{1F4B0} ${cat.cost.toLocaleString()} Coins</span>`:`<span style="color:#10b981;font-size:.65rem">\u2713 Freigeschaltet</span>`}</div>
-      <div style="position:relative"><div class="mode-grid" style="opacity:${unlocked?1:.4}">${cards}</div>${lockOverlay}</div>
+    const chv=`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" style="transition:transform .22s;transform:${isOpen?"rotate(180deg)":"rotate(0deg)"}"><polyline points="6 9 12 15 18 9"/></svg>`;
+    return`<div class="acc-item${isOpen?" acc-open":""}">
+      <button class="acc-header" onclick="S.activeCategory=S.activeCategory==='${catId}'?null:'${catId}';render()" aria-expanded="${isOpen}">
+        <div style="display:flex;align-items:center;gap:8px">
+          <span style="font-size:1.15rem;flex-shrink:0">${cat.icon}</span>
+          <span class="acc-label">${cat.label}</span>
+          ${\!unlocked?`<span class="acc-lock-pill">\u{1F512} ${cat.cost.toLocaleString()} Coins</span>`:""}
+        </div>
+        <span style="color:var(--text3);display:flex;align-items:center">${chv}</span>
+      </button>
+      ${isOpen?`<div class="acc-body">
+        <div style="position:relative"><div class="mode-grid" style="opacity:${unlocked?1:.4}">${cards}</div>${lockOverlay}</div>
+        ${catId==="eu_plates"?`<div style="background:var(--bg2);border:2px solid #3b82f6;border-radius:14px;padding:.8rem;margin-top:.5rem;cursor:pointer;display:flex;align-items:center;gap:12px;box-shadow:0 2px 10px rgba(59,130,246,.12);transition:opacity .15s" onclick="S.tab='album';render()" onmousedown="this.style.opacity='.7'" onmouseup="this.style.opacity='1'">
+          <div style="width:38px;height:38px;background:linear-gradient(135deg,#1d4ed8,#3b82f6);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0">\u{1F4D4}</div>
+          <div style="flex:1;min-width:0"><div style="font-weight:900;font-size:.83rem;color:var(--text)">Kennzeichen-Album & Spotter</div><div style="font-size:.68rem;color:var(--text3);margin-top:1px">${S.collectedPlates.length} von ${totalUniquePlates()||"?"} gesammelt</div></div>
+          <div style="color:#3b82f6;font-size:1rem;font-weight:700">\u2192</div>
+        </div>`:""}
+      </div>`:"" }
     </div>`;
   }
-  /* Phase 59: Dynamic Home Header */
+  /* Dynamic Home Header */
   const _li=sbUser&&sbProfile?.username;
   const _un=sbProfile?.username||(sbUser?.email?.split('@')[0]||'Gast');
   const _gc=(sbProfile?.geo_coins||0).toLocaleString();
@@ -4405,30 +4477,23 @@ function renderHomeTab(){
   return`${_hdr}${renderDailyHero()}
     <div class="pvp-hero" onclick="S.mpModal=true;render()" role="button" aria-label="Live 1vs1 starten">
       <div style="display:flex;align-items:center;gap:14px">
-        <div style="font-size:2.2rem">⚔️</div>
+        <div style="font-size:2.2rem">\u2694\uFE0F</div>
         <div>
           <div style="font-size:1rem;font-weight:900;color:#fff">Live 1vs1 Duell</div>
           <div style="font-size:.74rem;color:rgba(255,255,255,.75);margin-top:2px">${t("home_pvp_sub")}</div>
         </div>
-        <div style="margin-left:auto;background:#7c3aed;color:#fff;border-radius:20px;padding:.3rem .85rem;font-size:.76rem;font-weight:700">▶ Spielen</div>
+        <div style="margin-left:auto;background:#7c3aed;color:#fff;border-radius:20px;padding:.3rem .85rem;font-size:.76rem;font-weight:700">\u25ba Spielen</div>
       </div>
     </div>
-    <div class="filter-bar">${chips}</div>
-    ${catSection("pure_geo")}
-    ${catSection("lifestyle")}
-    ${catSection("eu_plates")}
-    <div style="background:var(--bg2);border:2px solid #3b82f6;border-radius:16px;padding:1rem;margin-bottom:.7rem;cursor:pointer;display:flex;align-items:center;gap:14px;box-shadow:0 2px 12px rgba(59,130,246,.15);transition:transform .15s,box-shadow .15s" onclick="S.tab='album';render()" onmousedown="this.style.transform='scale(.98)'" onmouseup="this.style.transform=''">
-      <div style="width:44px;height:44px;background:linear-gradient(135deg,#1d4ed8,#3b82f6);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0">\u{1F4D4}</div>
-      <div style="flex:1;min-width:0">
-        <div style="font-weight:900;font-size:.9rem;color:var(--text)">Kennzeichen-Album & Spotter</div>
-        <div style="font-size:.72rem;color:var(--text3);margin-top:2px">${S.collectedPlates.length} von ${totalUniquePlates()||"?"} gesammelt</div>
-      </div>
-      <div style="color:#3b82f6;font-size:1.1rem;font-weight:700">→</div>
+    <div class="acc-list">
+      ${catSection("pure_geo")}
+      ${catSection("lifestyle")}
+      ${catSection("eu_plates")}
+      ${catSection("hl_compare")}
+      ${catSection("neighbors")}
+      ${catSection("map_mode")}
+      ${catSection("new_modes")}
     </div>
-    ${catSection("hl_compare")}
-    ${catSection("neighbors")}
-    ${catSection("map_mode")}
-    ${catSection("new_modes")}
     <div class="diff-toggle">
       <button class="diff-btn ${S.diff==="casual"?"active":""}" onclick="S.diff='casual';render()">Casual</button>
       <button class="diff-btn ${S.diff==="hardcore"?"active":""}" onclick="S.diff='hardcore';render()">Hardcore</button>
@@ -4545,8 +4610,12 @@ function renderLigaTab(){
   const _wkStart=new Date();_wkStart.setDate(_wkStart.getDate()-(_wkStart.getDay()||7)+1);_wkStart.setHours(0,0,0,0);
   const _wkEnd=new Date(_wkStart);_wkEnd.setDate(_wkEnd.getDate()+6);
   const _wkLbl=_wkStart.toLocaleDateString("de-DE",{day:"2-digit",month:"2-digit"})+" \u2013 "+_wkEnd.toLocaleDateString("de-DE",{day:"2-digit",month:"2-digit"});
+  const _myLg=getLeague(sbProfile?.current_league||"Bronze");
   return`<div style="margin-bottom:.75rem">
-    <div style="font-size:1.1rem;font-weight:900;color:var(--text)">\u{1F3C6} W\u00f6chentlicher Wettkampf</div>
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <div style="font-size:1.1rem;font-weight:900;color:var(--text)">\u{1F3C6} W\u00f6chentlicher Wettkampf</div>
+      ${sbUser?`<div style="display:flex;align-items:center;gap:5px;background:${_myLg.bg};border:1px solid ${_myLg.color};border-radius:20px;padding:.2rem .7rem;font-size:.75rem;font-weight:700;color:${_myLg.color}">${_myLg.icon} ${_myLg.id}</div>`:""}
+    </div>
     <div style="font-size:.72rem;color:var(--text3);margin-top:2px">KW ${_wkLbl} \u00b7 Reset jeden Montag 00:00 Uhr</div>
   </div>
   ${!sbOK?`<div class="panel"><p style="color:var(--text3);font-size:.85rem">Supabase nicht konfiguriert.</p></div>`:
@@ -4670,6 +4739,12 @@ function renderMehrTab(){
         <div style="background:var(--bg3);border-radius:10px;padding:.6rem"><div style="color:#60a5fa;font-size:1.2rem;font-weight:700">${sbProfile?.games_played||0}</div><div style="color:var(--text3);font-size:.65rem">Spiele</div></div>
         <div style="background:var(--bg3);border-radius:10px;padding:.6rem"><div style="color:#fbbf24;font-size:1.2rem;font-weight:700">${totalStamps}</div><div style="color:var(--text3);font-size:.65rem">Stempel</div></div>
       </div>
+      ${(()=>{const _lg=getLeague(sbProfile?.current_league||"Bronze");return`<div style="display:flex;align-items:center;gap:10px;background:${_lg.bg};border:1.5px solid ${_lg.color};border-radius:12px;padding:.55rem .85rem;margin-bottom:.7rem">`
+        +`<span style="font-size:1.4rem">${_lg.icon}</span>`
+        +`<div><div style="font-size:.72rem;color:var(--text3);font-weight:700;letter-spacing:.5px">AKTUELLE LIGA</div>`
+        +`<div style="font-weight:900;color:${_lg.color};font-size:.92rem">${_lg.id}-Liga</div></div>`
+        +`<div style="margin-left:auto;font-size:.62rem;color:var(--text3);max-width:90px;text-align:right">${_lg.next}</div>`
+        +`</div>`;})()}
       ${sbProfile?.is_premium?`<div style="background:rgba(16,185,129,.1);border:1px solid #10b981;border-radius:8px;padding:.45rem .7rem;font-size:.74rem;color:#34d399;margin-bottom:.75rem">\uD83D\uDC51 Premium aktiv</div>`:""}
       <button class="btn-g" style="margin-bottom:0;color:#f87171;border-color:#f87171" onclick="if(confirm('Wirklich abmelden?'))doLogout()">\uD83D\uDEAA Abmelden</button>
     </div>`;
@@ -5224,6 +5299,16 @@ input[type=text]::placeholder{color:var(--text3)}
 .beta-card:hover{border-color:#f97316\!important;box-shadow:0 2px 12px rgba(249,115,22,.18)\!important}
 .cat-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:.45rem;margin-top:.5rem}
 .cat-title{color:var(--text3);font-size:.62rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase}
+/* Phase 85 accordion */
+.acc-list{display:flex;flex-direction:column;gap:4px;margin-bottom:.6rem}
+.acc-item{border-radius:14px;overflow:hidden;border:1.5px solid var(--border);background:var(--bg2)}
+.acc-item.acc-open{border-color:#10b981}
+.acc-header{width:100%;background:transparent;border:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:.7rem .85rem;text-align:left;gap:8px;transition:background .12s}
+.acc-header:hover{background:var(--bg3)}
+.acc-header:active{background:var(--bg4)}
+.acc-label{color:var(--text);font-size:.88rem;font-weight:800;letter-spacing:.1px}
+.acc-lock-pill{background:rgba(245,158,11,.13);border:1px solid rgba(245,158,11,.4);border-radius:10px;padding:.1rem .45rem;font-size:.58rem;font-weight:700;color:#f59e0b}
+.acc-body{padding:.4rem .6rem .65rem;border-top:1px solid var(--border)}
 .cat-lock-overlay{position:absolute;inset:-4px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(15,23,42,.72);border-radius:14px;z-index:10;cursor:pointer;gap:5px;backdrop-filter:blur(2px)}
 .hud{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
 .pill{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:5px 14px;box-shadow:var(--shadow)}
@@ -5589,6 +5674,7 @@ input[type=text]::placeholder{color:var(--text3)}
 @keyframes locToastIn{from{opacity:0;transform:translateX(-50%) translateY(14px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
 @keyframes locToastOut{to{opacity:0;transform:translateX(-50%) translateY(12px)}}
 @keyframes authBarSlide{0%{background-position:200% 0}100%{background-position:0% 0}}
+.league-pill{display:inline-flex;align-items:center;gap:5px;border-radius:20px;padding:.18rem .65rem;font-size:.72rem;font-weight:700;border-width:1.5px;border-style:solid}
 @keyframes orientSpin{0%,100%{transform:rotate(0deg)}40%{transform:rotate(90deg)}60%{transform:rotate(90deg)}}
 @media(orientation:landscape){.map-container{height:calc(100vh - 120px)!important}}
 </style>
