@@ -1502,9 +1502,9 @@ const MODES=[
   {id:"flag",    icon:"\u{1F6A9}",title:"Flagge \u2192 Land",      group:"pure_geo",prompt:"Welches Land zeigt diese Flagge?",        desc:"Erkenne L\u00e4nder an ihrer Flagge"},
   {id:"capital", icon:"\u{1F3DB}",title:"Hauptstadt \u2192 Land",  group:"pure_geo",prompt:"Zu welchem Land geh\u00f6rt diese Hauptstadt?",desc:"Welches Land geh\u00f6rt zu welcher Hauptstadt?"},
   {id:"river",   icon:"\u{1F30A}",title:"Fluss \u2192 Land",       group:"pure_geo",prompt:"In welchem Land liegt dieser Fluss?",      desc:"Weise Fl\u00fcsse ihren L\u00e4ndern zu"},
-  {id:"landmark",icon:"\u{1F5FD}",title:"Sehenswuerdigkeit",       group:"pure_geo",prompt:"In welchem Land liegt diese Sehenswuerdigkeit?",desc:"Erkenne Sehensw\u00fcrdigkeiten weltweit"},
+  {id:"landmark",icon:"\u{1F5FD}",title:"Sehenswürdigkeit",        group:"pure_geo",prompt:"In welchem Land liegt diese Sehenswürdigkeit?",desc:"Erkenne Sehenswürdigkeiten weltweit"},
   {id:"park",    icon:"\u{1F33F}",title:"Nationalpark",            group:"pure_geo",prompt:"In welchem Land liegt dieser Nationalpark?",desc:"Nationalparks aus aller Welt zuordnen"},
-  {id:"unesco",  icon:"\u{1FA3A}",title:"UNESCO Welterbe",         group:"pure_geo",prompt:"In welchem Land liegt dieses UNESCO-Erbe?", desc:"UNESCO-Welterbe-St\u00e4tten zuordnen"},
+  {id:"unesco",  icon:"\u{1F3DB}",title:"UNESCO Welterbe",         group:"pure_geo",prompt:"In welchem Land liegt dieses UNESCO-Erbe?", desc:"UNESCO-Welterbe-St\u00e4tten zuordnen"},
   {id:"citymark",icon:"\u{1F306}",title:"Wahrzeichen \u2192 Stadt",group:"pure_geo",prompt:"In welcher Stadt liegt dieses Wahrzeichen?",desc:"Wahrzeichen ihrer Stadt zuordnen"},
   {id:"subway",  icon:"\u{1F687}",title:"U-Bahn-Netz",            group:"pure_geo",prompt:"Stadtverkehr-Experte",                      desc:"U-Bahn-Netze weltweit erkennen"},
   {id:"flagsel", icon:"\u{1F38C}",title:"Land \u2192 Flagge",      group:"pure_geo",prompt:"Welche Flagge geh\u00f6rt zu \u2026",   desc:"W\u00e4hle die richtige Flagge"},
@@ -4462,7 +4462,6 @@ function renderHomeTab(){
         ${bt?`<span class="beta-badge" title="${t('beta_warning')}">${t('badge_beta')}</span>`:""}
         <span class="mode-icon">${m.icon}</span><div class="mode-title">${m.title}</div>
         ${m.desc?`<div class="mode-desc">${m.desc}</div>`:""}
-        ${bt?`<div class="beta-hint">${t('beta_warning')}</div>`:""}
       </div>`;
     }).join("");
     const lockOverlay=\!unlocked?`<div class="cat-lock-overlay" onclick="S.lockModal='${catId}';render()">
