@@ -2333,6 +2333,10 @@ async function doRegister(){
   if(pw.length<6){S.authError="Passwort mind. 6 Zeichen.";render();return;}
   if(pw!==S.authConfirm){S.authError="Die Passwörter stimmen nicht überein.";render();return;}
   S.authLoading=true;S.authError="";render();
+  /* Phase 90: 5s Timeout-Waechter */
+  setTimeout(()=>{
+    if(S.authLoading){S.authLoading=false;S.authError="Netzwerk-Timeout. Bitte überprüfe deine Verbindung.";render();}
+  },5000);
   try{
     const{data,error}=await sb.auth.signUp({email,password:pw,options:{data:{username:uname}}});
     if(error){
@@ -2384,13 +2388,30 @@ async function doLogin(){
   const pw=S.authPassword;
   if(!email||!pw){S.authError="E-Mail und Passwort eingeben.";render();return;}
   S.authLoading=true;S.authError="";render();
-  const{data,error}=await sb.auth.signInWithPassword({email,password:pw});
-  if(error){const _m=error.message;S.authError=_m==="Invalid login credentials"?"E-Mail oder Passwort falsch.":_m.includes("Email not confirmed")?"Bitte best\u00e4tige zuerst deine E-Mail-Adresse\!":_m.includes("Too many requests")?"Zu viele Versuche. Bitte kurz warten.":_m;S.authLoading=false;render();return;}
-  sbUser=data.user;
-  await loadProfile();
-  S.authLoading=false;S.authEmail="";S.authPassword="";S.authConfirm="";S.authError="";
-  S.tab="home";
-  render();
+  /* Phase 90: 5s Timeout-Waechter */
+  const _loginTO=setTimeout(()=>{
+    if(S.authLoading){S.authLoading=false;S.authError="Netzwerk-Timeout. Bitte überprüfe deine Verbindung.";render();}
+  },5000);
+  try{
+    const{data,error}=await sb.auth.signInWithPassword({email,password:pw});
+    if(error){
+      const _m=error.message;
+      S.authError=_m==="Invalid login credentials"?"E-Mail oder Passwort falsch.":
+        _m.includes("Email not confirmed")?"Bitte bestätige zuerst deine E-Mail-Adresse!":
+        _m.includes("Too many requests")?"Zu viele Versuche. Bitte kurz warten.":_m;
+      return;
+    }
+    sbUser=data.user;
+    await loadProfile();
+    S.authEmail="";S.authPassword="";S.authConfirm="";S.authError="";
+    S.tab="home";
+  }catch(e){
+    S.authError=e?.message||"Anmeldung fehlgeschlagen.";
+  }finally{
+    clearTimeout(_loginTO);
+    S.authLoading=false;
+    render();
+  }
 }
 
 /* Phase 27: Logout */
@@ -2419,17 +2440,28 @@ async function doForgotPassword(){
   S.authMode="login";S.authEmail="";render();
 }
 async function doSetNewPassword(){
-  if(\!sb){showToast("Supabase nicht verbunden");return;}
+  if(!sb){showToast("Supabase nicht verbunden");return;}
   const pw=S.authPassword;
-  if(\!pw||\!S.authConfirm){S.authError="Bitte beide Felder ausf\u00fcllen.";render();return;}
+  if(!pw||!S.authConfirm){S.authError="Bitte beide Felder ausf\u00fcllen.";render();return;}
   if(pw.length<6){S.authError="Passwort mind. 6 Zeichen.";render();return;}
-  if(pw\!==S.authConfirm){S.authError="Passw\u00f6rter stimmen nicht \u00fcberein.";render();return;}
+  if(pw!==S.authConfirm){S.authError="Passw\u00f6rter stimmen nicht \u00fcberein.";render();return;}
   S.authLoading=true;S.authError="";render();
-  const{error}=await sb.auth.updateUser({password:pw});
-  S.authLoading=false;
-  if(error){S.authError=error.message;render();return;}
-  showToast("\u2705 Passwort erfolgreich ge\u00e4ndert\!");
-  S.authMode="login";S.authPassword="";S.authConfirm="";render();
+  /* Phase 90: 5s Timeout-Waechter */
+  const _pwTO=setTimeout(()=>{
+    if(S.authLoading){S.authLoading=false;S.authError="Netzwerk-Timeout. Bitte \u00fcberpr\u00fcfe deine Verbindung.";render();}
+  },5000);
+  try{
+    const{error}=await sb.auth.updateUser({password:pw});
+    if(error){S.authError=error.message;return;}
+    showToast("\u2705 Passwort erfolgreich ge\u00e4ndert\!");
+    S.authMode="login";S.authPassword="";S.authConfirm="";
+  }catch(e){
+    S.authError=e?.message||"Passwort konnte nicht gesetzt werden.";
+  }finally{
+    clearTimeout(_pwTO);
+    S.authLoading=false;
+    render();
+  }
 }
 /* Phase 85 — Coming Soon toast */
 function showComingSoonToast(name){showToast("\u{1F680} "+name+" kommt bald\! Bleib gespannt.");}
