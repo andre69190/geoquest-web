@@ -2222,7 +2222,7 @@ if(sbOK){
 }
 
 async function initAuth(){
-  if(\!sb)return;
+  if(\!sb){sbAuthPending=false;render();return;}
   /* Phase 83: handle token refresh + password recovery */
   sb.auth.onAuthStateChange(async(event,session)=>{
     if(event==="PASSWORD_RECOVERY"){
@@ -2235,12 +2235,21 @@ async function initAuth(){
       if(\!sbUser||sbUser.id\!==session.user.id){sbUser=session.user;await loadProfile();}
     }
   });
-  const{data:{session}}=await sb.auth.getSession();
-  if(session){sbUser=session.user;await loadProfile();}
-  else{const{data,error}=await sb.auth.signInAnonymously();if(\!error){sbUser=data.user;await loadProfile();}}
-  sbAuthPending=false; /* Phase 81: auth resolved */
-  console.log("[GQ] initAuth() done, sbAuthPending=false, calling render()");
-  render();
+  try{
+    const{data:{session}}=await sb.auth.getSession();
+    if(session){sbUser=session.user;await loadProfile();}
+    else{
+      const{data,error}=await sb.auth.signInAnonymously();
+      if(\!error&&data?.user){sbUser=data.user;await loadProfile();}
+    }
+  }catch(e){
+    console.warn("[GQ] initAuth error:",e?.message||e);
+  }finally{
+    /* ALWAYS unblock render — even if Supabase throws */
+    sbAuthPending=false;
+    console.log("[GQ] initAuth() finally — sbAuthPending=false, calling render()");
+    render();
+  }
 }
 async function loadProfile(){
   if(\!sb||\!sbUser)return;
@@ -5167,13 +5176,6 @@ loadGameData().then(()=>{
   console.log("[GQ] loadGameData done, sbAuthPending=",sbAuthPending);
   if(\!sbAuthPending)render();
   setTimeout(detectUserCountry,2000);
-  /* Phase 85c safety-net: if sbAuthPending never resolves (e.g. network), render anyway */
-  setTimeout(()=>{
-    if(sbAuthPending){
-      console.log("[GQ] Safety-net: sbAuthPending still true after 4s, forcing render");
-      sbAuthPending=false;render();
-    }
-  },4000);
 }).catch((e)=>{
   console.error("loadGameData fatal:",e);
   document.getElementById("gq-loader")?.remove();
