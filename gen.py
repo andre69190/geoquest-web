@@ -2225,7 +2225,15 @@ if(sbOK){
 }
 
 async function initAuth(){
-  if(\!sb){sbAuthPending=false;render();return;}
+  /* Phase 89: interner Wächter — falls getSession()/signInAnonymously() nie settled */
+  const _authTO=setTimeout(()=>{
+    if(sbAuthPending){
+      console.warn("[GQ] initAuth: 1s Wächter ausgelöst — erzwinge render()");
+      sbAuthPending=false;
+      render();
+    }
+  },1000);
+  if(!sb){clearTimeout(_authTO);sbAuthPending=false;render();return;}
   /* Phase 83: handle token refresh + password recovery */
   sb.auth.onAuthStateChange(async(event,session)=>{
     if(event==="PASSWORD_RECOVERY"){
@@ -2248,6 +2256,7 @@ async function initAuth(){
   }catch(e){
     console.warn("[GQ] initAuth error:",e?.message||e);
   }finally{
+    clearTimeout(_authTO); /* Phase 89: Wächter stoppen */
     /* ALWAYS unblock render — even if Supabase throws */
     sbAuthPending=false;
     console.log("[GQ] initAuth() finally — sbAuthPending=false, calling render()");
@@ -2272,8 +2281,11 @@ async function loadProfile(){
   const{data:stamps}=await sb.from("user_stamps").select("stamp_id,stamps(country_code)").eq("user_id",sbUser.id);
   if(stamps)stamps.forEach(s=>s.stamps&&sbStamps.add(s.stamps.country_code));
   render();
-  /* Phase 84: lazy weekly league evaluation */
-  evaluateWeeklyLeague().catch(()=>{});
+  /* Phase 84+89: lazy weekly league evaluation */
+  console.log("[GQ] Starting evaluateWeeklyLeague");
+  evaluateWeeklyLeague()
+    .then(()=>console.log("[GQ] evaluateWeeklyLeague done"))
+    .catch(e=>console.warn("[GQ] evaluateWeeklyLeague error:",e?.message||e));
 }
 /* Helper: get display name */
 function getDisplayName(){return sbProfile?.username||localStorage.getItem("gq_username")||null;}
@@ -3296,7 +3308,8 @@ function getISOWeek(d){
   return t.getFullYear()+"-W"+String(1+Math.round(((t-w)/86400000-3+(w.getDay()+6)%7)/7)).padStart(2,"0");
 }
 async function evaluateWeeklyLeague(){
-  if(\!sb||\!sbUser||\!sbProfile)return;
+  if(!sb||!sbUser||!sbProfile){console.log("[GQ] evaluateWeeklyLeague: kein sb/sbUser/sbProfile, skip");return;}
+  console.log("[GQ] evaluateWeeklyLeague: Starte für Woche",getISOWeek(new Date()));
   const curWeek=getISOWeek(new Date());
   if(sbProfile.last_eval_week===curWeek)return; /* already evaluated this week */
   const{data,error}=await sb.rpc("get_prev_week_rank",{p_user_id:sbUser.id});
@@ -5179,8 +5192,16 @@ async function detectUserCountry(){
 
 loadGameData().then(()=>{
   console.log("[GQ] loadGameData done, sbAuthPending=",sbAuthPending);
-  if(\!sbAuthPending)render();
+  if(!sbAuthPending)render();
   setTimeout(detectUserCountry,2000);
+  /* Phase 89: Hard-Override — falls initAuth() nach 1s noch hängt */
+  setTimeout(()=>{
+    if(sbAuthPending){
+      console.warn("[GQ] 1s Kill-Switch: sbAuthPending noch true — erzwinge render()");
+      sbAuthPending=false;
+      render();
+    }
+  },1000);
 }).catch((e)=>{
   console.error("loadGameData fatal:",e);
   document.getElementById("gq-loader")?.remove();
