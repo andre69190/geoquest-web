@@ -2239,6 +2239,7 @@ async function initAuth(){
   if(session){sbUser=session.user;await loadProfile();}
   else{const{data,error}=await sb.auth.signInAnonymously();if(\!error){sbUser=data.user;await loadProfile();}}
   sbAuthPending=false; /* Phase 81: auth resolved */
+  console.log("[GQ] initAuth() done, sbAuthPending=false, calling render()");
   render();
 }
 async function loadProfile(){
@@ -3319,7 +3320,9 @@ function updateOrientationWarning(){
 }
 function render(){
   updateHdrGuest();
-  const app=document.getElementById("app");if(\!app)return;
+  const app=document.getElementById("app");
+  console.log("[GQ] render() ph=",S.ph,"tab=",S.tab,"authPending=",sbAuthPending,"app=",\!\!app);
+  if(\!app)return;
   /* Phase 81: thin rainbow bar while Supabase session resolves */
   {const _bar=document.getElementById("gq-auth-bar");
    if(sbAuthPending&&\!_bar){const b=document.createElement("div");b.id="gq-auth-bar";
@@ -3376,6 +3379,7 @@ function render(){
   }
 
   if(S.ph==="menu"){
+    console.log("[GQ] rendering menu tab:",S.tab);
     app.innerHTML=`<div class="scr">
       ${S.tab==="home"?renderHomeTab():""}
       ${S.tab==="lernen"?renderLernenTab():""}
@@ -4415,8 +4419,11 @@ function renderLeagueEvalModal(ev){
 }
 
 function renderHomeTab(){
+  console.log("[GQ] renderHomeTab() activeCategory=",S.activeCategory);
   function catSection(catId){
-    const cat=MODE_CATS[catId];const unlocked=isCategoryUnlocked(catId);
+    const cat=MODE_CATS[catId];
+    if(\!cat){console.warn("[GQ] catSection: unknown catId",catId);return"";}
+    const unlocked=isCategoryUnlocked(catId);
     const isOpen=S.activeCategory===catId;
     const catModes=MODES.filter(m=>cat.modes.includes(m.id));
     const cards=catModes.map(m=>{
@@ -4474,7 +4481,7 @@ function renderHomeTab(){
         <div style="font-size:1.05rem;font-weight:700;color:var(--text)">${t("home_guest")}</div>
         <button onclick="S.tab='profil';render()" style="background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;border:none;border-radius:20px;padding:.3rem .8rem;font-size:.72rem;font-weight:700;cursor:pointer;white-space:nowrap;box-shadow:0 2px 8px rgba(99,102,241,.35)">${t("home_save")}</button>
       </div>`;
-  return`${_hdr}${renderDailyHero()}
+  const _homeHTML=`${_hdr}${renderDailyHero()}
     <div class="pvp-hero" onclick="S.mpModal=true;render()" role="button" aria-label="Live 1vs1 starten">
       <div style="display:flex;align-items:center;gap:14px">
         <div style="font-size:2.2rem">\u2694\uFE0F</div>
@@ -4505,6 +4512,8 @@ function renderHomeTab(){
       "\u{1F480} Survival: Kein Fehler erlaubt \u00b7 8s \u00b7 \u221e Runden"
     }</p>
     <div style="height:5rem"></div>`;
+  console.log("[GQ] renderHomeTab() returning length:",_homeHTML.length);
+  return _homeHTML;
 }
 
 /* LERNEN TAB — Flashcards (Phase 23C) */
@@ -5155,9 +5164,16 @@ async function detectUserCountry(){
 }
 
 loadGameData().then(()=>{
-  /* Phase 81: if auth check still pending, initAuth() will call render() */
+  console.log("[GQ] loadGameData done, sbAuthPending=",sbAuthPending);
   if(\!sbAuthPending)render();
   setTimeout(detectUserCountry,2000);
+  /* Phase 85c safety-net: if sbAuthPending never resolves (e.g. network), render anyway */
+  setTimeout(()=>{
+    if(sbAuthPending){
+      console.log("[GQ] Safety-net: sbAuthPending still true after 4s, forcing render");
+      sbAuthPending=false;render();
+    }
+  },4000);
 }).catch((e)=>{
   console.error("loadGameData fatal:",e);
   document.getElementById("gq-loader")?.remove();
