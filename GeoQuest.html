@@ -595,7 +595,7 @@ de:{
   spotter_title:"\u{1F697} Roadtrip-Spotter",
   spotter_hint:"Kennzeichen gesehen? Sofort eintragen!",
   spotter_all:"Alle Länder",spotter_unknown:"Unbekanntes Kennzeichen",
-  spotter_not_in:"nicht in",spotter_but_in:"aber in",
+  spotter_not_in:"nicht in",spotter_but_in:"aber in",spotter_no_region:"hat keine Regionen \u2014 gib \"{code}\" ein!",
   album_title:"\u{1F4D4} Kennzeichen-Album",album_list:"\u{1F4DD} Liste",album_map:"\u{1F5FA} Karte",
   album_empty_country:"Noch nichts aus {country} gesammelt — nutze den Spotter!",
   album_empty:"Noch nichts gesammelt!\nSpiele EU-Kennzeichen oder benutze den Spotter.",
@@ -640,7 +640,7 @@ en:{
   spotter_title:"\u{1F697} Road Trip Spotter",
   spotter_hint:"Spotted a plate? Log it now!",
   spotter_all:"All Countries",spotter_unknown:"Unknown plate",
-  spotter_not_in:"not in",spotter_but_in:"but found in",
+  spotter_not_in:"not in",spotter_but_in:"but found in",spotter_no_region:"has no regions \u2014 enter \"{code}\" to collect!",
   album_title:"\u{1F4D4} Plate Collection",album_list:"\u{1F4DD} List",album_map:"\u{1F5FA} Map",
   album_empty_country:"Nothing from {country} yet — use the Spotter!",
   album_empty:"Nothing collected yet!\nPlay EU plates or use the Spotter above.",
@@ -4437,6 +4437,14 @@ function spotterCollect(){
     )];
   }
   if(!candidates.length){
+    /* Phase 105b: TYPE_COUNTRY — Länder ohne Regionen */
+    if(country){
+      const _cEnt=PLATES_DATA.filter(p=>p.country===country);
+      if(_cEnt.length===1&&_cEnt[0].region==='Nationales Kennzeichen'){
+        S.spotterMsg="\u2139\uFE0F "+displayCountry(country)+" "+t("spotter_no_region",{code:_cEnt[0].code});
+        S.spotterOk=false;render();return;
+      }
+    }
     /* Check if code exists in other countries */
     const elsewhere=PLATES_DATA.filter(p=>p.code===code||p.code===codeNorm);
     if(elsewhere.length){
@@ -4457,7 +4465,7 @@ function spotterCollect(){
   }else{
     S.collectedPlates.push(key);saveCollectedPlates(S.collectedPlates);
     const extras=candidates.length-1;
-    S.spotterMsg="\u{1F389} Neu: "+code+" — "+mainPlate.region+(extras?" +"+extras+" weitere":"")+"!";
+    S.spotterMsg="\u{1F389} "+code+(mainPlate.region?" — "+esc(mainPlate.region):"")+(" ("+esc(displayCountry(mainCountry))+")")+(extras?" +"+extras+" weitere":"")+"!";
     S.spotterOk=true;soundStamp();
   }
   S.spotterInput="";render();
@@ -4497,10 +4505,10 @@ function renderCollectionScreen(){
   /* ── Spotter ── */
   /* ── Phase 105: Country-Help Lookup ─────────────────────────────────── */
   const _CHLP=c=>{const M={
-    'Deutschland':{ph:'z.B. M, BOC, K',info:'Linkes Kürzel = Landkreis/Stadt',tp:'de'},
+    'Deutschland':{ph:'Kürzel (vorne), z.B. M, BOC',info:'Kürzel ganz links (vorne) = Landkreis/Stadt',tp:'de'},
     'Österreich':{ph:'z.B. W, BN, GD',info:'1–3 Buchst. links = Bezirk',tp:'de'},
     'Schweiz':{ph:'z.B. ZH, BE, GE',info:'2 Buchst. links = Kanton',tp:'de'},
-    'Frankreich':{ph:'z.B. 01, 13, 75',info:'Blauer Streifen rechts = Département-Nr.',tp:'fr'},
+    'Frankreich':{ph:'Département (rechts), z.B. 75',info:'Blauer Streifen rechts: 2-stellige Département-Nummer',tp:'fr'},
     'Italien':{ph:'z.B. RM, MI, TO',info:'2 Buchst. links = Provinz',tp:'de'},
     'Polen':{ph:'z.B. W, KR, GD',info:'Links = Woiwodschaft/Stadt-Kürzel',tp:'de'},
     'Rumänien':{ph:'z.B. B, CJ, IS',info:'1–2 Buchst. links = Bezirk (Județ)',tp:'de'},
@@ -4527,7 +4535,16 @@ function renderCollectionScreen(){
     'Estland':{ph:'EST',info:'Kein Regionalkürzel — Oval-Code "EST" eingeben',tp:'nat'},
     'Ukraine':{ph:'UA',info:'Kein Regionalkürzel — Oval-Code "UA" eingeben',tp:'nat'},
     'Schweiz':{ph:'z.B. ZH, BE, GE',info:'2 Buchst. links = Kanton',tp:'de'},
-  };return M[c]||{ph:'Kürzel eingeben',info:'',tp:'de'};};
+  };
+  const r=M[c]||{ph:'Kürzel eingeben',info:'',tp:'de'};
+  /* Phase 105b: NAT dynamic ph+info aus PLATES_DATA */
+  if(r.tp==='nat'&&typeof PLATES_DATA!='undefined'&&PLATES_DATA.length){
+    const _ne=PLATES_DATA.filter(p=>p.country===c);
+    if(_ne.length===1){const _nc=_ne[0].code;
+      r.ph='"'+_nc+'" eingeben';
+      r.info='Keine Regionen \u2014 "'+_nc+'" eingeben, um das Land zu sammeln';}
+  }
+  return r;};
   /* Phase 105: SVG Plate Preview */
   const _ch=sCountry!=='all'?_CHLP(sCountry):{ph:'z.B. M / NL / 75',info:'',tp:'de'};
   const _cPH=_ch.ph,_cINFO=_ch.info;
