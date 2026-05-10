@@ -462,3 +462,15 @@ input[type=text]::placeholder{color:var(--text3)}
   line-height:1.3;
   margin-top:3px
 }
+
+/* ── Phase 92: Vergleichs-Modi two-opts Layout ──────────────────────────── */
+.answers.two-opts{flex-direction:row;gap:10px}
+.answers.two-opts .btn-a{
+  flex:1;
+  text-align:center;
+  justify-content:center;
+  padding:.9rem .4rem;
+  font-size:1rem;
+  line-height:1.3;
+  word-break:break-word
+}

@@ -477,6 +477,18 @@ input[type=text]::placeholder{color:var(--text3)}
   margin-top:3px
 }
 
+/* ── Phase 92: Vergleichs-Modi two-opts Layout ──────────────────────────── */
+.answers.two-opts{flex-direction:row;gap:10px}
+.answers.two-opts .btn-a{
+  flex:1;
+  text-align:center;
+  justify-content:center;
+  padding:.9rem .4rem;
+  font-size:1rem;
+  line-height:1.3;
+  word-break:break-word
+}
+
 </style>
 </head>
 <body>
@@ -1594,6 +1606,18 @@ const MODES=[
   {id:"climate_mystery",icon:"\u{1F326}",title:"Klima-Krimi",          group:"new_modes",prompt:"Welches Klima?",                             desc:"Bestimme das Klima eines Landes",                  comingSoon:true},
   {id:"alpha_sprint",  icon:"\u{1F524}",title:"Alphabet-Sprint",       group:"new_modes",prompt:"L\u00e4nder von A\u2013Z",                 desc:"Nenne L\u00e4nder f\u00fcr jeden Buchstaben",     comingSoon:true},
   {id:"timezone_jumper",icon:"\u23F0",title:"Zeitzonen-Jumper",       group:"new_modes",prompt:"Welche Zeitzone?",                            desc:"Meistere die Zeitzonen der Welt",                  comingSoon:true},
+  /* ---- Vergleiche / Comparisons (Phase 91+92) ---- */
+  {id:"comp_area",      icon:"\u{1F5FA}",title:"Gr\u00f6\u00dferes Land?",      group:"comparisons",prompt:"Welches Land ist gr\u00f6\u00dfer?",       desc:"Fl\u00e4che zweier L\u00e4nder vergleichen",beta:true},
+  {id:"comp_pop",       icon:"\u{1F465}",title:"Mehr Einwohner?",               group:"comparisons",prompt:"Welches Land hat mehr Einwohner?",       desc:"Bev\u00f6lkerung zweier L\u00e4nder vergleichen",beta:true},
+  {id:"comp_north",     icon:"\u2b06\ufe0f",title:"Weiter n\u00f6rdlich?",     group:"comparisons",prompt:"Welches Land liegt n\u00f6rdlicher?",    desc:"Zwei L\u00e4nder nach Breitengrad",beta:true},
+  {id:"comp_gdp",       icon:"\u{1F4B0}",title:"H\u00f6heres BIP?",            group:"comparisons",prompt:"H\u00f6heres BIP pro Kopf?",              desc:"BIP pro Kopf vergleichen",beta:true},
+  {id:"comp_density",   icon:"\u{1F3D8}",title:"Dichter besiedelt?",            group:"comparisons",prompt:"Welches Land ist dichter besiedelt?",    desc:"Bev\u00f6lkerungsdichte vergleichen",beta:true},
+  {id:"comp_elevation", icon:"\u26F0",   title:"H\u00f6herer Gipfel?",         group:"comparisons",prompt:"Welches Land hat den h\u00f6heren Gipfel?",desc:"H\u00f6chste Erhebung vergleichen",beta:true},
+  {id:"comp_coast",     icon:"\u{1F3D6}",title:"L\u00e4ngere K\u00fcste?",    group:"comparisons",prompt:"Welches Land hat die l\u00e4ngere K\u00fcste?",desc:"K\u00fcstenl\u00e4nge vergleichen",beta:true},
+  {id:"comp_borders",   icon:"\u{1F30F}",title:"Mehr Nachbarn?",               group:"comparisons",prompt:"Welches Land hat mehr Nachbarl\u00e4nder?",desc:"Anzahl der Nachbarn vergleichen",beta:true},
+  {id:"comp_life",      icon:"\u2764",   title:"L\u00e4nger leben?",           group:"comparisons",prompt:"In welchem Land lebt man l\u00e4nger?",  desc:"Lebenserwartung vergleichen",beta:true},
+  {id:"comp_age",       icon:"\u{1F4C5}",title:"H\u00f6heres Medianalter?",   group:"comparisons",prompt:"H\u00f6heres Medianalter?",               desc:"Medianalter zweier L\u00e4nder",beta:true},
+  {id:"comp_forest",    icon:"\u{1F333}",title:"Mehr Wald?",                   group:"comparisons",prompt:"Welches Land hat mehr Waldfl\u00e4che?",  desc:"Waldfl\u00e4che vergleichen",beta:true},
 ];
 
 const MODE_CATS={
@@ -1601,6 +1625,7 @@ const MODE_CATS={
   lifestyle:{label:"Kultur & Lifestyle",icon:"\u{1F3A8}",modes:["outline","food","brand","currency","curr_real","pop_compare"],cost:1000},
   eu_plates:{label:"EU-Kennzeichen",icon:"\u{1F697}",modes:["plate_casual","plate_hard"],cost:500},
   hl_compare:{label:"Higher / Lower",icon:"\u2b06\ufe0f",modes:["hl_pop","hl_river","hl_area","hl_gdp","hl_density","hl_elevation","hl_coastline","hl_borders","hl_lifeexp","hl_median_age","hl_forest"],cost:0},
+  comparisons:{label:"Vergleiche",icon:"\u2696\ufe0f",modes:["comp_area","comp_pop","comp_north","comp_gdp","comp_density","comp_elevation","comp_coast","comp_borders","comp_life","comp_age","comp_forest"],cost:0},
   neighbors:{label:"Nachbarl\u00e4nder",icon:"\u{1F91D}",modes:["neighbor"],cost:0},
   map_mode:{label:"Weltkarte",icon:"\u{1F5FA}",modes:["map_guess"],cost:0},
   new_modes:{label:"Neue Spielmodi",icon:"\u{1F680}",modes:["logic_grid","travel_route","flag_fusion","climate_mystery","alpha_sprint","timezone_jumper"],cost:0},
@@ -1647,6 +1672,109 @@ function genRiverRealQ(){
 }
 
 /* Phase 30 — Default neighbor map (fallback when neighbors.json is empty/broken) */
+/* Phase 91+92: static comparison data — 96 countries */
+/* keys match COUNTRIES[].c exactly */
+/* lat=northernmost latitude, gdp=GDP/capita USD, elev=highest m, */
+/* coast=coastline km, life=life expectancy, age=median age, */
+/* forest=forest %, bord=land borders, dens=pop density per km2 */
+const COMP_DATA={
+"Afghanistan":{lat:38,gdp:400,elev:7492,coast:0,life:64,age:19,forest:2,bord:6,dens:60},
+"Algeria":{lat:37,gdp:4200,elev:2908,coast:998,life:77,age:29,forest:1,bord:6,dens:18},
+"Angola":{lat:-4,gdp:2800,elev:2620,coast:1600,life:62,age:17,forest:46,bord:4,dens:26},
+"Argentina":{lat:-21,gdp:13000,elev:6961,coast:4989,life:77,age:32,forest:10,bord:5,dens:17},
+"Australia":{lat:-10,gdp:63000,elev:2228,coast:25760,life:84,age:38,forest:19,bord:0,dens:3},
+"Austria":{lat:48,gdp:53000,elev:3798,coast:0,life:82,age:44,forest:47,bord:8,dens:109},
+"Bangladesh":{lat:26,gdp:2700,elev:1052,coast:580,life:74,age:28,forest:11,bord:2,dens:1116},
+"Belgium":{lat:51,gdp:51000,elev:694,coast:66,life:82,age:42,forest:22,bord:4,dens:383},
+"Bolivia":{lat:-9,gdp:3600,elev:6542,coast:0,life:72,age:26,forest:51,bord:5,dens:12},
+"Botswana":{lat:-17,gdp:8800,elev:1491,coast:0,life:70,age:26,forest:19,bord:4,dens:4},
+"Brazil":{lat:5,gdp:9700,elev:2994,coast:7491,life:75,age:35,forest:59,bord:10,dens:25},
+"Bulgaria":{lat:44,gdp:12500,elev:2925,coast:354,life:75,age:44,forest:37,bord:5,dens:60},
+"Cambodia":{lat:14,gdp:1900,elev:1813,coast:443,life:70,age:28,forest:46,bord:3,dens:95},
+"Canada":{lat:83,gdp:55000,elev:5959,coast:202080,life:83,age:42,forest:38,bord:1,dens:4},
+"Chile":{lat:-17,gdp:16500,elev:6893,coast:6435,life:81,age:36,forest:24,bord:3,dens:26},
+"China":{lat:53,gdp:12500,elev:8849,coast:14500,life:78,age:40,forest:23,bord:14,dens:153},
+"Colombia":{lat:12,gdp:6500,elev:5775,coast:3208,life:78,age:32,forest:59,bord:6,dens:47},
+"Costa Rica":{lat:11,gdp:13000,elev:3821,coast:1290,life:81,age:34,forest:55,bord:2,dens:105},
+"Croatia":{lat:46,gdp:17000,elev:1831,coast:5835,life:79,age:45,forest:34,bord:5,dens:70},
+"Cuba":{lat:23,gdp:8800,elev:1974,coast:3735,life:79,age:43,forest:31,bord:0,dens:107},
+"Czech Republic":{lat:51,gdp:27000,elev:1602,coast:0,life:79,age:43,forest:34,bord:4,dens:137},
+"Denmark":{lat:57,gdp:67000,elev:171,coast:7314,life:82,age:42,forest:16,bord:1,dens:136},
+"DR Congo":{lat:5,gdp:600,elev:5109,coast:37,life:62,age:17,forest:67,bord:9,dens:40},
+"Ecuador":{lat:1,gdp:6100,elev:6263,coast:2237,life:77,age:29,forest:49,bord:2,dens:71},
+"Egypt":{lat:31,gdp:3700,elev:2629,coast:2450,life:72,age:25,forest:0,bord:5,dens:106},
+"Estonia":{lat:59,gdp:27000,elev:318,coast:3794,life:79,age:43,forest:55,bord:3,dens:31},
+"Ethiopia":{lat:15,gdp:1000,elev:4533,coast:0,life:68,age:19,forest:12,bord:6,dens:130},
+"Finland":{lat:70,gdp:54000,elev:1324,coast:1250,life:83,age:43,forest:73,bord:3,dens:18},
+"France":{lat:51,gdp:43000,elev:4808,coast:4853,life:83,age:42,forest:31,bord:8,dens:123},
+"Germany":{lat:55,gdp:51000,elev:2962,coast:2389,life:82,age:46,forest:33,bord:9,dens:240},
+"Ghana":{lat:11,gdp:2300,elev:885,coast:539,life:67,age:22,forest:35,bord:3,dens:134},
+"Greece":{lat:41,gdp:20000,elev:2918,coast:13676,life:83,age:47,forest:32,bord:4,dens:82},
+"Guatemala":{lat:17,gdp:5200,elev:4220,coast:400,life:74,age:22,forest:33,bord:4,dens:174},
+"Hungary":{lat:48,gdp:20000,elev:1014,coast:0,life:77,age:44,forest:23,bord:7,dens:106},
+"Iceland":{lat:66,gdp:72000,elev:2110,coast:4970,life:84,age:38,forest:0,bord:0,dens:3},
+"India":{lat:35,gdp:2600,elev:8586,coast:7517,life:70,age:29,forest:24,bord:6,dens:460},
+"Indonesia":{lat:6,gdp:4700,elev:4884,coast:54716,life:72,age:30,forest:49,bord:2,dens:151},
+"Iran":{lat:39,gdp:4100,elev:5671,coast:2440,life:77,age:33,forest:7,bord:7,dens:54},
+"Iraq":{lat:37,gdp:5500,elev:3611,coast:58,life:71,age:21,forest:2,bord:6,dens:98},
+"Ireland":{lat:55,gdp:89000,elev:1041,coast:2497,life:83,age:38,forest:11,bord:1,dens:72},
+"Israel":{lat:33,gdp:55000,elev:2236,coast:273,life:83,age:32,forest:8,bord:4,dens:430},
+"Italy":{lat:47,gdp:34000,elev:4748,coast:7600,life:84,age:48,forest:32,bord:6,dens:200},
+"Ivory Coast":{lat:10,gdp:2600,elev:1752,coast:520,life:59,age:19,forest:23,bord:5,dens:84},
+"Japan":{lat:45,gdp:33000,elev:3776,coast:29751,life:85,age:49,forest:69,bord:0,dens:347},
+"Jordan":{lat:33,gdp:4200,elev:1854,coast:26,life:75,age:24,forest:1,bord:5,dens:118},
+"Kazakhstan":{lat:55,gdp:11000,elev:7010,coast:1894,life:74,age:32,forest:1,bord:5,dens:7},
+"Kenya":{lat:4,gdp:2100,elev:5199,coast:536,life:68,age:20,forest:7,bord:5,dens:100},
+"Laos":{lat:22,gdp:2500,elev:2817,coast:0,life:68,age:24,forest:82,bord:5,dens:32},
+"Latvia":{lat:58,gdp:21000,elev:312,coast:498,life:76,age:44,forest:55,bord:4,dens:29},
+"Lithuania":{lat:56,gdp:24000,elev:294,coast:99,life:77,age:45,forest:36,bord:4,dens:44},
+"Malaysia":{lat:7,gdp:13000,elev:4095,coast:4675,life:77,age:30,forest:62,bord:2,dens:100},
+"Mali":{lat:25,gdp:900,elev:1155,coast:0,life:59,age:16,forest:3,bord:7,dens:16},
+"Mexico":{lat:32,gdp:10600,elev:5636,coast:9330,life:75,age:30,forest:34,bord:3,dens:65},
+"Mongolia":{lat:52,gdp:5000,elev:4374,coast:0,life:72,age:29,forest:9,bord:2,dens:2},
+"Morocco":{lat:36,gdp:3900,elev:4167,coast:1835,life:77,age:30,forest:12,bord:2,dens:84},
+"Myanmar":{lat:28,gdp:1300,elev:5881,coast:1930,life:68,age:29,forest:44,bord:5,dens:83},
+"Namibia":{lat:-17,gdp:5100,elev:2606,coast:1572,life:66,age:22,forest:9,bord:4,dens:3},
+"Nepal":{lat:30,gdp:1400,elev:8849,coast:0,life:71,age:25,forest:40,bord:2,dens:212},
+"Netherlands":{lat:53,gdp:56000,elev:322,coast:451,life:83,age:43,forest:11,bord:3,dens:523},
+"New Zealand":{lat:-34,gdp:49000,elev:3724,coast:15134,life:83,age:38,forest:38,bord:0,dens:19},
+"Nigeria":{lat:13,gdp:2100,elev:2419,coast:853,life:55,age:18,forest:25,bord:4,dens:226},
+"Norway":{lat:71,gdp:87000,elev:2469,coast:25148,life:83,age:40,forest:37,bord:3,dens:15},
+"Pakistan":{lat:37,gdp:1600,elev:8611,coast:1046,life:68,age:22,forest:5,bord:6,dens:290},
+"Paraguay":{lat:-19,gdp:6000,elev:842,coast:0,life:73,age:28,forest:43,bord:3,dens:18},
+"Peru":{lat:0,gdp:7200,elev:6768,coast:2414,life:74,age:30,forest:57,bord:5,dens:26},
+"Philippines":{lat:20,gdp:3800,elev:2954,coast:36289,life:72,age:26,forest:27,bord:0,dens:368},
+"Poland":{lat:54,gdp:18000,elev:2499,coast:440,life:79,age:42,forest:31,bord:7,dens:124},
+"Portugal":{lat:42,gdp:24000,elev:2351,coast:1793,life:82,age:46,forest:35,bord:1,dens:110},
+"Romania":{lat:48,gdp:16000,elev:2544,coast:225,life:77,age:43,forest:30,bord:5,dens:83},
+"Russia":{lat:81,gdp:12500,elev:5642,coast:37653,life:73,age:40,forest:50,bord:14,dens:9},
+"Saudi Arabia":{lat:32,gdp:28000,elev:3133,coast:2640,life:76,age:30,forest:1,bord:5,dens:16},
+"Senegal":{lat:16,gdp:1600,elev:648,coast:531,life:69,age:19,forest:44,bord:5,dens:91},
+"Serbia":{lat:46,gdp:10500,elev:2656,coast:0,life:77,age:43,forest:30,bord:8,dens:79},
+"Singapore":{lat:1,gdp:84000,elev:166,coast:193,life:85,age:42,forest:23,bord:0,dens:8358},
+"Slovakia":{lat:49,gdp:21000,elev:2655,coast:0,life:78,age:41,forest:41,bord:5,dens:114},
+"South Africa":{lat:-22,gdp:6500,elev:3482,coast:2798,life:65,age:28,forest:7,bord:6,dens:48},
+"South Korea":{lat:38,gdp:33000,elev:1950,coast:2413,life:84,age:44,forest:64,bord:1,dens:530},
+"Spain":{lat:44,gdp:30000,elev:3718,coast:4964,life:84,age:46,forest:37,bord:3,dens:94},
+"Sri Lanka":{lat:9,gdp:3800,elev:2524,coast:1340,life:77,age:35,forest:30,bord:0,dens:351},
+"Sudan":{lat:22,gdp:800,elev:3071,coast:853,life:66,age:19,forest:11,bord:6,dens:25},
+"Sweden":{lat:69,gdp:57000,elev:2104,coast:3218,life:84,age:41,forest:69,bord:3,dens:25},
+"Switzerland":{lat:47,gdp:87000,elev:4634,coast:0,life:84,age:43,forest:32,bord:5,dens:219},
+"Taiwan":{lat:25,gdp:33000,elev:3952,coast:1566,life:81,age:43,forest:59,bord:0,dens:672},
+"Tanzania":{lat:-1,gdp:1100,elev:5895,coast:1424,life:68,age:18,forest:47,bord:8,dens:71},
+"Thailand":{lat:20,gdp:7500,elev:2565,coast:3219,life:79,age:40,forest:33,bord:4,dens:137},
+"Turkey":{lat:42,gdp:10700,elev:5137,coast:7200,life:77,age:33,forest:29,bord:8,dens:109},
+"UAE":{lat:26,gdp:49000,elev:1934,coast:1318,life:79,age:35,forest:4,bord:3,dens:130},
+"Uganda":{lat:4,gdp:900,elev:5109,coast:0,life:65,age:16,forest:8,bord:5,dens:213},
+"Ukraine":{lat:52,gdp:4500,elev:2061,coast:2782,life:74,age:41,forest:17,bord:7,dens:73},
+"United Kingdom":{lat:60,gdp:46000,elev:1345,coast:17819,life:82,age:40,forest:13,bord:1,dens:279},
+"United States":{lat:71,gdp:76000,elev:6190,coast:19924,life:79,age:38,forest:34,bord:2,dens:36},
+"Uruguay":{lat:-30,gdp:17000,elev:514,coast:660,life:78,age:36,forest:10,bord:2,dens:20},
+"Venezuela":{lat:12,gdp:2500,elev:5007,coast:2800,life:73,age:30,forest:53,bord:4,dens:36},
+"Vietnam":{lat:23,gdp:4300,elev:3143,coast:3444,life:75,age:32,forest:47,bord:3,dens:313},
+"Zambia":{lat:-8,gdp:1300,elev:2301,coast:0,life:64,age:17,forest:65,bord:8,dens:24},
+"Zimbabwe":{lat:-15,gdp:1600,elev:2592,coast:0,life:62,age:20,forest:39,bord:4,dens:35},
+};
 const _DEFAULT_NEIGHBORS={
   "Deutschland":["Frankreich","Belgien","Niederlande","Luxemburg","Schweiz","Österreich","Tschechien","Polen","Dänemark"],
   "Frankreich":["Deutschland","Belgien","Luxemburg","Schweiz","Italien","Spanien","Andorra","Monaco"],
@@ -1849,6 +1977,106 @@ function genHLAreaQ(){
   const fmt=(x)=>x>=1e6?(x/1e6).toFixed(2)+" Mio. km²":(x/1000).toFixed(0)+" Tsd. km²";
   const ans=b.area>a.area?"higher":"lower";
   return{type:"hl_area",prompt:t("q_hl_area",{a:a.c}),nameA:a.c,valA:fmt(a.area),nameB:b.c,valB:fmt(b.area),ans,opts:["higher","lower"],lid:b.c,cc:ccFromCountry(b.c)};
+}
+/* Phase 91+92: _compPick/_compQ helpers + 11 comp_* generators */
+function _compPick(key,filterFn){
+  const _fc=_rfilt(COUNTRIES,4);const _cc=new Set(_fc.map(x=>x.cc));
+  let pool=Object.keys(COMP_DATA).filter(k=>{
+    const d=COMP_DATA[k];
+    return d&&d[key]!==undefined&&_cc.has(ccFromCountry(k))&&(!filterFn||filterFn(d));
+  });
+  if(pool.length<2)pool=Object.keys(COMP_DATA).filter(k=>{const d=COMP_DATA[k];return d&&d[key]!==undefined&&(!filterFn||filterFn(d));});
+  if(pool.length<2)return null;
+  const ai=~~(rng()*pool.length);let bi=~~(rng()*pool.length);while(bi===ai)bi=~~(rng()*pool.length);
+  return[pool[ai],pool[bi]];
+}
+function _compQ(type,prompt,a,b,aVal,bVal,fmtFn){
+  const ans=bVal>aVal?b:a;
+  const meta=displayCountry(a)+': '+fmtFn(aVal)+' · '+displayCountry(b)+': '+fmtFn(bVal);
+  return{type,prompt,subj:'',opts:[a,b],ans,meta,lid:a+'|'+b,cc:ccFromCountry(ans)};
+}
+function genCompAreaQ(){
+  if(!AREA_DATA||AREA_DATA.length<2)return null;
+  const _fc=_rfilt(COUNTRIES,4);const _cc=new Set(_fc.map(x=>x.cc));
+  let pool=AREA_DATA.filter(x=>_cc.has(ccFromCountry(x.c)));
+  if(pool.length<2)pool=AREA_DATA.slice();if(pool.length<2)return null;
+  const ai=~~(rng()*pool.length);let bi=~~(rng()*pool.length);while(bi===ai)bi=~~(rng()*pool.length);
+  const a=pool[ai],b=pool[bi];
+  const fmt=(x)=>x>=1e6?(x/1e6).toFixed(2)+' Mio. km²':(x/1000).toFixed(0)+' Tsd. km²';
+  return _compQ('comp_area','Welches Land ist größer?',a.c,b.c,a.area,b.area,fmt);
+}
+function genCompPopQ(){
+  if(!CAPS_POP||CAPS_POP.length<2)return null;
+  const _fc=_rfilt(COUNTRIES,4);const _cc=new Set(_fc.map(x=>x.cc));
+  let pool=CAPS_POP.filter(x=>x.pop>500000&&_cc.has(ccFromCountry(x.c)));
+  if(pool.length<2)pool=CAPS_POP.filter(x=>x.pop>500000);if(pool.length<2)return null;
+  const ai=~~(rng()*pool.length);let bi=~~(rng()*pool.length);while(bi===ai)bi=~~(rng()*pool.length);
+  const a=pool[ai],b=pool[bi];
+  const fmt=(p)=>p>=1e9?(p/1e9).toFixed(2)+' Mrd.':p>=1e6?(p/1e6).toFixed(1)+' Mio.':(p/1e3).toFixed(0)+' Tsd.';
+  return _compQ('comp_pop','Welches Land hat mehr Einwohner?',a.c,b.c,a.pop,b.pop,fmt);
+}
+function genCompNorthQ(){
+  const r=_compPick('lat',null);if(!r)return null;
+  const[a,b]=r;
+  if(COMP_DATA[a].lat===COMP_DATA[b].lat)return null;
+  const fmt=(x)=>Math.abs(x).toFixed(0)+'° '+(x>=0?'N':'S');
+  return _compQ('comp_north','Welches Land liegt weiter nördlich?',a,b,COMP_DATA[a].lat,COMP_DATA[b].lat,fmt);
+}
+function genCompGdpQ(){
+  const r=_compPick('gdp',null);if(!r)return null;
+  const[a,b]=r;
+  if(COMP_DATA[a].gdp===COMP_DATA[b].gdp)return null;
+  const fmt=(x)=>'$ '+(x>=1000?(x/1000).toFixed(0)+' Tsd.':x);
+  return _compQ('comp_gdp','Welches Land hat ein höheres BIP pro Kopf?',a,b,COMP_DATA[a].gdp,COMP_DATA[b].gdp,fmt);
+}
+function genCompDensityQ(){
+  const r=_compPick('dens',null);if(!r)return null;
+  const[a,b]=r;
+  if(COMP_DATA[a].dens===COMP_DATA[b].dens)return null;
+  const fmt=(x)=>x+' Einw./km²';
+  return _compQ('comp_density','Welches Land ist dichter besiedelt?',a,b,COMP_DATA[a].dens,COMP_DATA[b].dens,fmt);
+}
+function genCompElevQ(){
+  const r=_compPick('elev',null);if(!r)return null;
+  const[a,b]=r;
+  if(COMP_DATA[a].elev===COMP_DATA[b].elev)return null;
+  const fmt=(x)=>x.toLocaleString('de-DE')+' m';
+  return _compQ('comp_elevation','Welches Land hat den höheren Gipfel?',a,b,COMP_DATA[a].elev,COMP_DATA[b].elev,fmt);
+}
+function genCompCoastQ(){
+  const r=_compPick('coast',d=>d.coast>0);if(!r)return null;
+  const[a,b]=r;
+  if(COMP_DATA[a].coast===COMP_DATA[b].coast)return null;
+  const fmt=(x)=>x.toLocaleString('de-DE')+' km';
+  return _compQ('comp_coast','Welches Land hat die längere Küste?',a,b,COMP_DATA[a].coast,COMP_DATA[b].coast,fmt);
+}
+function genCompBordersQ(){
+  const r=_compPick('bord',d=>d.bord>0);if(!r)return null;
+  const[a,b]=r;
+  if(COMP_DATA[a].bord===COMP_DATA[b].bord)return null;
+  const fmt=(x)=>x+' Nachbarn';
+  return _compQ('comp_borders','Welches Land hat mehr Nachbarländer?',a,b,COMP_DATA[a].bord,COMP_DATA[b].bord,fmt);
+}
+function genCompLifeQ(){
+  const r=_compPick('life',null);if(!r)return null;
+  const[a,b]=r;
+  if(COMP_DATA[a].life===COMP_DATA[b].life)return null;
+  const fmt=(x)=>x+' Jahre';
+  return _compQ('comp_life','In welchem Land lebt man länger?',a,b,COMP_DATA[a].life,COMP_DATA[b].life,fmt);
+}
+function genCompAgeQ(){
+  const r=_compPick('age',null);if(!r)return null;
+  const[a,b]=r;
+  if(COMP_DATA[a].age===COMP_DATA[b].age)return null;
+  const fmt=(x)=>x+' Jahre';
+  return _compQ('comp_age','Welches Land hat ein höheres Medianalter?',a,b,COMP_DATA[a].age,COMP_DATA[b].age,fmt);
+}
+function genCompForestQ(){
+  const r=_compPick('forest',null);if(!r)return null;
+  const[a,b]=r;
+  if(COMP_DATA[a].forest===COMP_DATA[b].forest)return null;
+  const fmt=(x)=>x+' %';
+  return _compQ('comp_forest','Welches Land hat mehr Waldfläche?',a,b,COMP_DATA[a].forest,COMP_DATA[b].forest,fmt);
 }
 function genNeighborQ(){
   const nb=NEIGHBORS;const valid=Object.keys(nb).filter(c=>nb[c]&&nb[c].length>=2);if(!valid.length)return null;
@@ -2276,11 +2504,17 @@ async function initAuth(){
   /* Phase 89: interner Wächter — falls getSession()/signInAnonymously() nie settled */
   const _authTO=setTimeout(()=>{
     if(sbAuthPending){
-      console.warn("[GQ] initAuth: 1s Wächter ausgelöst — erzwinge render()");
+      console.warn("[GQ] initAuth: 4s Wächter ausgelöst — bereinige Auth-Tokens...");
+      /* Phase 93: korrupte Supabase-Tokens aus localStorage löschen */
+      try{
+        Object.keys(localStorage)
+          .filter(k=>k.startsWith('sb-')||k.toLowerCase().includes('supabase'))
+          .forEach(k=>{try{localStorage.removeItem(k);}catch(_){}});
+      }catch(_){}
       sbAuthPending=false;
       render();
     }
-  },1000);
+  },4000);
   if(!sb){clearTimeout(_authTO);sbAuthPending=false;render();return;}
   /* Phase 83: handle token refresh + password recovery */
   sb.auth.onAuthStateChange(async(event,session)=>{
@@ -2324,6 +2558,34 @@ async function loadProfile(){
       const _today=new Date().toISOString().slice(0,10);
       if(data.last_daily_date===_today){const _dk=getDailyKey();if(!localStorage.getItem(_dk)){try{localStorage.setItem(_dk,JSON.stringify({score:0,ts:Date.now()}));}catch(_e){}}}
     }
+  }
+  /* Phase 93: Smart-Merge Kennzeichen — Cloud ∪ Lokal */
+  if(data&&typeof data.plates_collected==="string"){
+    try{
+      const _cp=JSON.parse(data.plates_collected||"[]");
+      if(Array.isArray(_cp)&&_cp.length>0){
+        const _lp=_gqLoad("gq_coll",[]);
+        const _mp=[...new Set([..._lp,..._cp])];
+        _gqSave("gq_coll",_mp);
+        S.collectedPlates=_mp;
+        /* Merged Stand zurück in Cloud pushen wenn gewachsen */
+        if(_mp.length>_cp.length){
+          sb.from("profiles").update({plates_collected:JSON.stringify(_mp)})
+            .eq("id",sbUser.id).then(()=>{},()=>{});
+        }
+      }else if(!data.plates_collected||data.plates_collected==="[]"){
+        /* Noch keine Cloud-Daten — lokale Daten hochladen */
+        const _lp2=_gqLoad("gq_coll",[]);
+        if(_lp2.length>0){
+          sb.from("profiles").update({plates_collected:JSON.stringify(_lp2)})
+            .eq("id",sbUser.id).then(()=>{},()=>{});
+        }
+      }
+    }catch(_e){console.warn("[GQ] plates-merge Fehler",_e);}
+  }else if(data&&!data.plates_collected){
+    /* Spalte fehlt noch (vor Migration) — lokale Daten sind maßgeblich */
+    const _lp3=_gqLoad("gq_coll",[]);
+    S.collectedPlates=_lp3.length>0?_lp3:S.collectedPlates;
   }
   /* Admin privileges handled server-side via Supabase trigger */
   const{data:stamps}=await sb.from("user_stamps").select("stamp_id,stamps(country_code)").eq("user_id",sbUser.id);
@@ -3081,6 +3343,10 @@ const GEN={
   hl_pop:genHLPopQ,
   hl_river:genHLRiverQ,
   hl_area:genHLAreaQ,
+  comp_area:genCompAreaQ,comp_pop:genCompPopQ,comp_north:genCompNorthQ,
+  comp_gdp:genCompGdpQ,comp_density:genCompDensityQ,comp_elevation:genCompElevQ,
+  comp_coast:genCompCoastQ,comp_borders:genCompBordersQ,
+  comp_life:genCompLifeQ,comp_age:genCompAgeQ,comp_forest:genCompForestQ,
   neighbor:genNeighborQ,
   map_guess:genMapGuessQ,
   logic_grid:()=>null,
@@ -3311,7 +3577,14 @@ function _smartDefaultCountry(){
   return prefixMap[prefix]||"Deutschland";
 }
 function loadCollectedPlates(){return _gqLoad("gq_coll",[]);}
-function saveCollectedPlates(arr){_gqSave("gq_coll",arr);}
+function saveCollectedPlates(arr){
+  _gqSave("gq_coll",arr);
+  /* Phase 93: Dual-Save — Kennzeichen auch in Supabase sichern */
+  if(sb&&sbUser){
+    sb.from("profiles").update({plates_collected:JSON.stringify(arr)})
+      .eq("id",sbUser.id).then(()=>{},()=>{});
+  }
+}
 function getRarity(code){
   if(!code)return"common";
   const c=code.trim().toUpperCase();
@@ -3641,7 +3914,11 @@ function render(){
         <button class="hl-btn hl-higher${sel!==null?(q.ans==="higher"?" ok":(sel==="higher"?" ng":" dm")):""}" ${hlDis} onclick="answer('higher')">${hlBtnH}</button>
         <button class="hl-btn hl-lower${sel!==null?(q.ans==="lower"?" ok":(sel==="lower"?" ng":" dm")):""}" ${hlDis} onclick="answer('lower')">${hlBtnL}</button>
       </div>`;
-  }else if(q.type==="curr_real"){
+  }else if(q.type&&q.type.startsWith('comp_')){
+    /* Phase 92: Vergleichs-Modi — nur Prompt, Werte erscheinen nach Antwort */
+    qBody=`<div class="qprompt">${q.prompt}</div>
+      ${sel!==null?`<div class="qmeta" style="text-align:center;margin:.4rem 0 .2rem">${q.meta||""}</div>`:""}`;
+}else if(q.type==="curr_real"){
     /* Show country name; hide currency name (meta) until answered */
     qBody=`<div class="qprompt">${q.prompt}</div>
       <div class="qmain">${q.subj}</div>
@@ -3729,7 +4006,8 @@ function render(){
       answerHtml="";
     }else{
       const btns=q.opts.map((o,i)=>{let cls="btn-a";const os=o.replace(/'/g,"\\'");if(sel!==null){if(o===q.ans)cls+=" ok";else if(o===sel)cls+=" ng";else cls+=" dm";}const mk=sel?(o===q.ans?`<span>\u2713</span>`:o===sel?`<span>\u2717</span>`:""):"";return`<button class="${cls}" ${sel?"disabled":""} onclick="answerByIdx(${i})">${esc(displayCountry(o))}${mk}</button>`;}).join("");
-      answerHtml=`<div class="answers">${btns}</div>`;
+      const _twoOpts=q.opts&&q.opts.length===2?' two-opts':'';
+      answerHtml=`<div class="answers${_twoOpts}">${btns}</div>`;
     }
   }
   let fb="";
@@ -5152,7 +5430,7 @@ async function loadGameData(){
 
 if("serviceWorker"in navigator){
   try{
-    const swSrc=`const CACHE='gq-v4';
+    const swSrc=`const CACHE='gq-v5';
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.add(self.location.href)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
 self.addEventListener('fetch',e=>{if(e.request.method!=='GET')return;e.respondWith(caches.match(e.request).then(r=>{if(r)return r;return fetch(e.request).then(res=>{if(res.ok){const rc=res.clone();caches.open(CACHE).then(c=>c.put(e.request,rc));}return res;}).catch(()=>caches.match(e.request)||new Response('Offline',{status:503}));}));});`;
@@ -5276,11 +5554,11 @@ loadGameData().then(()=>{
   /* Phase 89: Hard-Override — falls initAuth() nach 1s noch hängt */
   setTimeout(()=>{
     if(sbAuthPending){
-      console.warn("[GQ] 1s Kill-Switch: sbAuthPending noch true — erzwinge render()");
+      console.warn("[GQ] 4.5s Kill-Switch: sbAuthPending noch true — erzwinge render()");
       sbAuthPending=false;
       render();
     }
-  },1000);
+  },4500);
 }).catch((e)=>{
   console.error("loadGameData fatal:",e);
   document.getElementById("gq-loader")?.remove();
