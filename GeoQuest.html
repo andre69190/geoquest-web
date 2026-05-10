@@ -1978,6 +1978,60 @@ function genHLAreaQ(){
   const ans=b.area>a.area?"higher":"lower";
   return{type:"hl_area",prompt:t("q_hl_area",{a:a.c}),nameA:a.c,valA:fmt(a.area),nameB:b.c,valB:fmt(b.area),ans,opts:["higher","lower"],lid:b.c,cc:ccFromCountry(b.c)};
 }
+/* Phase 95: inline area (km²) + population (millions) — self-contained, no external files */
+const COMP_AREA={
+"Afghanistan":652230,"Algeria":2381741,"Angola":1246700,"Argentina":2780400,
+"Australia":7692024,"Austria":83871,"Bangladesh":147570,"Belgium":30528,
+"Bolivia":1098581,"Botswana":581730,"Brazil":8515767,"Bulgaria":110879,
+"Cambodia":181035,"Canada":9984670,"Chile":756102,"China":9596960,
+"Colombia":1141748,"Costa Rica":51100,"Croatia":56594,"Cuba":109884,
+"Czech Republic":78866,"Denmark":42924,"DR Congo":2344858,"Ecuador":283561,
+"Egypt":1001450,"Estonia":45228,"Ethiopia":1104300,"Finland":338145,
+"France":643801,"Germany":357114,"Ghana":238533,"Greece":131957,
+"Guatemala":108889,"Hungary":93028,"Iceland":103000,"India":3287263,
+"Indonesia":1904569,"Iran":1648195,"Iraq":438317,"Ireland":70273,
+"Israel":20770,"Italy":301340,"Ivory Coast":322463,"Japan":377930,
+"Jordan":89342,"Kazakhstan":2724900,"Kenya":580367,"Laos":236800,
+"Latvia":64589,"Lithuania":65300,"Malaysia":329847,"Mali":1240192,
+"Mexico":1964375,"Mongolia":1564116,"Morocco":446550,"Myanmar":676578,
+"Namibia":824292,"Nepal":147181,"Netherlands":41543,"New Zealand":270467,
+"Nigeria":923768,"Norway":385207,"Pakistan":881913,"Paraguay":406752,
+"Peru":1285216,"Philippines":300000,"Poland":312679,"Portugal":92212,
+"Romania":238397,"Russia":17098242,"Saudi Arabia":2149690,"Senegal":196722,
+"Serbia":77474,"Singapore":724,"Slovakia":49035,"South Africa":1219090,
+"South Korea":100210,"Spain":505990,"Sri Lanka":65610,"Sudan":1861484,
+"Sweden":450295,"Switzerland":41285,"Taiwan":36193,"Tanzania":945087,
+"Thailand":513120,"Turkey":783562,"UAE":83600,"Uganda":241038,
+"Ukraine":603550,"United Kingdom":243610,"United States":9833517,
+"Uruguay":176215,"Venezuela":916445,"Vietnam":331212
+};
+/* COMP_POP values in millions */
+const COMP_POP={
+"Afghanistan":41.1,"Algeria":45.6,"Angola":35.6,"Argentina":46.3,
+"Australia":26.5,"Austria":9.1,"Bangladesh":169.4,"Belgium":11.6,
+"Bolivia":12.1,"Botswana":2.6,"Brazil":215.3,"Bulgaria":6.5,
+"Cambodia":17.0,"Canada":38.2,"Chile":19.6,"China":1412.0,
+"Colombia":51.8,"Costa Rica":5.2,"Croatia":3.9,"Cuba":11.1,
+"Czech Republic":10.8,"Denmark":5.9,"DR Congo":99.0,"Ecuador":18.1,
+"Egypt":104.1,"Estonia":1.3,"Ethiopia":123.4,"Finland":5.5,
+"France":68.0,"Germany":84.1,"Ghana":33.5,"Greece":10.5,
+"Guatemala":17.6,"Hungary":9.7,"Iceland":0.37,"India":1407.6,
+"Indonesia":277.5,"Iran":87.9,"Iraq":42.3,"Ireland":5.1,
+"Israel":9.2,"Italy":59.3,"Ivory Coast":27.5,"Japan":124.5,
+"Jordan":10.2,"Kazakhstan":19.6,"Kenya":54.0,"Laos":7.4,
+"Latvia":1.8,"Lithuania":2.8,"Malaysia":33.6,"Mali":22.4,
+"Mexico":130.0,"Mongolia":3.4,"Morocco":37.5,"Myanmar":54.4,
+"Namibia":2.7,"Nepal":29.2,"Netherlands":17.9,"New Zealand":5.1,
+"Nigeria":218.5,"Norway":5.5,"Pakistan":231.4,"Paraguay":7.4,
+"Peru":33.4,"Philippines":115.6,"Poland":37.7,"Portugal":10.3,
+"Romania":18.9,"Russia":144.0,"Saudi Arabia":35.4,"Senegal":17.2,
+"Serbia":6.8,"Singapore":5.9,"Slovakia":5.5,"South Africa":60.6,
+"South Korea":51.9,"Spain":47.7,"Sri Lanka":22.2,"Sudan":46.9,
+"Sweden":10.6,"Switzerland":8.7,"Taiwan":23.5,"Tanzania":63.3,
+"Thailand":71.8,"Turkey":85.3,"UAE":9.9,"Uganda":47.1,
+"Ukraine":43.5,"United Kingdom":67.7,"United States":335.0,
+"Uruguay":3.5,"Venezuela":29.8,"Vietnam":98.5
+};
 /* Phase 91+92: _compPick/_compQ helpers + 11 comp_* generators */
 function _compPick(key,filterFn){
   const _fc=_rfilt(COUNTRIES,4);const _cc=new Set(_fc.map(x=>x.cc));
@@ -1996,24 +2050,29 @@ function _compQ(type,prompt,a,b,aVal,bVal,fmtFn){
   return{type,prompt,subj:'',opts:[a,b],ans,meta,lid:a+'|'+b,cc:ccFromCountry(ans)};
 }
 function genCompAreaQ(){
-  if(!AREA_DATA||AREA_DATA.length<2)return null;
+  /* Phase 95: uses inline COMP_AREA — no external file needed */
+  const keys=Object.keys(COMP_AREA);
+  if(keys.length<2)return null;
   const _fc=_rfilt(COUNTRIES,4);const _cc=new Set(_fc.map(x=>x.cc));
-  let pool=AREA_DATA.filter(x=>_cc.has(ccFromCountry(x.c)));
-  if(pool.length<2)pool=AREA_DATA.slice();if(pool.length<2)return null;
+  let pool=keys.filter(k=>_cc.has(ccFromCountry(k)));
+  if(pool.length<2)pool=keys.slice();if(pool.length<2)return null;
   const ai=~~(rng()*pool.length);let bi=~~(rng()*pool.length);while(bi===ai)bi=~~(rng()*pool.length);
   const a=pool[ai],b=pool[bi];
   const fmt=(x)=>x>=1e6?(x/1e6).toFixed(2)+' Mio. km²':(x/1000).toFixed(0)+' Tsd. km²';
-  return _compQ('comp_area','Welches Land ist größer?',a.c,b.c,a.area,b.area,fmt);
+  return _compQ('comp_area','Welches Land ist größer?',a,b,COMP_AREA[a],COMP_AREA[b],fmt);
 }
 function genCompPopQ(){
-  if(!CAPS_POP||CAPS_POP.length<2)return null;
+  /* Phase 95: uses inline COMP_POP (millions) — no external file needed */
+  const keys=Object.keys(COMP_POP);
+  if(keys.length<2)return null;
   const _fc=_rfilt(COUNTRIES,4);const _cc=new Set(_fc.map(x=>x.cc));
-  let pool=CAPS_POP.filter(x=>x.pop>500000&&_cc.has(ccFromCountry(x.c)));
-  if(pool.length<2)pool=CAPS_POP.filter(x=>x.pop>500000);if(pool.length<2)return null;
+  let pool=keys.filter(k=>COMP_POP[k]>0.5&&_cc.has(ccFromCountry(k)));
+  if(pool.length<2)pool=keys.filter(k=>COMP_POP[k]>0.5);if(pool.length<2)return null;
   const ai=~~(rng()*pool.length);let bi=~~(rng()*pool.length);while(bi===ai)bi=~~(rng()*pool.length);
   const a=pool[ai],b=pool[bi];
+  const pa=COMP_POP[a]*1e6,pb=COMP_POP[b]*1e6;
   const fmt=(p)=>p>=1e9?(p/1e9).toFixed(2)+' Mrd.':p>=1e6?(p/1e6).toFixed(1)+' Mio.':(p/1e3).toFixed(0)+' Tsd.';
-  return _compQ('comp_pop','Welches Land hat mehr Einwohner?',a.c,b.c,a.pop,b.pop,fmt);
+  return _compQ('comp_pop','Welches Land hat mehr Einwohner?',a,b,pa,pb,fmt);
 }
 function genCompNorthQ(){
   const r=_compPick('lat',null);if(!r)return null;
@@ -5411,11 +5470,11 @@ async function loadGameData(){
 
   PLATES_DATA = parsePlates(Array.isArray(pRaw)?pRaw:(pRaw?.results?.bindings||[]));
   CURR_REAL   = parseCurr(cRaw);
-  CAPS_POP    = parseCaps(capRaw);
+  const _cps=parseCaps(capRaw);if(_cps.length>0)CAPS_POP=_cps; /* Phase 95: guard empty overwrite */
   RIVERS_REAL = parseRivers(rRaw);
   const nbMap = parseNeighbors(nbRaw);
   NEIGHBORS   = Object.keys(nbMap).filter(k=>nbMap[k]&&nbMap[k].length>0).length>=10?nbMap:_DEFAULT_NEIGHBORS;
-  AREA_DATA   = parseArea(arRaw);
+  const _ar=parseArea(arRaw);if(_ar.length>0)AREA_DATA=_ar; /* Phase 95: guard empty overwrite */
 
   prog(100);
   const loaded=[PLATES_DATA.length,'plates',CURR_REAL.length,'curr',CAPS_POP.length,'caps',RIVERS_REAL.length,'rivers',Object.keys(NEIGHBORS).length,'nb',AREA_DATA.length,'areas'];
