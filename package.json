@@ -1,0 +1,21 @@
+{
+  "name": "geoquest-web",
+  "version": "1.0.0",
+  "description": "GeoQuest — Das Geografie-Quiz. Erkenne Länder an Flaggen, Kennzeichen und Hauptstädten. Sammle Stempel und steige in der Liga auf!",
+  "main": "index.html",
+  "scripts": {
+    "dev": "python -m http.server 8000",
+    "build": "echo 'Static HTML application - no build step required'"
+  },
+  "keywords": [
+    "geography",
+    "quiz",
+    "game",
+    "education"
+  ],
+  "author": "andre69190",
+  "license": "ISC",
+  "dependencies": {
+    "@vercel/analytics": "^1.4.1"
+  }
+}
