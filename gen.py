@@ -4365,6 +4365,88 @@ function renderCollectionScreen(){
   });
 
   /* ── Spotter ── */
+  /* ── Phase 105: Country-Help Lookup ─────────────────────────────────── */
+  const _CHLP=c=>{const M={
+    'Deutschland':{ph:'z.B. M, BOC, K',info:'Linkes Kürzel = Landkreis/Stadt',tp:'de'},
+    'Österreich':{ph:'z.B. W, BN, GD',info:'1–3 Buchst. links = Bezirk',tp:'de'},
+    'Schweiz':{ph:'z.B. ZH, BE, GE',info:'2 Buchst. links = Kanton',tp:'de'},
+    'Frankreich':{ph:'z.B. 01, 13, 75',info:'Blauer Streifen rechts = Département-Nr.',tp:'fr'},
+    'Italien':{ph:'z.B. RM, MI, TO',info:'2 Buchst. links = Provinz',tp:'de'},
+    'Polen':{ph:'z.B. W, KR, GD',info:'Links = Woiwodschaft/Stadt-Kürzel',tp:'de'},
+    'Rumänien':{ph:'z.B. B, CJ, IS',info:'1–2 Buchst. links = Bezirk (Județ)',tp:'de'},
+    'Bulgarien':{ph:'z.B. C, PB, VT',info:'Buchst. links = Region',tp:'de'},
+    'Türkei':{ph:'z.B. 06, 34, 35',info:'Nummer links = Provinz (34=Istanbul)',tp:'tr'},
+    'Kroatien':{ph:'z.B. ZG, ST, RI',info:'2 Buchst. links = Gespanschaft',tp:'de'},
+    'Slowenien':{ph:'z.B. LJ, MB, KP',info:'2 Buchst. links = Region',tp:'de'},
+    'Niederlande':{ph:'NL',info:'Kein Regionalkürzel — Oval-Code "NL" eingeben',tp:'nat'},
+    'Belgien':{ph:'B',info:'Kein Regionalkürzel — Oval-Code "B" eingeben',tp:'nat'},
+    'Dänemark':{ph:'DK',info:'Kein Regionalkürzel — Oval-Code "DK" eingeben',tp:'nat'},
+    'Schweden':{ph:'S',info:'Kein Regionalkürzel — Oval-Code "S" eingeben',tp:'nat'},
+    'Norwegen':{ph:'N',info:'Kein Regionalkürzel — Oval-Code "N" eingeben',tp:'nat'},
+    'Spanien':{ph:'E',info:'Kein Regionalkürzel — Oval-Code "E" eingeben',tp:'nat'},
+    'Portugal':{ph:'P',info:'Kein Regionalkürzel — Oval-Code "P" eingeben',tp:'nat'},
+    'Finnland':{ph:'FIN',info:'Kein Regionalkürzel — Oval-Code "FIN" eingeben',tp:'nat'},
+    'Irland':{ph:'IRL',info:'Kein Regionalkürzel — Oval-Code "IRL" eingeben',tp:'nat'},
+    'Großbritannien':{ph:'GB',info:'Kein Regionalkürzel — Oval-Code "GB" eingeben',tp:'nat'},
+    'Ungarn':{ph:'H',info:'Kein Regionalkürzel — Oval-Code "H" eingeben',tp:'nat'},
+    'Slowakei':{ph:'SK',info:'Kein Regionalkürzel — Oval-Code "SK" eingeben',tp:'nat'},
+    'Tschechien':{ph:'CZ',info:'Kein Regionalkürzel — Oval-Code "CZ" eingeben',tp:'nat'},
+    'Luxemburg':{ph:'L',info:'Kein Regionalkürzel — Oval-Code "L" eingeben',tp:'nat'},
+    'Litauen':{ph:'LT',info:'Kein Regionalkürzel — Oval-Code "LT" eingeben',tp:'nat'},
+    'Lettland':{ph:'LV',info:'Kein Regionalkürzel — Oval-Code "LV" eingeben',tp:'nat'},
+    'Estland':{ph:'EST',info:'Kein Regionalkürzel — Oval-Code "EST" eingeben',tp:'nat'},
+    'Ukraine':{ph:'UA',info:'Kein Regionalkürzel — Oval-Code "UA" eingeben',tp:'nat'},
+    'Schweiz':{ph:'z.B. ZH, BE, GE',info:'2 Buchst. links = Kanton',tp:'de'},
+  };return M[c]||{ph:'Kürzel eingeben',info:'',tp:'de'};};
+  /* Phase 105: SVG Plate Preview */
+  const _ch=sCountry\!=='all'?_CHLP(sCountry):{ph:'z.B. M / NL / 75',info:'',tp:'de'};
+  const _cPH=_ch.ph,_cINFO=_ch.info;
+  const _svgP=(()=>{
+    if(sCountry==='all')return'';
+    const tp=_ch.tp;
+    const c0=_cPH.replace('z.B. ','').split(',')[0].trim()||'??';
+    const fs=c0.length>3?8:c0.length===3?10:c0.length===2?12:14;
+    const eu='<rect x="0" y="0" width="18" height="38" rx="4" fill="#003399"/>'
+           +'<text x="9" y="12" text-anchor="middle" fill="#fc0" font-size="6" font-family="Arial">&#9733;&#9733;&#9733;</text>'
+           +'<text x="9" y="26" text-anchor="middle" fill="white" font-size="9" font-family="Arial" font-weight="bold">EU</text>';
+    const wrap=(inner,w=154,h=38)=>'<svg width="'+w+'" height="'+h+'" viewBox="0 0 '+w+' '+h+'"'
+      +' style="display:block;margin:.5rem auto 0;filter:drop-shadow(0 1px 4px rgba(0,0,0,.2))"'
+      +' xmlns="http://www.w3.org/2000/svg">'
+      +'<rect x="0" y="0" width="'+w+'" height="'+h+'" rx="5" fill="#f0f0f0" stroke="#ccc" stroke-width="1.5"/>'
+      +inner
+      +'<rect x="0" y="0" width="'+w+'" height="'+h+'" rx="5" fill="none" stroke="#ccc" stroke-width="1.5"/>'
+      +'</svg>';
+    if(tp==='fr'){
+      return wrap(eu
+        +'<text x="76" y="25" text-anchor="middle" fill="#bbb" font-size="12" font-family="Arial">XX-001-XX</text>'
+        +'<rect x="122" y="0" width="32" height="38" rx="4" fill="#002699" opacity=".9"/>'
+        +'<rect x="118" y="5" width="32" height="28" rx="3" fill="none" stroke="#f59e0b" stroke-width="2.5"/>'
+        +'<text x="134" y="27" text-anchor="middle" fill="#fff" font-size="'+fs+'" font-family="Arial" font-weight="bold">'+c0+'</text>');
+    }
+    if(tp==='nat'){
+      const nfs=c0.length>3?12:c0.length===3?14:17;
+      return'<svg width="82" height="52" viewBox="0 0 82 52"'
+        +' style="display:block;margin:.5rem auto 0;filter:drop-shadow(0 1px 4px rgba(0,0,0,.2))"'
+        +' xmlns="http://www.w3.org/2000/svg">'
+        +'<ellipse cx="41" cy="26" rx="37" ry="22" fill="#f5f5f5" stroke="#003399" stroke-width="2.5"/>'
+        +'<text x="41" y="32" text-anchor="middle" fill="#003399" font-size="'+nfs+'"'
+        +' font-family="Arial" font-weight="900">'+c0+'</text>'
+        +'</svg>';
+    }
+    if(tp==='tr'){
+      return wrap(
+        '<rect x="4" y="5" width="34" height="28" rx="3" fill="#fffacc" stroke="#f59e0b" stroke-width="2.5"/>'
+        +'<text x="21" y="26" text-anchor="middle" fill="#1a1a1a" font-size="'+fs+'" font-family="Arial" font-weight="bold">'+c0+'</text>'
+        +'<line x1="43" y1="9" x2="43" y2="29" stroke="#ddd" stroke-width="1"/>'
+        +'<text x="99" y="25" text-anchor="middle" fill="#bbb" font-size="11" font-family="Arial">'+c0+' 12345</text>');
+    }
+    /* DE-style default */
+    return wrap(eu
+      +'<rect x="22" y="4" width="36" height="30" rx="3" fill="#fffacc" stroke="#f59e0b" stroke-width="2.5"/>'
+      +'<text x="40" y="26" text-anchor="middle" fill="#1a1a1a" font-size="'+fs+'" font-family="Arial" font-weight="bold">'+c0+'</text>'
+      +'<line x1="63" y1="8" x2="63" y2="30" stroke="#ddd" stroke-width="1"/>'
+      +'<text x="108" y="25" text-anchor="middle" fill="#bbb" font-size="11" font-family="Arial">'+c0+' 1234</text>');
+  })();
   const spotVal=S.spotterInput||"";
   const spotMsg=S.spotterMsg||"";
   const spotCol=S.spotterOk===true?"#10b981":S.spotterOk===false?"#ef4444":"var(--text3)";
@@ -4378,11 +4460,13 @@ function renderCollectionScreen(){
     </div>
     <div class="album-spotter-sub">${t("spotter_hint")}</div>
     <div style="display:flex;gap:8px">
-      <input type="text" maxlength="5" placeholder="e.g. D / PL" value="${esc(spotVal)}"
+      <input type="text" maxlength="6" placeholder="${_cPH}" value="${esc(spotVal)}"
         oninput="S.spotterInput=this.value.toUpperCase();this.value=this.value.toUpperCase();S.spotterMsg=''"
         class="spotter-input">
       <button class="btn-p" style="width:auto;padding:.5rem 1rem;margin-bottom:0" onclick="spotterCollect()">${t("btn_collect")}</button>
     </div>
+    ${_cINFO?`<div class="spotter-help-row">${_cINFO}</div>`:""}
+    ${_svgP?`<div class="spotter-plate-preview">${_svgP}<div class="spotter-plate-label">&#9650; Hier steht das Kürzel</div></div>`:""}
     ${spotMsg?`<div style="font-size:.82rem;font-weight:700;text-align:center;color:${spotCol};padding:.35rem 0;margin-top:4px">${esc(spotMsg)}</div>`:""}
   </div>`;
 
