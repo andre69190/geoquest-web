@@ -4818,7 +4818,7 @@ function renderHomeTab(){
       ${catSection("pure_geo")}
       ${catSection("lifestyle")}
       ${catSection("eu_plates")}
-      ${catSection("hl_compare")}
+      ${catSection("comparisons")}
       ${catSection("neighbors")}
       ${catSection("map_mode")}
       ${catSection("new_modes")}
