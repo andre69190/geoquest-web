@@ -2544,6 +2544,37 @@ let sb=null,sbUser=null,sbProfile=null,sbStamps=new Set();
 function ccFromCountry(name){const c=COUNTRIES.find(x=>x.c===name);return c?c.cc:null;}
 function flagOf(name){const cc=ccFromCountry(name);return cc?`<img src="https://flagcdn.com/w40/${cc}.png" style="height:22px;vertical-align:middle;border-radius:2px" alt="${name}" onerror="this.style.display='none'">`:"";}
 
+/* Phase 97-1: Zombie-SW-Killer — läuft vor Supabase-Init */
+/* Tötet veraltete Service Worker, die Updates blockieren   */
+(function _zombieKiller(){
+  var SW_VER='gq-v6',LS_KEY='__gq_sw_ver';
+  try{
+    if(localStorage.getItem(LS_KEY)===SW_VER)return; /* aktuell — nichts zu tun */
+    if(!('serviceWorker' in navigator)){localStorage.setItem(LS_KEY,SW_VER);return;}
+    navigator.serviceWorker.getRegistrations().then(function(regs){
+      if(regs.length===0){localStorage.setItem(LS_KEY,SW_VER);return;}
+      /* Alter/zombie SW gefunden → nuklearer Reset */
+      console.warn('[GQ] Zombie-SW: killing',regs.length,'registration(s) + wiping caches...');
+      /* 1. Korrupte Auth-Tokens löschen */
+      try{
+        Object.keys(localStorage)
+          .filter(function(k){return k.startsWith('sb-')||k.toLowerCase().includes('supabase');})
+          .forEach(function(k){try{localStorage.removeItem(k);}catch(e){}});
+      }catch(e){}
+      /* 2. Version-Flag setzen (verhindert Reload-Loop) */
+      localStorage.setItem(LS_KEY,SW_VER);
+      /* 3. Alle SW-Registrierungen killen + Cache API leeren */
+      var kills=regs.map(function(r){return r.unregister();});
+      var cacheClear=('caches' in window)
+        ?caches.keys().then(function(ks){return Promise.all(ks.map(function(k){return caches.delete(k);}));})
+        :Promise.resolve();
+      Promise.all(kills.concat([cacheClear])).then(function(){
+        location.reload(true); /* Hard-Reload — erzwingt frisches HTML vom Server */
+      });
+    });
+  }catch(e){console.warn('[GQ] zombieKiller error:',e);}
+})();
+
 const sbOK=SUPABASE_URL.includes("supabase.co");
 let sbAuthPending=sbOK; /* Phase 81: true until getSession() resolves */
 if(sbOK){
@@ -2588,7 +2619,9 @@ async function initAuth(){
     }
   });
   try{
-    const{data:{session}}=await sb.auth.getSession();
+    /* Phase 97-2: getSession mit 3s Timeout — kein endloses Hängen */
+    const _gsTmo=new Promise((_,rej)=>setTimeout(()=>rej(new Error('getSession 3s timeout')),3000));
+    const{data:{session}}=await Promise.race([sb.auth.getSession(),_gsTmo]);
     if(session){sbUser=session.user;await loadProfile();}
     else{
       const{data,error}=await sb.auth.signInAnonymously();
