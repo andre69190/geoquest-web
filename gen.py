@@ -3951,9 +3951,16 @@ function render(){
         <button class="hl-btn hl-lower${sel\!==null?(q.ans==="lower"?" ok":(sel==="lower"?" ng":" dm")):""}" ${hlDis} onclick="answer('lower')">${hlBtnL}</button>
       </div>`;
   }else if(q.type&&q.type.startsWith('comp_')){
-    /* Phase 92: Vergleichs-Modi — nur Prompt, Werte erscheinen nach Antwort */
+    /* Phase 102-A: Flaggen-Header + Prompt, Werte nach Antwort */
+    const _cfA=q.opts&&q.opts[0]?flagOf(q.opts[0]):'\u{1F30D}';
+    const _cfB=q.opts&&q.opts[1]?flagOf(q.opts[1]):'\u{1F30D}';
     qBody=`<div class="qprompt">${q.prompt}</div>
-      ${sel!==null?`<div class="qmeta" style="text-align:center;margin:.4rem 0 .2rem">${q.meta||""}</div>`:""}`;
+      <div style="display:flex;justify-content:center;align-items:center;gap:1.8rem;margin:.55rem 0 .15rem">
+        <span style="font-size:2.2rem">${_cfA}</span>
+        <span style="color:var(--text3);font-weight:900;font-size:.82rem;letter-spacing:1px">VS</span>
+        <span style="font-size:2.2rem">${_cfB}</span>
+      </div>
+      ${sel!==null?`<div class="qmeta" style="text-align:center;margin:.3rem 0 .1rem;font-size:.77rem">${q.meta||""}</div>`:""}`;
 }else if(q.type==="curr_real"){
     /* Show country name; hide currency name (meta) until answered */
     qBody=`<div class="qprompt">${q.prompt}</div>
@@ -5630,7 +5637,7 @@ _HTML_HEAD = '''<!DOCTYPE html>
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -6113,7 +6120,75 @@ input[type=text]::placeholder{color:var(--text3)}
 @keyframes authBarSlide{0%{background-position:200% 0}100%{background-position:0% 0}}
 .league-pill{display:inline-flex;align-items:center;gap:5px;border-radius:20px;padding:.18rem .65rem;font-size:.72rem;font-weight:700;border-width:1.5px;border-style:solid}
 @keyframes orientSpin{0%,100%{transform:rotate(0deg)}40%{transform:rotate(90deg)}60%{transform:rotate(90deg)}}
-@media(orientation:landscape){.map-container{height:calc(100vh - 120px)!important}}
+/* ── Phase 102: PC wide layout (≥1000px) ──────────────────────────────── */
+@media(min-width:1000px){
+  body{padding-top:52px}
+  .g-header{padding:0 2.5rem}
+  #app{padding:1.5rem 2.5rem;align-items:stretch}
+  .scr{max-width:960px}
+  /* Mode-Karten: 4 Spalten */
+  .mode-grid{grid-template-columns:repeat(4,1fr);gap:7px}
+  .mode-grid-4{grid-template-columns:repeat(5,1fr)}
+  .mode-grid-life{grid-template-columns:repeat(5,1fr)}
+  /* Spiel: Frage-Karte + Antworten zentriert, max 600px */
+  .qcard{max-width:600px;margin-left:auto;margin-right:auto}
+  .answers{max-width:600px;margin-left:auto;margin-right:auto}
+  /* 4 Antworten → 2×2 Grid auf PC */
+  .answers:not(.two-opts):not(.flag-grid){display:grid;grid-template-columns:1fr 1fr;gap:9px}
+  /* 2 Antworten → nebeneinander */
+  .answers.two-opts{display:flex;flex-direction:row;gap:9px}
+  .hud{max-width:840px;margin-left:auto;margin-right:auto}
+  .tbar{max-width:840px;margin-left:auto;margin-right:auto}
+  .pu-bar{max-width:840px;margin-left:auto;margin-right:auto}
+  /* Karte: volle Höhe */
+  .map-container{
+    height:calc(100vh - 160px)!important;
+    max-height:none!important;
+    min-height:320px!important
+  }
+  /* Map-Guess-Screen PC: Karte links, Info rechts */
+  .map-scr{
+    display:grid;
+    grid-template-columns:1fr 280px;
+    grid-template-rows:auto auto 1fr auto auto;
+    column-gap:1.2rem;
+    max-width:100%
+  }
+  .map-scr>.hud{grid-column:1/-1}
+  .map-scr>.tbar,.map-scr>[class*="frozen"]{grid-column:1/-1}
+  .map-scr>.map-prompt{grid-column:2;grid-row:2;font-size:1rem;font-weight:700;padding:.3rem 0}
+  .map-scr>.map-container{grid-column:1;grid-row:2/6}
+  .map-scr>.fb{grid-column:2;grid-row:3;align-self:start}
+  .map-scr>.map-weiter{grid-column:2;grid-row:4;margin:0}
+  .map-prompt{font-size:1rem}
+  /* Bottom-Nav auf PC: breiter & zentriert */
+  .bottom-nav{justify-content:center}
+  .bn-item{max-width:130px}
+}
+/* ── Phase 103: Landscape Mobile (≥500px breit, ≤500px hoch) ──────────── */
+@media(orientation:landscape)and(max-height:500px){
+  body{padding-top:0;padding-bottom:0}
+  .g-header,.bottom-nav{display:none}
+  #app{padding:.3rem .6rem;min-height:100dvh}
+  .scr{max-width:100%}
+  .hud{margin-bottom:3px}
+  .tbar{margin-bottom:4px}
+  .qcard{padding:.5rem .75rem;margin-bottom:4px;border-radius:10px}
+  .qmain{font-size:1.35rem}
+  .qprompt{font-size:.72rem;margin-bottom:1px}
+  /* Antworten 2-spaltig */
+  .answers:not(.flag-grid){display:grid!important;grid-template-columns:1fr 1fr;gap:4px}
+  .btn-a{min-height:34px;padding:.35rem .5rem;font-size:.78rem}
+  .pu-bar{padding:2px 0}
+  /* Karte nimmt fast den ganzen Viewport */
+  .map-container{height:calc(100vh - 44px)!important;max-height:none!important;min-height:100px!important}
+  .map-prompt{font-size:.76rem;padding:.15rem .4rem}
+  .map-weiter{padding:.5rem;font-size:.85rem}
+}
+/* Landscape auf Karte: HUD bleibt sichtbar */
+@media(orientation:landscape)and(min-width:1000px){
+  .map-container{height:calc(100vh - 120px)!important}
+}
 </style>
 </head>
 <body>
