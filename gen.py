@@ -2487,7 +2487,7 @@ function flagOf(name){const cc=ccFromCountry(name);return cc?`<img src="https://
 /* Phase 97-1: Zombie-SW-Killer — läuft vor Supabase-Init */
 /* Tötet veraltete Service Worker, die Updates blockieren   */
 (function _zombieKiller(){
-  var SW_VER='gq-v7',LS_KEY='__gq_sw_ver';
+  var SW_VER='gq-v8',LS_KEY='__gq_sw_ver';
   try{
     if(localStorage.getItem(LS_KEY)===SW_VER)return; /* aktuell — nichts zu tun */
     if(!('serviceWorker' in navigator)){localStorage.setItem(LS_KEY,SW_VER);return;}
@@ -2564,7 +2564,9 @@ async function initAuth(){
     const{data:{session}}=await Promise.race([sb.auth.getSession(),_gsTmo]);
     if(session){sbUser=session.user;await loadProfile();}
     else{
-      const{data,error}=await sb.auth.signInAnonymously();
+      /* Phase 99-2: signInAnonymously mit 3s Timeout */
+      const _siaTmo=new Promise((_,rej)=>setTimeout(()=>rej(new Error('signInAnonymously 3s timeout')),3000));
+      const{data,error}=await Promise.race([sb.auth.signInAnonymously(),_siaTmo]);
       if(\!error&&data?.user){sbUser=data.user;await loadProfile();}
     }
   }catch(e){
@@ -5462,10 +5464,10 @@ async function loadGameData(){
 
 if("serviceWorker"in navigator){
   try{
-    const swSrc=`const CACHE='gq-v7';
-self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.add(self.location.href)).then(()=>self.skipWaiting())));
-self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k\!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
-self.addEventListener('fetch',function(e){if(e.request.method\!=='GET')return;var u=e.request.url;if(u.indexOf('supabase')\!==-1)return;if(e.request.mode\!=='navigate')return;e.respondWith(fetch(e.request).then(function(res){if(res.ok){var rc=res.clone();caches.open(CACHE).then(function(c){c.put(e.request,rc);});}return res;}).catch(function(){return caches.match(e.request)||new Response('App offline',{status:503});}));});`;
+    const swSrc=`const CACHE='gq-v8';
+/* Phase 99: passiver SW — kein fetch-Handler, blockt NIE Netzwerk-Requests */
+self.addEventListener('install',function(){self.skipWaiting();});
+self.addEventListener('activate',function(e){e.waitUntil(caches.keys().then(function(ks){return Promise.all(ks.map(function(k){return caches.delete(k);}));}).then(function(){return self.clients.claim();}));});`;
     const blob=new Blob([swSrc],{type:"application/javascript"});
     navigator.serviceWorker.register(URL.createObjectURL(blob),{scope:"./"}).catch(()=>{});
   }catch(e){}
