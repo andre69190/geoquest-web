@@ -2556,7 +2556,8 @@ async function initAuth(){
     }
     if((event==="TOKEN_REFRESHED"||event==="SIGNED_IN")&&session?.user){
       if(S.authMode==="new_password")return;/* keep recovery modal open */
-      if(\!sbUser||sbUser.id\!==session.user.id){sbUser=session.user;await loadProfile();}
+      /* Phase 101: loadProfile ohne await — sonst blockiert _notifyAllSubscribers */
+      if(\!sbUser||sbUser.id\!==session.user.id){sbUser=session.user;loadProfile();}
     }
   });
   try{
