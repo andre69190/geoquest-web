@@ -2487,7 +2487,7 @@ function flagOf(name){const cc=ccFromCountry(name);return cc?`<img src="https://
 /* Phase 97-1: Zombie-SW-Killer — läuft vor Supabase-Init */
 /* Tötet veraltete Service Worker, die Updates blockieren   */
 (function _zombieKiller(){
-  var SW_VER='gq-v6',LS_KEY='__gq_sw_ver';
+  var SW_VER='gq-v7',LS_KEY='__gq_sw_ver';
   try{
     if(localStorage.getItem(LS_KEY)===SW_VER)return; /* aktuell — nichts zu tun */
     if(!('serviceWorker' in navigator)){localStorage.setItem(LS_KEY,SW_VER);return;}
@@ -5462,10 +5462,10 @@ async function loadGameData(){
 
 if("serviceWorker"in navigator){
   try{
-    const swSrc=`const CACHE='gq-v6';
+    const swSrc=`const CACHE='gq-v7';
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.add(self.location.href)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k\!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
-self.addEventListener('fetch',e=>{if(e.request.url.includes('supabase.co'))return;if(e.request.url.includes('lpwcqvxajahiftvwxovq'))return;if(e.request.method\!=='GET')return;e.respondWith(caches.match(e.request).then(r=>{if(r)return r;return fetch(e.request).then(res=>{if(res.ok){const rc=res.clone();caches.open(CACHE).then(c=>c.put(e.request,rc));}return res;}).catch(()=>caches.match(e.request)||new Response('Offline',{status:503}));}));});`;
+self.addEventListener('fetch',function(e){if(e.request.method\!=='GET')return;var u=e.request.url;if(u.indexOf('supabase')\!==-1)return;if(e.request.mode\!=='navigate')return;e.respondWith(fetch(e.request).then(function(res){if(res.ok){var rc=res.clone();caches.open(CACHE).then(function(c){c.put(e.request,rc);});}return res;}).catch(function(){return caches.match(e.request)||new Response('App offline',{status:503});}));});`;
     const blob=new Blob([swSrc],{type:"application/javascript"});
     navigator.serviceWorker.register(URL.createObjectURL(blob),{scope:"./"}).catch(()=>{});
   }catch(e){}
