@@ -4503,7 +4503,7 @@ function genPlateQ(hardcore){
   const disPool=sameCountry.length>=3?sameCountry:pool.filter(p=>p.region!==cor.region);
   const picked=sh([...disPool]).slice(0,3).map(p=>p.region);
   const opts=sh([cor.region,...picked]);
-  const cc_map={Deutschland:"de",Ã–sterreich:"at",Schweiz:"ch",Polen:"pl",Frankreich:"fr",Italien:"it",RumÃ¤nien:"ro"};
+  const cc_map={"Deutschland":"de","Österreich":"at","Schweiz":"ch","Polen":"pl","Frankreich":"fr","Italien":"it","Rumänien":"ro"};
   const cc=cc_map[cor.country]||"de";
   return{
     type:hardcore?"plate_hard":"plate_casual",
