@@ -8812,41 +8812,31 @@ function filterGames(){
   });
 }
 window.filterGames=filterGames;
-var _CAT_NAME_MAP={'Alle':'all','Pure Geo':'pure_geo','Kultur & Lifestyle':'lifestyle',
-  'Kennzeichen':'eu_plates','Sport':'sport','Higher / Lower':'hl_compare',
-  'Vergleiche':'comparisons','Airports & Spezial':'airports',
-  'Nachbarlaender':'neighbors','Weltkarte':'map_mode'};
 function filterByCategory(cat){
-  var resolvedCat=_CAT_NAME_MAP[cat]||cat;
-  if(typeof S!=='undefined')S.filterCat=resolvedCat;
+  console.log('[GQ] filterByCategory:',cat);
+  if(typeof S!=='undefined')S.filterCat=cat;
+  // Update chip active states
   document.querySelectorAll('.filter-chip').forEach(function(c){
-    var isActive=c.dataset.cat===resolvedCat;
+    var isActive=c.dataset.cat===cat;
     c.classList.toggle('active',isActive);
     c.style.background=isActive?'#3b82f6':'';
     c.style.color=isActive?'#fff':'';
   });
-  var grid=document.getElementById('mainGamesGrid');
-  if(!grid)return;
-  grid.querySelectorAll('.mode-card').forEach(function(card){
-    var show=resolvedCat==='all'||card.dataset.category===resolvedCat;
-    card.style.display=show?'':'none';
+  // Show/hide cards by data-category (strict direct match)
+  document.querySelectorAll('[data-category]').forEach(function(card){
+    var cardCat=card.getAttribute('data-category');
+    card.style.display=(cat==='all'||cardCat===cat)?'':'none';
   });
   var gs=document.getElementById('gameSearch');
   if(gs)gs.value='';
 }
 window.filterByCategory=filterByCategory;
-// Apply default category filter after render
-(function(){
-  function _applyDefaultCat(){
-    var cat=(typeof S!=='undefined'&&S.filterCat)||'pure_geo';
-    window.filterByCategory(cat);
-  }
-  if(document.readyState==='loading'){
-    document.addEventListener('DOMContentLoaded',function(){setTimeout(_applyDefaultCat,100);});
-  } else {
-    setTimeout(_applyDefaultCat,100);
-  }
-})();
+// Apply default filter on load via DOMContentLoaded
+document.addEventListener('DOMContentLoaded',function(){
+  setTimeout(function(){
+    window.filterByCategory((typeof S!=='undefined'&&S.filterCat)||'pure_geo');
+  },300);
+});
 function playRandomGame(){
   const pool=MODES.filter(m=>!m.comingSoon);
   if(!pool.length)return;
