@@ -595,6 +595,7 @@ input[type=text]::placeholder{color:var(--text3)}
 .btn-bug{background:#f59e0b;color:#111;border:none;border-radius:8px;padding:5px 8px;font-size:.76rem;font-weight:800;cursor:pointer;box-shadow:0 2px 6px rgba(245,158,11,.35);white-space:nowrap;flex-shrink:0;line-height:1.2}
 .btn-bug:hover{background:#d97706;box-shadow:0 3px 12px rgba(245,158,11,.6)}
 .btn-bug:active{transform:scale(.96)}
+.btn-base{background:#fff;color:#0f172a;border:2px solid #e2e8f0;border-radius:13px;padding:.65rem 1rem;font-size:.9rem;font-weight:700;cursor:pointer;width:100%;text-align:center;transition:border-color .12s,background .12s;min-height:44px}.btn-base:active{background:#f1f5f9}.btn-base.ok{background:#dcfce7;border-color:#22c55e;color:#166534}.btn-base.ng{background:#fee2e2;border-color:#ef4444;color:#991b1b}.btn-base.dm{opacity:.45}[data-theme=dark] .btn-base{background:var(--bg2);color:var(--text);border-color:var(--border)}[data-theme=dark] .btn-base.ok{background:#14532d;border-color:#22c55e;color:#bbf7d0}[data-theme=dark] .btn-base.ng{background:#450a0a;border-color:#ef4444;color:#fecaca}
 
 </style>
 </head>
@@ -7145,7 +7146,8 @@ app.innerHTML=`<div class="scr">
       }else if(q.type==="crest"){
         const _csvg=_drawCrest(q.subj.shape,q.subj.color);
         qBody=`<div class="qprompt">${q.prompt}</div><div style="display:flex;justify-content:center;margin:.75rem 0">${_csvg}</div>`;
-      }else { const _isFootball=(q.type==="stadium"||q.type==="jersey"||q.type==="crest");const _isHLBeta=(q.type&&q.type.startsWith('hl_b_'));
+      }
+      { const _isFootball=(q.type==="stadium"||q.type==="jersey"||q.type==="crest");const _isHLBeta=(q.type&&q.type.startsWith('hl_b_'));
   const btns=q.opts.map((o,i)=>{let cls="btn-a";const os=o.replace(/'/g,"\'");if(sel!==null){if(o===q.ans)cls+=" ok";else if(o===sel)cls+=" ng";else cls+=" dm";}const mk=sel?(o===q.ans?`<span>\u2713</span>`:o===sel?`<span>\u2717</span>`:""):"";return`<button class="${cls}" ${sel?"disabled":""} onclick="answerByIdx(${i})">${(_isHLBeta&&HL_BETA_CC[o])?`<img src="https://flagcdn.com/w40/${HL_BETA_CC[o].toLowerCase()}.png" style="height:14px;vertical-align:middle;margin-right:3px;border-radius:2px" onerror="this.style.display=\'none\'">`:_isFootball&&String(o).length===2?`<img src="https://flagcdn.com/w40/${String(o).toLowerCase()}.png" style="height:14px;vertical-align:middle;margin-right:3px;border-radius:2px" onerror="this.style.display=\'none\'">`:""}${esc(q.type==="map_ivr"?o:_isHLBeta?(displayCountry(HL_BETA_CC[o])||o):_isFootball?(displayCountry(String(o))||String(o)):displayCountry(o))}${mk}</button>`;}).join("");
       const _twoOpts=q.opts&&q.opts.length===2?' two-opts':'';
       answerHtml=`<div class="answers${_twoOpts}">${btns}</div>`;
