@@ -339,9 +339,8 @@ input[type=text]::placeholder{color:var(--text3)}
 .map-container .user-pin circle{
   filter:drop-shadow(0 2px 6px rgba(0,0,0,.65));
   z-index:10}
-/* Phase 209: overflow protection for long airport/river names on H/L cards */
-.hl-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
-  max-width:100%;word-break:break-word}
+/* Phase 210: overflow protection for long airport/river names on H/L cards — white-space:nowrap handles truncation, word-break removed (contradictory) */
+.hl-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%}
 .map-weiter{margin:.25rem .8rem .4rem}
 
 /* ── Phase 33 Teil 2: MP result card ────────────────────────── */
@@ -742,9 +741,7 @@ input[type=text]::placeholder{color:var(--text3)}
   .tbar{max-width:840px;margin-left:auto;margin-right:auto}
   .pu-bar{max-width:840px;margin-left:auto;margin-right:auto}
   .map-container{height:calc(100vh - 160px)!important;max-height:none!important;min-height:320px!important}
-  .map-scr{display:grid;grid-template-columns:1fr 280px;grid-template-rows:auto auto 1fr auto auto;column-gap:1.2rem;max-width:100%}
-  .map-scr>.hud{grid-column:1/-1}
-
+  .map-scr{display:grid;grid-template-columns:1fr 280px;grid-template-rows:auto auto 1fr auto auto;column-gap:1.2r
 </style>
 </head>
 <body>
@@ -8092,7 +8089,7 @@ function lq(){
   if(!q){S.ph="menu";render();return;}
   S.askedLids.add(q.lid);
   S.q=q;S.tm=dur;S.dur=dur;S.sel=null;S.ok=null;S.ph="playing";S.qRenderedAt=Date.now()+180; /* allow 180ms buffer for render */;
-  S.half_removed=false;S.freezeActive=false;
+  S.half_removed=false;S.freezeActive=false;S.airportPinDist=0;S.airportPinPts=0;
   render();
   /* P167: for landscape-required modes, defer timer until device is rotated */
   if(_LANDSCAPE_MODES_SET.has(S.mode)&&_isPortrait()){
@@ -8795,7 +8792,7 @@ function startGame(m){
     scoreSaved:false,convModal:false,sessionAnswers:[],newStamps:[],isDailyRun:false,challengeStarted:false,
     half_removed:false,freezeActive:false,queueExtra:[],askedLids:new Set(),
     survivalBest:survBest,gameStartTime:Date.now(),hcMult:1.0,hcMaxMult:1.0,survTimeBonusTotal:0,lives:S.diff==="casual"?999:3,
-    slfData:null,wsData:null,lhData:null});  /* P208: always reset sub-game state on new game */
+    slfData:null,wsData:null,lhData:null,airportPinDist:0,airportPinPts:0});  /* P208/P210: always reset sub-game state on new game */
   _secretGameToken=Math.random().toString(36).substring(2,15);
   /* Phase 86 – custom puzzle modes */
   if(_m==="logic_grid"){initLogikGitter();render();return;}
