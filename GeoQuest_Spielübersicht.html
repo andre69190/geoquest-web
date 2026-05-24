@@ -48,7 +48,7 @@
 <p class="subtitle">Alle Spielmodi mit Datenbasis und Anzahl der Einträge — Stand Mai 2026</p>
 
 <div class="stats-bar">
-  <div class="stat-chip">Spielmodi gesamt: <strong>78</strong></div>
+  <div class="stat-chip">Spielmodi gesamt: <strong>85</strong></div>
   <div class="stat-chip">Städte: <strong>2.315</strong></div>
   <div class="stat-chip">Sport-POIs: <strong>219</strong></div>
   <div class="stat-chip">Sehenswürdigkeiten: <strong>176</strong></div>
@@ -57,7 +57,11 @@
   <div class="stat-chip">Gerichte: <strong>221</strong></div>
   <div class="stat-chip">Marken: <strong>42</strong></div>
   <div class="stat-chip">Währungen: <strong>35</strong></div>
-  <div class="stat-chip">U-Bahn-Netze: <strong>50</strong></div>
+  <div class="stat-chip">U-Bahn-Netze: <strong>57</strong></div>
+  <div class="stat-chip">DE-Kennzeichen: <strong>289</strong></div>
+  <div class="stat-chip">30k-Städte: <strong>30.461</strong></div>
+  <div class="stat-chip">F1-Strecken: <strong>30</strong></div>
+  <div class="stat-chip">UEFA-Stadien: <strong>28</strong></div>
 </div>
 
 <!-- ─── PURE GEO ─────────────────────────────────────── -->
@@ -92,6 +96,26 @@
         <div class="card-source">Capitals-Datensatz</div>
         <div><span class="badge badge-green">Pure Geo</span></div>
         <div class="count">Datenbasis: <span>~195</span> Hauptstädte</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">💧</div>
+      <div class="card-body">
+        <div class="card-name">🧪 Flüsse pinnen</div>
+        <div class="card-source">RIVERS_GEO_DATA (intern)</div>
+        <div><span class="badge badge-green">Pure Geo</span> <span class="badge badge-blue">NEU Phase 202</span></div>
+        <div class="count">Datenbasis: <span>~51</span> Flüsse mit Quellkoordinaten</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🏛</div>
+      <div class="card-body">
+        <div class="card-name">🧪 UNESCO Karte</div>
+        <div class="card-source">UNESCO_GEO_DATA (intern)</div>
+        <div><span class="badge badge-green">Pure Geo</span> <span class="badge badge-blue">NEU Phase 202</span></div>
+        <div class="count">Datenbasis: <span>149</span> UNESCO-Stätten mit Koordinaten</div>
       </div>
     </div>
 
@@ -482,6 +506,16 @@
     </div>
 
     <div class="card">
+      <div class="card-icon">🚗</div>
+      <div class="card-body">
+        <div class="card-name">🧪 DE-Kennzeichen</div>
+        <div class="card-source">DE_PLATES_DATA (289 Kreise)</div>
+        <div><span class="badge badge-teal">EU Plates</span> <span class="badge badge-blue">NEU Phase 203</span></div>
+        <div class="count">Datenbasis: <span>289</span> deutsche KFZ-Kennzeichen mit Ort</div>
+      </div>
+    </div>
+
+    <div class="card">
       <div class="card-icon">📋</div>
       <div class="card-body">
         <div class="card-name">Kennzeichen Album</div>
@@ -701,6 +735,7 @@
     <div class="card"><div class="card-icon">🌍</div><div class="card-body"><div class="card-name">Nachbar-Erkennung</div><div class="card-source">Nachbarschafts-Datensatz</div><div><span class="badge badge-indigo">Nachbarn</span></div><div class="count">Datenbasis: <span>~195</span> Länder mit Nachbarn</div></div></div>
     <div class="card"><div class="card-icon">🧩</div><div class="card-body"><div class="card-name">Falscher Nachbar</div><div class="card-source">Nachbarschafts-Datensatz</div><div><span class="badge badge-indigo">Nachbarn</span></div><div class="count">Datenbasis: <span>~195</span> Länder (Intrus-Modus)</div></div></div>
     <div class="card"><div class="card-icon">🔢</div><div class="card-body"><div class="card-name">Nachbar-Anzahl</div><div class="card-source">Nachbarschafts-Datensatz</div><div><span class="badge badge-indigo">Nachbarn</span></div><div class="count">Datenbasis: <span>~195</span> Länder</div></div></div>
+    <div class="card"><div class="card-icon">🤝</div><div class="card-body"><div class="card-name">🧪 Grenze oder nicht?</div><div class="card-source">NEIGHBORS-Datensatz</div><div><span class="badge badge-indigo">Nachbarn</span> <span class="badge badge-blue">NEU Phase 203</span></div><div class="count">Datenbasis: <span>~195</span> Länder-Nachbarschaften · 50/50 ja/nein</div></div></div>
   </div>
 </div>
 
@@ -749,14 +784,17 @@
     <div class="card"><div class="card-icon">🚫</div><div class="card-body"><div class="card-name">Die Boykott-Spiele</div><div class="card-source">Historische Olympia-Daten</div><div><span class="badge badge-pink">Sport POI</span></div><div class="count">Datenbasis: <span>8</span> Boykott-Schauplätze</div></div></div>
     <div class="card"><div class="card-icon">🇪🇺</div><div class="card-body"><div class="card-name">EM-Gastgeber-Historie</div><div class="card-source">UEFA-EM-Daten</div><div><span class="badge badge-pink">Sport POI</span></div><div class="count">Datenbasis: <span>13</span> EM-Gastgeberländer</div></div></div>
     <div class="card"><div class="card-icon">🏟</div><div class="card-body"><div class="card-name">Finalstadien der EM</div><div class="card-source">UEFA-Stadion-Koordinaten</div><div><span class="badge badge-pink">Sport POI</span></div><div class="count">Datenbasis: <span>12</span> EM-Finalstadien</div></div></div>
+    <div class="card"><div class="card-icon">🏎</div><div class="card-body"><div class="card-name">🧪 F1 Strecken (Karte)</div><div class="card-source">F1_TRACKS_DATA</div><div><span class="badge badge-pink">Sport POI</span> <span class="badge badge-blue">NEU Phase 202</span></div><div class="count">Datenbasis: <span>30</span> F1-Strecken mit Koordinaten</div></div></div>
+    <div class="card"><div class="card-icon">🏟</div><div class="card-body"><div class="card-name">🧪 Europastadien (Karte)</div><div class="card-source">UEFA_STADIUMS_DATA</div><div><span class="badge badge-pink">Sport POI</span> <span class="badge badge-blue">NEU Phase 202</span></div><div class="count">Datenbasis: <span>28</span> UEFA-Stadien mit Koordinaten</div></div></div>
+    <div class="card"><div class="card-icon">✈️</div><div class="card-body"><div class="card-name">🧪 Flughäfen (Karte)</div><div class="card-source">AIRPORTS_GEO_DATA</div><div><span class="badge badge-pink">Sport POI</span> <span class="badge badge-blue">NEU Phase 202</span></div><div class="count">Datenbasis: <span>~100+</span> Flughäfen mit IATA-Codes</div></div></div>
 
   </div>
 </div>
 
 <div style="margin-top:32px;padding:16px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);font-size:.8rem;color:var(--text2)">
-  <strong style="color:var(--green)">Gesamt:</strong> 78 Spielmodi ·
-  <strong style="color:var(--blue)">Datenpunkte:</strong> 2.315 Städte · 219 Sport-POIs · 176 Landmarks · 149 UNESCO · 113 Parks · 221 Gerichte · 42 Marken · 35 Währungen · 50 U-Bahn-Netze · ~195 Länder (diverse Attribute) · ~51 Flüsse<br>
-  <span style="opacity:.7">Stand: Mai 2026 · Generiert aus gen.py</span>
+  <strong style="color:var(--green)">Gesamt:</strong> 85 Spielmodi ·
+  <strong style="color:var(--blue)">Datenpunkte:</strong> 2.315 Städte · 219 Sport-POIs · 176 Landmarks · 149 UNESCO · 113 Parks · 221 Gerichte · 42 Marken · 35 Währungen · 57 U-Bahn-Netze · ~195 Länder (diverse Attribute) · ~51 Flüsse · 289 DE-Kennzeichen · 30 F1-Strecken · 28 UEFA-Stadien · 30.461 Städte (worldCitiesData)<br>
+  <span style="opacity:.7">Stand: Mai 2026 (Phase 203) · Generiert aus gen.py</span>
 </div>
 
 </body>
