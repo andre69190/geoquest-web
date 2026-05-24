@@ -107,7 +107,12 @@ input[type=text]::placeholder{color:var(--text3)}
 .tfill{height:100%;border-radius:99px;transition:width 1s linear,background .4s}
 .tbar.frozen .tfill{background:#3b82f6 !important;transition:none}
 .qcard{background:var(--qcard);border-radius:18px;padding:1.1rem 1.1rem 1rem;text-align:center;margin-bottom:10px;box-shadow:0 2px 24px rgba(0,0,0,.12)}
-.qprompt{color:var(--text2);font-size:1rem;font-weight:500;line-height:1.3;margin-bottom:8px}
+.qprompt{color:var(--text2);font-size:1rem;font-weight:500;line-height:1.3;margin-bottom:8px;word-break:break-word;overflow-wrap:break-word;hyphens:auto}
+/* Phase 206: opt-btn — map_reverse MCQ buttons, full overflow protection */
+.opt-btn{background:var(--bg3);color:var(--text);border:2px solid var(--border);border-radius:10px;padding:.55rem .8rem;font-size:.88rem;font-weight:700;cursor:pointer;min-height:44px;word-break:break-word;overflow-wrap:break-word;hyphens:auto;transition:border-color .12s,background .12s}
+.opt-btn:hover{border-color:var(--accent)}
+.opt-btn.opt-ok{background:rgba(16,185,129,.18);border-color:#10b981;color:#10b981}
+.opt-btn.opt-ng{background:rgba(239,68,68,.14);border-color:#ef4444;color:#ef4444}
 .qmain{color:var(--text);font-size:2.4rem;font-weight:900;line-height:1.2;margin-bottom:4px;word-break:break-word}
 .qsub{color:var(--text);font-size:1.2rem;font-weight:700;margin-bottom:4px}
 .qflag{margin:2px 0 8px;display:flex;justify-content:center;align-items:center;min-height:60px}
@@ -731,30 +736,7 @@ input[type=text]::placeholder{color:var(--text3)}
   .map-scr>.fb,.map-scr>[class*="fb "]{grid-column:2;grid-row:3;align-self:start}
   .map-scr>.map-weiter{grid-column:2;grid-row:4;margin:0}
   .map-prompt{font-size:1rem}
-  .bottom-nav{justify-content:center}
-  .bn-item{max-width:130px}
-  #mainGamesGrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start;padding:0 !important}
-  #mainGamesGrid .accordion-section{margin-bottom:0}
-  .diff-toggle{gap:12px}
-  .diff-btn{padding:.55rem 1.8rem;font-size:.88rem}
-}
-/* Phase 103: Carousel arrow buttons */
-.car-arrow{
-  background:none;
-  border:none;
-  font-size:1.05rem;
-  padding:2px 10px;
-  cursor:pointer;
-  color:var(--text);
-  transition:opacity .2s;
-  -webkit-tap-highlight-color:transparent;
-  line-height:1;
-  border-radius:6px;
-}
-.car-arrow:hover:not([style*="pointer-events:none"]){
-  background:var(--bg2);
-}
-
+  .bottom-nav{justify-co
 </style>
 </head>
 <body>
@@ -2724,7 +2706,7 @@ ga:{
 function t(key,vars){
   const lang=(typeof S!=='undefined'&&S.language)||localStorage.getItem('gq_lang')||'de';
   let s=(LANG[lang]&&LANG[lang][key])||(LANG.en&&LANG.en[key])||(LANG.de&&LANG.de[key])||key;
-  if(!s)return key;  /* never return undefined */
+  if(!s||typeof s!=='string')return String(key||'');  /* Phase 206: strict null/undefined guard */
   if(vars)Object.keys(vars).forEach(k=>{const rv=vars[k]??"-";s=s.replace(new RegExp('\\{'+k+'\\}','g'),String(rv));});
   return s;
 }
@@ -7074,7 +7056,14 @@ window.onerror=function(m,u,l,c,e){
   </div>`;
   return true; /* prevent default browser error */
 };
-function clr(){clearInterval(tIv);clearTimeout(fTo);clearTimeout(S.freezeTimer);S.freezeTimer=null;}
+function clr(){
+  clearInterval(tIv);clearTimeout(fTo);
+  clearTimeout(S.freezeTimer);S.freezeTimer=null;
+  /* Phase 206: also kill SLF / LandHauptstadt / WortSchmiede interval */
+  if(S.slfData)S.slfData.phase='done';
+  if(S.lhData)S.lhData.phase='done';
+  if(S.wsData)S.wsData.phase='done';
+}
 
 /* ─── LOCAL 1:1 HOT-SEAT MODE ─── */
 const LV_ROUNDS=10,LV_TIME=15;
@@ -7260,12 +7249,12 @@ function lq(){
   /* Try up to 25 times to get a question whose lid hasn't appeared this round */
   let q=null,_att=0;
   while(_att<25){
-    const _c=(GEN[S.mode]||genCityQ)();
-    if(_c&&!S.askedLids.has(_c.lid)){q=_c;break;}
+    try{const _c=(GEN[S.mode]||genCityQ)();
+    if(_c&&!S.askedLids.has(_c.lid)){q=_c;break;}}catch(_e){console.warn('[GeoQuest] generator error (mode='+S.mode+'):', _e);}
     _att++;
   }
   /* Fallback: accept any valid question if pool is exhausted */
-  if(!q)q=(GEN[S.mode]||genCityQ)()||null;
+  if(!q){try{q=(GEN[S.mode]||genCityQ)()||null;}catch(_e){console.warn('[GeoQuest] generator fallback error:',_e);q=null;}}
   /* Duolingo casual: once normal round exhausted, pull retries */
   if(!q&&S.diff==="casual"&&S.queueExtra.length>0)q=S.queueExtra.shift();
   if(!q){S.ph="menu";render();return;}
@@ -9970,7 +9959,7 @@ function initWortSchmiede(){
   const lang=S.language||localStorage.getItem('gq_lang')||'en';
   const idx=~~(rng()*WORTSCHMIEDE_DATA.length);
   const entry=WORTSCHMIEDE_DATA[idx];
-  const words=(entry.validWords[lang]||entry.validWords['en']||[]).map(function(w){return w.toUpperCase();});
+  const words=(entry.validWords[lang]||entry.validWords['de']||entry.validWords['en']||Object.values(entry.validWords)[0]||[]).map(function(w){return w.toUpperCase();});
   S.wsData={cityIdx:idx,city:entry.city,lang:lang,allWords:words,foundWords:[],input:"",phase:"playing"};
   S.gameStartTime=Date.now();
   S.ph="playing";
