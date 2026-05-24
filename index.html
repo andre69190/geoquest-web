@@ -696,7 +696,49 @@ input[type=text]::placeholder{color:var(--text3)}
 .carousel-wrapper:active{cursor:grabbing}
 .carousel-page{display:grid;grid-template-columns:repeat(var(--cc,2),1fr);gap:10px;align-content:start;padding:10px 0 15px;box-sizing:border-box;width:100%;animation:cFadeIn .18s ease}
 @keyframes cFadeIn{from{opacity:.4}to{opacity:1}}
-.carousel-page .mode-car
+.carousel-page .mode-card,.carousel-page .game-card{
+  width:100% !important;
+  min-width:0 !important;
+  max-width:100% !important;
+  margin:0 !important;
+  box-sizing:border-box !important
+}
+.mode-card:not([style*='display:none']){display:flex !important;flex-direction:column !important}
+.menu-search-container{display:flex !important;flex-wrap:nowrap !important;gap:8px !important;align-items:center !important}
+#gameSearch{flex:1 !important;min-width:0 !important}
+/* Phase 102: PC wide layout (>=1000px) */
+@media(min-width:1000px){
+  body{padding-top:52px}
+  .g-header{padding:0 2.5rem}
+  #app{padding:1.5rem 2.5rem;align-items:stretch}
+  .scr{max-width:1100px}
+  .mode-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
+  .mode-grid-4{grid-template-columns:repeat(auto-fill,minmax(100px,1fr))}
+  .mode-grid-life{grid-template-columns:repeat(5,minmax(0,1fr))}
+  .qcard{max-width:600px;margin-left:auto;margin-right:auto}
+  .answers{max-width:600px;margin-left:auto;margin-right:auto}
+  .answers:not(.two-opts):not(.flag-grid){display:grid;grid-template-columns:1fr 1fr;gap:9px}
+  .answers.two-opts{flex-direction:row;gap:9px}
+  .hud{max-width:840px;margin-left:auto;margin-right:auto}
+  .tbar{max-width:840px;margin-left:auto;margin-right:auto}
+  .pu-bar{max-width:840px;margin-left:auto;margin-right:auto}
+  .map-container{height:calc(100vh - 160px)!important;max-height:none!important;min-height:320px!important}
+  .map-scr{display:grid;grid-template-columns:1fr 280px;grid-template-rows:auto auto 1fr auto auto;column-gap:1.2rem;max-width:100%}
+  .map-scr>.hud{grid-column:1/-1}
+  .map-scr>.tbar{grid-column:1/-1}
+  .map-scr>.map-prompt{grid-column:2;grid-row:2;font-size:1rem;font-weight:700;padding:.4rem 0}
+  .map-scr>.map-container{grid-column:1;grid-row:2/6;height:calc(100vh - 160px)!important}
+  .map-scr>.fb,.map-scr>[class*="fb "]{grid-column:2;grid-row:3;align-self:start}
+  .map-scr>.map-weiter{grid-column:2;grid-row:4;margin:0}
+  .map-prompt{font-size:1rem}
+  .bottom-nav{justify-content:center}
+  .bn-item{max-width:130px}
+  #mainGamesGrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start;padding:0 !important}
+  #mainGamesGrid .accordion-section{margin-bottom:0}
+  .diff-toggle{gap:12px}
+  .diff-btn{padding:.55rem 1.8rem;font-size:.88rem}
+}
+
 </style>
 </head>
 <body>
