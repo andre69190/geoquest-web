@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GeoQuest – Spielübersicht</title>
+<style>
+  :root {
+    --bg: #0f172a; --bg2: #1e293b; --bg3: #263347;
+    --text: #e2e8f0; --text2: #94a3b8;
+    --green: #10b981; --blue: #3b82f6; --purple: #8b5cf6;
+    --orange: #f59e0b; --red: #ef4444; --teal: #14b8a6;
+    --pink: #ec4899; --indigo: #6366f1;
+    --border: #334155; --radius: 10px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; padding: 20px; }
+  h1 { font-size: 1.6rem; font-weight: 800; color: var(--green); margin-bottom: 4px; }
+  .subtitle { color: var(--text2); font-size: .85rem; margin-bottom: 24px; }
+  .stats-bar { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
+  .stat-chip { background: var(--bg2); border: 1px solid var(--border); border-radius: 20px; padding: 6px 14px; font-size: .8rem; }
+  .stat-chip strong { color: var(--green); }
+  .section { margin-bottom: 28px; }
+  .section-title { font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--text2); margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; }
+  .card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 14px; display: flex; align-items: flex-start; gap: 10px; }
+  .card-icon { font-size: 1.4rem; flex-shrink: 0; min-width: 30px; text-align: center; margin-top: 2px; }
+  .card-body { flex: 1; min-width: 0; }
+  .card-name { font-weight: 700; font-size: .88rem; margin-bottom: 3px; }
+  .card-source { font-size: .75rem; color: var(--text2); margin-bottom: 5px; }
+  .badge { display: inline-block; font-size: .7rem; font-weight: 700; padding: 2px 8px; border-radius: 10px; }
+  .badge-green  { background: #064e3b; color: var(--green); }
+  .badge-blue   { background: #1e3a5f; color: var(--blue); }
+  .badge-purple { background: #2e1065; color: #a78bfa; }
+  .badge-orange { background: #451a03; color: var(--orange); }
+  .badge-teal   { background: #042f2e; color: var(--teal); }
+  .badge-red    { background: #450a0a; color: #f87171; }
+  .badge-pink   { background: #500724; color: #f9a8d4; }
+  .badge-indigo { background: #1e1b4b; color: #a5b4fc; }
+  .count { font-size: .72rem; color: var(--text2); margin-top: 4px; }
+  .count span { color: var(--green); font-weight: 700; }
+  @media(max-width:600px){ .grid { grid-template-columns: 1fr; } h1{font-size:1.3rem} }
+</style>
+</head>
+<body>
+
+<h1>🌍 GeoQuest – Komplette Spielübersicht</h1>
+<p class="subtitle">Alle Spielmodi mit Datenbasis und Anzahl der Einträge — Stand Mai 2026</p>
+
+<div class="stats-bar">
+  <div class="stat-chip">Spielmodi gesamt: <strong>78</strong></div>
+  <div class="stat-chip">Städte: <strong>2.315</strong></div>
+  <div class="stat-chip">Sport-POIs: <strong>219</strong></div>
+  <div class="stat-chip">Sehenswürdigkeiten: <strong>176</strong></div>
+  <div class="stat-chip">UNESCO: <strong>149</strong></div>
+  <div class="stat-chip">Nationalparks: <strong>113</strong></div>
+  <div class="stat-chip">Gerichte: <strong>221</strong></div>
+  <div class="stat-chip">Marken: <strong>42</strong></div>
+  <div class="stat-chip">Währungen: <strong>35</strong></div>
+  <div class="stat-chip">U-Bahn-Netze: <strong>50</strong></div>
+</div>
+
+<!-- ─── PURE GEO ─────────────────────────────────────── -->
+<div class="section">
+  <div class="section-title">🌐 Reine Geografie</div>
+  <div class="grid">
+
+    <div class="card">
+      <div class="card-icon">🏙</div>
+      <div class="card-body">
+        <div class="card-name">Stadt → Land</div>
+        <div class="card-source">cities.json (GeoNames)</div>
+        <div><span class="badge badge-green">Pure Geo</span></div>
+        <div class="count">Datenbasis: <span>2.315</span> Städte weltweit</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🚩</div>
+      <div class="card-body">
+        <div class="card-name">Flagge → Land</div>
+        <div class="card-source">Länderliste (~195 Länder)</div>
+        <div><span class="badge badge-green">Pure Geo</span></div>
+        <div class="count">Datenbasis: <span>~195</span> Länder/Flaggen</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🏛</div>
+      <div class="card-body">
+        <div class="card-name">Hauptstadt → Land</div>
+        <div class="card-source">Capitals-Datensatz</div>
+        <div><span class="badge badge-green">Pure Geo</span></div>
+        <div class="count">Datenbasis: <span>~195</span> Hauptstädte</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">💧</div>
+      <div class="card-body">
+        <div class="card-name">Fluss → Land</div>
+        <div class="card-source">rivers.json (intern)</div>
+        <div><span class="badge badge-green">Pure Geo</span></div>
+        <div class="count">Datenbasis: <span>~51</span> Flüsse</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🗽</div>
+      <div class="card-body">
+        <div class="card-name">Sehenswürdigkeit → Land</div>
+        <div class="card-source">landmarks.json</div>
+        <div><span class="badge badge-green">Pure Geo</span></div>
+        <div class="count">Datenbasis: <span>176</span> Sehenswürdigkeiten</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🌿</div>
+      <div class="card-body">
+        <div class="card-name">Nationalpark → Land</div>
+        <div class="card-source">parks.json</div>
+        <div><span class="badge badge-green">Pure Geo</span></div>
+        <div class="count">Datenbasis: <span>113</span> Nationalparks</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🏛</div>
+      <div class="card-body">
+        <div class="card-name">UNESCO Welterbe → Land</div>
+        <div class="card-source">unesco.json</div>
+        <div><span class="badge badge-green">Pure Geo</span></div>
+        <div class="count">Datenbasis: <span>149</span> UNESCO-Stätten</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🌆</div>
+      <div class="card-body">
+        <div class="card-name">Wahrzeichen → Stadt</div>
+        <div class="card-source">Stadtmarken-Datensatz</div>
+        <div><span class="badge badge-green">Pure Geo</span></div>
+        <div class="count">Datenbasis: <span>~40</span> Wahrzeichen</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🚇</div>
+      <div class="card-body">
+        <div class="card-name">U-Bahn-Netz → Stadt</div>
+        <div class="card-source">subways.json (Wikidata SPARQL)</div>
+        <div><span class="badge badge-green">Pure Geo</span></div>
+        <div class="count">Datenbasis: <span>50</span> U-Bahn-Netze</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🎌</div>
+      <div class="card-body">
+        <div class="card-name">Land → Flagge (auswählen)</div>
+        <div class="card-source">Länderliste (~195 Länder)</div>
+        <div><span class="badge badge-green">Pure Geo</span></div>
+        <div class="count">Datenbasis: <span>~195</span> Flaggen zur Auswahl</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🏟</div>
+      <div class="card-body">
+        <div class="card-name">Land → Hauptstadt</div>
+        <div class="card-source">Capitals-Datensatz</div>
+        <div><span class="badge badge-green">Pure Geo</span></div>
+        <div class="count">Datenbasis: <span>~195</span> Länder-Hauptstädte</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🏢</div>
+      <div class="card-body">
+        <div class="card-name">Land → Stadt</div>
+        <div class="card-source">cities.json (GeoNames)</div>
+        <div><span class="badge badge-green">Pure Geo</span></div>
+        <div class="count">Datenbasis: <span>2.315</span> Städte weltweit</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">💧</div>
+      <div class="card-body">
+        <div class="card-name">Land → Fluss</div>
+        <div class="card-source">rivers.json (intern)</div>
+        <div><span class="badge badge-green">Pure Geo</span></div>
+        <div class="count">Datenbasis: <span>~51</span> Flüsse</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🌊</div>
+      <div class="card-body">
+        <div class="card-name">Fluss → Land (Realmodus)</div>
+        <div class="card-source">rivers.json (intern)</div>
+        <div><span class="badge badge-green">Pure Geo</span></div>
+        <div class="count">Datenbasis: <span>~51</span> Flüsse mit Verlauf</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🔲</div>
+      <div class="card-body">
+        <div class="card-name">Logik-Gitter</div>
+        <div class="card-source">Länderliste (algorithmisch generiert)</div>
+        <div><span class="badge badge-green">Pure Geo</span></div>
+        <div class="count">Datenbasis: <span>~195</span> Länder, ∞ Kombinationen</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">✈️</div>
+      <div class="card-body">
+        <div class="card-name">Reiseroute</div>
+        <div class="card-source">cities.json + algorithmisch</div>
+        <div><span class="badge badge-green">Pure Geo</span></div>
+        <div class="count">Datenbasis: <span>2.315</span> Städte, zufällige Routen</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🎨</div>
+      <div class="card-body">
+        <div class="card-name">Flag Fusion</div>
+        <div class="card-source">Flaggen-Daten (Kombinations-Quiz)</div>
+        <div><span class="badge badge-green">Pure Geo</span></div>
+        <div class="count">Datenbasis: <span>~195</span> Flaggen, gemischt</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🌡</div>
+      <div class="card-body">
+        <div class="card-name">Klima-Rätsel</div>
+        <div class="card-source">Klimadaten (intern)</div>
+        <div><span class="badge badge-green">Pure Geo</span></div>
+        <div class="count">Datenbasis: <span>~195</span> Länder-Klimaprofile</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🔤</div>
+      <div class="card-body">
+        <div class="card-name">Alpha Sprint</div>
+        <div class="card-source">Länderliste + Städte</div>
+        <div><span class="badge badge-green">Pure Geo</span></div>
+        <div class="count">Datenbasis: <span>2.315+</span> Orte nach Anfangsbuchstabe</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🕐</div>
+      <div class="card-body">
+        <div class="card-name">Timezone Jumper</div>
+        <div class="card-source">Zeitzonen-Datensatz</div>
+        <div><span class="badge badge-green">Pure Geo</span></div>
+        <div class="count">Datenbasis: <span>~195</span> Länder-Zeitzonen</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🛡</div>
+      <div class="card-body">
+        <div class="card-name">Wappen-Meister</div>
+        <div class="card-source">Wappen-Datensatz (intern)</div>
+        <div><span class="badge badge-green">Pure Geo</span></div>
+        <div class="count">Datenbasis: <span>~50</span> Staatswappen</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🌧</div>
+      <div class="card-body">
+        <div class="card-name">Klima-Serie: Niederschlag</div>
+        <div class="card-source">Klimadaten (HL-Vergleich)</div>
+        <div><span class="badge badge-green">Pure Geo</span></div>
+        <div class="count">Datenbasis: <span>~195</span> Länder</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🌡</div>
+      <div class="card-body">
+        <div class="card-name">Klima-Serie: Temperatur</div>
+        <div class="card-source">Klimadaten (HL-Vergleich)</div>
+        <div><span class="badge badge-green">Pure Geo</span></div>
+        <div class="count">Datenbasis: <span>~195</span> Länder</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">☀️</div>
+      <div class="card-body">
+        <div class="card-name">Klima-Serie: Sonnenstunden</div>
+        <div class="card-source">Klimadaten (HL-Vergleich)</div>
+        <div><span class="badge badge-green">Pure Geo</span></div>
+        <div class="count">Datenbasis: <span>~195</span> Länder</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🌋</div>
+      <div class="card-body">
+        <div class="card-name">Klima-Serie: Vulkane</div>
+        <div class="card-source">Klimadaten (HL-Vergleich)</div>
+        <div><span class="badge badge-green">Pure Geo</span></div>
+        <div class="count">Datenbasis: <span>~195</span> Länder</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🏝</div>
+      <div class="card-body">
+        <div class="card-name">Klima-Serie: Inseln</div>
+        <div class="card-source">Insel-Datensatz</div>
+        <div><span class="badge badge-green">Pure Geo</span></div>
+        <div class="count">Datenbasis: <span>~195</span> Länder</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🕐</div>
+      <div class="card-body">
+        <div class="card-name">Klima-Serie: Zeitzonen</div>
+        <div class="card-source">Zeitzonen-Datensatz</div>
+        <div><span class="badge badge-green">Pure Geo</span></div>
+        <div class="count">Datenbasis: <span>~195</span> Länder</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🏙</div>
+      <div class="card-body">
+        <div class="card-name">Klima-Serie: Gründungsjahr</div>
+        <div class="card-source">Städte-Daten</div>
+        <div><span class="badge badge-green">Pure Geo</span></div>
+        <div class="count">Datenbasis: <span>2.315</span> Städte</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🏔</div>
+      <div class="card-body">
+        <div class="card-name">Spracherkennung (HL)</div>
+        <div class="card-source">Sprach-Datensatz</div>
+        <div><span class="badge badge-green">Pure Geo</span></div>
+        <div class="count">Datenbasis: <span>~195</span> Landessprachen</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🏛</div>
+      <div class="card-body">
+        <div class="card-name">UNESCO-Quiz (HL)</div>
+        <div class="card-source">unesco.json</div>
+        <div><span class="badge badge-green">Pure Geo</span></div>
+        <div class="count">Datenbasis: <span>149</span> UNESCO-Stätten</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">📸</div>
+      <div class="card-body">
+        <div class="card-name">Tourismus (HL)</div>
+        <div class="card-source">Tourismus-Daten</div>
+        <div><span class="badge badge-green">Pure Geo</span></div>
+        <div class="count">Datenbasis: <span>~195</span> Länder</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ─── LIFESTYLE ─────────────────────────────────────── -->
+<div class="section">
+  <div class="section-title">🎭 Kultur &amp; Lifestyle</div>
+  <div class="grid">
+
+    <div class="card">
+      <div class="card-icon">🗺</div>
+      <div class="card-body">
+        <div class="card-name">Länder-Umrisse</div>
+        <div class="card-source">Silhouetten-Datensatz</div>
+        <div><span class="badge badge-blue">Lifestyle</span></div>
+        <div class="count">Datenbasis: <span>~195</span> Länderumrisse</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🍽</div>
+      <div class="card-body">
+        <div class="card-name">Gericht → Land</div>
+        <div class="card-source">Food-Datensatz (intern)</div>
+        <div><span class="badge badge-blue">Lifestyle</span></div>
+        <div class="count">Datenbasis: <span>221</span> Gerichte</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🏷</div>
+      <div class="card-body">
+        <div class="card-name">Marke → Land</div>
+        <div class="card-source">Brand-Datensatz (intern)</div>
+        <div><span class="badge badge-blue">Lifestyle</span></div>
+        <div class="count">Datenbasis: <span>42</span> Marken</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">💱</div>
+      <div class="card-body">
+        <div class="card-name">Währung → Land</div>
+        <div class="card-source">Währungs-Datensatz</div>
+        <div><span class="badge badge-blue">Lifestyle</span></div>
+        <div class="count">Datenbasis: <span>35</span> Währungen</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">💵</div>
+      <div class="card-body">
+        <div class="card-name">Land → Währung</div>
+        <div class="card-source">Währungs-Datensatz</div>
+        <div><span class="badge badge-blue">Lifestyle</span></div>
+        <div class="count">Datenbasis: <span>35</span> Währungen</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">👥</div>
+      <div class="card-body">
+        <div class="card-name">Mehr Einwohner? (Vergleich)</div>
+        <div class="card-source">Bevölkerungs-Datensatz</div>
+        <div><span class="badge badge-blue">Lifestyle</span></div>
+        <div class="count">Datenbasis: <span>~195</span> Länder, ∞ Paare</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ─── EU KENNZEICHEN ─────────────────────────────────── -->
+<div class="section">
+  <div class="section-title">🚗 EU-Kennzeichen</div>
+  <div class="grid">
+
+    <div class="card">
+      <div class="card-icon">🚗</div>
+      <div class="card-body">
+        <div class="card-name">EU-Kennzeichen (Casual)</div>
+        <div class="card-source">EU-Plates-Datensatz</div>
+        <div><span class="badge badge-teal">EU Plates</span></div>
+        <div class="count">Datenbasis: <span>~50+</span> Kennzeichen mit Tipps</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🚦</div>
+      <div class="card-body">
+        <div class="card-name">Kennzeichen Pro (Hardcore)</div>
+        <div class="card-source">EU-Plates-Datensatz</div>
+        <div><span class="badge badge-teal">EU Plates</span></div>
+        <div class="count">Datenbasis: <span>~50+</span> Kennzeichen ohne Tipps</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🌐</div>
+      <div class="card-body">
+        <div class="card-name">Karten-IVR (Map Guesser)</div>
+        <div class="card-source">IVR-Codes + Weltkarte</div>
+        <div><span class="badge badge-teal">EU Plates</span></div>
+        <div class="count">Datenbasis: <span>~195</span> IVR-Ländercodes</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">📋</div>
+      <div class="card-body">
+        <div class="card-name">Kennzeichen Album</div>
+        <div class="card-source">EU-Plates-Datensatz</div>
+        <div><span class="badge badge-teal">EU Plates</span></div>
+        <div class="count">Sammelalbum aller gesammelten Kennzeichen</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ─── HIGHER / LOWER ─────────────────────────────────── -->
+<div class="section">
+  <div class="section-title">⬆⬇ Higher / Lower Vergleiche</div>
+  <div class="grid">
+
+    <div class="card">
+      <div class="card-icon">👥</div>
+      <div class="card-body">
+        <div class="card-name">H/L Einwohner</div>
+        <div class="card-source">Bevölkerungs-Datensatz</div>
+        <div><span class="badge badge-orange">H/L Vergleich</span></div>
+        <div class="count">Datenbasis: <span>~195</span> Länder</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🌊</div>
+      <div class="card-body">
+        <div class="card-name">H/L Flusslänge</div>
+        <div class="card-source">rivers.json</div>
+        <div><span class="badge badge-orange">H/L Vergleich</span></div>
+        <div class="count">Datenbasis: <span>~51</span> Flüsse mit Länge</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🗺</div>
+      <div class="card-body">
+        <div class="card-name">H/L Landfläche</div>
+        <div class="card-source">Länder-Flächendaten</div>
+        <div><span class="badge badge-orange">H/L Vergleich</span></div>
+        <div class="count">Datenbasis: <span>~195</span> Länder</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">💰</div>
+      <div class="card-body">
+        <div class="card-name">H/L BIP</div>
+        <div class="card-source">BIP-Daten (Weltbank)</div>
+        <div><span class="badge badge-orange">H/L Vergleich</span></div>
+        <div class="count">Datenbasis: <span>~195</span> Länder</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🏘</div>
+      <div class="card-body">
+        <div class="card-name">H/L Bevölkerungsdichte</div>
+        <div class="card-source">Bevölkerungs-Datensatz</div>
+        <div><span class="badge badge-orange">H/L Vergleich</span></div>
+        <div class="count">Datenbasis: <span>~195</span> Länder</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">⛰</div>
+      <div class="card-body">
+        <div class="card-name">H/L Höchster Punkt</div>
+        <div class="card-source">Gebirgs-/Elevationsdaten</div>
+        <div><span class="badge badge-orange">H/L Vergleich</span></div>
+        <div class="count">Datenbasis: <span>~195</span> Länder</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🏖</div>
+      <div class="card-body">
+        <div class="card-name">H/L Küstenlänge</div>
+        <div class="card-source">Küstenlängen-Datensatz</div>
+        <div><span class="badge badge-orange">H/L Vergleich</span></div>
+        <div class="count">Datenbasis: <span>~195</span> Länder</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🤝</div>
+      <div class="card-body">
+        <div class="card-name">H/L Grenzen</div>
+        <div class="card-source">Nachbarschafts-Datensatz</div>
+        <div><span class="badge badge-orange">H/L Vergleich</span></div>
+        <div class="count">Datenbasis: <span>~195</span> Länder</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">❤️</div>
+      <div class="card-body">
+        <div class="card-name">H/L Lebenserwartung</div>
+        <div class="card-source">WHO / Weltbank Daten</div>
+        <div><span class="badge badge-orange">H/L Vergleich</span></div>
+        <div class="count">Datenbasis: <span>~195</span> Länder</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">👶</div>
+      <div class="card-body">
+        <div class="card-name">H/L Medianalter</div>
+        <div class="card-source">Demografische Daten</div>
+        <div><span class="badge badge-orange">H/L Vergleich</span></div>
+        <div class="count">Datenbasis: <span>~195</span> Länder</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🌲</div>
+      <div class="card-body">
+        <div class="card-name">H/L Waldanteil</div>
+        <div class="card-source">FAO-Forstdaten</div>
+        <div><span class="badge badge-orange">H/L Vergleich</span></div>
+        <div class="count">Datenbasis: <span>~195</span> Länder</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🌿</div>
+      <div class="card-body">
+        <div class="card-name">Nationalpark-Vergleich (HL)</div>
+        <div class="card-source">parks.json</div>
+        <div><span class="badge badge-orange">H/L Vergleich</span></div>
+        <div class="count">Datenbasis: <span>113</span> Parks</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🛣</div>
+      <div class="card-body">
+        <div class="card-name">Straßennetz-Vergleich (HL)</div>
+        <div class="card-source">Infrastruktur-Daten</div>
+        <div><span class="badge badge-orange">H/L Vergleich</span></div>
+        <div class="count">Datenbasis: <span>~195</span> Länder</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🚂</div>
+      <div class="card-body">
+        <div class="card-name">Schienennetz-Vergleich (HL)</div>
+        <div class="card-source">Infrastruktur-Daten</div>
+        <div><span class="badge badge-orange">H/L Vergleich</span></div>
+        <div class="count">Datenbasis: <span>~195</span> Länder</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">📶</div>
+      <div class="card-body">
+        <div class="card-name">Internet-Nutzung (HL)</div>
+        <div class="card-source">ITU-Daten</div>
+        <div><span class="badge badge-orange">H/L Vergleich</span></div>
+        <div class="count">Datenbasis: <span>~195</span> Länder</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🔋</div>
+      <div class="card-body">
+        <div class="card-name">E-Mobility (HL)</div>
+        <div class="card-source">EV-Infrastruktur-Daten</div>
+        <div><span class="badge badge-orange">H/L Vergleich</span></div>
+        <div class="count">Datenbasis: <span>~195</span> Länder</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🏙</div>
+      <div class="card-body">
+        <div class="card-name">Urbanisierungsgrad (HL)</div>
+        <div class="card-source">Urbanisierungs-Daten</div>
+        <div><span class="badge badge-orange">H/L Vergleich</span></div>
+        <div class="count">Datenbasis: <span>~195</span> Länder</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ─── DIREKTE VERGLEICHE ─────────────────────────────── -->
+<div class="section">
+  <div class="section-title">⚖️ Direkte Länder-Vergleiche</div>
+  <div class="grid">
+
+    <div class="card"><div class="card-icon">🗺</div><div class="card-body"><div class="card-name">Vergleich Fläche</div><div class="card-source">Flächendaten</div><div><span class="badge badge-purple">Vergleich</span></div><div class="count">Datenbasis: <span>~195</span> Länder</div></div></div>
+    <div class="card"><div class="card-icon">👥</div><div class="card-body"><div class="card-name">Vergleich Einwohner</div><div class="card-source">Bevölkerungsdaten</div><div><span class="badge badge-purple">Vergleich</span></div><div class="count">Datenbasis: <span>~195</span> Länder</div></div></div>
+    <div class="card"><div class="card-icon">🧭</div><div class="card-body"><div class="card-name">Vergleich Nördlichstes</div><div class="card-source">Koordinaten-Daten</div><div><span class="badge badge-purple">Vergleich</span></div><div class="count">Datenbasis: <span>~195</span> Länder</div></div></div>
+    <div class="card"><div class="card-icon">💰</div><div class="card-body"><div class="card-name">Vergleich BIP</div><div class="card-source">BIP-Daten (Weltbank)</div><div><span class="badge badge-purple">Vergleich</span></div><div class="count">Datenbasis: <span>~195</span> Länder</div></div></div>
+    <div class="card"><div class="card-icon">🏘</div><div class="card-body"><div class="card-name">Vergleich Bevölkerungsdichte</div><div class="card-source">Bevölkerungsdaten</div><div><span class="badge badge-purple">Vergleich</span></div><div class="count">Datenbasis: <span>~195</span> Länder</div></div></div>
+    <div class="card"><div class="card-icon">⛰</div><div class="card-body"><div class="card-name">Vergleich Elevation</div><div class="card-source">Geländedaten</div><div><span class="badge badge-purple">Vergleich</span></div><div class="count">Datenbasis: <span>~195</span> Länder</div></div></div>
+    <div class="card"><div class="card-icon">🏖</div><div class="card-body"><div class="card-name">Vergleich Küstenlänge</div><div class="card-source">Küstendaten</div><div><span class="badge badge-purple">Vergleich</span></div><div class="count">Datenbasis: <span>~195</span> Länder</div></div></div>
+    <div class="card"><div class="card-icon">🤝</div><div class="card-body"><div class="card-name">Vergleich Grenzen</div><div class="card-source">Nachbarschafts-Daten</div><div><span class="badge badge-purple">Vergleich</span></div><div class="count">Datenbasis: <span>~195</span> Länder</div></div></div>
+    <div class="card"><div class="card-icon">❤️</div><div class="card-body"><div class="card-name">Vergleich Lebenserwartung</div><div class="card-source">WHO-Daten</div><div><span class="badge badge-purple">Vergleich</span></div><div class="count">Datenbasis: <span>~195</span> Länder</div></div></div>
+    <div class="card"><div class="card-icon">👶</div><div class="card-body"><div class="card-name">Vergleich Medianalter</div><div class="card-source">Demografiedaten</div><div><span class="badge badge-purple">Vergleich</span></div><div class="count">Datenbasis: <span>~195</span> Länder</div></div></div>
+    <div class="card"><div class="card-icon">🌲</div><div class="card-body"><div class="card-name">Vergleich Waldanteil</div><div class="card-source">FAO-Forstdaten</div><div><span class="badge badge-purple">Vergleich</span></div><div class="count">Datenbasis: <span>~195</span> Länder</div></div></div>
+    <div class="card"><div class="card-icon">✈️</div><div class="card-body"><div class="card-name">Vergleich Flughäfen</div><div class="card-source">IATA-Daten</div><div><span class="badge badge-purple">Vergleich</span></div><div class="count">Datenbasis: <span>~195</span> Länder</div></div></div>
+    <div class="card"><div class="card-icon">🏔</div><div class="card-body"><div class="card-name">Vergleich Berge</div><div class="card-source">Gebirgs-Daten</div><div><span class="badge badge-purple">Vergleich</span></div><div class="count">Datenbasis: <span>~195</span> Länder</div></div></div>
+    <div class="card"><div class="card-icon">🧭</div><div class="card-body"><div class="card-name">Vergleich N/S-Ausdehnung</div><div class="card-source">Koordinaten-Daten</div><div><span class="badge badge-purple">Vergleich</span></div><div class="count">Datenbasis: <span>~195</span> Länder</div></div></div>
+  </div>
+</div>
+
+<!-- ─── NACHBARN ─────────────────────────────────────────── -->
+<div class="section">
+  <div class="section-title">🤝 Nachbarschafts-Modi</div>
+  <div class="grid">
+    <div class="card"><div class="card-icon">🌍</div><div class="card-body"><div class="card-name">Nachbar-Erkennung</div><div class="card-source">Nachbarschafts-Datensatz</div><div><span class="badge badge-indigo">Nachbarn</span></div><div class="count">Datenbasis: <span>~195</span> Länder mit Nachbarn</div></div></div>
+    <div class="card"><div class="card-icon">🧩</div><div class="card-body"><div class="card-name">Falscher Nachbar</div><div class="card-source">Nachbarschafts-Datensatz</div><div><span class="badge badge-indigo">Nachbarn</span></div><div class="count">Datenbasis: <span>~195</span> Länder (Intrus-Modus)</div></div></div>
+    <div class="card"><div class="card-icon">🔢</div><div class="card-body"><div class="card-name">Nachbar-Anzahl</div><div class="card-source">Nachbarschafts-Datensatz</div><div><span class="badge badge-indigo">Nachbarn</span></div><div class="count">Datenbasis: <span>~195</span> Länder</div></div></div>
+  </div>
+</div>
+
+<!-- ─── KARTEN-MODI ─────────────────────────────────────── -->
+<div class="section">
+  <div class="section-title">🗺 Karten-Modi</div>
+  <div class="grid">
+    <div class="card"><div class="card-icon">📍</div><div class="card-body"><div class="card-name">Karte: Stadt pinnen</div><div class="card-source">cities.json + D3.js Weltkarte</div><div><span class="badge badge-teal">Karte</span></div><div class="count">Datenbasis: <span>2.315</span> Städte</div></div></div>
+    <div class="card"><div class="card-icon">🔍</div><div class="card-body"><div class="card-name">Karte: Stadt finden</div><div class="card-source">cities.json + D3.js Weltkarte</div><div><span class="badge badge-teal">Karte</span></div><div class="count">Datenbasis: <span>2.315</span> Städte</div></div></div>
+    <div class="card"><div class="card-icon">🏛</div><div class="card-body"><div class="card-name">Karte: Hauptstadt-Guesser</div><div class="card-source">Capitals + D3.js Weltkarte</div><div><span class="badge badge-teal">Karte</span></div><div class="count">Datenbasis: <span>~195</span> Hauptstädte</div></div></div>
+  </div>
+</div>
+
+<!-- ─── AIRPORTS & SONDER ─────────────────────────────────── -->
+<div class="section">
+  <div class="section-title">✈️ Flughäfen &amp; Spezial-Quiz</div>
+  <div class="grid">
+    <div class="card"><div class="card-icon">✈️</div><div class="card-body"><div class="card-name">IATA-Code Quiz</div><div class="card-source">IATA-Flughafencodes</div><div><span class="badge badge-red">Spezial</span></div><div class="count">Datenbasis: Wichtigste <span>~100+</span> Flughäfen</div></div></div>
+    <div class="card"><div class="card-icon">🕐</div><div class="card-body"><div class="card-name">Timezone Quiz</div><div class="card-source">Zeitzonen-Datensatz</div><div><span class="badge badge-red">Spezial</span></div><div class="count">Datenbasis: <span>~195</span> Länder</div></div></div>
+    <div class="card"><div class="card-icon">🌤</div><div class="card-body"><div class="card-name">Klima Quiz</div><div class="card-source">Klimadaten (intern)</div><div><span class="badge badge-red">Spezial</span></div><div class="count">Datenbasis: <span>~195</span> Länder-Klimaprofile</div></div></div>
+    <div class="card"><div class="card-icon">🎨</div><div class="card-body"><div class="card-name">Flaggenfarben Quiz</div><div class="card-source">Flaggen-Farbanalyse</div><div><span class="badge badge-red">Spezial</span></div><div class="count">Datenbasis: <span>~195</span> Flaggen</div></div></div>
+    <div class="card"><div class="card-icon">🏝</div><div class="card-body"><div class="card-name">Binnenstaat-Quiz</div><div class="card-source">Landlocked-Datensatz</div><div><span class="badge badge-red">Spezial</span></div><div class="count">Datenbasis: <span>44</span> Binnenstaaten weltweit</div></div></div>
+  </div>
+</div>
+
+<!-- ─── SPORT POI ─────────────────────────────────────────── -->
+<div class="section">
+  <div class="section-title">⚽ Sport &amp; Olympia – POI-Ortungsspiele (18 Modi)</div>
+  <div class="grid">
+
+    <div class="card"><div class="card-icon">⚽</div><div class="card-body"><div class="card-name">Derby-Hotspots</div><div class="card-source">Stadion-Koordinaten</div><div><span class="badge badge-pink">Sport POI</span></div><div class="count">Datenbasis: <span>14</span> Derby-Orte</div></div></div>
+    <div class="card"><div class="card-icon">🏒</div><div class="card-body"><div class="card-name">Eishockey-Nationen</div><div class="card-source">Arena-Koordinaten</div><div><span class="badge badge-pink">Sport POI</span></div><div class="count">Datenbasis: <span>12</span> Eishockey-Hochburgen</div></div></div>
+    <div class="card"><div class="card-icon">🏎</div><div class="card-body"><div class="card-name">F1 Historische Strecken</div><div class="card-source">Rennstrecken-Koordinaten</div><div><span class="badge badge-pink">Sport POI</span></div><div class="count">Datenbasis: <span>13</span> F1-Strecken</div></div></div>
+    <div class="card"><div class="card-icon">🚴</div><div class="card-body"><div class="card-name">Tour de France Pässe</div><div class="card-source">Bergpass-Koordinaten</div><div><span class="badge badge-pink">Sport POI</span></div><div class="count">Datenbasis: <span>12</span> TdF-Pässe</div></div></div>
+    <div class="card"><div class="card-icon">⛷</div><div class="card-body"><div class="card-name">Olympische Winter-Historie</div><div class="card-source">Olympia-Stadtkoordinaten</div><div><span class="badge badge-pink">Sport POI</span></div><div class="count">Datenbasis: <span>14</span> Wintersportorte</div></div></div>
+    <div class="card"><div class="card-icon">🌍</div><div class="card-body"><div class="card-name">WM-Gastgeber-Historie</div><div class="card-source">Länder-Koordinaten</div><div><span class="badge badge-pink">Sport POI</span></div><div class="count">Datenbasis: <span>15</span> WM-Gastgeber</div></div></div>
+    <div class="card"><div class="card-icon">🏟</div><div class="card-body"><div class="card-name">Legendäre WM-Finalstadien</div><div class="card-source">Stadion-Koordinaten</div><div><span class="badge badge-pink">Sport POI</span></div><div class="count">Datenbasis: <span>13</span> WM-Finalstätten</div></div></div>
+    <div class="card"><div class="card-icon">🏆</div><div class="card-body"><div class="card-name">Weltmeister-Nationen</div><div class="card-source">Länder-Koordinaten</div><div><span class="badge badge-pink">Sport POI</span></div><div class="count">Datenbasis: <span>8</span> WM-Titelträger</div></div></div>
+    <div class="card"><div class="card-icon">⭐</div><div class="card-body"><div class="card-name">Heimat der Fußball-Legenden</div><div class="card-source">Geburtsort-Koordinaten</div><div><span class="badge badge-pink">Sport POI</span></div><div class="count">Datenbasis: <span>13</span> Legenden-Geburtsorte</div></div></div>
+    <div class="card"><div class="card-icon">🗺</div><div class="card-body"><div class="card-name">Road to 2026</div><div class="card-source">WM-2026-Stadionkoordinaten</div><div><span class="badge badge-pink">Sport POI</span></div><div class="count">Datenbasis: <span>13</span> WM-2026-Stadien</div></div></div>
+    <div class="card"><div class="card-icon">👩</div><div class="card-body"><div class="card-name">Frauen-WM-Meilensteine</div><div class="card-source">Frauen-WM-Koordinaten</div><div><span class="badge badge-pink">Sport POI</span></div><div class="count">Datenbasis: <span>9</span> Frauen-WM-Stätten</div></div></div>
+    <div class="card"><div class="card-icon">🏅</div><div class="card-body"><div class="card-name">Sommerspiele-Metropolen</div><div class="card-source">Olympia-Stadtkoordinaten</div><div><span class="badge badge-pink">Sport POI</span></div><div class="count">Datenbasis: <span>17</span> Sommerspiele-Städte</div></div></div>
+    <div class="card"><div class="card-icon">🛷</div><div class="card-body"><div class="card-name">Winter-Exoten &amp; Klassiker</div><div class="card-source">Olympia-Stadtkoordinaten</div><div><span class="badge badge-pink">Sport POI</span></div><div class="count">Datenbasis: <span>12</span> Winter-Olympia-Orte</div></div></div>
+    <div class="card"><div class="card-icon">🥇</div><div class="card-body"><div class="card-name">Olympische Rekordhalter</div><div class="card-source">Geburtsort-Koordinaten</div><div><span class="badge badge-pink">Sport POI</span></div><div class="count">Datenbasis: <span>12</span> Rekordathleten</div></div></div>
+    <div class="card"><div class="card-icon">⛰</div><div class="card-body"><div class="card-name">Olympia in extremer Höhe</div><div class="card-source">Olympia-Höhendaten</div><div><span class="badge badge-pink">Sport POI</span></div><div class="count">Datenbasis: <span>9</span> Höhenlagen-Schauplätze</div></div></div>
+    <div class="card"><div class="card-icon">🚫</div><div class="card-body"><div class="card-name">Die Boykott-Spiele</div><div class="card-source">Historische Olympia-Daten</div><div><span class="badge badge-pink">Sport POI</span></div><div class="count">Datenbasis: <span>8</span> Boykott-Schauplätze</div></div></div>
+    <div class="card"><div class="card-icon">🇪🇺</div><div class="card-body"><div class="card-name">EM-Gastgeber-Historie</div><div class="card-source">UEFA-EM-Daten</div><div><span class="badge badge-pink">Sport POI</span></div><div class="count">Datenbasis: <span>13</span> EM-Gastgeberländer</div></div></div>
+    <div class="card"><div class="card-icon">🏟</div><div class="card-body"><div class="card-name">Finalstadien der EM</div><div class="card-source">UEFA-Stadion-Koordinaten</div><div><span class="badge badge-pink">Sport POI</span></div><div class="count">Datenbasis: <span>12</span> EM-Finalstadien</div></div></div>
+
+  </div>
+</div>
+
+<div style="margin-top:32px;padding:16px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);font-size:.8rem;color:var(--text2)">
+  <strong style="color:var(--green)">Gesamt:</strong> 78 Spielmodi ·
+  <strong style="color:var(--blue)">Datenpunkte:</strong> 2.315 Städte · 219 Sport-POIs · 176 Landmarks · 149 UNESCO · 113 Parks · 221 Gerichte · 42 Marken · 35 Währungen · 50 U-Bahn-Netze · ~195 Länder (diverse Attribute) · ~51 Flüsse<br>
+  <span style="opacity:.7">Stand: Mai 2026 · Generiert aus gen.py</span>
+</div>
+
+</body>
+</html>
