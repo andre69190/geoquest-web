@@ -3338,6 +3338,60 @@ const MODES=[
     {id:"uk_pferde_fachbegriffe",icon:"\u{1F3A8}",title:"[BETA] Pferde-Fachbegriffe",group:"tiere",prompt:"Was bezeichnet dieser Fachbegriff beim Pferd?",desc:"Fellfarben und Reitlehre \u2014 das Pferde-ABC"},
     {id:"hl_pferde_stockmass",icon:"\u{1F4CF}",title:"[BETA] H/L Stockma\u00df",group:"tiere",prompt:"Welches Pferd hat ein gr\u00f6\u00dferes Stockma\u00df?",desc:"Widerristhohe in cm \u2014 Falabella bis Shire"},
     {id:"ws_pferde_fluesterer",icon:"\u{1F40E}",title:"[BETA] WS: Pferdefl\u00fcsterer",group:"tiere",noMultiplayer:true,prompt:"Bilde W\u00f6rter aus SHIREHORSE!",desc:"Anagramm-R\u00e4tsel \u2014 10 Buchstaben"}
+,
+    /* === Phase 228: Pflanzen-Modi (Pin) === */
+    {id:"uk_pflanzen_nutzpflanzen",icon:"\u{1F33E}",title:"[BETA] Nutzpflanzen-Ursprung",group:"tiere",prompt:"Wo liegt dieser Nutzpflanzen-Ursprungsort?",desc:"Kaffee, Kakao, Weizen \u2014 Wo kamen sie urspr\u00fcnglich her?"},
+    {id:"uk_pflanzen_einzelbaeume",icon:"\u{1F333}",title:"[BETA] Ber\u00fchmte B\u00e4ume",group:"tiere",prompt:"Wo steht dieser ber\u00fchmte Baum?",desc:"General Sherman bis Methuselah \u2014 Legenden-B\u00e4ume der Welt"},
+    {id:"uk_pflanzen_botanische_gaerten",icon:"\u{1F33A}",title:"[BETA] Botanische G\u00e4rten",group:"tiere",prompt:"Wo liegt dieser Botanische Garten?",desc:"Kew Gardens bis Orto Botanico Padova \u2014 Gr\u00fcne Kathedralen der Welt"},
+    {id:"uk_pflanzen_tropenwald",icon:"\u{1F331}",title:"[BETA] Tropenwälder",group:"tiere",prompt:"Wo liegt dieser Tropenwald?",desc:"Amazon bis Daintree \u2014 die gr\u00fcnen Lungen der Erde"},
+    {id:"uk_pflanzen_weinanbau",icon:"\u{1F377}",title:"[BETA] Weinanbaugebiete",group:"tiere",prompt:"Wo liegt dieses Weinanbaugebiet?",desc:"Bordeaux bis Barossa \u2014 Weinregionen der Welt"},
+    {id:"uk_pflanzen_heilpflanzen",icon:"\u{1F33F}",title:"[BETA] Heilpflanzen-Regionen",group:"tiere",prompt:"Wo liegt diese Heilpflanzen-Region?",desc:"Argan bis Ayurveda \u2014 Medizinische Pflanzenzentren"},
+    {id:"uk_pflanzen_mangroven",icon:"\u{1F30A}",title:"[BETA] Mangrovenwälder",group:"tiere",prompt:"Wo liegt dieses Mangroven-Gebiet?",desc:"Sundarbans bis Everglades \u2014 K\u00fcstenw\u00e4lder der Tropen"},
+    {id:"uk_pflanzen_kakao_ursprung",icon:"\u{1F36B}",title:"[BETA] Kakao-Ursprungsgebiete",group:"tiere",prompt:"Wo liegt dieses Kakao-Anbaugebiet?",desc:"Tabasco bis Madagaskar \u2014 Die Welt des Kakaos"},
+    {id:"uk_pflanzen_reisanbau",icon:"\u{1F35A}",title:"[BETA] Reisanbauregionen",group:"tiere",prompt:"Wo liegt diese Reisanbauregion?",desc:"Mekong-Delta bis Bali-Terrassen \u2014 Reisfelder der Welt"},
+    {id:"uk_pflanzen_bambus",icon:"\u{1F38B}",title:"[BETA] Bambuswälder",group:"tiere",prompt:"Wo liegt dieser ber\u00fchmte Bambus-Ort?",desc:"Arashiyama bis Sichuan \u2014 Bambus-Paradiese der Welt"},
+    {id:"uk_pflanzen_endemisch",icon:"\u{1F9EC}",title:"[BETA] Endemische Pflanzenzonen",group:"tiere",prompt:"Wo liegt dieser endemische Pflanzen-Hotspot?",desc:"Kap-Florenregion bis Cerrado \u2014 Pflanzendiversit\u00e4t"},
+    {id:"uk_pflanzen_nationalblumen",icon:"\u{1F490}",title:"[BETA] Nationalblumen-Heimat",group:"tiere",prompt:"In welchem Land ist diese Pflanze Nationalblume?",desc:"Tulpe, Kirschbl\u00fcte, Protea \u2014 Nationalblumen pinnen"},
+    /* === Phase 228: Pflanzen-Modi (H/L) === */
+    {id:"hl_pflanzen_wuchshoehe",icon:"\u{1F334}",title:"[BETA] H/L Wuchsh\u00f6he",group:"tiere",prompt:"Welcher Baum wird h\u00f6her?",desc:"H\u00f6he in Metern \u2014 Hyperion bis Birke"},
+    {id:"hl_pflanzen_alter",icon:"\u{1F9D3}",title:"[BETA] H/L Baumalter",group:"tiere",prompt:"Welcher Baum wird \u00e4lter?",desc:"Jahre \u2014 Bristlecone Pine bis Schwarzpappel"},
+    {id:"hl_pflanzen_fruchtgewicht",icon:"\u{1F34D}",title:"[BETA] H/L Fruchtgewicht",group:"tiere",prompt:"Welche Frucht ist schwerer?",desc:"Gramm \u2014 Jackfrucht bis Chiasamen"},
+    {id:"hl_pflanzen_samenlaenge",icon:"\u{1F33C}",title:"[BETA] H/L Samengr\u00f6\u00dfe",group:"tiere",prompt:"Welcher Samen ist l\u00e4nger?",desc:"Millimeter \u2014 Coco de Mer bis Mohnkorn"},
+    {id:"hl_pflanzen_kaffeeproduktion",icon:"\u2615",title:"[BETA] H/L Kaffeeproduktion",group:"tiere",prompt:"Welches Land produziert mehr Kaffee?",desc:"Tsd. S\u00e4cke/Jahr \u2014 Brasilien bis Ruanda"},
+    {id:"hl_pflanzen_weinproduktion",icon:"\u{1F377}",title:"[BETA] H/L Weinproduktion",group:"tiere",prompt:"Welches Land produziert mehr Wein?",desc:"Mio. Liter/Jahr \u2014 Italien bis England"},
+    {id:"hl_pflanzen_reisproduktion",icon:"\u{1F35A}",title:"[BETA] H/L Reisproduktion",group:"tiere",prompt:"Welches Land produziert mehr Reis?",desc:"Mio. Tonnen/Jahr \u2014 China bis Kolumbien"},
+    {id:"hl_pflanzen_waldflaeche",icon:"\u{1F332}",title:"[BETA] H/L Waldanteil",group:"tiere",prompt:"Welches Land hat mehr Waldanteil?",desc:"Prozent \u2014 Suriname bis \u00c4gypten"},
+    {id:"hl_pflanzen_stammumfang",icon:"\u{1F333}",title:"[BETA] H/L Stammumfang",group:"tiere",prompt:"Welcher Baum hat den gr\u00f6\u00dferen Stammumfang?",desc:"cm \u2014 Arbol del Tule bis Kirschbaum"},
+    {id:"hl_pflanzen_blattflaeche",icon:"\u{1F343}",title:"[BETA] H/L Blattfl\u00e4che",group:"tiere",prompt:"Welches Blatt hat die gr\u00f6\u00dfere Fl\u00e4che?",desc:"cm\u00b2 \u2014 Riesenpalme bis Rosmarin"},
+    {id:"hl_pflanzen_bluehdauer",icon:"\u{1F338}",title:"[BETA] H/L Bl\u00fchtdauer",group:"tiere",prompt:"Welche Pflanze bl\u00fcht l\u00e4nger pro Jahr?",desc:"Tage/Jahr \u2014 Bougainvillea bis Krokus"},
+    {id:"hl_pflanzen_genomgroesse",icon:"\u{1F9EC}",title:"[BETA] H/L Genomgr\u00f6\u00dfe",group:"tiere",prompt:"Welche Pflanze hat das gr\u00f6\u00dfere Genom?",desc:"Mbp \u2014 Paris japonica bis Arabidopsis"},
+    /* === Phase 228: Pflanzen-Modi (Match) === */
+    {id:"uk_pflanzen_gewuerze",icon:"\u{1F9C2}",title:"[BETA] Gew\u00fcrze-Herkunft",group:"tiere",prompt:"Woher stammt dieses Gew\u00fcrz urspr\u00fcnglich?",desc:"Zimt, Safran, Vanille \u2014 Heimatl\u00e4nder der Gew\u00fcrze"},
+    {id:"uk_pflanzen_familien",icon:"\u{1F9EC}",title:"[BETA] Pflanzenfamilien",group:"tiere",prompt:"Zu welcher Familie geh\u00f6rt diese Art?",desc:"Rosaceae, Poaceae, Fabaceae \u2014 Botanische Familien"},
+    {id:"uk_pflanzen_bluetezeit",icon:"\u{1F338}",title:"[BETA] Bl\u00fctezeit",group:"tiere",prompt:"In welcher Jahreszeit bl\u00fcht diese Pflanze?",desc:"Fr\u00fchling, Sommer, Herbst, Winter \u2014 Bl\u00fctekalender"},
+    {id:"uk_pflanzen_giftstoffe",icon:"\u2620",title:"[BETA] Giftstoffe",group:"tiere",prompt:"Welcher Wirkstoff macht diese Pflanze giftig?",desc:"Atropin, Ricin, Taxin \u2014 Giftige Wirkstoffe"},
+    {id:"uk_pflanzen_fruchttyp",icon:"\u{1F34E}",title:"[BETA] Fruchttypen",group:"tiere",prompt:"Zu welchem Fruchttyp geh\u00f6rt diese Frucht?",desc:"Beere, Steinfrucht, Apfelfrucht \u2014 Botanische Fruchttypen"},
+    {id:"uk_pflanzen_vermehrung",icon:"\u{1F331}",title:"[BETA] Vermehrungsarten",group:"tiere",prompt:"Wie vermehrt sich diese Pflanze haupts\u00e4chlich?",desc:"Samen, vegetativ, Sporen \u2014 Fortpflanzungsstrategien"},
+    {id:"uk_pflanzen_lebensraum",icon:"\u{1F30D}",title:"[BETA] Pflanzen-Lebensraum",group:"tiere",prompt:"In welchem Lebensraum w\u00e4chst diese Pflanze?",desc:"W\u00fcste, Moor, K\u00fcste \u2014 Habitate der Pflanzenwelt"},
+    {id:"uk_pflanzen_bestuaeber",icon:"\u{1F41D}",title:"[BETA] Best\u00e4uber",group:"tiere",prompt:"Wer best\u00e4ubt diese Blume haupts\u00e4chlich?",desc:"Bienen, Wind, Kolibri, Flederm\u00e4use \u2014 Best\u00e4ubungsstrategien"},
+    {id:"uk_pflanzen_herkunft",icon:"\u{1F5FA}",title:"[BETA] Kulturpflanzen-Herkunft",group:"tiere",prompt:"Von welchem Kontinent stammt diese Kulturpflanze?",desc:"Kartoffel bis Kaffee \u2014 Kontinentale Urspr\u00fcnge"},
+    {id:"uk_pflanzen_nutzung",icon:"\u{1F527}",title:"[BETA] Pflanzennutzung",group:"tiere",prompt:"Wof\u00fcr wird diese Pflanze haupts\u00e4chlich genutzt?",desc:"Nahrung, Medizin, Textil, Zier \u2014 Nutzungskategorien"},
+    {id:"uk_pflanzen_blattform",icon:"\u{1F343}",title:"[BETA] Blattformen",group:"tiere",prompt:"Welche Blattform hat diese Pflanze?",desc:"Nadel, herzf\u00f6rmig, gefiedert, handf\u00f6rmig \u2014 Blattmorphologie"},
+    {id:"uk_pflanzen_klimazone",icon:"\u{1F321}",title:"[BETA] Klimazonen",group:"tiere",prompt:"In welcher Klimazone w\u00e4chst diese Pflanze nat\u00fcrlich?",desc:"Tropisch, mediterran, gem\u00e4\u00dfigt, arktisch \u2014 Klimaanpassung"},
+    {id:"uk_pflanzen_scheinfruchte",icon:"\u{1F347}",title:"[BETA] Scheinfrüchte",group:"tiere",prompt:"Wie klassifiziert die Botanik diese Frucht?",desc:"Echte Frucht oder Scheinfrucht? \u2014 Botanische Klassifikation"},
+    /* === Phase 228: Pflanzen-Modi (Spezial) === */
+    {id:"uk_pflanzen_baum_des_jahres",icon:"\u{1F3C6}",title:"[BETA] Baum des Jahres",group:"tiere",prompt:"In welchem Jahr war dieser Baum \"Baum des Jahres\"?",desc:"Rotbuche bis Bergahorn \u2014 Deutsche B\u00e4ume des Jahres"},
+    {id:"uk_pflanzen_giftpflanze_jahres",icon:"\u2620",title:"[BETA] Giftpflanze des Jahres",group:"tiere",prompt:"In welchem Jahr war dies die Giftpflanze des Jahres?",desc:"Tollkirsche bis Stechapfel \u2014 J\u00e4hrliche Giftwahl"},
+    /* === Phase 228: Pflanzen-Modi (WS) === */
+    {id:"ws_pflanzen_trauerweide",icon:"\u{1F333}",title:"[BETA] WS: Trauerweide",group:"tiere",noMultiplayer:true,prompt:"Bilde W\u00f6rter aus TRAUERWEIDE!",desc:"Anagramm-R\u00e4tsel \u2014 11 Buchstaben"},
+    {id:"ws_pflanzen_rhododendron",icon:"\u{1F33A}",title:"[BETA] WS: Rhododendron",group:"tiere",noMultiplayer:true,prompt:"Bilde W\u00f6rter aus RHODODENDRON!",desc:"Anagramm-R\u00e4tsel \u2014 12 Buchstaben"},
+    {id:"ws_pflanzen_sonnenblume",icon:"\u{1F33B}",title:"[BETA] WS: Sonnenblume",group:"tiere",noMultiplayer:true,prompt:"Bilde W\u00f6rter aus SONNENBLUME!",desc:"Anagramm-R\u00e4tsel \u2014 11 Buchstaben"},
+    {id:"ws_pflanzen_pusteblume",icon:"\u{1F33C}",title:"[BETA] WS: Pusteblume",group:"tiere",noMultiplayer:true,prompt:"Bilde W\u00f6rter aus PUSTEBLUME!",desc:"Anagramm-R\u00e4tsel \u2014 10 Buchstaben"},
+    {id:"ws_pflanzen_nachtschatten",icon:"\u2620",title:"[BETA] WS: Nachtschatten",group:"tiere",noMultiplayer:true,prompt:"Bilde W\u00f6rter aus NACHTSCHATTEN!",desc:"Anagramm-R\u00e4tsel \u2014 13 Buchstaben"},
+    {id:"ws_pflanzen_vergissmeinnicht",icon:"\u{1F49C}",title:"[BETA] WS: Vergissmeinnicht",group:"tiere",noMultiplayer:true,prompt:"Bilde W\u00f6rter aus VERGISSMEINNICHT!",desc:"Anagramm-R\u00e4tsel \u2014 16 Buchstaben"},
+    {id:"ws_pflanzen_kaffeebohne",icon:"\u2615",title:"[BETA] WS: Kaffeebohne",group:"tiere",noMultiplayer:true,prompt:"Bilde W\u00f6rter aus KAFFEEBOHNE!",desc:"Anagramm-R\u00e4tsel \u2014 11 Buchstaben"},
+    {id:"ws_pflanzen_weihnachtsstern",icon:"\u2B50",title:"[BETA] WS: Weihnachtsstern",group:"tiere",noMultiplayer:true,prompt:"Bilde W\u00f6rter aus WEIHNACHTSSTERN!",desc:"Anagramm-R\u00e4tsel \u2014 15 Buchstaben"},
+    {id:"ws_pflanzen_ginkgobaum",icon:"\u{1F333}",title:"[BETA] WS: Ginkgobaum",group:"tiere",noMultiplayer:true,prompt:"Bilde W\u00f6rter aus GINKGOBAUM!",desc:"Anagramm-R\u00e4tsel \u2014 10 Buchstaben"}
 ];
 
 function modeTitle(m){return m&&m.t_key?t(m.t_key):m?m.title:"";}
@@ -3368,7 +3422,23 @@ const MODE_CATS={
     "ws_tiere_schnabeltier","ws_tiere_gottesanbeterin","ws_tiere_komodowaran",
     "ws_tiere_korallenriff","ws_tiere_silberruecken","ws_tiere_wanderfalke",
     "ws_tiere_mauersegler","ws_tiere_baertierchen","ws_tiere_lederschildkroete",
-    "ws_tiere_pfeilgiftfrosch","uk_tiere_darwin_finken","uk_tiere_schutzgebiete","uk_tiere_zoos","uk_tiere_nutztier_rassen","uk_tiere_fossilien","uk_tiere_arktis_antarktis","uk_tiere_forscher_eponyme","uk_tiere_pelagial","uk_tiere_wuesten_spezialisten","uk_tiere_gift_hotspots","uk_tiere_migranten","hl_tiere_haustier_dichte","uk_pferde_rassen","uk_pferde_fachbegriffe","hl_pferde_stockmass","ws_pferde_fluesterer"
+    "ws_tiere_pfeilgiftfrosch","uk_tiere_darwin_finken","uk_tiere_schutzgebiete","uk_tiere_zoos","uk_tiere_nutztier_rassen","uk_tiere_fossilien","uk_tiere_arktis_antarktis","uk_tiere_forscher_eponyme","uk_tiere_pelagial","uk_tiere_wuesten_spezialisten","uk_tiere_gift_hotspots","uk_tiere_migranten","hl_tiere_haustier_dichte","uk_pferde_rassen","uk_pferde_fachbegriffe","hl_pferde_stockmass","ws_pferde_fluesterer",
+    "uk_pflanzen_nutzpflanzen","uk_pflanzen_einzelbaeume","uk_pflanzen_botanische_gaerten",
+    "uk_pflanzen_tropenwald","uk_pflanzen_weinanbau","uk_pflanzen_heilpflanzen",
+    "uk_pflanzen_mangroven","uk_pflanzen_kakao_ursprung","uk_pflanzen_reisanbau",
+    "uk_pflanzen_bambus","uk_pflanzen_endemisch","uk_pflanzen_nationalblumen",
+    "hl_pflanzen_wuchshoehe","hl_pflanzen_alter","hl_pflanzen_fruchtgewicht",
+    "hl_pflanzen_samenlaenge","hl_pflanzen_kaffeeproduktion","hl_pflanzen_weinproduktion",
+    "hl_pflanzen_reisproduktion","hl_pflanzen_waldflaeche","hl_pflanzen_stammumfang",
+    "hl_pflanzen_blattflaeche","hl_pflanzen_bluehdauer","hl_pflanzen_genomgroesse",
+    "uk_pflanzen_gewuerze","uk_pflanzen_familien","uk_pflanzen_bluetezeit",
+    "uk_pflanzen_giftstoffe","uk_pflanzen_fruchttyp","uk_pflanzen_vermehrung",
+    "uk_pflanzen_lebensraum","uk_pflanzen_bestuaeber","uk_pflanzen_herkunft",
+    "uk_pflanzen_nutzung","uk_pflanzen_blattform","uk_pflanzen_klimazone",
+    "uk_pflanzen_scheinfruchte","uk_pflanzen_baum_des_jahres","uk_pflanzen_giftpflanze_jahres",
+    "ws_pflanzen_trauerweide","ws_pflanzen_rhododendron","ws_pflanzen_sonnenblume",
+    "ws_pflanzen_pusteblume","ws_pflanzen_nachtschatten","ws_pflanzen_vergissmeinnicht",
+    "ws_pflanzen_kaffeebohne","ws_pflanzen_weihnachtsstern","ws_pflanzen_ginkgobaum"
   ],cost:0},
 };
 
@@ -19071,6 +19141,1088 @@ const TIER_MATCH_DATA={
   }
 };
 
+/* === Phase 228: Pflanzen-Datensaetze === */
+const PFLANZEN_PIN_DATA={
+  "nutzpflanzen": {
+    "prompt": "Wo liegt dieser Nutzpflanzen-Ursprungsort?",
+    "items": [
+      {"n": "Kaffee-Ursprung Äthiopien (Kaffa)", "lat": 7.3, "lng": 36.5},
+      {"n": "Kakao-Ursprung (Maya-Tiefland)", "lat": 17.0, "lng": -89.0},
+      {"n": "Teegarten Assam", "lat": 26.1, "lng": 93.4},
+      {"n": "Mekong-Delta Reisfelder", "lat": 10.3, "lng": 105.5},
+      {"n": "Weizen Fruchtbarer Halbmond", "lat": 36.0, "lng": 38.0},
+      {"n": "Kartoffel-Ursprung Andenregion", "lat": -13.5, "lng": -71.8},
+      {"n": "Tomaten-Ursprung Mexiko (Puebla)", "lat": 19.0, "lng": -98.2},
+      {"n": "Mais-Ursprung Oaxaca", "lat": 17.0, "lng": -96.7},
+      {"n": "Zuckerrohr-Ursprung Neuguinea", "lat": -6.0, "lng": 145.0},
+      {"n": "Soja-Ursprung Nordchina", "lat": 41.8, "lng": 123.4},
+      {"n": "Bananen-Ursprung Borneo", "lat": 1.5, "lng": 110.0},
+      {"n": "Chili-Ursprung Mexiko (Puebla)", "lat": 19.0, "lng": -98.0},
+      {"n": "Quinoa-Heimat Bolivianisches Altiplano", "lat": -16.5, "lng": -68.0},
+      {"n": "Vanille-Ursprung Veracruz", "lat": 19.2, "lng": -96.1},
+      {"n": "Pfeffer-Heimat Malabar-Küste", "lat": 11.5, "lng": 75.7},
+      {"n": "Safran-Heimat Khorasan", "lat": 36.2, "lng": 59.6},
+      {"n": "Oliven-Ursprung Kreta", "lat": 35.2, "lng": 25.0},
+      {"n": "Datteln-Ursprung Mesopotamien", "lat": 33.3, "lng": 44.4},
+      {"n": "Kokosnuss-Heimat Philippinen", "lat": 10.0, "lng": 123.0},
+      {"n": "Avocado-Ursprung Mexiko (Michoacan)", "lat": 19.7, "lng": -101.8},
+      {"n": "Ananas-Ursprung Brasilien (Amazônia)", "lat": -3.5, "lng": -60.0},
+      {"n": "Erdnuss-Ursprung Brasilien (Mato Grosso)", "lat": -12.0, "lng": -53.0}
+    ]
+  },
+  "einzelbaeume": {
+    "prompt": "Wo steht dieser berühmte Baum?",
+    "items": [
+      {"n": "General Sherman Tree (Sequoia-NP)", "lat": 36.59, "lng": -118.75},
+      {"n": "Methuselah (Bristlecone Pine, White Mountains)", "lat": 37.38, "lng": -118.16},
+      {"n": "Arbol del Tule (Oaxaca)", "lat": 17.05, "lng": -96.64},
+      {"n": "Fortingall Yew (Schottland)", "lat": 56.59, "lng": -3.87},
+      {"n": "Wollemi Pine (Blue Mountains)", "lat": -33.72, "lng": 150.13},
+      {"n": "Pando Zitterpappel (Utah)", "lat": 38.53, "lng": -111.52},
+      {"n": "Lone Cypress (Monterey)", "lat": 36.57, "lng": -121.96},
+      {"n": "Boab Prison Tree (Australien)", "lat": -18.3, "lng": 128.2},
+      {"n": "Dragon Blood Tree (Sokotra)", "lat": 12.52, "lng": 54.0},
+      {"n": "Baobab-Allee (Madagaskar)", "lat": -20.25, "lng": 44.42},
+      {"n": "Major Oak (Sherwood Forest)", "lat": 53.15, "lng": -1.06},
+      {"n": "Bodhi-Baum (Bodh Gaya)", "lat": 24.7, "lng": 84.99},
+      {"n": "Olive von Vouves (Kreta)", "lat": 35.44, "lng": 23.92},
+      {"n": "Jahrtausend-Kiefer Huangshan", "lat": 30.12, "lng": 118.15},
+      {"n": "Wisteria Ashikaga (Japan)", "lat": 36.32, "lng": 139.52},
+      {"n": "Cathedral Fig Tree (Queensland)", "lat": -17.2, "lng": 145.5},
+      {"n": "Tane Mahuta Kauri (Neuseeland)", "lat": -35.98, "lng": 173.53},
+      {"n": "Kastanienbaum Ätna (Sizilien)", "lat": 37.77, "lng": 15.0},
+      {"n": "Alerce Milenario (Chile)", "lat": -41.5, "lng": -71.8},
+      {"n": "\"Anne Frank\"-Kastanie (Amsterdam)", "lat": 52.37, "lng": 4.91}
+    ]
+  },
+  "botanische_gaerten": {
+    "prompt": "Wo liegt dieser Botanische Garten?",
+    "items": [
+      {"n": "Kew Gardens (London)", "lat": 51.48, "lng": -0.3},
+      {"n": "Botanischer Garten Berlin-Dahlem", "lat": 52.45, "lng": 13.3},
+      {"n": "Orto Botanico Padova (1545, ältester)", "lat": 45.4, "lng": 11.88},
+      {"n": "Hortus Botanicus Leiden", "lat": 52.16, "lng": 4.48},
+      {"n": "Jardin des Plantes Paris", "lat": 48.84, "lng": 2.36},
+      {"n": "Singapore Botanic Gardens", "lat": 1.32, "lng": 103.82},
+      {"n": "New York Botanical Garden", "lat": 40.86, "lng": -73.88},
+      {"n": "Missouri Botanical Garden (St. Louis)", "lat": 38.61, "lng": -90.26},
+      {"n": "Royal Botanic Gardens Victoria (Melbourne)", "lat": -37.83, "lng": 144.98},
+      {"n": "Jardim Botânico Rio de Janeiro", "lat": -22.97, "lng": -43.22},
+      {"n": "Peradeniya Royal Botanic Garden (Sri Lanka)", "lat": 7.27, "lng": 80.6},
+      {"n": "National Botanic Garden Kirstenbosch", "lat": -34.0, "lng": 18.43},
+      {"n": "Real Jardín Botánico Madrid", "lat": 40.41, "lng": -3.69},
+      {"n": "Royal Botanic Garden Edinburgh", "lat": 55.97, "lng": -3.21},
+      {"n": "Gothenburg Botanic Garden", "lat": 57.69, "lng": 11.95},
+      {"n": "Chicago Botanic Garden", "lat": 42.15, "lng": -87.78},
+      {"n": "Botanischer Garten München-Nymphenburg", "lat": 48.15, "lng": 11.5},
+      {"n": "Keukenhof (Niederlande)", "lat": 52.27, "lng": 4.55},
+      {"n": "Botanical Garden Curitiba (Brasilien)", "lat": -25.43, "lng": -49.24},
+      {"n": "Durban Botanic Gardens (Südafrika)", "lat": -29.86, "lng": 31.02}
+    ]
+  },
+  "tropenwald": {
+    "prompt": "Wo liegt dieser Tropenwald?",
+    "items": [
+      {"n": "Amazonas-Regenwald (Manaus)", "lat": -3.1, "lng": -60.0},
+      {"n": "Kongobecken-Regenwald (Kisangani)", "lat": 0.5, "lng": 25.2},
+      {"n": "Daintree Regenwald (Queensland)", "lat": -16.25, "lng": 145.45},
+      {"n": "Borneo Regenwald (Sarawak)", "lat": 2.3, "lng": 113.5},
+      {"n": "Monteverde Nebelwald (Costa Rica)", "lat": 10.3, "lng": -84.83},
+      {"n": "Kinabalu-Park (Sabah, Borneo)", "lat": 6.0, "lng": 116.5},
+      {"n": "Regenwald Madagaskar (Ranomafana)", "lat": -21.3, "lng": 47.5},
+      {"n": "Atlantischer Regenwald (São Paulo)", "lat": -23.7, "lng": -46.6},
+      {"n": "Western Ghats (Kerala)", "lat": 10.5, "lng": 76.4},
+      {"n": "Chocó-Darien Regenwald (Kolumbien)", "lat": 5.5, "lng": -77.5},
+      {"n": "Xishuangbanna Regenwald (Südchina)", "lat": 21.9, "lng": 100.8},
+      {"n": "Kibale-Wald (Uganda)", "lat": 0.5, "lng": 30.4},
+      {"n": "Gondwana-Regenälder (Queensland)", "lat": -28.5, "lng": 153.0},
+      {"n": "Anden-Nebelwald (Ecuador)", "lat": -0.5, "lng": -78.5},
+      {"n": "Khao-Yai-Wald (Thailand)", "lat": 14.4, "lng": 101.4},
+      {"n": "Guinéa-Wälder (Sierra Leone)", "lat": 8.5, "lng": -11.3},
+      {"n": "Kakum-Regenwald (Ghana)", "lat": 5.35, "lng": -1.4},
+      {"n": "Tongass National Forest (Alaska)", "lat": 57.0, "lng": -135.0},
+      {"n": "New-Guinea-Hochland-Wald", "lat": -6.0, "lng": 145.0},
+      {"n": "Suriname Brownsberg Naturpark", "lat": 4.9, "lng": -55.2}
+    ]
+  },
+  "weinanbau": {
+    "prompt": "Wo liegt dieses Weinanbaugebiet?",
+    "items": [
+      {"n": "Bordeaux (Frankreich)", "lat": 44.84, "lng": -0.58},
+      {"n": "Champagne (Frankreich)", "lat": 49.24, "lng": 3.97},
+      {"n": "Chianti Toskana (Italien)", "lat": 43.5, "lng": 11.1},
+      {"n": "Barossa Valley (Australien)", "lat": -34.5, "lng": 138.9},
+      {"n": "Napa Valley (Kalifornien)", "lat": 38.5, "lng": -122.4},
+      {"n": "Mendoza (Argentinien)", "lat": -32.9, "lng": -68.8},
+      {"n": "Mosel (Deutschland)", "lat": 50.0, "lng": 7.0},
+      {"n": "Rioja (Spanien)", "lat": 42.35, "lng": -2.6},
+      {"n": "Stellenbosch (Südafrika)", "lat": -33.9, "lng": 18.9},
+      {"n": "Marlborough (Neuseeland)", "lat": -41.5, "lng": 173.9},
+      {"n": "Douro (Portugal)", "lat": 41.1, "lng": -7.5},
+      {"n": "Burgund (Frankreich)", "lat": 47.3, "lng": 4.8},
+      {"n": "Rheingau (Deutschland)", "lat": 50.1, "lng": 8.0},
+      {"n": "Santorini (Griechenland)", "lat": 36.4, "lng": 25.4},
+      {"n": "Tokaj (Ungarn)", "lat": 48.1, "lng": 21.4},
+      {"n": "Maipo Valley (Chile)", "lat": -33.7, "lng": -70.9},
+      {"n": "Willamette Valley (Oregon)", "lat": 44.5, "lng": -123.3},
+      {"n": "Wachau (Osterreich)", "lat": 48.4, "lng": 15.4},
+      {"n": "Alsace (Frankreich)", "lat": 48.2, "lng": 7.4},
+      {"n": "Priorat (Spanien)", "lat": 41.3, "lng": 0.8}
+    ]
+  },
+  "heilpflanzen": {
+    "prompt": "Wo liegt diese Heilpflanzen-Region?",
+    "items": [
+      {"n": "Argan-Wald Marokko (Taroudant)", "lat": 30.5, "lng": -8.9},
+      {"n": "Ayurvedische Gärten Kerala (Indien)", "lat": 10.0, "lng": 76.5},
+      {"n": "Katzenkrallen-Region Peruanischer Amazónas", "lat": -5.0, "lng": -75.0},
+      {"n": "Traditioneller Kräutermarkt Marrakesch", "lat": 31.63, "lng": -8.0},
+      {"n": "Wihao-Tal Medizinische Kräuter (Chengdu)", "lat": 30.7, "lng": 103.9},
+      {"n": "Lavendel Provence (Valensole)", "lat": 43.8, "lng": 5.9},
+      {"n": "Weihrauch-Region Dhofar (Oman)", "lat": 17.0, "lng": 54.1},
+      {"n": "Neem-Gürtel Nordindien", "lat": 26.0, "lng": 79.0},
+      {"n": "Salbei-Küste Dalmatien (Kroatien)", "lat": 43.5, "lng": 16.8},
+      {"n": "Eukalyptus-Wälder Tasmanien", "lat": -41.5, "lng": 146.5},
+      {"n": "Madagassische Catharanthus-Region (Antananarivo)", "lat": -18.9, "lng": 47.5},
+      {"n": "Aloe-Vera Kanarische Inseln", "lat": 28.0, "lng": -15.5},
+      {"n": "Echinacea-Prärie (North Dakota)", "lat": 47.5, "lng": -100.5},
+      {"n": "Grasse Parfum-Pflanzen (Frankreich)", "lat": 43.66, "lng": 6.92},
+      {"n": "Himalaya-Rhododendron-Zone (Nepal)", "lat": 28.0, "lng": 84.0},
+      {"n": "Sibirischer Ginseng (Baikalsee-Region)", "lat": 52.5, "lng": 103.0},
+      {"n": "Baldrian Rondane (Norwegen)", "lat": 62.0, "lng": 9.8},
+      {"n": "Teebaumöl (New South Wales)", "lat": -28.5, "lng": 153.0},
+      {"n": "Amazonas Rosewood (Pará, Brasilien)", "lat": -2.0, "lng": -56.0},
+      {"n": "Ginkgo-Gärten (Nanjing, China)", "lat": 32.06, "lng": 118.78}
+    ]
+  },
+  "mangroven": {
+    "prompt": "Wo liegt dieses Mangroven-Gebiet?",
+    "items": [
+      {"n": "Sundarbans (Bangladesh/Indien)", "lat": 22.0, "lng": 89.2},
+      {"n": "Everglades Mangroven (Florida)", "lat": 25.3, "lng": -80.9},
+      {"n": "Rufiji-Delta (Tansania)", "lat": -7.8, "lng": 39.3},
+      {"n": "Mahakam-Delta (Borneo)", "lat": -0.5, "lng": 117.5},
+      {"n": "Gulf of Fonseca (Honduras)", "lat": 13.2, "lng": -87.7},
+      {"n": "Tumbes Mangrovenwald (Peru)", "lat": -3.6, "lng": -80.5},
+      {"n": "Fly-River-Delta (Papua-Neuguinea)", "lat": -8.2, "lng": 143.0},
+      {"n": "Queensland Mangroven (Hinchinbrook)", "lat": -18.4, "lng": 146.1},
+      {"n": "Inhambane (Mosambik)", "lat": -23.9, "lng": 35.4},
+      {"n": "Matang Mangrove-Wald (Malaysia)", "lat": 4.7, "lng": 100.6},
+      {"n": "Bragãnca Mangroven (Pará, Brasilien)", "lat": -1.0, "lng": -46.8},
+      {"n": "Can Gio Bioshäre (Vietnam)", "lat": 10.4, "lng": 106.9},
+      {"n": "Bhitarkanika (Odisha, Indien)", "lat": 20.7, "lng": 86.9},
+      {"n": "Shark Bay (Westaustralien)", "lat": -25.5, "lng": 113.8},
+      {"n": "Laguna de Términos (Mexiko)", "lat": 18.5, "lng": -91.5},
+      {"n": "Kiunga Marine NP (Kenia)", "lat": -1.7, "lng": 41.5},
+      {"n": "Sundarbans West Bengal (Indien)", "lat": 21.9, "lng": 88.9},
+      {"n": "Halmahera Mangroven (Indonesien)", "lat": 0.5, "lng": 128.0},
+      {"n": "Chokoria Sundarbans (Bangladesch)", "lat": 21.8, "lng": 92.0},
+      {"n": "New-Caledonia Mangroven", "lat": -21.5, "lng": 165.5}
+    ]
+  },
+  "kakao_ursprung": {
+    "prompt": "Wo liegt dieses Kakao-Anbaugebiet?",
+    "items": [
+      {"n": "Tabasco Olmeken-Ursprung (Mexiko)", "lat": 17.8, "lng": -92.9},
+      {"n": "Bahia Kakao (Brasilien)", "lat": -14.8, "lng": -39.0},
+      {"n": "Java Kakaoplantagen (Indonesien)", "lat": -7.5, "lng": 110.0},
+      {"n": "Elfenbeinküste San-Pédro-Region", "lat": 4.7, "lng": -6.7},
+      {"n": "Ghana Ashanti-Kakao", "lat": 6.7, "lng": -1.6},
+      {"n": "Sulawesi Kakaobauern (Indonesien)", "lat": -2.0, "lng": 120.0},
+      {"n": "Dominikanische Republik Cibao-Tal", "lat": 19.2, "lng": -70.7},
+      {"n": "Madagaskar Sambirano-Tal", "lat": -14.3, "lng": 48.2},
+      {"n": "Ecuador Los Ríos", "lat": -1.6, "lng": -79.5},
+      {"n": "Peru Satipo Kakao", "lat": -11.3, "lng": -74.6},
+      {"n": "Venezuela Sur del Lago", "lat": 9.0, "lng": -72.5},
+      {"n": "Kamerun Südwest-Kakao", "lat": 4.7, "lng": 9.2},
+      {"n": "Trinidad Kakaoplantagen", "lat": 10.5, "lng": -61.3},
+      {"n": "Belize Toledo District", "lat": 16.3, "lng": -88.8},
+      {"n": "Kolumbien Santander-Kakao", "lat": 7.1, "lng": -73.1},
+      {"n": "Papua-Neuguinea Madang-Kakao", "lat": -5.2, "lng": 145.8},
+      {"n": "Bolivien Caranavi-Kakao", "lat": -15.8, "lng": -67.6},
+      {"n": "Matagalpa (Nicaragua)", "lat": 12.9, "lng": -85.9},
+      {"n": "Oaxaca Kakao (Mexiko)", "lat": 17.0, "lng": -96.0},
+      {"n": "Uganda Bugisu-Kakao", "lat": 1.1, "lng": 34.2}
+    ]
+  },
+  "reisanbau": {
+    "prompt": "Wo liegt diese Reisanbauregion?",
+    "items": [
+      {"n": "Mekong-Delta Reisfelder (Vietnam)", "lat": 10.3, "lng": 105.5},
+      {"n": "Ganges-Ebene (Bangladesch)", "lat": 24.0, "lng": 90.0},
+      {"n": "Yangtze-Tal (China, Wuhan)", "lat": 30.6, "lng": 114.3},
+      {"n": "Punjab Reisanbau (Indien)", "lat": 30.8, "lng": 75.8},
+      {"n": "Bali Reisterrassen (Jatiluwih)", "lat": -8.37, "lng": 115.13},
+      {"n": "Irrawaddy-Delta Reisfelder (Myanmar)", "lat": 16.5, "lng": 95.3},
+      {"n": "Java Reisfelder (Indonesien)", "lat": -7.0, "lng": 110.5},
+      {"n": "Luzon Reisebene (Philippinen)", "lat": 17.0, "lng": 121.0},
+      {"n": "Chao-Phraya-Becken (Thailand)", "lat": 14.0, "lng": 100.5},
+      {"n": "Po-Tal Reisanbau (Italien)", "lat": 45.0, "lng": 9.5},
+      {"n": "Camargue-Reis (Frankreich)", "lat": 43.5, "lng": 4.5},
+      {"n": "Sacramento Valley (Kalifornien)", "lat": 39.5, "lng": -121.7},
+      {"n": "Hani-Reisterrassen Yunnan (China)", "lat": 23.0, "lng": 102.8},
+      {"n": "Alaotra-See Reisanbau (Madagaskar)", "lat": -17.5, "lng": 48.5},
+      {"n": "Niltal Reisfelder (Ägypten)", "lat": 31.0, "lng": 31.0},
+      {"n": "Arkansas Grand Prairie (USA)", "lat": 34.5, "lng": -91.2},
+      {"n": "Sri Lanka Reisebene (Kurunegala)", "lat": 7.5, "lng": 80.4},
+      {"n": "Bhutan Paro-Tal Reis", "lat": 27.4, "lng": 89.4},
+      {"n": "Honam-Ebene Südkorea", "lat": 35.8, "lng": 127.1},
+      {"n": "Senegal-Delta Reisfelder", "lat": 16.0, "lng": -16.0}
+    ]
+  },
+  "bambus": {
+    "prompt": "Wo liegt dieser berühmte Bambus-Ort?",
+    "items": [
+      {"n": "Arashiyama Bambushain (Kyoto)", "lat": 35.02, "lng": 135.67},
+      {"n": "Damyang Bambuswald (Südkorea)", "lat": 35.32, "lng": 126.99},
+      {"n": "Bambusmeer Yunnan (Südchina)", "lat": 24.0, "lng": 100.0},
+      {"n": "Mao-Bambus Moganshan (China)", "lat": 30.59, "lng": 119.53},
+      {"n": "Sichuan Bambuswaldgürtel (Panda-Habitat)", "lat": 30.5, "lng": 102.8},
+      {"n": "Anji Bambus-Hain (China, Crouching Tiger)", "lat": 30.63, "lng": 119.68},
+      {"n": "Kerala Bambusgürtel (Indien)", "lat": 10.5, "lng": 76.7},
+      {"n": "Chitwan-Nationalpark Bambus (Nepal)", "lat": 27.5, "lng": 84.4},
+      {"n": "Quindío Bambus (Kolumbien)", "lat": 4.5, "lng": -75.7},
+      {"n": "Guadua-Bambus Costa Rica", "lat": 10.0, "lng": -83.5},
+      {"n": "Amazonas Bambuswild (Madre de Dios, Peru)", "lat": -12.6, "lng": -69.2},
+      {"n": "Shennongjia Bambusgürtel (Hubei)", "lat": 31.7, "lng": 110.7},
+      {"n": "Nanning Bambuspark (Guangxi)", "lat": 22.8, "lng": 108.4},
+      {"n": "Bambus Hangzhou (Zhejiang)", "lat": 30.26, "lng": 120.12},
+      {"n": "Fianarantsoa Bambus (Madagaskar)", "lat": -21.4, "lng": 47.1},
+      {"n": "Miyazaki Bambusgürtel (Japan)", "lat": 31.9, "lng": 131.4},
+      {"n": "Sagada Bambus (Philippinen)", "lat": 17.1, "lng": 120.9},
+      {"n": "Kumamoto Bambus (Japan)", "lat": 32.8, "lng": 130.7},
+      {"n": "Bambus-Nationalpark Dongting (Hunan)", "lat": 29.4, "lng": 113.0},
+      {"n": "Guangdong Bambusgürtel (China)", "lat": 23.3, "lng": 113.0}
+    ]
+  },
+  "endemisch": {
+    "prompt": "Wo liegt dieser endemische Pflanzen-Hotspot?",
+    "items": [
+      {"n": "Kap-Florenregion (Südafrika)", "lat": -34.0, "lng": 18.5},
+      {"n": "Madagaskar Tropenwald", "lat": -21.0, "lng": 44.0},
+      {"n": "Cerrado (Brasilien)", "lat": -15.0, "lng": -47.0},
+      {"n": "Atlantischer Regenwald (Bahia)", "lat": -14.5, "lng": -39.5},
+      {"n": "Western Ghats (Indien)", "lat": 11.0, "lng": 76.8},
+      {"n": "Sri Lanka Bergzone", "lat": 6.9, "lng": 80.8},
+      {"n": "Sundaland (Malaysia/Borneo)", "lat": 3.0, "lng": 115.0},
+      {"n": "Östliche Himalaya-Region", "lat": 27.5, "lng": 88.0},
+      {"n": "Guinéa-Wälder Westafrika", "lat": 7.0, "lng": -7.0},
+      {"n": "Mittelmeerraum Florengebiet", "lat": 36.0, "lng": 10.0},
+      {"n": "Kaukasus-Florenregion", "lat": 42.0, "lng": 44.0},
+      {"n": "Neuseeland / Aotearoa", "lat": -43.0, "lng": 171.0},
+      {"n": "Neukaledonien Florengebiet", "lat": -21.5, "lng": 165.5},
+      {"n": "Sdwälder Südostaustralien", "lat": -34.0, "lng": 116.0},
+      {"n": "Chocho-Darien (Kolumbien)", "lat": 7.0, "lng": -77.0},
+      {"n": "Küstenwälder Ostafrika (Zanzibar-Arc)", "lat": -8.0, "lng": 39.0},
+      {"n": "Valdivianischer Regenwald (Chile)", "lat": -39.5, "lng": -73.5},
+      {"n": "Kalifornische Florenprovinz", "lat": 37.0, "lng": -120.0},
+      {"n": "Polynesia-Mikronesien Florenzone", "lat": 7.0, "lng": 158.0},
+      {"n": "IndoBurma-Florenregion (Myanmar)", "lat": 20.0, "lng": 100.0}
+    ]
+  },
+  "nationalblumen": {
+    "prompt": "In welchem Land ist diese Pflanze Nationalblume?",
+    "items": [
+      {"n": "Keukenhof Tulpenfelder (Niederlande)", "lat": 52.27, "lng": 4.55},
+      {"n": "Yoshino Kirschblüte (Japan)", "lat": 34.37, "lng": 135.85},
+      {"n": "Protea-Vorkommen Kap (Südafrika)", "lat": -34.2, "lng": 18.9},
+      {"n": "Edelweiß Hohe Tauern (Österreich)", "lat": 47.1, "lng": 12.8},
+      {"n": "Distel Cairngorms (Schottland)", "lat": 57.0, "lng": -3.7},
+      {"n": "Lotus-Heirat Kalkutta (Indien)", "lat": 22.5, "lng": 88.3},
+      {"n": "Sonnenblumen-Felder Poltawa (Ukraine)", "lat": 49.6, "lng": 34.6},
+      {"n": "Golden Wattle (Canberra, Australien)", "lat": -35.3, "lng": 149.1},
+      {"n": "Alpine Rose Graubuenden (Schweiz)", "lat": 46.8, "lng": 9.5},
+      {"n": "Lehua-Blüte Hawaii", "lat": 19.9, "lng": -155.6},
+      {"n": "Rafflesia Sabah (Malaysia)", "lat": 5.5, "lng": 116.7},
+      {"n": "Hibiskus Kuala Lumpur (Malaysia)", "lat": 3.2, "lng": 101.7},
+      {"n": "Namaqualand Blütenmeer (Südafrika)", "lat": -29.5, "lng": 17.0},
+      {"n": "Flachs-Felder Neuseeland (Canterbury)", "lat": -43.6, "lng": 172.7},
+      {"n": "Iris Loire-Tal (Frankreich)", "lat": 47.5, "lng": 0.5},
+      {"n": "Kleewiesen Connemara (Irland)", "lat": 53.5, "lng": -9.8},
+      {"n": "Kleewiesen Connemara (Irland)", "lat": 53.5, "lng": -9.8},
+      {"n": "Orchidee Caracas (Venezuela)", "lat": 10.5, "lng": -66.9},
+      {"n": "Magnolie Pjoengjang (Nordkorea)", "lat": 39.0, "lng": 125.8},
+      {"n": "Kornblume Brandenburg (Deutschland)", "lat": 52.45, "lng": 13.57}
+    ]
+  }
+}
+;
+const PFLANZEN_HL_DATA={
+  "wuchshoehe": {
+    "prompt": "Welcher Baum wird höher?",
+    "unit": "m",
+    "items": [
+      {"name": "Küstenmammutbaum (Hyperion)", "val": 115.9},
+      {"name": "Eukalyptus regnans (Centurion)", "val": 100.5},
+      {"name": "Küstentanne (Abies procera)", "val": 99.7},
+      {"name": "Tasmanischer Blaugummi", "val": 96.0},
+      {"name": "Sitkafichte", "val": 94.8},
+      {"name": "Riesenmammutbaum", "val": 84.3},
+      {"name": "Douglastanne", "val": 80.0},
+      {"name": "Kauri (Agathis australis)", "val": 51.5},
+      {"name": "Araukarie", "val": 50.0},
+      {"name": "Europäische Fichte", "val": 50.0},
+      {"name": "Tulpenbaum (Liriodendron)", "val": 58.0},
+      {"name": "Mahagoni (Swietenia macrophylla)", "val": 60.0},
+      {"name": "Stieleiche (Quercus robur)", "val": 40.0},
+      {"name": "Europäische Buche", "val": 45.0},
+      {"name": "Teak (Tectona grandis)", "val": 40.0},
+      {"name": "Weißtanne (Abies alba)", "val": 60.0},
+      {"name": "Hainbuche", "val": 25.0},
+      {"name": "Affenbrotbaum (Baobab)", "val": 25.0},
+      {"name": "Silberweide", "val": 25.0},
+      {"name": "Birke (Betula pendula)", "val": 30.0}
+    ]
+  },
+  "alter": {
+    "prompt": "Welcher Baum wird älter?",
+    "unit": "Jahre",
+    "items": [
+      {"name": "Methuselah Bristlecone Pine", "val": 4855},
+      {"name": "Prometheus Bristlecone Pine", "val": 4862},
+      {"name": "Alerce (Fitzroya cupressoides)", "val": 3622},
+      {"name": "Riesenmammutbaum", "val": 3500},
+      {"name": "Olive von Vouves (Kreta)", "val": 3000},
+      {"name": "Fortingall Yew (Schottland)", "val": 3000},
+      {"name": "Affenbrotbaum (Baobab)", "val": 2500},
+      {"name": "Küstenmammutbaum", "val": 2200},
+      {"name": "Kauri Tane Mahuta", "val": 2000},
+      {"name": "Montezuma-Zypresse", "val": 1400},
+      {"name": "Zirbelkiefer (Pinus cembra)", "val": 1000},
+      {"name": "Wollemi Pine", "val": 1000},
+      {"name": "Stieleiche", "val": 800},
+      {"name": "Silbertanne", "val": 600},
+      {"name": "Europäische Fichte", "val": 500},
+      {"name": "Europäische Buche", "val": 300},
+      {"name": "Weißtanne", "val": 300},
+      {"name": "Lärche (Larix decidua)", "val": 600},
+      {"name": "Birke (Betula pendula)", "val": 150},
+      {"name": "Schwarzpappel", "val": 120}
+    ]
+  },
+  "fruchtgewicht": {
+    "prompt": "Welche Frucht ist schwerer?",
+    "unit": "g",
+    "items": [
+      {"name": "Atlantische Coco de Mer Palme", "val": 25000},
+      {"name": "Jackfrucht (Artocarpus)", "val": 35000},
+      {"name": "Riesenkürbis (Rekord)", "val": 1226000},
+      {"name": "Durian", "val": 5000},
+      {"name": "Papaya", "val": 2000},
+      {"name": "Wassermelone", "val": 10000},
+      {"name": "Ananas", "val": 1800},
+      {"name": "Kokosnuss", "val": 1500},
+      {"name": "Mango", "val": 600},
+      {"name": "Avocado", "val": 300},
+      {"name": "Apfel (Durchschnitt)", "val": 182},
+      {"name": "Orange", "val": 230},
+      {"name": "Zitrone", "val": 120},
+      {"name": "Kiwi", "val": 76},
+      {"name": "Erdbeere", "val": 18},
+      {"name": "Himbeere", "val": 4},
+      {"name": "Heidelbeere", "val": 2},
+      {"name": "Tomate (Cherry)", "val": 15},
+      {"name": "Traube (einzeln)", "val": 5},
+      {"name": "Feige", "val": 50}
+    ]
+  },
+  "samenlaenge": {
+    "prompt": "Welcher Samen ist länger?",
+    "unit": "mm",
+    "items": [
+      {"name": "Coco de Mer Samen", "val": 450},
+      {"name": "Doppelkokosnuss-Samenanlage", "val": 300},
+      {"name": "Mangroven-Keimling (Rhizophora)", "val": 350},
+      {"name": "Seetang-Keimling (Posidonia)", "val": 80},
+      {"name": "Vanilla-Schote", "val": 200},
+      {"name": "Kakao-Bohne", "val": 25},
+      {"name": "Kaffeebohne", "val": 10},
+      {"name": "Reiskorn", "val": 8},
+      {"name": "Weizenkorn", "val": 6},
+      {"name": "Maiskorn", "val": 9},
+      {"name": "Erbse", "val": 7},
+      {"name": "Kürbiskern", "val": 15},
+      {"name": "Sonnenblumenkern", "val": 12},
+      {"name": "Mandel", "val": 25},
+      {"name": "Haselnuss", "val": 15},
+      {"name": "Walnuss", "val": 30},
+      {"name": "Erdnuss", "val": 15},
+      {"name": "Mohnkorn", "val": 1},
+      {"name": "Sesamsamen", "val": 3},
+      {"name": "Chiasamen", "val": 2}
+    ]
+  },
+  "kaffeeproduktion": {
+    "prompt": "Welches Land produziert mehr Kaffee?",
+    "unit": "Tsd. 60-kg-Säcke/Jahr",
+    "items": [
+      {"name": "Brasilien", "val": 69500},
+      {"name": "Vietnam", "val": 32000},
+      {"name": "Kolumbien", "val": 14300},
+      {"name": "Indonesien", "val": 12000},
+      {"name": "Äthiopien", "val": 8000},
+      {"name": "Honduras", "val": 6200},
+      {"name": "Uganda", "val": 6100},
+      {"name": "Indien", "val": 5800},
+      {"name": "Mexiko", "val": 4300},
+      {"name": "Peru", "val": 4200},
+      {"name": "Guatemala", "val": 4000},
+      {"name": "Nicaragua", "val": 2700},
+      {"name": "Elfenbeinküste", "val": 2500},
+      {"name": "Costa Rica", "val": 1500},
+      {"name": "Papua-Neuguinea", "val": 1300},
+      {"name": "Kenia", "val": 1000},
+      {"name": "Tansania", "val": 900},
+      {"name": "Kamerun", "val": 800},
+      {"name": "DR Kongo", "val": 400},
+      {"name": "Ruanda", "val": 350}
+    ]
+  },
+  "weinproduktion": {
+    "prompt": "Welches Land produziert mehr Wein?",
+    "unit": "Mio. Liter/Jahr",
+    "items": [
+      {"name": "Italien", "val": 4926},
+      {"name": "Frankreich", "val": 4578},
+      {"name": "Spanien", "val": 3542},
+      {"name": "USA", "val": 2600},
+      {"name": "Australien", "val": 1400},
+      {"name": "Argentinien", "val": 1320},
+      {"name": "Chile", "val": 1210},
+      {"name": "Südafrika", "val": 1100},
+      {"name": "Deutschland", "val": 900},
+      {"name": "Portugal", "val": 780},
+      {"name": "Rumänien", "val": 480},
+      {"name": "Neuseeland", "val": 340},
+      {"name": "Ungarn", "val": 300},
+      {"name": "Österreich", "val": 240},
+      {"name": "Griechenland", "val": 230},
+      {"name": "Moldawien", "val": 180},
+      {"name": "Schweiz", "val": 100},
+      {"name": "Tschechien", "val": 90},
+      {"name": "Slowenien", "val": 80},
+      {"name": "England", "val": 15}
+    ]
+  },
+  "reisproduktion": {
+    "prompt": "Welches Land produziert mehr Reis?",
+    "unit": "Mio. Tonnen/Jahr",
+    "items": [
+      {"name": "China", "val": 212.0},
+      {"name": "Indien", "val": 195.0},
+      {"name": "Bangladesch", "val": 57.0},
+      {"name": "Indonesien", "val": 55.0},
+      {"name": "Vietnam", "val": 43.0},
+      {"name": "Thailand", "val": 33.0},
+      {"name": "Myanmar", "val": 26.0},
+      {"name": "Philippinen", "val": 20.0},
+      {"name": "Brasilien", "val": 11.0},
+      {"name": "Kambodscha", "val": 11.0},
+      {"name": "Japan", "val": 10.7},
+      {"name": "Pakistan", "val": 9.3},
+      {"name": "Nigeria", "val": 9.0},
+      {"name": "USA", "val": 8.5},
+      {"name": "Nepal", "val": 5.6},
+      {"name": "Sri Lanka", "val": 5.0},
+      {"name": "Ägypten", "val": 4.8},
+      {"name": "Laos", "val": 4.4},
+      {"name": "Südkorea", "val": 3.9},
+      {"name": "Kolumbien", "val": 3.0}
+    ]
+  },
+  "waldflaeche": {
+    "prompt": "Welches Land hat mehr Waldanteil?",
+    "unit": "%",
+    "items": [
+      {"name": "Suriname", "val": 93.0},
+      {"name": "Gabun", "val": 90.0},
+      {"name": "Palau", "val": 88.0},
+      {"name": "Guyana", "val": 85.0},
+      {"name": "Laos", "val": 82.0},
+      {"name": "Finnland", "val": 74.0},
+      {"name": "Schweden", "val": 69.0},
+      {"name": "Malaysia", "val": 62.0},
+      {"name": "Brasilien", "val": 59.0},
+      {"name": "Russland", "val": 49.0},
+      {"name": "Deutschland", "val": 33.0},
+      {"name": "USA", "val": 33.0},
+      {"name": "China", "val": 22.0},
+      {"name": "Indien", "val": 24.0},
+      {"name": "Frankreich", "val": 31.0},
+      {"name": "Vereinigtes Königreich", "val": 13.0},
+      {"name": "Island", "val": 2.0},
+      {"name": "Oman", "val": 0.01},
+      {"name": "Libyen", "val": 0.1},
+      {"name": "Ägypten", "val": 0.04}
+    ]
+  },
+  "stammumfang": {
+    "prompt": "Welcher Baum hat den größeren Stammumfang?",
+    "unit": "cm",
+    "items": [
+      {"name": "Arbol del Tule (Montezuma-Zypresse)", "val": 4000},
+      {"name": "Riesenmammutbaum General Sherman", "val": 3110},
+      {"name": "Kastanienbaum vom Ätna", "val": 2200},
+      {"name": "Olive von Vouves (Kreta)", "val": 1210},
+      {"name": "Affenbrotbaum (Adansonia grandidieri)", "val": 1800},
+      {"name": "Fortingall Yew", "val": 560},
+      {"name": "Tane Mahuta Kauri", "val": 1390},
+      {"name": "Major Oak (Sherwood Forest)", "val": 952},
+      {"name": "Big Tree (Yosemite Grizzly Giant)", "val": 2900},
+      {"name": "Europäische Eiche (Stieleiche)", "val": 800},
+      {"name": "Hainbuche", "val": 400},
+      {"name": "Linde (Tilia cordata)", "val": 600},
+      {"name": "Europäische Buche", "val": 550},
+      {"name": "Kastanie (Castanea sativa)", "val": 700},
+      {"name": "Platane", "val": 750},
+      {"name": "Eibe (Taxus baccata)", "val": 500},
+      {"name": "Silberweide", "val": 300},
+      {"name": "Birke (Betula pendula)", "val": 200},
+      {"name": "Apfelbaum", "val": 150},
+      {"name": "Kirschbaum", "val": 180}
+    ]
+  },
+  "blattflaeche": {
+    "prompt": "Welches Blatt hat die größere Fläche?",
+    "unit": "cm²",
+    "items": [
+      {"name": "Riesenlotos (Nelumbo nucifera rekord)", "val": 40000},
+      {"name": "Riesenpalme (Raphia regalis)", "val": 320000},
+      {"name": "Amazonas-Seerose (Victoria amazonica)", "val": 300000},
+      {"name": "Bananenblatt", "val": 30000},
+      {"name": "Taro (Colocasia esculenta)", "val": 15000},
+      {"name": "Feigenblatt", "val": 2000},
+      {"name": "Kastanienblatt", "val": 1000},
+      {"name": "Eichenblatt", "val": 80},
+      {"name": "Buchenblatt", "val": 45},
+      {"name": "Ahornblatt (Bergahorn)", "val": 200},
+      {"name": "Lindenblatt", "val": 70},
+      {"name": "Birkenblatt", "val": 35},
+      {"name": "Apfelblatt", "val": 40},
+      {"name": "Kirschblatt", "val": 60},
+      {"name": "Weidenblatt", "val": 25},
+      {"name": "Fichtennadel", "val": 1},
+      {"name": "Kiefernnadel", "val": 3},
+      {"name": "Lorbeerblatt", "val": 50},
+      {"name": "Olivenblatt", "val": 8},
+      {"name": "Rosmarin-Blatt", "val": 1}
+    ]
+  },
+  "bluehdauer": {
+    "prompt": "Welche Pflanze blüht länger pro Jahr?",
+    "unit": "Tage/Jahr",
+    "items": [
+      {"name": "Lotusblume (tropisch)", "val": 270},
+      {"name": "Bougainvillea (tropisch)", "val": 300},
+      {"name": "Hibiskus (subtropisch)", "val": 250},
+      {"name": "Rosen (moderne Sorten)", "val": 200},
+      {"name": "Geranien", "val": 180},
+      {"name": "Lavendel", "val": 60},
+      {"name": "Sonnenblume", "val": 30},
+      {"name": "Tulpe", "val": 14},
+      {"name": "Narzisse", "val": 21},
+      {"name": "Pfingstrose", "val": 10},
+      {"name": "Magnolie", "val": 14},
+      {"name": "Kirschblüte", "val": 7},
+      {"name": "Wiesenschaumkraut", "val": 30},
+      {"name": "Dahlien", "val": 90},
+      {"name": "Chrysanthemen", "val": 60},
+      {"name": "Alpenveilchen", "val": 90},
+      {"name": "Weihnachtsstern", "val": 120},
+      {"name": "Schneeglöckchen", "val": 14},
+      {"name": "Krokus", "val": 10},
+      {"name": "Flieder", "val": 21}
+    ]
+  },
+  "genomgroesse": {
+    "prompt": "Welche Pflanze hat das größere Genom?",
+    "unit": "Mbp",
+    "items": [
+      {"name": "Paris japonica (Germer)", "val": 152000},
+      {"name": "Fritillaria assyriaca (Schachblume)", "val": 130000},
+      {"name": "Tulpe (Tulipa gesneriana)", "val": 24000},
+      {"name": "Weizen (hexaploid)", "val": 17000},
+      {"name": "Roggen (Secale cereale)", "val": 8100},
+      {"name": "Gerste (Hordeum vulgare)", "val": 5100},
+      {"name": "Mais (Zea mays)", "val": 2500},
+      {"name": "Sorghum (Sorghum bicolor)", "val": 730},
+      {"name": "Tomate (Solanum lycopersicum)", "val": 900},
+      {"name": "Kartoffel (Solanum tuberosum)", "val": 844},
+      {"name": "Reis (Oryza sativa)", "val": 430},
+      {"name": "Sojabohne (Glycine max)", "val": 1100},
+      {"name": "Arabidopsis thaliana", "val": 125},
+      {"name": "Papaya (Carica papaya)", "val": 372},
+      {"name": "Kakao (Theobroma cacao)", "val": 430},
+      {"name": "Kaffee (Coffea arabica)", "val": 1280},
+      {"name": "Erdbeere (Fragaria ananassa)", "val": 213},
+      {"name": "Apfel (Malus domestica)", "val": 742},
+      {"name": "Weinrebe (Vitis vinifera)", "val": 487},
+      {"name": "Paprika (Capsicum annuum)", "val": 3500}
+    ]
+  }
+}
+;
+const PFLANZEN_MATCH_DATA={
+  "gewuerze": {
+    "prompt": "Woher stammt dieses Gewürz ursprünglich?",
+    "items": [
+      {"n": "Zimt", "c": "Sri Lanka"},
+      {"n": "Safran", "c": "Iran"},
+      {"n": "Vanille", "c": "Mexiko"},
+      {"n": "Kardamom", "c": "Guatemala"},
+      {"n": "Pfeffer", "c": "Indien"},
+      {"n": "Kurkuma", "c": "Indien"},
+      {"n": "Ingwer", "c": "China"},
+      {"n": "Sternanis", "c": "Vietnam"},
+      {"n": "Muskatnuss", "c": "Indonesien"},
+      {"n": "Nelken", "c": "Indonesien"},
+      {"n": "Cayennepfeffer", "c": "Mexiko"},
+      {"n": "Kümmel", "c": "Ägypten"},
+      {"n": "Paprika (edelsüß)", "c": "Ungarn"},
+      {"n": "Bockshornklee", "c": "Äthiopien"},
+      {"n": "Sumach", "c": "Türkei"},
+      {"n": "Asafoetida", "c": "Afghanistan"},
+      {"n": "Annatto (Achiote)", "c": "Brasilien"},
+      {"n": "Szechuan-Pfeffer", "c": "China"},
+      {"n": "Langer Pfeffer", "c": "Indien"},
+      {"n": "Za'atar", "c": "Libanon"},
+      {"n": "Fenugreek (Bockshornklee)", "c": "Äthiopien"},
+      {"n": "Kokosnuss-Pfeffer", "c": "Indonesien"}
+    ]
+  },
+  "familien": {
+    "prompt": "Zu welcher Pflanzenfamilie gehört diese Art?",
+    "items": [
+      {"n": "Rose", "c": "Rosaceae"},
+      {"n": "Löwenzahn", "c": "Asteraceae"},
+      {"n": "Tulpe", "c": "Liliaceae"},
+      {"n": "Kaffee", "c": "Rubiaceae"},
+      {"n": "Tomate", "c": "Solanaceae"},
+      {"n": "Kartoffel", "c": "Solanaceae"},
+      {"n": "Eiche", "c": "Fagaceae"},
+      {"n": "Buche", "c": "Fagaceae"},
+      {"n": "Eukalyptus", "c": "Myrtaceae"},
+      {"n": "Basilikum", "c": "Lamiaceae"},
+      {"n": "Orchidee", "c": "Orchidaceae"},
+      {"n": "Mais", "c": "Poaceae"},
+      {"n": "Bambus", "c": "Poaceae"},
+      {"n": "Sonnenblume", "c": "Asteraceae"},
+      {"n": "Lorbeer", "c": "Lauraceae"},
+      {"n": "Brennnessel", "c": "Urticaceae"},
+      {"n": "Erbse", "c": "Fabaceae"},
+      {"n": "Gurke", "c": "Cucurbitaceae"},
+      {"n": "Weide", "c": "Salicaceae"},
+      {"n": "Kiefer", "c": "Pinaceae"},
+      {"n": "Ahorn", "c": "Sapindaceae"},
+      {"n": "Minze", "c": "Lamiaceae"}
+    ]
+  },
+  "bluetezeit": {
+    "prompt": "In welcher Jahreszeit blüht diese Pflanze?",
+    "fixedOpts": ["Frühling", "Sommer", "Herbst", "Winter"],
+    "items": [
+      {"n": "Schneeglöckchen", "c": "Frühling"},
+      {"n": "Rose", "c": "Sommer"},
+      {"n": "Chrysantheme", "c": "Herbst"},
+      {"n": "Weihnachtsstern", "c": "Winter"},
+      {"n": "Hyazinthe", "c": "Frühling"},
+      {"n": "Lavendel", "c": "Sommer"},
+      {"n": "Dahlie", "c": "Sommer"},
+      {"n": "Alpenveilchen (Herbst)", "c": "Herbst"},
+      {"n": "Kirschblüte", "c": "Frühling"},
+      {"n": "Sonnenblume", "c": "Sommer"},
+      {"n": "Schneerose (Helleborus)", "c": "Winter"},
+      {"n": "Krokus", "c": "Frühling"},
+      {"n": "Pfingstrose", "c": "Frühling"},
+      {"n": "Narzisse", "c": "Frühling"},
+      {"n": "Geranie", "c": "Sommer"},
+      {"n": "Aster", "c": "Herbst"},
+      {"n": "Hortensie", "c": "Sommer"},
+      {"n": "Flieder", "c": "Frühling"},
+      {"n": "Kornblume", "c": "Sommer"},
+      {"n": "Herbstzeitlose", "c": "Herbst"},
+      {"n": "Magnolie", "c": "Frühling"},
+      {"n": "Winterling (Eranthis)", "c": "Winter"}
+    ]
+  },
+  "giftstoffe": {
+    "prompt": "Welcher Wirkstoff macht diese Pflanze giftig?",
+    "items": [
+      {"n": "Tollkirsche (Belladonna)", "c": "Atropin"},
+      {"n": "Fingerhut (Digitalis purpurea)", "c": "Digoxin"},
+      {"n": "Schierling (Conium maculatum)", "c": "Coniin"},
+      {"n": "Rizinus (Ricinus communis)", "c": "Ricin"},
+      {"n": "Oleander (Nerium oleander)", "c": "Oleandrin"},
+      {"n": "Eisenhut (Aconitum napellus)", "c": "Aconitin"},
+      {"n": "Stechapfel (Datura stramonium)", "c": "Scopolamin"},
+      {"n": "Herbstzeitlose (Colchicum autumnale)", "c": "Colchicin"},
+      {"n": "Eibe (Taxus baccata)", "c": "Taxin"},
+      {"n": "Maiglöckchen (Convallaria majalis)", "c": "Convallatoxin"},
+      {"n": "Bitterer Nachtschatten", "c": "Solanin"},
+      {"n": "Adlerfarn (Pteridium aquilinum)", "c": "Ptaquilosid"},
+      {"n": "Efeu (Hedera helix)", "c": "Falcarinol"},
+      {"n": "Blauregen (Wisteria sinensis)", "c": "Cytisin"},
+      {"n": "Bilsenkraut (Hyoscyamus niger)", "c": "Hyoscyamin"},
+      {"n": "Hahnenfuß (Ranunculus acris)", "c": "Protoanemonin"},
+      {"n": "Wolliger Fingerhut (Digitalis lanata)", "c": "Digitoxin"},
+      {"n": "Stinkende Nieswurz (Helleborus foetidus)", "c": "Veratrin"},
+      {"n": "Sumpf-Schierling (Cicuta virosa)", "c": "Cicutoxin"},
+      {"n": "Schwarzes Bilsenkraut", "c": "Hyoscyamin"}
+    ]
+  },
+  "fruchttyp": {
+    "prompt": "Zu welchem Fruchttyp gehört dieser botanische Begriff?",
+    "fixedOpts": ["Beere", "Steinfrucht", "Apfelfrucht", "Sammelfrucht"],
+    "items": [
+      {"n": "Tomate", "c": "Beere"},
+      {"n": "Kirsche", "c": "Steinfrucht"},
+      {"n": "Apfel", "c": "Apfelfrucht"},
+      {"n": "Erdbeere", "c": "Sammelfrucht"},
+      {"n": "Avocado", "c": "Steinfrucht"},
+      {"n": "Banane", "c": "Beere"},
+      {"n": "Kiwi", "c": "Beere"},
+      {"n": "Birne", "c": "Apfelfrucht"},
+      {"n": "Himbeere", "c": "Sammelfrucht"},
+      {"n": "Pfirsich", "c": "Steinfrucht"},
+      {"n": "Weintraube", "c": "Beere"},
+      {"n": "Quitte", "c": "Apfelfrucht"},
+      {"n": "Pflaume", "c": "Steinfrucht"},
+      {"n": "Brombeere", "c": "Sammelfrucht"},
+      {"n": "Gurke", "c": "Beere"},
+      {"n": "Mango", "c": "Steinfrucht"},
+      {"n": "Mispel", "c": "Apfelfrucht"},
+      {"n": "Feige", "c": "Sammelfrucht"},
+      {"n": "Papaya", "c": "Beere"},
+      {"n": "Olive", "c": "Steinfrucht"}
+    ]
+  },
+  "vermehrung": {
+    "prompt": "Wie vermehrt sich diese Pflanze hauptsächlich?",
+    "fixedOpts": ["Samen (generativ)", "Vegetativ (Ableger)", "Sporulation", "Apomixis"],
+    "items": [
+      {"n": "Farn", "c": "Sporulation"},
+      {"n": "Moos", "c": "Sporulation"},
+      {"n": "Kartoffel", "c": "Vegetativ (Ableger)"},
+      {"n": "Erdbeere", "c": "Vegetativ (Ableger)"},
+      {"n": "Knoblauch", "c": "Vegetativ (Ableger)"},
+      {"n": "Tulpe", "c": "Vegetativ (Ableger)"},
+      {"n": "Bambus", "c": "Vegetativ (Ableger)"},
+      {"n": "Weizen", "c": "Samen (generativ)"},
+      {"n": "Mais", "c": "Samen (generativ)"},
+      {"n": "Löwenzahn", "c": "Apomixis"},
+      {"n": "Rose (Garten)", "c": "Vegetativ (Ableger)"},
+      {"n": "Kiefer", "c": "Samen (generativ)"},
+      {"n": "Sonnenblume", "c": "Samen (generativ)"},
+      {"n": "Schachtelhalm", "c": "Sporulation"},
+      {"n": "Kaktus", "c": "Vegetativ (Ableger)"},
+      {"n": "Brennnessel", "c": "Samen (generativ)"},
+      {"n": "Ingwer", "c": "Vegetativ (Ableger)"},
+      {"n": "Tomate", "c": "Samen (generativ)"},
+      {"n": "Mango", "c": "Apomixis"},
+      {"n": "Bärlauch", "c": "Vegetativ (Ableger)"}
+    ]
+  },
+  "lebensraum": {
+    "prompt": "In welchem Lebensraum wächst diese Pflanze?",
+    "items": [
+      {"n": "Mangrove (Rhizophora mangle)", "c": "Gezeitenzone"},
+      {"n": "Kaktus (Saguaro)", "c": "Wüste"},
+      {"n": "Sphagnum-Moos", "c": "Hochmoor"},
+      {"n": "Edelweiss", "c": "Hochgebirge"},
+      {"n": "Seegras (Posidonia oceanica)", "c": "Meeresküste"},
+      {"n": "Straußenfarn", "c": "Auwälder"},
+      {"n": "Knabenkraut (Orchis)", "c": "Kalkwiese"},
+      {"n": "Zitterpappel", "c": "Steppenrandzonen"},
+      {"n": "Küstenheide (Erica)", "c": "Atlantikküste"},
+      {"n": "Arktische Weide (Salix arctica)", "c": "Tundra"},
+      {"n": "Torfmoos", "c": "Hochmoor"},
+      {"n": "Eichenwald-Buschwindröschen", "c": "Laubwald"},
+      {"n": "Korallen-Seegras", "c": "Meeresküste"},
+      {"n": "Montane Enziane", "c": "Hochgebirge"},
+      {"n": "Thymian", "c": "Mittelmeer-Garrigue"},
+      {"n": "Sonnentau (Drosera)", "c": "Hochmoor"},
+      {"n": "Rohrkolben (Typha)", "c": "Feuchtgebiete"},
+      {"n": "Bambus", "c": "Tropische Bergwälder"},
+      {"n": "Feuerblume (Kniphofia)", "c": "Afrikanische Savanne"},
+      {"n": "Weißklee (Trifolium repens)", "c": "Grünland"}
+    ]
+  },
+  "bestuaeber": {
+    "prompt": "Wer bestäubt diese Blume hauptsächlich?",
+    "fixedOpts": ["Bienen", "Wind", "Kolibri", "Fledermäuse"],
+    "items": [
+      {"n": "Rotklee", "c": "Bienen"},
+      {"n": "Mais", "c": "Wind"},
+      {"n": "Fuchsie", "c": "Kolibri"},
+      {"n": "Baobab-Blüte", "c": "Fledermäuse"},
+      {"n": "Sonnenblume", "c": "Bienen"},
+      {"n": "Birke", "c": "Wind"},
+      {"n": "Salbei", "c": "Bienen"},
+      {"n": "Agave (Mexiko)", "c": "Fledermäuse"},
+      {"n": "Glockenblume", "c": "Bienen"},
+      {"n": "Eiche", "c": "Wind"},
+      {"n": "Banane (Wilde)", "c": "Fledermäuse"},
+      {"n": "Mais", "c": "Wind"},
+      {"n": "Löwenzahn", "c": "Bienen"},
+      {"n": "Hibiskus (Hawaii)", "c": "Kolibri"},
+      {"n": "Weizen", "c": "Wind"},
+      {"n": "Saguaro-Kaktus", "c": "Fledermäuse"},
+      {"n": "Lavendel", "c": "Bienen"},
+      {"n": "Haselnuss", "c": "Wind"},
+      {"n": "Passionsblume", "c": "Kolibri"},
+      {"n": "Durian", "c": "Fledermäuse"}
+    ]
+  },
+  "herkunft": {
+    "prompt": "Von welchem Kontinent stammt diese Kulturpflanze ursprünglich?",
+    "items": [
+      {"n": "Kartoffel", "c": "Südamerika"},
+      {"n": "Tomate", "c": "Südamerika"},
+      {"n": "Mais", "c": "Nordamerika"},
+      {"n": "Sonnenblume", "c": "Nordamerika"},
+      {"n": "Kaffee", "c": "Afrika"},
+      {"n": "Sorghum", "c": "Afrika"},
+      {"n": "Wassermelone", "c": "Afrika"},
+      {"n": "Weizen", "c": "Asien"},
+      {"n": "Reis", "c": "Asien"},
+      {"n": "Sojabohne", "c": "Asien"},
+      {"n": "Banane", "c": "Asien"},
+      {"n": "Ingwer", "c": "Asien"},
+      {"n": "Olive", "c": "Europa"},
+      {"n": "Weinrebe", "c": "Europa"},
+      {"n": "Linsen", "c": "Asien"},
+      {"n": "Kakao", "c": "Südamerika"},
+      {"n": "Ananas", "c": "Südamerika"},
+      {"n": "Avocado", "c": "Nordamerika"},
+      {"n": "Kürbis", "c": "Nordamerika"},
+      {"n": "Chili", "c": "Nordamerika"}
+    ]
+  },
+  "nutzung": {
+    "prompt": "Wofür wird diese Pflanze hauptsächlich genutzt?",
+    "fixedOpts": ["Nahrung", "Medizin / Pharmazie", "Textilfaser", "Zierpflanze"],
+    "items": [
+      {"n": "Opium-Mohn (Papaver somniferum)", "c": "Medizin / Pharmazie"},
+      {"n": "Baumwolle (Gossypium)", "c": "Textilfaser"},
+      {"n": "Weizen", "c": "Nahrung"},
+      {"n": "Orchidee", "c": "Zierpflanze"},
+      {"n": "Chinchona (Chinarinde)", "c": "Medizin / Pharmazie"},
+      {"n": "Flachs (Linum usitatissimum)", "c": "Textilfaser"},
+      {"n": "Zuckerrohr", "c": "Nahrung"},
+      {"n": "Rose (Gartenrose)", "c": "Zierpflanze"},
+      {"n": "Artischocke", "c": "Nahrung"},
+      {"n": "Hanf (Cannabis sativa)", "c": "Textilfaser"},
+      {"n": "Kamille (Matricaria)", "c": "Medizin / Pharmazie"},
+      {"n": "Tulpe (Garten)", "c": "Zierpflanze"},
+      {"n": "Süßkartoffel", "c": "Nahrung"},
+      {"n": "Sisal (Agave sisalana)", "c": "Textilfaser"},
+      {"n": "Baldrian (Valeriana)", "c": "Medizin / Pharmazie"},
+      {"n": "Dahlie", "c": "Zierpflanze"},
+      {"n": "Brokkoli", "c": "Nahrung"},
+      {"n": "Brennnessel (Urtica dioica)", "c": "Textilfaser"},
+      {"n": "Ginkgo biloba", "c": "Medizin / Pharmazie"},
+      {"n": "Pelargonie", "c": "Zierpflanze"}
+    ]
+  },
+  "blattform": {
+    "prompt": "Welche Blattform hat diese Pflanze?",
+    "fixedOpts": ["Nadelförmig", "Herzförmig", "Gefiedert", "Handförmig"],
+    "items": [
+      {"n": "Fichte", "c": "Nadelförmig"},
+      {"n": "Kiefer", "c": "Nadelförmig"},
+      {"n": "Linde", "c": "Herzförmig"},
+      {"n": "Brennnessel", "c": "Herzförmig"},
+      {"n": "Schwarze Holunder", "c": "Gefiedert"},
+      {"n": "Robinie", "c": "Gefiedert"},
+      {"n": "Ahornblatt", "c": "Handförmig"},
+      {"n": "Kastanie (Rosskastanie)", "c": "Handförmig"},
+      {"n": "Tanne", "c": "Nadelförmig"},
+      {"n": "Efeu", "c": "Handförmig"},
+      {"n": "Walnuss", "c": "Gefiedert"},
+      {"n": "Lärche", "c": "Nadelförmig"},
+      {"n": "Hasel", "c": "Herzförmig"},
+      {"n": "Esche", "c": "Gefiedert"},
+      {"n": "Weinrebe", "c": "Handförmig"},
+      {"n": "Rhabarber", "c": "Herzförmig"},
+      {"n": "Sumach", "c": "Gefiedert"},
+      {"n": "Thuja", "c": "Nadelförmig"},
+      {"n": "Hanf", "c": "Handförmig"},
+      {"n": "Holunder", "c": "Gefiedert"}
+    ]
+  },
+  "klimazone": {
+    "prompt": "In welcher Klimazone wächst diese Pflanze natürlich?",
+    "fixedOpts": ["Tropisch", "Mediterran", "Gemäßigt", "Arktisch/Alpin"],
+    "items": [
+      {"n": "Durian", "c": "Tropisch"},
+      {"n": "Olivenbaum", "c": "Mediterran"},
+      {"n": "Stieleiche", "c": "Gemäßigt"},
+      {"n": "Silberwurz (Dryas octopetala)", "c": "Arktisch/Alpin"},
+      {"n": "Kokospalme", "c": "Tropisch"},
+      {"n": "Kork-Eiche", "c": "Mediterran"},
+      {"n": "Rotbuche", "c": "Gemäßigt"},
+      {"n": "Edelweiss", "c": "Arktisch/Alpin"},
+      {"n": "Mangrove", "c": "Tropisch"},
+      {"n": "Lavendel", "c": "Mediterran"},
+      {"n": "Birke", "c": "Gemäßigt"},
+      {"n": "Arktische Weide", "c": "Arktisch/Alpin"},
+      {"n": "Kakaopflanze", "c": "Tropisch"},
+      {"n": "Zypresse", "c": "Mediterran"},
+      {"n": "Fichte", "c": "Gemäßigt"},
+      {"n": "Steinbrechgewächs (Saxifraga)", "c": "Arktisch/Alpin"},
+      {"n": "Bambus (tropische Arten)", "c": "Tropisch"},
+      {"n": "Lorbeer", "c": "Mediterran"},
+      {"n": "Lärche", "c": "Gemäßigt"},
+      {"n": "Gletscherhahnenfuß", "c": "Arktisch/Alpin"}
+    ]
+  },
+  "scheinfruchte": {
+    "prompt": "Wie klassifiziert die Botanik diese Frucht?",
+    "fixedOpts": ["Echte Frucht", "Scheinfrucht", "Hülse", "Zapfen"],
+    "items": [
+      {"n": "Kirsche", "c": "Echte Frucht"},
+      {"n": "Apfel", "c": "Scheinfrucht"},
+      {"n": "Erbse", "c": "Hülse"},
+      {"n": "Fichte-Zapfen", "c": "Zapfen"},
+      {"n": "Pflaume", "c": "Echte Frucht"},
+      {"n": "Erdbeere", "c": "Scheinfrucht"},
+      {"n": "Bohne", "c": "Hülse"},
+      {"n": "Kiefernzapfen", "c": "Zapfen"},
+      {"n": "Traube (Weinbeere)", "c": "Echte Frucht"},
+      {"n": "Hagebutte", "c": "Scheinfrucht"},
+      {"n": "Linse", "c": "Hülse"},
+      {"n": "Lärchenzapfen", "c": "Zapfen"},
+      {"n": "Tomate", "c": "Echte Frucht"},
+      {"n": "Birne", "c": "Scheinfrucht"},
+      {"n": "Sojabohne", "c": "Hülse"},
+      {"n": "Tannenzapfen", "c": "Zapfen"},
+      {"n": "Avocado", "c": "Echte Frucht"},
+      {"n": "Maulbeere", "c": "Scheinfrucht"},
+      {"n": "Kichererbse", "c": "Hülse"},
+      {"n": "Wacholderfrucht", "c": "Zapfen"}
+    ]
+  },
+  "baum_des_jahres": {
+    "prompt": "In welchem Jahr wurde dieser Baum zum \"Baum des Jahres\" in Deutschland gekürt?",
+    "yearMode": true,
+    "items": [
+      {"n": "Europäische Lärche", "c": "2012"},
+      {"n": "Wildapfel", "c": "2013"},
+      {"n": "Traubenkirsche", "c": "2014"},
+      {"n": "Feldstadtbaum (Feld-Ahorn)", "c": "2015"},
+      {"n": "Kiefer (Wald-Kiefer)", "c": "2016"},
+      {"n": "Moorbirke", "c": "2017"},
+      {"n": "Weisstanne", "c": "2018"},
+      {"n": "Flatterulme", "c": "2019"},
+      {"n": "Hainbuche", "c": "2020"},
+      {"n": "Spitzahorn", "c": "2021"},
+      {"n": "Rotbuche", "c": "2022"},
+      {"n": "Speierling", "c": "2023"},
+      {"n": "Mehlbeere", "c": "2024"},
+      {"n": "Bergahorn", "c": "2025"},
+      {"n": "Sommerlinde", "c": "2003"},
+      {"n": "Silber-Weide", "c": "2004"},
+      {"n": "Rosskastanie", "c": "2005"},
+      {"n": "Schwarzpappel", "c": "2006"},
+      {"n": "Vogelkirsche", "c": "2010"},
+      {"n": "Esskastanie", "c": "2011"}
+    ]
+  },
+  "giftpflanze_jahres": {
+    "prompt": "In welchem Jahr wurde diese Pflanze zur \"Giftpflanze des Jahres\" gekürt?",
+    "yearMode": true,
+    "items": [
+      {"n": "Stechapfel (Datura stramonium)", "c": "2021"},
+      {"n": "Rizinus (Ricinus communis)", "c": "2020"},
+      {"n": "Eisenhut (Aconitum)", "c": "2019"},
+      {"n": "Engelstrompete (Brugmansia)", "c": "2018"},
+      {"n": "Herbstzeitlose (Colchicum autumnale)", "c": "2017"},
+      {"n": "Tollkirsche (Atropa belladonna)", "c": "2016"},
+      {"n": "Oleander (Nerium oleander)", "c": "2015"},
+      {"n": "Aronstab (Arum maculatum)", "c": "2014"},
+      {"n": "Fingerhut (Digitalis purpurea)", "c": "2013"},
+      {"n": "Schierling (Conium maculatum)", "c": "2012"},
+      {"n": "Hahnenfuß (Ranunculus)", "c": "2011"},
+      {"n": "Bilsenkraut (Hyoscyamus niger)", "c": "2010"},
+      {"n": "Maiglöckchen (Convallaria majalis)", "c": "2009"},
+      {"n": "Riesen-Bärenklau (Heracleum)", "c": "2008"},
+      {"n": "Eibe (Taxus baccata)", "c": "2007"},
+      {"n": "Blauregen (Wisteria sinensis)", "c": "2022"},
+      {"n": "Rittersporn (Delphinium)", "c": "2023"},
+      {"n": "Efeu (Hedera helix)", "c": "2006"},
+      {"n": "Seidelbast (Daphne mezereum)", "c": "2024"},
+      {"n": "Stechpalme (Ilex aquifolium)", "c": "2025"}
+    ]
+  }
+}
+;
+const PFLANZEN_WS_DATA={
+  "trauerweide": {
+    "word": "TRAUERWEIDE",
+    "validWords": {
+      "de": ["weide","reue","treue","tier","treu","rate","ware","rute","wirt","weit","teer","erde","drei","reiter","weder","dauer","weiter","riet","traue","wider","dreier","adieu"],
+      "en": ["water","write","tired","wider","trade","wired","waiter","rated","tread","tried","adieu","rider","deter","aired","water","weir","tied","wire","read","dear","date","dare","aide","diet","dirt","ride","wait","ward","ware","tire"]
+    }
+  },
+  "rhododendron": {
+    "word": "RHODODENDRON",
+    "validWords": {
+      "de": ["horde","orden","rondo","donor","honor","nord","herd","horn","redo","roden","norden","drohend","hohn","rodeo"],
+      "en": ["horde","rondo","donor","honor","horn","drone","doner","nerd","heron","doer","node","dodo","done","rodeo","redo","hood","noon","door","noon","rhone","honor"]
+    }
+  },
+  "sonnenblume": {
+    "word": "SONNENBLUME",
+    "validWords": {
+      "de": ["blume","sonne","lumen","nomen","omen","blues","sonnen","semen","noble","neben","beule","molen","loben","lebens","melon","lune","bonus","oben"],
+      "en": ["lemon","blues","none","numb","mole","sole","bone","some","noble","bole","moles","bones","soles","ones","noel","lune","nuns","bens","omen","eons","snob","blouse","noble","lemon","lube","lobe","slum","neon"]
+    }
+  },
+  "pusteblume": {
+    "word": "PUSTEBLUME",
+    "validWords": {
+      "de": ["blume","lupe","pulse","lust","tube","blut","stube","beste","beule","lumpe","tupel","plume","stempel","pulte","meute","mutes","beutel","liest"],
+      "en": ["plume","pulse","lump","slump","stump","tubes","plumes","lumps","stumble","tumble","best","lust","smelt","spume","melt","pelt","stem","blest","belt","blues","betel","spelt","bumble","temple","upset","blest"]
+    }
+  },
+  "nachtschatten": {
+    "word": "NACHTSCHATTEN",
+    "validWords": {
+      "de": ["nacht","schatten","hatten","naht","taste","sache","nach","acht","schach","tante","hast","saat","chance","stach","tachet","nachts","tasten","anat","chant"],
+      "en": ["ants","chat","chats","chant","chance","hatch","snatch","tenth","scan","cane","acne","catch","attach","nastier","antics","saints","chants","satins","trains","ant","tan","has","cat","scat","cant","than","ache","each","teach","beach"]
+    }
+  },
+  "vergissmeinnicht": {
+    "word": "VERGISSMEINNICHT",
+    "validWords": {
+      "de": ["vergiss","schein","messing","vermiss","gericht","hinein","gehirn","tennis","minne","siegen","gehen","sehen","gemisch","reichen","singt","stirn","regen","siege","stein","greis"],
+      "en": ["grime","minster","crisis","mining","miser","risen","resin","sinister","regime","invert","signet","richest","ingest","stein","grins","crime","might","nights","siren","shine","things","sting","tiger","mire","mine","grin","sing","trim","gist","ring","sign"]
+    }
+  },
+  "kaffeebohne": {
+    "word": "KAFFEEBOHNE",
+    "validWords": {
+      "de": ["bohne","kaffee","hafen","ofen","fahne","kaffe","bahn","ahne","knabe","haken","fehn","hefe","nahe","oben","kaftan"],
+      "en": ["bone","bean","bake","fake","bane","fane","knob","hone","honk","bonk","oaken","nab","beehive","hobnob","fohn","fake","hake","beak","keen","okeh"]
+    }
+  },
+  "weihnachtsstern": {
+    "word": "WEIHNACHTSSTERN",
+    "validWords": {
+      "de": ["weihnacht","stern","naht","tante","hast","schein","heran","stein","rente","sehen","sterne","nester","acht","sintern","trans","stach","rast","haste","wacht","nicht"],
+      "en": ["winter","hearts","chant","stein","stern","haste","waste","trance","stance","nastier","antics","saints","chants","satins","trains","inert","insert","wraith","earth","hearts","ants","chat","hire","wine","nine","thine","shine","whine","swine","entire"]
+    }
+  },
+  "ginkgobaum": {
+    "word": "GINKGOBAUM",
+    "validWords": {
+      "de": ["baum","gang","mango","bank","bingo","kaum","knabe","main","gain","ombu"],
+      "en": ["bingo","mango","bank","gunk","knob","king","bona","main","gain","numb","bunk","monk","mink","gamin","kami","ambo","oak","nab","nag","bag","ban","gin","ago","bog","mug","gun","gum","bug","bun","mob","mob"]
+    }
+  }
+}
+;
+
 /* === Phase 227 Part 2: genTiereMatchQ -- tiere-interner Distractor-Pool === */
 function genTiereMatchQ(cat){
   var cfg=TIER_MATCH_DATA[cat];
@@ -19108,6 +20260,110 @@ function genTiereMatchQ(cat){
     ans:cor.c,opts:opts,meta:"",lid:_lid,cc:"de"};
 }
 
+/* === Phase 228: Pflanzen-Generatoren === */
+function genPflanzenPinQ(cat){
+  var cfg=PFLANZEN_PIN_DATA[cat];
+  if(!cfg||!cfg.items||!cfg.items.length)return null;
+  var items=cfg.items;
+  var item=items[~~(rng()*items.length)];
+  if(!item||!item.n)return null;
+  var modeObj=(typeof MODES!=="undefined"?MODES:[]).find(function(m){return m.id==="uk_pflanzen_"+cat;})||{};
+  return{type:"uk_pin",cat:"pflanzen_"+cat,prompt:cfg.prompt||modeObj.prompt||"Wo liegt das?",
+    subj:item.n,targetLat:item.lat,targetLng:item.lng,ans:item.n,
+    lid:"pkp_"+cat+"_"+item.n.replace(/[^a-zA-Z0-9]/g,"_").substring(0,20),cc:null};
+}
+function genPflanzenHL(dataKey){
+  var cfg=PFLANZEN_HL_DATA[dataKey];
+  if(!cfg||!cfg.items||cfg.items.length<2)return null;
+  var sorted=cfg.items.slice().sort(function(a,b){return parseFloat(a.val)-parseFloat(b.val);});
+  var len=sorted.length;
+  var tries=0;
+  while(tries++<40){
+    var ai=~~(rng()*len);
+    var W=Math.max(1,Math.floor(len*0.1));
+    var lo=Math.max(0,ai-W),hi=Math.min(len-1,ai+W);
+    var pool=[];
+    for(var i=lo;i<=hi;i++){if(i!==ai)pool.push(i);}
+    if(!pool.length)continue;
+    var bi=pool[~~(rng()*pool.length)];
+    var a=sorted[ai],b=sorted[bi];
+    var va=parseFloat(a.val),vb=parseFloat(b.val);
+    if(va===vb)continue;
+    var span=parseFloat(sorted[len-1].val)-parseFloat(sorted[0].val);
+    if(span>0&&Math.abs(va-vb)<span*0.02)continue;
+    var higher=va>vb?a:b;
+    var unit=cfg.unit||"";
+    var meta=a.name+": "+a.val+(unit?" "+unit:"")+" · "+b.name+": "+b.val+(unit?" "+unit:"");
+    var _lid="phl_"+dataKey+"_"+Math.min(ai,bi)+"_"+Math.max(ai,bi);
+    return{type:"beta_hl",prompt:cfg.prompt||"Welches ist mehr?",subj:"",
+      opts:[a.name,b.name],ans:higher.name,meta:meta,lid:_lid,cc:"de"};
+  }
+  return null;
+}
+function genPflanzenMatchQ(cat){
+  var cfg=PFLANZEN_MATCH_DATA[cat];
+  if(!cfg||!cfg.items||!cfg.items.length)return null;
+  var items=cfg.items;
+  var cor=items[~~(rng()*items.length)];
+  if(!cor||!cor.n||!cor.c)return null;
+  var opts;
+  if(cfg.fixedOpts){
+    opts=sh(cfg.fixedOpts.slice());
+  }else if(cfg.yearMode){
+    var sameCat=items.filter(function(x){return x.c!==cor.c;}).map(function(x){return x.c;});
+    var uniq=[...new Set(sameCat)];
+    var dis=_rfilt(uniq,3);
+    opts=sh([cor.c].concat(dis.slice(0,3)));
+  }else{
+    var pool=[];
+    var keys=Object.keys(PFLANZEN_MATCH_DATA);
+    for(var _ki=0;_ki<keys.length;_ki++){
+      var _k=keys[_ki];
+      var _kd=PFLANZEN_MATCH_DATA[_k];
+      if(_kd.fixedOpts||_kd.yearMode)continue;
+      var _kItems=(_kd.items||[]);
+      for(var _ii=0;_ii<_kItems.length;_ii++){
+        var _cv=_kItems[_ii].c;
+        if(_cv&&_cv!==cor.c)pool.push(_cv);
+      }
+    }
+    var unique=[...new Set(pool)];
+    var dis2=_rfilt(unique,3);
+    if(dis2.length<3){
+      var sc=items.filter(function(x){return x.c!==cor.c;}).map(function(x){return x.c;});
+      dis2=_rfilt([...new Set(sc)],3);
+    }
+    opts=sh([cor.c].concat(dis2.slice(0,3)));
+  }
+  var prompt=cfg.prompt||"Ordne richtig zu!";
+  var _lid="pkm_"+cat+"_"+cor.n.substring(0,12).replace(/[^a-zA-Z0-9]/g,"_");
+  return{type:"uk_match",cat:cat,prompt:prompt,subj:cor.n,
+    ans:cor.c,opts:opts,meta:"",lid:_lid,cc:"de"};
+}
+function initPflanzenWS(key){
+  clearInterval(tIv);_wsDetachKb();
+  var entry=PFLANZEN_WS_DATA[key];
+  if(!entry||!entry.validWords){console.warn("[GeoQuest] PflanzenWS missing:"+key);S.ph="menu";render();return;}
+  var userLang=S.language||localStorage.getItem("gq_lang")||"en";
+  var wsLang=_WS_LANGS.has(userLang)?userLang:"en";
+  var raw=entry.validWords[wsLang];
+  var hasOwn=Array.isArray(raw)&&raw.length>0;
+  var actualLang=hasOwn?wsLang:"en";
+  var src2=hasOwn?raw:(entry.validWords["en"]||[]);
+  var words=src2.map(function(w){return w.toUpperCase();}).filter(function(w){return w.length>=3;});
+  if(!words.length){console.warn("[GeoQuest] PflanzenWS no words:"+key);S.ph="menu";render();return;}
+  var usingFallback=actualLang!==userLang;
+  S.wsData={tierWsKey:key,city:entry.word,lang:actualLang,usingFallback:usingFallback,
+    allWords:words,foundWords:[],input:"",phase:"playing",timeLeft:_WS_TIMER,shakeTs:0};
+  S.gameStartTime=Date.now();S.ph="playing";
+  tIv=setInterval(function(){
+    if(S.ph!=="playing"||!S.wsData)return;
+    S.wsData.timeLeft--;
+    if(S.wsData.timeLeft<=0){S.wsData.phase="done";S.ph="feedback";clearInterval(tIv);}
+    render();
+  },1000);
+  _wsAttachKb();
+}
 function genUniversalMatchQ(cat){
   const data=KULTUR_DATA[cat];
   if(!data||!data.length)return null;
@@ -19383,6 +20639,55 @@ const GEN={
   uk_pferde_fachbegriffe:()=>genTiereMatchQ("pferde_fachbegriffe"),
   hl_pferde_stockmass:()=>genTiereHL("pferde_stockmass"),
   ws_pferde_fluesterer:()=>{initTierWortSchmiede("pferde_fluesterer");return null;},
+  /* Phase 228: Pflanzen-Modi */
+  uk_pflanzen_nutzpflanzen:()=>genPflanzenPinQ("nutzpflanzen"),
+  uk_pflanzen_einzelbaeume:()=>genPflanzenPinQ("einzelbaeume"),
+  uk_pflanzen_botanische_gaerten:()=>genPflanzenPinQ("botanische_gaerten"),
+  uk_pflanzen_tropenwald:()=>genPflanzenPinQ("tropenwald"),
+  uk_pflanzen_weinanbau:()=>genPflanzenPinQ("weinanbau"),
+  uk_pflanzen_heilpflanzen:()=>genPflanzenPinQ("heilpflanzen"),
+  uk_pflanzen_mangroven:()=>genPflanzenPinQ("mangroven"),
+  uk_pflanzen_kakao_ursprung:()=>genPflanzenPinQ("kakao_ursprung"),
+  uk_pflanzen_reisanbau:()=>genPflanzenPinQ("reisanbau"),
+  uk_pflanzen_bambus:()=>genPflanzenPinQ("bambus"),
+  uk_pflanzen_endemisch:()=>genPflanzenPinQ("endemisch"),
+  uk_pflanzen_nationalblumen:()=>genPflanzenPinQ("nationalblumen"),
+  hl_pflanzen_wuchshoehe:()=>genPflanzenHL("wuchshoehe"),
+  hl_pflanzen_alter:()=>genPflanzenHL("alter"),
+  hl_pflanzen_fruchtgewicht:()=>genPflanzenHL("fruchtgewicht"),
+  hl_pflanzen_samenlaenge:()=>genPflanzenHL("samenlaenge"),
+  hl_pflanzen_kaffeeproduktion:()=>genPflanzenHL("kaffeeproduktion"),
+  hl_pflanzen_weinproduktion:()=>genPflanzenHL("weinproduktion"),
+  hl_pflanzen_reisproduktion:()=>genPflanzenHL("reisproduktion"),
+  hl_pflanzen_waldflaeche:()=>genPflanzenHL("waldflaeche"),
+  hl_pflanzen_stammumfang:()=>genPflanzenHL("stammumfang"),
+  hl_pflanzen_blattflaeche:()=>genPflanzenHL("blattflaeche"),
+  hl_pflanzen_bluehdauer:()=>genPflanzenHL("bluehdauer"),
+  hl_pflanzen_genomgroesse:()=>genPflanzenHL("genomgroesse"),
+  uk_pflanzen_gewuerze:()=>genPflanzenMatchQ("gewuerze"),
+  uk_pflanzen_familien:()=>genPflanzenMatchQ("familien"),
+  uk_pflanzen_bluetezeit:()=>genPflanzenMatchQ("bluetezeit"),
+  uk_pflanzen_giftstoffe:()=>genPflanzenMatchQ("giftstoffe"),
+  uk_pflanzen_fruchttyp:()=>genPflanzenMatchQ("fruchttyp"),
+  uk_pflanzen_vermehrung:()=>genPflanzenMatchQ("vermehrung"),
+  uk_pflanzen_lebensraum:()=>genPflanzenMatchQ("lebensraum"),
+  uk_pflanzen_bestuaeber:()=>genPflanzenMatchQ("bestuaeber"),
+  uk_pflanzen_herkunft:()=>genPflanzenMatchQ("herkunft"),
+  uk_pflanzen_nutzung:()=>genPflanzenMatchQ("nutzung"),
+  uk_pflanzen_blattform:()=>genPflanzenMatchQ("blattform"),
+  uk_pflanzen_klimazone:()=>genPflanzenMatchQ("klimazone"),
+  uk_pflanzen_scheinfruchte:()=>genPflanzenMatchQ("scheinfruchte"),
+  uk_pflanzen_baum_des_jahres:()=>genPflanzenMatchQ("baum_des_jahres"),
+  uk_pflanzen_giftpflanze_jahres:()=>genPflanzenMatchQ("giftpflanze_jahres"),
+  ws_pflanzen_trauerweide:()=>{initPflanzenWS("trauerweide");return null;},
+  ws_pflanzen_rhododendron:()=>{initPflanzenWS("rhododendron");return null;},
+  ws_pflanzen_sonnenblume:()=>{initPflanzenWS("sonnenblume");return null;},
+  ws_pflanzen_pusteblume:()=>{initPflanzenWS("pusteblume");return null;},
+  ws_pflanzen_nachtschatten:()=>{initPflanzenWS("nachtschatten");return null;},
+  ws_pflanzen_vergissmeinnicht:()=>{initPflanzenWS("vergissmeinnicht");return null;},
+  ws_pflanzen_kaffeebohne:()=>{initPflanzenWS("kaffeebohne");return null;},
+  ws_pflanzen_weihnachtsstern:()=>{initPflanzenWS("weihnachtsstern");return null;},
+  ws_pflanzen_ginkgobaum:()=>{initPflanzenWS("ginkgobaum");return null;},
   uk_surf_spots:()=>genUniversalPinQ("surf_spots"),
   uk_kontinent_mitte:()=>genUniversalPinQ("kontinent_mitte"),
   /* Phase 216 Schritt 2: H/L Beta */
