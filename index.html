@@ -43105,13 +43105,7 @@ async function loadGameData(){
 
 if("serviceWorker"in navigator){
   try{
-    const swSrc=`const CACHE='gq-v10';
-/* Phase 221: Offline-Modus — network-first mit Cache-Fallback */
-self.addEventListener('install',function(){self.skipWaiting();});
-self.addEventListener('activate',function(e){e.waitUntil(caches.keys().then(function(ks){return Promise.all(ks.filter(function(k){return k!==CACHE;}).map(function(k){return caches.delete(k);}));}).then(function(){return self.clients.claim();}));});
-self.addEventListener('fetch',function(e){if(e.request.mode==='navigate'||e.request.destination==='document'){e.respondWith(fetch(e.request).then(function(resp){var r=resp.clone();caches.open(CACHE).then(function(c){c.put(e.request,r);});return resp;}).catch(function(){return caches.match(e.request).then(function(r){return r||new Response('<h2>GeoQuest — Offline</h2><p>Keine Verbindung. Bitte zuerst mit Internet starten.</p>',{headers:{'Content-Type':'text/html'}});});}));}});\`;`;
-    const blob=new Blob([swSrc],{type:"application/javascript"});
-    navigator.serviceWorker.register(URL.createObjectURL(blob),{scope:"./"}).catch(()=>{});
+    navigator.serviceWorker.register('./sw.js').catch(function(){});
   }catch(e){}
   window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();S.pwaPrompt=e;const b=document.getElementById("pwa-banner");if(b)b.style.display="flex";});
 }
