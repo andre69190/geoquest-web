@@ -3337,8 +3337,11 @@ const MODES=[
     {id:"uk_pferde_rassen",icon:"\u{1F40E}",title:"Pferderassen",group:"tiere",prompt:"Wo wurde diese Pferderasse gez\u00fcchtet?",desc:"Von Shire bis Lipizzaner \u2014 Ursprungsorte der Rassen"},
     {id:"uk_pferde_fachbegriffe",icon:"\u{1F3A8}",title:"Pferde-Fachbegriffe",group:"tiere",prompt:"Was bezeichnet dieser Fachbegriff beim Pferd?",desc:"Fellfarben und Reitlehre \u2014 das Pferde-ABC"},
     {id:"hl_pferde_stockmass",icon:"\u{1F4CF}",title:"H/L Stockma\u00df",group:"tiere",prompt:"Welches Pferd hat ein gr\u00f6\u00dferes Stockma\u00df?",desc:"Widerristhohe in cm \u2014 Falabella bis Shire"},
-    {id:"ws_pferde_fluesterer",icon:"\u{1F40E}",title:"WS: Pferdefl\u00fcsterer",group:"tiere",noMultiplayer:true,prompt:"Bilde W\u00f6rter aus SHIREHORSE!",desc:"Anagramm-R\u00e4tsel \u2014 10 Buchstaben"}
-,
+    {id:"ws_pferde_fluesterer",icon:"\u{1F40E}",title:"WS: Pferdefl\u00fcsterer",group:"tiere",noMultiplayer:true,prompt:"Bilde W\u00f6rter aus SHIREHORSE!",desc:"Anagramm-R\u00e4tsel \u2014 10 Buchstaben"},
+    {id:"hl_pferde_speed",icon:"\u{1F40E}",title:"H/L Galopp-Speed",group:"tiere",prompt:"Welches Pferd ist schneller?",desc:"Von Falabella bis Quarter Horse \u2014 Galoppgeschwindigkeiten"},
+    {id:"hl_pferde_gewicht",icon:"\u2696\uFE0F",title:"H/L K\u00f6rpergewicht",group:"tiere",prompt:"Welches Pferd ist schwerer?",desc:"60 kg Falabella bis 1100 kg Shire Horse"},
+    {id:"uk_pferde_reitsport",icon:"\u{1F3C7}",title:"Reitsport-Disziplinen",group:"tiere",prompt:"Zu welcher Disziplin geh\u00f6rt dieser Begriff?",desc:"T\u00f6lt, Piaffe, Reining, Oxer \u2014 5 Disziplinen"},
+    {id:"ws_pferde_hufeisen",icon:"\u{1F40E}",title:"WS: Hufeisen",group:"tiere",noMultiplayer:true,prompt:"Bilde W\u00f6rter aus HUFEISEN!",desc:"8 Buchstaben \u2014 von SEIN bis SEIFE"},
     /* === Phase 228: Pflanzen-Modi (Pin) === */
     {id:"uk_pflanzen_nutzpflanzen",icon:"\u{1F33E}",title:"Nutzpflanzen-Ursprung",group:"pflanzen",prompt:"Wo liegt dieser Nutzpflanzen-Ursprungsort?",desc:"Kaffee, Kakao, Weizen \u2014 Wo kamen sie urspr\u00fcnglich her?"},
     {id:"uk_pflanzen_einzelbaeume",icon:"\u{1F333}",title:"Ber\u00fchmte B\u00e4ume",group:"pflanzen",prompt:"Wo steht dieser ber\u00fchmte Baum?",desc:"General Sherman bis Methuselah \u2014 Legenden-B\u00e4ume der Welt"},
@@ -3776,7 +3779,7 @@ const MODE_CATS={
     "ws_tiere_schnabeltier","ws_tiere_gottesanbeterin","ws_tiere_komodowaran",
     "ws_tiere_korallenriff","ws_tiere_silberruecken","ws_tiere_wanderfalke",
     "ws_tiere_mauersegler","ws_tiere_baertierchen","ws_tiere_lederschildkroete",
-    "ws_tiere_pfeilgiftfrosch","uk_tiere_darwin_finken","uk_tiere_schutzgebiete","uk_tiere_zoos","uk_tiere_nutztier_rassen","uk_tiere_fossilien","uk_tiere_arktis_antarktis","uk_tiere_forscher_eponyme","uk_tiere_pelagial","uk_tiere_wuesten_spezialisten","uk_tiere_gift_hotspots","uk_tiere_migranten","hl_tiere_haustier_dichte","uk_pferde_rassen","uk_pferde_fachbegriffe","hl_pferde_stockmass","ws_pferde_fluesterer"
+    "ws_tiere_pfeilgiftfrosch","uk_tiere_darwin_finken","uk_tiere_schutzgebiete","uk_tiere_zoos","uk_tiere_nutztier_rassen","uk_tiere_fossilien","uk_tiere_arktis_antarktis","uk_tiere_forscher_eponyme","uk_tiere_pelagial","uk_tiere_wuesten_spezialisten","uk_tiere_gift_hotspots","uk_tiere_migranten","hl_tiere_haustier_dichte","uk_pferde_rassen","uk_pferde_fachbegriffe","hl_pferde_stockmass","ws_pferde_fluesterer","hl_pferde_speed","hl_pferde_gewicht","uk_pferde_reitsport","ws_pferde_hufeisen"
   ],cost:0},
   pflanzen:{label:"Pflanzen & Flora",icon:"\u{1F33F}",modes:[
     "uk_pflanzen_nutzpflanzen","uk_pflanzen_einzelbaeume","uk_pflanzen_botanische_gaerten",
@@ -5338,6 +5341,46 @@ const TIER_WS_DATA={
         "SIR",
         "SORE",
         "SOS"
+      ]
+    }
+  },
+  "hufeisen": {
+    "word": "HUFEISEN",
+    "validWords": {
+      "de": [
+        "HUFE",
+        "HUFEN",
+        "FEIN",
+        "FEINE",
+        "FEINS",
+        "FEINES",
+        "SEIN",
+        "SEINE",
+        "EINE",
+        "EINES",
+        "EINS",
+        "SEIFE",
+        "SENF",
+        "FIES",
+        "FIESE",
+        "NIES",
+        "HEIN"
+      ],
+      "en": [
+        "FINE",
+        "FINES",
+        "FUSE",
+        "INFUSE",
+        "HUES",
+        "SHIN",
+        "SHINE",
+        "SHEEN",
+        "FENS",
+        "HENS",
+        "SINE",
+        "HIES",
+        "SEIF",
+        "NEIFS"
       ]
     }
   }
@@ -7524,6 +7567,19 @@ async function syncOfflineData(){
   }catch(_se){
     console.warn('syncOfflineData failed',_se);
   }
+  /* Phase 258: Offline-Feedback-Queue hochladen */
+  try{
+    const _fbRaw=localStorage.getItem('gq_offline_feedback');
+    if(_fbRaw&&sb&&sbUser?.id){
+      const _fbQ=JSON.parse(_fbRaw);
+      if(_fbQ.length>0){
+        for(const _fb of _fbQ){if(!_fb.user_id)_fb.user_id=sbUser.id;}
+        await sb.from('feedback').insert(_fbQ);
+        localStorage.removeItem('gq_offline_feedback');
+        showToast('\u2705 '+_fbQ.length+' Offline-Feedback \u00fcbermittelt!');
+      }
+    }
+  }catch(_fe){console.warn('Feedback-sync failed',_fe);}
 }
 async function fetchLeaderboard(mode){
   if(!sb)return[];
@@ -17492,6 +17548,142 @@ const TIER_PIN_DATA={
         "lng": 115.52
       }
     ]
+  },
+  "pferde_rassen": {
+    "prompt": "Wo liegt der historische Ursprung oder das Hauptzuchtgebiet dieser Pferderasse?",
+    "prompt_en": "Where is the historical origin or main breeding region of this horse breed?",
+    "items": [
+      {
+        "n": "Islandpferd",
+        "lat": 64.13,
+        "lng": -21.95
+      },
+      {
+        "n": "Andalusier (PRE)",
+        "lat": 37.39,
+        "lng": -5.99
+      },
+      {
+        "n": "Haflinger",
+        "lat": 46.67,
+        "lng": 11.36
+      },
+      {
+        "n": "Lipizzaner",
+        "lat": 45.53,
+        "lng": 13.95
+      },
+      {
+        "n": "Friese",
+        "lat": 53.1,
+        "lng": 5.8
+      },
+      {
+        "n": "Trakehner",
+        "lat": 54.6,
+        "lng": 21.0
+      },
+      {
+        "n": "Hannoveraner",
+        "lat": 52.37,
+        "lng": 9.73
+      },
+      {
+        "n": "Oldenburger",
+        "lat": 53.14,
+        "lng": 8.21
+      },
+      {
+        "n": "Shetlandpony",
+        "lat": 60.15,
+        "lng": -1.18
+      },
+      {
+        "n": "Welsh Mountain Pony",
+        "lat": 52.13,
+        "lng": -3.78
+      },
+      {
+        "n": "Connemara-Pony",
+        "lat": 53.45,
+        "lng": -10.0
+      },
+      {
+        "n": "Camargue-Pferd",
+        "lat": 43.52,
+        "lng": 4.48
+      },
+      {
+        "n": "Percheron",
+        "lat": 48.2,
+        "lng": 0.4
+      },
+      {
+        "n": "Lusitano",
+        "lat": 39.55,
+        "lng": -8.0
+      },
+      {
+        "n": "Noriker",
+        "lat": 47.05,
+        "lng": 13.48
+      },
+      {
+        "n": "Fjordpferd",
+        "lat": 61.18,
+        "lng": 6.1
+      },
+      {
+        "n": "Arabisches Vollblut",
+        "lat": 24.0,
+        "lng": 45.0
+      },
+      {
+        "n": "Akhal-Teke",
+        "lat": 37.93,
+        "lng": 58.38
+      },
+      {
+        "n": "Przewalski-Pferd",
+        "lat": 47.9,
+        "lng": 106.91
+      },
+      {
+        "n": "Berber-Pferd",
+        "lat": 33.0,
+        "lng": -5.0
+      },
+      {
+        "n": "Mustang",
+        "lat": 39.8,
+        "lng": -98.6
+      },
+      {
+        "n": "Quarter Horse",
+        "lat": 32.0,
+        "lng": -97.0
+      },
+      {
+        "n": "Appaloosa",
+        "lat": 46.4,
+        "lng": -116.9
+      },
+      {
+        "n": "Paint Horse",
+        "lat": 35.47,
+        "lng": -97.51
+      },
+      {
+        "n": "Criollo",
+        "lat": -34.61,
+        "lng": -58.39
+      },
+      {
+        "n": "Englisches Vollblut",
+        "lat": 52.0,
+        "lng": -1.0
+      }
+    ]
   }
 };
 Object.assign(KULTUR_DATA,TIER_PIN_DATA);
@@ -18670,6 +18862,148 @@ const TIER_HL_DATA={
       {
         "name": "Shire",
         "val": 185
+      }
+    ]
+  },
+  "pferde_speed": {
+    "prompt": "Welches Pferd / welche Equide ist im Galopp schneller?",
+    "prompt_en": "Which horse or equid is faster at a gallop?",
+    "unit": "km/h",
+    "items": [
+      {
+        "name": "Quarter Horse (¼-Meile Sprint)",
+        "val": 88.0
+      },
+      {
+        "name": "Englisches Vollblut (GWR 2008)",
+        "val": 70.8
+      },
+      {
+        "name": "Arabisches Vollblut",
+        "val": 65.0
+      },
+      {
+        "name": "Grevy-Zebra",
+        "val": 64.0
+      },
+      {
+        "name": "Steppenzebra",
+        "val": 56.0
+      },
+      {
+        "name": "Przewalski-Pferd",
+        "val": 56.0
+      },
+      {
+        "name": "Mustang",
+        "val": 55.0
+      },
+      {
+        "name": "Appaloosa",
+        "val": 55.0
+      },
+      {
+        "name": "Afrikanischer Wildesel",
+        "val": 50.0
+      },
+      {
+        "name": "Islandpferd",
+        "val": 48.0
+      },
+      {
+        "name": "Haflinger",
+        "val": 45.0
+      },
+      {
+        "name": "Fjordpferd",
+        "val": 40.0
+      },
+      {
+        "name": "Shetlandpony",
+        "val": 35.0
+      },
+      {
+        "name": "Shire Horse",
+        "val": 30.0
+      },
+      {
+        "name": "Falabella",
+        "val": 20.0
+      }
+    ]
+  },
+  "pferde_gewicht": {
+    "prompt": "Welches Pferd ist im Durchschnitt schwerer?",
+    "prompt_en": "Which horse is heavier on average?",
+    "unit": "kg",
+    "items": [
+      {
+        "name": "Shire Horse",
+        "val": 1100
+      },
+      {
+        "name": "Belgisches Kaltblut",
+        "val": 1000
+      },
+      {
+        "name": "Clydesdale",
+        "val": 900
+      },
+      {
+        "name": "Percheron",
+        "val": 850
+      },
+      {
+        "name": "Noriker",
+        "val": 750
+      },
+      {
+        "name": "Friese",
+        "val": 650
+      },
+      {
+        "name": "Haflinger",
+        "val": 550
+      },
+      {
+        "name": "Lusitano",
+        "val": 520
+      },
+      {
+        "name": "Trakehner",
+        "val": 500
+      },
+      {
+        "name": "Appaloosa",
+        "val": 510
+      },
+      {
+        "name": "Arabisches Vollblut",
+        "val": 440
+      },
+      {
+        "name": "Islandpferd",
+        "val": 380
+      },
+      {
+        "name": "Przewalski-Pferd",
+        "val": 300
+      },
+      {
+        "name": "Welsh Mountain Pony",
+        "val": 200
+      },
+      {
+        "name": "Connemara-Pony",
+        "val": 280
+      },
+      {
+        "name": "Shetlandpony",
+        "val": 180
+      },
+      {
+        "name": "Falabella",
+        "val": 60
       }
     ]
   }
@@ -20868,6 +21202,92 @@ const TIER_MATCH_DATA={
       {
         "n": "Schultereinhalt",
         "c": "Übung: Vorhand auf innerer Spur"
+      }
+    ]
+  },
+  "reitsport_disziplinen": {
+    "prompt": "Zu welcher Reitdisziplin gehört dieser Begriff oder diese Gangart?",
+    "prompt_en": "Which equestrian discipline does this term or gait belong to?",
+    "items": [
+      {
+        "n": "Tölt",
+        "c": "Islandpferdereiten"
+      },
+      {
+        "n": "Pass",
+        "c": "Islandpferdereiten"
+      },
+      {
+        "n": "Rennpass",
+        "c": "Islandpferdereiten"
+      },
+      {
+        "n": "Fünfgang",
+        "c": "Islandpferdereiten"
+      },
+      {
+        "n": "Piaffe",
+        "c": "Klassische Dressur"
+      },
+      {
+        "n": "Passage",
+        "c": "Klassische Dressur"
+      },
+      {
+        "n": "Pirouette",
+        "c": "Klassische Dressur"
+      },
+      {
+        "n": "Levade",
+        "c": "Klassische Dressur"
+      },
+      {
+        "n": "Reining",
+        "c": "Westernreiten"
+      },
+      {
+        "n": "Cutting",
+        "c": "Westernreiten"
+      },
+      {
+        "n": "Barrel Racing",
+        "c": "Westernreiten"
+      },
+      {
+        "n": "Trail",
+        "c": "Westernreiten"
+      },
+      {
+        "n": "Oxer",
+        "c": "Springreiten"
+      },
+      {
+        "n": "In-and-Out",
+        "c": "Springreiten"
+      },
+      {
+        "n": "Wassergraben",
+        "c": "Springreiten"
+      },
+      {
+        "n": "Kombination",
+        "c": "Springreiten"
+      },
+      {
+        "n": "Pflichtprogramm",
+        "c": "Voltigieren"
+      },
+      {
+        "n": "Kür",
+        "c": "Voltigieren"
+      },
+      {
+        "n": "Pas de Deux",
+        "c": "Voltigieren"
+      },
+      {
+        "n": "Gruppenvoltigieren",
+        "c": "Voltigieren"
       }
     ]
   }
@@ -45442,6 +45862,10 @@ const GEN={
   uk_pferde_fachbegriffe:()=>genTiereMatchQ("pferde_fachbegriffe"),
   hl_pferde_stockmass:()=>genTiereHL("pferde_stockmass"),
   ws_pferde_fluesterer:()=>{initTierWortSchmiede("pferde_fluesterer");return null;},
+  hl_pferde_speed:()=>genTiereHL("pferde_speed"),
+  hl_pferde_gewicht:()=>genTiereHL("pferde_gewicht"),
+  uk_pferde_reitsport:()=>genTiereMatchQ("reitsport_disziplinen"),
+  ws_pferde_hufeisen:()=>{initTierWortSchmiede("hufeisen");return null;},
   /* Phase 228: Pflanzen-Modi */
   uk_pflanzen_nutzpflanzen:()=>genPflanzenPinQ("nutzpflanzen"),
   uk_pflanzen_einzelbaeume:()=>genPflanzenPinQ("einzelbaeume"),
@@ -49436,6 +49860,11 @@ function _ttsSpeakNow(txt,lang){
   var _langMap={'de':'de-DE','en':'en-US','fr':'fr-FR','es':'es-ES','it':'it-IT','nl':'nl-NL','pt':'pt-PT','pl':'pl-PL','sv':'sv-SE','da':'da-DK','fi':'fi-FI','ro':'ro-RO','el':'el-GR'};
   _ttsUtter.lang=_langMap[lang||S.language||'de']||'de-DE';
   _ttsUtter.rate=0.92;_ttsUtter.pitch=1.0;
+  /* Phase 257: grünes Highlight während Sprechen */
+  var _hi=function(on){document.querySelectorAll('[title="Frage vorlesen"]').forEach(function(b){b.style.background=on?'#10b981':'';b.style.color=on?'#fff':'';});};
+  _hi(true);
+  _ttsUtter.onend=function(){_hi(false);};
+  _ttsUtter.onerror=function(){_hi(false);};
   window.speechSynthesis.speak(_ttsUtter);
 }
 function _ttsCurrentQ(){
@@ -49484,11 +49913,17 @@ function openFeedback(){
     var _txt=(_ta?_ta.value:'').trim();
     if(_txt.length<10){if(_err)_err.textContent='Bitte mindestens 10 Zeichen eingeben.';if(_ta)_ta.style.border='2px solid #ef4444';return;}
     _ov.remove();
-    var _payload={category:_cat,message:_txt,mode:S.mode||null,lang:S.language||'de',app_version:'256',username:(typeof sbProfile!=='undefined'&&sbProfile&&sbProfile.username?sbProfile.username:null)};
-    if(typeof sbOK!=='undefined'&&sbOK&&typeof sb!=='undefined'&&sb){
+    var _payload={category:_cat,message:_txt,mode:S.mode||null,lang:S.language||'de',app_version:'258',username:(typeof sbProfile!=='undefined'&&sbProfile&&sbProfile.username?sbProfile.username:null)};
+    /* Phase 258: Offline-Queue */
+    if(!navigator.onLine){
+      var _oq=JSON.parse(localStorage.getItem('gq_offline_feedback')||'[]');
+      _oq.push(_payload);
+      localStorage.setItem('gq_offline_feedback',JSON.stringify(_oq));
+      showToast('📥 Offline gespeichert — wird beim nächsten Start gesendet');
+    }else if(typeof sbOK!=='undefined'&&sbOK&&typeof sb!=='undefined'&&sb){
       var _uid=(typeof sbUser!=='undefined'&&sbUser&&sbUser.id)?sbUser.id:null;
       if(_uid)_payload.user_id=_uid;
-      sb.from('feedback').insert(_payload).then(function(){showToast('✅ Danke für dein Feedback!');},function(e){console.warn('Feedback-Supabase-Fehler:',e);_sendFeedbackMail(_cat,_txt,_mn);});
+      sb.from('feedback').insert(_payload).then(function(){showToast('✅ Danke für dein Feedback! ❤️');},function(e){console.warn('Feedback-Supabase-Fehler:',e);_sendFeedbackMail(_cat,_txt,_mn);});
     }else{_sendFeedbackMail(_cat,_txt,_mn);}
   };
 }
@@ -49921,11 +50356,11 @@ function renderHomeTab(){
   const _hdr=_li
     ?`<div style="display:flex;align-items:center;justify-content:space-between;padding:.85rem 1rem .6rem;margin-bottom:.1rem">
         <div style="display:flex;align-items:center;gap:8px"><div style="font-size:1.05rem;font-weight:700;color:var(--text)">${t("home_hi",{name:_un})}</div>${_streakBadge}</div>
-        <div style="display:flex;align-items:center;gap:5px;background:var(--bg2);border-radius:20px;padding:.28rem .75rem;font-size:.82rem;font-weight:700;color:#f59e0b;border:1px solid rgba(245,158,11,.25)">\u{1FA99} ${_gc}</div>
+        <div style="display:flex;align-items:center;gap:6px"><button onclick="openFeedback()" title="Feedback senden" style="background:var(--bg2);color:var(--text2,#94a3b8);border:1px solid var(--border,#334155);border-radius:20px;padding:.25rem .55rem;font-size:.82rem;font-weight:700;cursor:pointer;line-height:1">\u{1F4A1}</button><div style="display:flex;align-items:center;gap:5px;background:var(--bg2);border-radius:20px;padding:.28rem .75rem;font-size:.82rem;font-weight:700;color:#f59e0b;border:1px solid rgba(245,158,11,.25)">\u{1FA99} ${_gc}</div></div>
       </div>`
     :`<div style="display:flex;align-items:center;justify-content:space-between;padding:.85rem 1rem .6rem;margin-bottom:.1rem">
         <div style="display:flex;align-items:center;gap:8px"><div style="font-size:1.05rem;font-weight:700;color:var(--text)">${t("home_guest")}</div>${_streakBadge}</div>
-        <button onclick="S.tab='profil';render()" style="background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;border:none;border-radius:20px;padding:.3rem .8rem;font-size:.72rem;font-weight:700;cursor:pointer;white-space:nowrap;box-shadow:0 2px 8px rgba(99,102,241,.35)">${t("home_save")}</button>
+        <div style="display:flex;align-items:center;gap:6px"><button onclick="openFeedback()" title="Feedback senden" style="background:var(--bg2);color:var(--text2,#94a3b8);border:1px solid var(--border,#334155);border-radius:20px;padding:.28rem .55rem;font-size:.72rem;font-weight:700;cursor:pointer;line-height:1">\u{1F4A1}</button><button onclick="S.tab='profil';render()" style="background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;border:none;border-radius:20px;padding:.3rem .8rem;font-size:.72rem;font-weight:700;cursor:pointer;white-space:nowrap;box-shadow:0 2px 8px rgba(99,102,241,.35)">${t("home_save")}</button></div>
       </div>`;
   const _homeHTML=`${_hdr}${renderDailyHero()}
     <div class="pvp-hero" onclick="S.mpModal=true;render()" role="button" aria-label="Live 1vs1 starten">
