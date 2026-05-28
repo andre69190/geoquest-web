@@ -2,800 +2,809 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GeoQuest – Spielübersicht</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GeoQuest Spielübersicht — Phase 258</title>
 <style>
-  :root {
-    --bg: #0f172a; --bg2: #1e293b; --bg3: #263347;
-    --text: #e2e8f0; --text2: #94a3b8;
-    --green: #10b981; --blue: #3b82f6; --purple: #8b5cf6;
-    --orange: #f59e0b; --red: #ef4444; --teal: #14b8a6;
-    --pink: #ec4899; --indigo: #6366f1;
-    --border: #334155; --radius: 10px;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; padding: 20px; }
-  h1 { font-size: 1.6rem; font-weight: 800; color: var(--green); margin-bottom: 4px; }
-  .subtitle { color: var(--text2); font-size: .85rem; margin-bottom: 24px; }
-  .stats-bar { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
-  .stat-chip { background: var(--bg2); border: 1px solid var(--border); border-radius: 20px; padding: 6px 14px; font-size: .8rem; }
-  .stat-chip strong { color: var(--green); }
-  .section { margin-bottom: 28px; }
-  .section-title { font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--text2); margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; }
-  .card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 14px; display: flex; align-items: flex-start; gap: 10px; }
-  .card-icon { font-size: 1.4rem; flex-shrink: 0; min-width: 30px; text-align: center; margin-top: 2px; }
-  .card-body { flex: 1; min-width: 0; }
-  .card-name { font-weight: 700; font-size: .88rem; margin-bottom: 3px; }
-  .card-source { font-size: .75rem; color: var(--text2); margin-bottom: 5px; }
-  .badge { display: inline-block; font-size: .7rem; font-weight: 700; padding: 2px 8px; border-radius: 10px; }
-  .badge-green  { background: #064e3b; color: var(--green); }
-  .badge-blue   { background: #1e3a5f; color: var(--blue); }
-  .badge-purple { background: #2e1065; color: #a78bfa; }
-  .badge-orange { background: #451a03; color: var(--orange); }
-  .badge-teal   { background: #042f2e; color: var(--teal); }
-  .badge-red    { background: #450a0a; color: #f87171; }
-  .badge-pink   { background: #500724; color: #f9a8d4; }
-  .badge-indigo { background: #1e1b4b; color: #a5b4fc; }
-  .count { font-size: .72rem; color: var(--text2); margin-top: 4px; }
-  .count span { color: var(--green); font-weight: 700; }
-  @media(max-width:600px){ .grid { grid-template-columns: 1fr; } h1{font-size:1.3rem} }
+:root{--bg:#0f172a;--bg2:#1e293b;--bg3:#334155;--text:#e2e8f0;--text2:#94a3b8;--accent:#6366f1;--green:#10b981;--amber:#f59e0b;--red:#ef4444}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:14px;line-height:1.5}
+header{background:linear-gradient(135deg,#1e1b4b,#312e81);padding:2rem;text-align:center;border-bottom:1px solid var(--bg3)}
+header h1{font-size:2rem;font-weight:800;background:linear-gradient(90deg,#818cf8,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+header p{color:var(--text2);margin-top:.5rem;font-size:.9rem}
+.hero-num{font-size:3rem;font-weight:900;color:#818cf8;display:block;line-height:1}
+.stats{display:flex;flex-wrap:wrap;gap:.5rem;padding:1.5rem;justify-content:center}
+.sc{background:var(--bg2);border:1px solid var(--bg3);border-radius:12px;padding:.5rem 1rem;display:flex;align-items:center;gap:.5rem;font-size:.82rem}
+.se{font-size:1.1rem}
+.sl{color:var(--text2)}
+.sn{font-weight:700;color:var(--accent);margin-left:.25rem}
+.search-bar{padding:0 1.5rem 1rem;display:flex;gap:.5rem}
+.search-bar input{flex:1;background:var(--bg2);border:1px solid var(--bg3);border-radius:8px;padding:.5rem 1rem;color:var(--text);font-size:.9rem;outline:none}
+.search-bar input:focus{border-color:var(--accent)}
+.tbl-wrap{padding:0 1.5rem 3rem;overflow-x:auto}
+table{width:100%;border-collapse:collapse}
+.gh td{background:var(--bg2);font-weight:700;font-size:.95rem;padding:.6rem 1rem;border-top:2px solid var(--bg3);color:var(--text)}
+.cnt{color:var(--text2);font-weight:400;font-size:.82rem}
+.mr:hover td{background:#1a2332}
+.mr td{padding:.45rem .75rem;border-bottom:1px solid rgba(255,255,255,.04);vertical-align:top}
+.n{color:var(--text2);font-size:.75rem;width:30px;text-align:right;padding-right:.5rem}
+.mid{font-family:monospace;font-size:.78rem;color:var(--accent);white-space:nowrap;width:180px}
+.dc{color:var(--text2);font-size:.82rem}
+.cs{background:var(--amber);color:#000;border-radius:4px;padding:.1rem .3rem;font-size:.7rem;font-weight:700;margin-left:.3rem}
+.hidden{display:none}
+footer{text-align:center;padding:1rem;color:var(--text2);font-size:.8rem;border-top:1px solid var(--bg3)}
+@media(max-width:600px){.mid{display:none}.dc{display:none}}
 </style>
 </head>
 <body>
+<header>
+  <h1>GeoQuest Spielübersicht</h1>
+  <p>Phase 258 · Mai 2026 · verify: 89/89</p>
+  <span class="hero-num">681</span>
+  <p style="color:#818cf8;font-weight:600">Spielmodi in 20 Kategorien</p>
+</header>
 
-<h1>🌍 GeoQuest – Komplette Spielübersicht</h1>
-<p class="subtitle">Alle Spielmodi mit Datenbasis und Anzahl der Einträge — Stand Mai 2026</p>
+<div class="stats">
+<div class="sc"><span class="se">🌍</span><span class="sl">Pure Geo</span><span class="sn">29</span></div>
+<div class="sc"><span class="se">🎭</span><span class="sl">Lifestyle</span><span class="sn">24</span></div>
+<div class="sc"><span class="se">🚗</span><span class="sl">EU-Kennzeichen</span><span class="sn">4</span></div>
+<div class="sc"><span class="se">↕️</span><span class="sl">Higher / Lower</span><span class="sn">11</span></div>
+<div class="sc"><span class="se">⚖️</span><span class="sl">Vergleiche</span><span class="sn">31</span></div>
+<div class="sc"><span class="se">⚽</span><span class="sl">Sport & Events</span><span class="sn">37</span></div>
+<div class="sc"><span class="se">🤝</span><span class="sl">Nachbarn</span><span class="sn">20</span></div>
+<div class="sc"><span class="se">🗺️</span><span class="sl">Karte</span><span class="sn">16</span></div>
+<div class="sc"><span class="se">🧪</span><span class="sl">Neue Modi</span><span class="sn">7</span></div>
+<div class="sc"><span class="se">✈️</span><span class="sl">Flughäfen & Klima</span><span class="sn">34</span></div>
+<div class="sc"><span class="se">🎨</span><span class="sl">Kultur</span><span class="sn">27</span></div>
+<div class="sc"><span class="se">🐾</span><span class="sl">Tiere & Natur</span><span class="sn">63</span></div>
+<div class="sc"><span class="se">🌿</span><span class="sl">Pflanzen</span><span class="sn">48</span></div>
+<div class="sc"><span class="se">🍽️</span><span class="sl">Gastronomie</span><span class="sn">51</span></div>
+<div class="sc"><span class="se">💻</span><span class="sl">Technologie</span><span class="sn">43</span></div>
+<div class="sc"><span class="se">⚡</span><span class="sl">E-Mobilität</span><span class="sn">57</span></div>
+<div class="sc"><span class="se">🏛️</span><span class="sl">Archäologie</span><span class="sn">60</span></div>
+<div class="sc"><span class="se">🔭</span><span class="sl">Astronomie</span><span class="sn">28</span></div>
+<div class="sc"><span class="se">⛰️</span><span class="sl">Geologie</span><span class="sn">51</span></div>
+<div class="sc"><span class="se">🏆</span><span class="sl">Sport-Wissen</span><span class="sn">40</span></div>
 
-<div class="stats-bar">
-  <div class="stat-chip">Spielmodi gesamt: <strong>85</strong></div>
-  <div class="stat-chip">Städte: <strong>2.315</strong></div>
-  <div class="stat-chip">Sport-POIs: <strong>219</strong></div>
-  <div class="stat-chip">Sehenswürdigkeiten: <strong>176</strong></div>
-  <div class="stat-chip">UNESCO: <strong>149</strong></div>
-  <div class="stat-chip">Nationalparks: <strong>113</strong></div>
-  <div class="stat-chip">Gerichte: <strong>221</strong></div>
-  <div class="stat-chip">Marken: <strong>42</strong></div>
-  <div class="stat-chip">Währungen: <strong>35</strong></div>
-  <div class="stat-chip">U-Bahn-Netze: <strong>57</strong></div>
-  <div class="stat-chip">DE-Kennzeichen: <strong>289</strong></div>
-  <div class="stat-chip">30k-Städte: <strong>30.461</strong></div>
-  <div class="stat-chip">F1-Strecken: <strong>30</strong></div>
-  <div class="stat-chip">UEFA-Stadien: <strong>28</strong></div>
 </div>
 
-<!-- ─── PURE GEO ─────────────────────────────────────── -->
-<div class="section">
-  <div class="section-title">🌐 Reine Geografie</div>
-  <div class="grid">
-
-    <div class="card">
-      <div class="card-icon">🏙</div>
-      <div class="card-body">
-        <div class="card-name">Stadt → Land</div>
-        <div class="card-source">cities.json (GeoNames)</div>
-        <div><span class="badge badge-green">Pure Geo</span></div>
-        <div class="count">Datenbasis: <span>2.315</span> Städte weltweit</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">🚩</div>
-      <div class="card-body">
-        <div class="card-name">Flagge → Land</div>
-        <div class="card-source">Länderliste (~195 Länder)</div>
-        <div><span class="badge badge-green">Pure Geo</span></div>
-        <div class="count">Datenbasis: <span>~195</span> Länder/Flaggen</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">🏛</div>
-      <div class="card-body">
-        <div class="card-name">Hauptstadt → Land</div>
-        <div class="card-source">Capitals-Datensatz</div>
-        <div><span class="badge badge-green">Pure Geo</span></div>
-        <div class="count">Datenbasis: <span>~195</span> Hauptstädte</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">💧</div>
-      <div class="card-body">
-        <div class="card-name">🧪 Flüsse pinnen</div>
-        <div class="card-source">RIVERS_GEO_DATA (intern)</div>
-        <div><span class="badge badge-green">Pure Geo</span> <span class="badge badge-blue">NEU Phase 202</span></div>
-        <div class="count">Datenbasis: <span>~51</span> Flüsse mit Quellkoordinaten</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">🏛</div>
-      <div class="card-body">
-        <div class="card-name">🧪 UNESCO Karte</div>
-        <div class="card-source">UNESCO_GEO_DATA (intern)</div>
-        <div><span class="badge badge-green">Pure Geo</span> <span class="badge badge-blue">NEU Phase 202</span></div>
-        <div class="count">Datenbasis: <span>149</span> UNESCO-Stätten mit Koordinaten</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">💧</div>
-      <div class="card-body">
-        <div class="card-name">Fluss → Land</div>
-        <div class="card-source">rivers.json (intern)</div>
-        <div><span class="badge badge-green">Pure Geo</span></div>
-        <div class="count">Datenbasis: <span>~51</span> Flüsse</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">🗽</div>
-      <div class="card-body">
-        <div class="card-name">Sehenswürdigkeit → Land</div>
-        <div class="card-source">landmarks.json</div>
-        <div><span class="badge badge-green">Pure Geo</span></div>
-        <div class="count">Datenbasis: <span>176</span> Sehenswürdigkeiten</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">🌿</div>
-      <div class="card-body">
-        <div class="card-name">Nationalpark → Land</div>
-        <div class="card-source">parks.json</div>
-        <div><span class="badge badge-green">Pure Geo</span></div>
-        <div class="count">Datenbasis: <span>113</span> Nationalparks</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">🏛</div>
-      <div class="card-body">
-        <div class="card-name">UNESCO Welterbe → Land</div>
-        <div class="card-source">unesco.json</div>
-        <div><span class="badge badge-green">Pure Geo</span></div>
-        <div class="count">Datenbasis: <span>149</span> UNESCO-Stätten</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">🌆</div>
-      <div class="card-body">
-        <div class="card-name">Wahrzeichen → Stadt</div>
-        <div class="card-source">Stadtmarken-Datensatz</div>
-        <div><span class="badge badge-green">Pure Geo</span></div>
-        <div class="count">Datenbasis: <span>~40</span> Wahrzeichen</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">🚇</div>
-      <div class="card-body">
-        <div class="card-name">U-Bahn-Netz → Stadt</div>
-        <div class="card-source">subways.json (Wikidata SPARQL)</div>
-        <div><span class="badge badge-green">Pure Geo</span></div>
-        <div class="count">Datenbasis: <span>50</span> U-Bahn-Netze</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">🎌</div>
-      <div class="card-body">
-        <div class="card-name">Land → Flagge (auswählen)</div>
-        <div class="card-source">Länderliste (~195 Länder)</div>
-        <div><span class="badge badge-green">Pure Geo</span></div>
-        <div class="count">Datenbasis: <span>~195</span> Flaggen zur Auswahl</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">🏟</div>
-      <div class="card-body">
-        <div class="card-name">Land → Hauptstadt</div>
-        <div class="card-source">Capitals-Datensatz</div>
-        <div><span class="badge badge-green">Pure Geo</span></div>
-        <div class="count">Datenbasis: <span>~195</span> Länder-Hauptstädte</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">🏢</div>
-      <div class="card-body">
-        <div class="card-name">Land → Stadt</div>
-        <div class="card-source">cities.json (GeoNames)</div>
-        <div><span class="badge badge-green">Pure Geo</span></div>
-        <div class="count">Datenbasis: <span>2.315</span> Städte weltweit</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">💧</div>
-      <div class="card-body">
-        <div class="card-name">Land → Fluss</div>
-        <div class="card-source">rivers.json (intern)</div>
-        <div><span class="badge badge-green">Pure Geo</span></div>
-        <div class="count">Datenbasis: <span>~51</span> Flüsse</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">🌊</div>
-      <div class="card-body">
-        <div class="card-name">Fluss → Land (Realmodus)</div>
-        <div class="card-source">rivers.json (intern)</div>
-        <div><span class="badge badge-green">Pure Geo</span></div>
-        <div class="count">Datenbasis: <span>~51</span> Flüsse mit Verlauf</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">🔲</div>
-      <div class="card-body">
-        <div class="card-name">Logik-Gitter</div>
-        <div class="card-source">Länderliste (algorithmisch generiert)</div>
-        <div><span class="badge badge-green">Pure Geo</span></div>
-        <div class="count">Datenbasis: <span>~195</span> Länder, ∞ Kombinationen</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">✈️</div>
-      <div class="card-body">
-        <div class="card-name">Reiseroute</div>
-        <div class="card-source">cities.json + algorithmisch</div>
-        <div><span class="badge badge-green">Pure Geo</span></div>
-        <div class="count">Datenbasis: <span>2.315</span> Städte, zufällige Routen</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">🎨</div>
-      <div class="card-body">
-        <div class="card-name">Flag Fusion</div>
-        <div class="card-source">Flaggen-Daten (Kombinations-Quiz)</div>
-        <div><span class="badge badge-green">Pure Geo</span></div>
-        <div class="count">Datenbasis: <span>~195</span> Flaggen, gemischt</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">🌡</div>
-      <div class="card-body">
-        <div class="card-name">Klima-Rätsel</div>
-        <div class="card-source">Klimadaten (intern)</div>
-        <div><span class="badge badge-green">Pure Geo</span></div>
-        <div class="count">Datenbasis: <span>~195</span> Länder-Klimaprofile</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">🔤</div>
-      <div class="card-body">
-        <div class="card-name">Alpha Sprint</div>
-        <div class="card-source">Länderliste + Städte</div>
-        <div><span class="badge badge-green">Pure Geo</span></div>
-        <div class="count">Datenbasis: <span>2.315+</span> Orte nach Anfangsbuchstabe</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">🕐</div>
-      <div class="card-body">
-        <div class="card-name">Timezone Jumper</div>
-        <div class="card-source">Zeitzonen-Datensatz</div>
-        <div><span class="badge badge-green">Pure Geo</span></div>
-        <div class="count">Datenbasis: <span>~195</span> Länder-Zeitzonen</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">🛡</div>
-      <div class="card-body">
-        <div class="card-name">Wappen-Meister</div>
-        <div class="card-source">Wappen-Datensatz (intern)</div>
-        <div><span class="badge badge-green">Pure Geo</span></div>
-        <div class="count">Datenbasis: <span>~50</span> Staatswappen</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">🌧</div>
-      <div class="card-body">
-        <div class="card-name">Klima-Serie: Niederschlag</div>
-        <div class="card-source">Klimadaten (HL-Vergleich)</div>
-        <div><span class="badge badge-green">Pure Geo</span></div>
-        <div class="count">Datenbasis: <span>~195</span> Länder</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">🌡</div>
-      <div class="card-body">
-        <div class="card-name">Klima-Serie: Temperatur</div>
-        <div class="card-source">Klimadaten (HL-Vergleich)</div>
-        <div><span class="badge badge-green">Pure Geo</span></div>
-        <div class="count">Datenbasis: <span>~195</span> Länder</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">☀️</div>
-      <div class="card-body">
-        <div class="card-name">Klima-Serie: Sonnenstunden</div>
-        <div class="card-source">Klimadaten (HL-Vergleich)</div>
-        <div><span class="badge badge-green">Pure Geo</span></div>
-        <div class="count">Datenbasis: <span>~195</span> Länder</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">🌋</div>
-      <div class="card-body">
-        <div class="card-name">Klima-Serie: Vulkane</div>
-        <div class="card-source">Klimadaten (HL-Vergleich)</div>
-        <div><span class="badge badge-green">Pure Geo</span></div>
-        <div class="count">Datenbasis: <span>~195</span> Länder</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">🏝</div>
-      <div class="card-body">
-        <div class="card-name">Klima-Serie: Inseln</div>
-        <div class="card-source">Insel-Datensatz</div>
-        <div><span class="badge badge-green">Pure Geo</span></div>
-        <div class="count">Datenbasis: <span>~195</span> Länder</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">🕐</div>
-      <div class="card-body">
-        <div class="card-name">Klima-Serie: Zeitzonen</div>
-        <div class="card-source">Zeitzonen-Datensatz</div>
-        <div><span class="badge badge-green">Pure Geo</span></div>
-        <div class="count">Datenbasis: <span>~195</span> Länder</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">🏙</div>
-      <div class="card-body">
-        <div class="card-name">Klima-Serie: Gründungsjahr</div>
-        <div class="card-source">Städte-Daten</div>
-        <div><span class="badge badge-green">Pure Geo</span></div>
-        <div class="count">Datenbasis: <span>2.315</span> Städte</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">🏔</div>
-      <div class="card-body">
-        <div class="card-name">Spracherkennung (HL)</div>
-        <div class="card-source">Sprach-Datensatz</div>
-        <div><span class="badge badge-green">Pure Geo</span></div>
-        <div class="count">Datenbasis: <span>~195</span> Landessprachen</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">🏛</div>
-      <div class="card-body">
-        <div class="card-name">UNESCO-Quiz (HL)</div>
-        <div class="card-source">unesco.json</div>
-        <div><span class="badge badge-green">Pure Geo</span></div>
-        <div class="count">Datenbasis: <span>149</span> UNESCO-Stätten</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">📸</div>
-      <div class="card-body">
-        <div class="card-name">Tourismus (HL)</div>
-        <div class="card-source">Tourismus-Daten</div>
-        <div><span class="badge badge-green">Pure Geo</span></div>
-        <div class="count">Datenbasis: <span>~195</span> Länder</div>
-      </div>
-    </div>
-
-  </div>
+<div class="search-bar">
+  <input type="search" id="q" placeholder="🔍 Modus suchen…" oninput="filter(this.value)">
 </div>
 
-<!-- ─── LIFESTYLE ─────────────────────────────────────── -->
-<div class="section">
-  <div class="section-title">🎭 Kultur &amp; Lifestyle</div>
-  <div class="grid">
-
-    <div class="card">
-      <div class="card-icon">🗺</div>
-      <div class="card-body">
-        <div class="card-name">Länder-Umrisse</div>
-        <div class="card-source">Silhouetten-Datensatz</div>
-        <div><span class="badge badge-blue">Lifestyle</span></div>
-        <div class="count">Datenbasis: <span>~195</span> Länderumrisse</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">🍽</div>
-      <div class="card-body">
-        <div class="card-name">Gericht → Land</div>
-        <div class="card-source">Food-Datensatz (intern)</div>
-        <div><span class="badge badge-blue">Lifestyle</span></div>
-        <div class="count">Datenbasis: <span>221</span> Gerichte</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">🏷</div>
-      <div class="card-body">
-        <div class="card-name">Marke → Land</div>
-        <div class="card-source">Brand-Datensatz (intern)</div>
-        <div><span class="badge badge-blue">Lifestyle</span></div>
-        <div class="count">Datenbasis: <span>42</span> Marken</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">💱</div>
-      <div class="card-body">
-        <div class="card-name">Währung → Land</div>
-        <div class="card-source">Währungs-Datensatz</div>
-        <div><span class="badge badge-blue">Lifestyle</span></div>
-        <div class="count">Datenbasis: <span>35</span> Währungen</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">💵</div>
-      <div class="card-body">
-        <div class="card-name">Land → Währung</div>
-        <div class="card-source">Währungs-Datensatz</div>
-        <div><span class="badge badge-blue">Lifestyle</span></div>
-        <div class="count">Datenbasis: <span>35</span> Währungen</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">👥</div>
-      <div class="card-body">
-        <div class="card-name">Mehr Einwohner? (Vergleich)</div>
-        <div class="card-source">Bevölkerungs-Datensatz</div>
-        <div><span class="badge badge-blue">Lifestyle</span></div>
-        <div class="count">Datenbasis: <span>~195</span> Länder, ∞ Paare</div>
-      </div>
-    </div>
-
-  </div>
+<div class="tbl-wrap">
+<table id="tbl">
+<thead>
+<tr style="background:var(--bg3)">
+  <th class="n">#</th><th style="padding:.4rem .75rem;text-align:left">ID</th>
+  <th style="padding:.4rem .75rem;text-align:left">Titel</th>
+  <th class="dc" style="padding:.4rem .75rem;text-align:left">Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="gh"><td colspan="4">🌍 Pure Geo <span class="cnt">(29)</span></td></tr>
+<tr class="mr"><td class="n">1</td><td class="mid">city</td><td>Stadt \u2192 Land</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">2</td><td class="mid">flag</td><td>Flagge \u2192 Land</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">3</td><td class="mid">capital</td><td>Hauptstadt \u2192 Land</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">4</td><td class="mid">river</td><td>Fluss \u2192 Land</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">5</td><td class="mid">landmark</td><td>Sehenswürdigkeit</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">6</td><td class="mid">park</td><td>Nationalpark</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">7</td><td class="mid">unesco</td><td>UNESCO Welterbe</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">8</td><td class="mid">citymark</td><td>Wahrzeichen \u2192 Stadt</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">9</td><td class="mid">subway</td><td>U-Bahn-Netz</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">10</td><td class="mid">flagsel</td><td>Land \u2192 Flagge</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">11</td><td class="mid">rcapital</td><td>Land \u2192 Hauptstadt</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">12</td><td class="mid">rcity</td><td>Land \u2192 Stadt</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">13</td><td class="mid">rriver</td><td>Land \u2192 Fluss</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">14</td><td class="mid">river_real</td><td>Fluss \u2192 Land</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">15</td><td class="mid">hl_b_rain</td><td>\u{1F9EA} Niederschlag</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">16</td><td class="mid">hl_b_temp</td><td>\u{1F9EA} Temperatur</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">17</td><td class="mid">hl_b_sun</td><td>\u{1F9EA} Sonnenstunden</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">18</td><td class="mid">hl_b_vulc</td><td>\u{1F9EA} Vulkane</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">19</td><td class="mid">hl_b_isl</td><td>\u{1F9EA} Inseln</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">20</td><td class="mid">hl_b_tz</td><td>\u{1F9EA} Zeitzonen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">21</td><td class="mid">hl_b_founded</td><td>\u{1F9EA} \u00c4ltestes Land</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">22</td><td class="mid">wappen_meister</td><td>Wappen-Meister</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">23</td><td class="mid">slf</td><td>Stadt, Land, Fluss</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">24</td><td class="mid">river_map</td><td>\u{1F9EA} Fl\u00fcsse pinnen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">25</td><td class="mid">unesco_map</td><td>\u{1F9EA} UNESCO Karte</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">26</td><td class="mid">uk_kontinent_mitte</td><td>Kontinent-Zentren</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">27</td><td class="mid">uk_sort_kontinente</td><td>Kontinent zuordnen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">28</td><td class="mid">uk_sort_ozeane</td><td>Ozean zuordnen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">29</td><td class="mid">uk_breitengrad_match</td><td>Breitengrad-Match</td><td class="dc"></td></tr>
+<tr class="gh"><td colspan="4">🎭 Lifestyle <span class="cnt">(24)</span></td></tr>
+<tr class="mr"><td class="n">1</td><td class="mid">outline</td><td>L\u00e4nder-Umrisse</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">2</td><td class="mid">food</td><td>Gericht \u2192 Land</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">3</td><td class="mid">brand</td><td>Marke \u2192 Land</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">4</td><td class="mid">currency</td><td>W\u00e4hrung \u2192 Land</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">5</td><td class="mid">curr_real</td><td>Land \u2192 W\u00e4hrung</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">6</td><td class="mid">pop_compare</td><td>Mehr Einwohner?</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">7</td><td class="mid">hl_b_lang</td><td>\u{1F9EA} Amtssprachen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">8</td><td class="mid">hl_b_unesco</td><td>\u{1F9EA} UNESCO</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">9</td><td class="mid">hl_b_tour</td><td>\u{1F9EA} Tourismus</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">10</td><td class="mid">uk_wuesten</td><td>W\u00fcsten pinnen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">11</td><td class="mid">uk_berggipfel</td><td>Berggipfel pinnen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">12</td><td class="mid">uk_meerengen</td><td>Meeren\u2019gen pinnen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">13</td><td class="mid">uk_wasserfaelle</td><td>Wasserf\u00e4lle pinnen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">14</td><td class="mid">uk_canyons</td><td>Canyons pinnen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">15</td><td class="mid">uk_surf_spots</td><td>Surf-Spots pinnen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">16</td><td class="mid">hl_b_coffee</td><td>Kaffee-Nation</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">17</td><td class="mid">uk_insel_match</td><td>Inseln zuordnen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">18</td><td class="mid">uk_ehemalige_hauptstaedte</td><td>Ehemalige Hauptst\u00e4dte</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">19</td><td class="mid">uk_philosophen</td><td>Philosophen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">20</td><td class="mid">uk_nationalpflanzen</td><td>Nationalpflanzen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">21</td><td class="mid">uk_nationaltiere</td><td>Nationaltiere</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">22</td><td class="mid">uk_religionen</td><td>Religionen & Ursprung</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">23</td><td class="mid">uk_schriften</td><td>Schriftsysteme</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">24</td><td class="mid">uk_schatten_gedreht</td><td>Silhouette gedreht</td><td class="dc"></td></tr>
+<tr class="gh"><td colspan="4">🚗 EU-Kennzeichen <span class="cnt">(4)</span></td></tr>
+<tr class="mr"><td class="n">1</td><td class="mid">plate_casual</td><td>EU-Kennzeichen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">2</td><td class="mid">plate_hard</td><td>Kennzeichen Pro</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">3</td><td class="mid">map_ivr</td><td>Kennzeichen-Knacker</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">4</td><td class="mid">de_plate</td><td>Deutschland-KFZ</td><td class="dc"></td></tr>
+<tr class="gh"><td colspan="4">↕️ Higher / Lower <span class="cnt">(11)</span></td></tr>
+<tr class="mr"><td class="n">1</td><td class="mid">hl_pop</td><td>H/L Einwohner</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">2</td><td class="mid">hl_river</td><td>H/L Flussl\u00e4nge</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">3</td><td class="mid">hl_area</td><td>H/L Landfl\u00e4che</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">4</td><td class="mid">hl_gdp</td><td>H/L BIP</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">5</td><td class="mid">hl_density</td><td>H/L Bev\u00f6lkerungsdichte</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">6</td><td class="mid">hl_elevation</td><td>H/L H\u00f6chster Punkt</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">7</td><td class="mid">hl_coastline</td><td>H/L K\u00fcstenlänge</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">8</td><td class="mid">hl_borders</td><td>H/L Nachbarl\u00e4nder</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">9</td><td class="mid">hl_lifeexp</td><td>H/L Lebenserwartung</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">10</td><td class="mid">hl_median_age</td><td>H/L Medianalter</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">11</td><td class="mid">hl_forest</td><td>H/L Waldf\u00e4che</td><td class="dc"></td></tr>
+<tr class="gh"><td colspan="4">⚖️ Vergleiche <span class="cnt">(31)</span></td></tr>
+<tr class="mr"><td class="n">1</td><td class="mid">hl_b_parks</td><td>\u{1F9EA} Nationalparks</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">2</td><td class="mid">hl_b_roads</td><td>\u{1F9EA} Stra\u00dfennetz</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">3</td><td class="mid">hl_b_rail</td><td>\u{1F9EA} Schienennetz</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">4</td><td class="mid">hl_b_net</td><td>\u{1F9EA} Internetspeed</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">5</td><td class="mid">hl_b_ev</td><td>\u{1F9EA} E-Ladesäulen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">6</td><td class="mid">hl_b_urban</td><td>\u{1F9EA} Urbanisierung</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">7</td><td class="mid">plate_compare</td><td>\u{1F9EA} Kenn. Vergleich</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">8</td><td class="mid">comp_area</td><td>Gr\u00f6\u00dferes Land?</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">9</td><td class="mid">comp_pop</td><td>Mehr Einwohner?</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">10</td><td class="mid">comp_north</td><td>Weiter n\u00f6rdlich?</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">11</td><td class="mid">comp_gdp</td><td>H\u00f6heres BIP?</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">12</td><td class="mid">comp_density</td><td>Dichter besiedelt?</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">13</td><td class="mid">comp_elevation</td><td>H\u00f6herer Gipfel?</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">14</td><td class="mid">comp_coast</td><td>L\u00e4ngere K\u00fcste?</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">15</td><td class="mid">comp_borders</td><td>Mehr Nachbarn?</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">16</td><td class="mid">comp_life</td><td>L\u00e4nger leben?</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">17</td><td class="mid">comp_age</td><td>H\u00f6heres Medianalter?</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">18</td><td class="mid">comp_forest</td><td>Mehr Wald?</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">19</td><td class="mid">comp_airports</td><td>Mehr Flugh\u00e4fen?</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">20</td><td class="mid">comp_flight</td><td>Gr\u00f6\u00dferes Land?</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">21</td><td class="mid">comp_mountain</td><td>H\u00f6herer Gipfel?</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">22</td><td class="mid">comp_nsextent</td><td>L\u00e4nger Nord-S\u00fcd?</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">23</td><td class="mid">comp_olympics</td><td>Mehr Olympia-Gold?</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">24</td><td class="mid">hl_b_total_lang</td><td>Sprachen-Vielfalt</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">25</td><td class="mid">hl_b_nobel</td><td>Nobelpreistr\u00e4ger</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">26</td><td class="mid">hl_b_medals</td><td>Olympia-Medaillen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">27</td><td class="mid">hl_b_ns_km</td><td>Nord-S\u00fcd-Ausdehnung</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">28</td><td class="mid">hl_b_bikes</td><td>Fahrrad-Nation</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">29</td><td class="mid">hl_b_land_border</td><td>L\u00e4ngste Grenzen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">30</td><td class="mid">hl_b_military</td><td>Milit\u00e4rausgaben</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">31</td><td class="mid">hl_b_renewable</td><td>Erneuerbare Energie</td><td class="dc"></td></tr>
+<tr class="gh"><td colspan="4">⚽ Sport & Events <span class="cnt">(37)</span></td></tr>
+<tr class="mr"><td class="n">1</td><td class="mid">hl_b_wm</td><td>\u{1F9EA} WM-Teilnahmen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">2</td><td class="mid">stadium</td><td>Stadion-Quiz</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">3</td><td class="mid">jersey</td><td>Trikot-Quiz</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">4</td><td class="mid">crest</td><td>Wappen-Quiz</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">5</td><td class="mid">b1</td><td>\u{1F9EA} Ausreisser-Farben</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">6</td><td class="mid">b2</td><td>\u{1F9EA} F1-Spotter</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">7</td><td class="mid">b4</td><td>\u{1F9EA} Olympia-Zeitmaschine</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">8</td><td class="mid">b6</td><td>\u{1F9EA} Nationalsportarten</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">9</td><td class="mid">b7</td><td>\u{1F9EA} Höhenluft-Stadien</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">10</td><td class="mid">b9</td><td>\u{1F9EA} Sport-Ursprung</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">11</td><td class="mid">b11</td><td>\u{1F9EA} Rivalen-Distanz</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">12</td><td class="mid">b17</td><td>\u{1F9EA} Medaillen-Spiegel</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">13</td><td class="mid">b19</td><td>\u{1F9EA} WM-Fehltritte</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">14</td><td class="mid">b20</td><td>\u{1F9EA} Sport-Wappen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">15</td><td class="mid">derby_hotspots</td><td>\U0001F9EA Derby-Hotspots</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">16</td><td class="mid">eishockey_nationen</td><td>\U0001F9EA Eishockey-Nationen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">17</td><td class="mid">f1_historisch</td><td>\U0001F9EA F1 Historische Strecken</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">18</td><td class="mid">tdf_paesse</td><td>\U0001F9EA Tour de France Pässe</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">19</td><td class="mid">olympia_winter_historie</td><td>\U0001F9EA Olympische Winter-Historie</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">20</td><td class="mid">wm_gastgeber</td><td>\U0001F9EA WM-Gastgeber-Historie</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">21</td><td class="mid">wm_finalstadien</td><td>\U0001F9EA WM-Finalstadien</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">22</td><td class="mid">weltmeister_nationen</td><td>\U0001F9EA Weltmeister-Nationen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">23</td><td class="mid">fussball_legenden</td><td>\U0001F9EA Heimat der Fußball-Legenden</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">24</td><td class="mid">road_to_2026</td><td>\U0001F9EA Road to 2026</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">25</td><td class="mid">frauen_wm_meilensteine</td><td>\U0001F9EA Frauen-WM-Meilensteine</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">26</td><td class="mid">sommerspiele_metropolen</td><td>\U0001F9EA Sommerspiele-Metropolen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">27</td><td class="mid">winter_exoten_klassiker</td><td>\U0001F9EA Winter-Exoten & Klassiker</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">28</td><td class="mid">olympische_rekorde</td><td>\U0001F9EA Olympische Rekordhalter</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">29</td><td class="mid">olympia_hoehe</td><td>\U0001F9EA Olympia in extremer Höhe</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">30</td><td class="mid">boykott_spiele</td><td>\U0001F9EA Die Boykott-Spiele</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">31</td><td class="mid">em_gastgeber_historie</td><td>\U0001F9EA EM-Gastgeber-Historie</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">32</td><td class="mid">em_finalstadien</td><td>\U0001F9EA Finalstadien der EM</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">33</td><td class="mid">f1_map</td><td>\u{1F9EA} F1 Strecken</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">34</td><td class="mid">stadium_map</td><td>\u{1F9EA} Europastadien</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">35</td><td class="mid">uk_hohe_stadien</td><td>Hochgelegene Stadien</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">36</td><td class="mid">uk_leichtathletik_wm</td><td>Leichtathletik-WM Orte</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">37</td><td class="mid">uk_nationalsport_off</td><td>Offizieller Nationalsport</td><td class="dc"></td></tr>
+<tr class="gh"><td colspan="4">🤝 Nachbarn <span class="cnt">(20)</span></td></tr>
+<tr class="mr"><td class="n">1</td><td class="mid">neighbor</td><td>Grenzg\u00e4nger</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">2</td><td class="mid">neighbor_fake</td><td>Falscher Nachbar</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">3</td><td class="mid">neighbor_count</td><td>Nachbar-Z\u00e4hler</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">4</td><td class="mid">border_q</td><td>Teilen sie eine Grenze?</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">5</td><td class="mid">b21</td><td>\u{1F9EA} Sandwich-Laender</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">6</td><td class="mid">b22</td><td>\u{1F9EA} Transit-Route</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">7</td><td class="mid">b23</td><td>\u{1F9EA} Kueste oder Inland?</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">8</td><td class="mid">b25</td><td>\u{1F9EA} Fehlender Nachbar</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">9</td><td class="mid">b29</td><td>\u{1F9EA} Längste Grenze</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">10</td><td class="mid">b37</td><td>\u{1F9EA} Hauptstadt-Naehe</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">11</td><td class="mid">b40</td><td>\u{1F9EA} Meiste Nachbarn</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">12</td><td class="mid">uk_enklave</td><td>Exklaven erkennen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">13</td><td class="mid">uk_grenzfluesse</td><td>Grenzfl\u00fcsse</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">14</td><td class="mid">uk_halbinseln</td><td>Halbinseln zuordnen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">15</td><td class="mid">uk_deltamuendungen</td><td>Flussdeltas</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">16</td><td class="mid">uk_kaps</td><td>Kaps der Welt</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">17</td><td class="mid">uk_meerbusen</td><td>Meeresg\u00f6lfe</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">18</td><td class="mid">uk_inselgruppen</td><td>Inselgruppen zuordnen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">19</td><td class="mid">uk_gebirge_match</td><td>Gebirge zuordnen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">20</td><td class="mid">uk_seen_match</td><td>Seen zuordnen</td><td class="dc"></td></tr>
+<tr class="gh"><td colspan="4">🗺️ Karte <span class="cnt">(16)</span></td></tr>
+<tr class="mr"><td class="n">1</td><td class="mid">map_guess</td><td>Finde das Land</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">2</td><td class="mid">map_reverse</td><td>Wer bin ich?</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">3</td><td class="mid">map_capital</td><td>Hauptstadt-Radar</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">4</td><td class="mid">b41</td><td>\u{1F9EA} Äquator-Schuetze</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">5</td><td class="mid">b42</td><td>\u{1F9EA} Klimazonen-Spotter</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">6</td><td class="mid">b44</td><td>\u{1F9EA} Breitengrad-Duell</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">7</td><td class="mid">b45</td><td>\u{1F9EA} E-Mobility-Hotspot</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">8</td><td class="mid">b46</td><td>\u{1F9EA} Naturwunder-Spotter</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">9</td><td class="mid">b47</td><td>\u{1F9EA} Antipoden-Loch</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">10</td><td class="mid">b51</td><td>\u{1F9EA} Wuesten-Fokus</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">11</td><td class="mid">b53</td><td>\u{1F9EA} Meerengen & Kanaele</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">12</td><td class="mid">b54</td><td>\u{1F9EA} Gipfel-Spotter</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">13</td><td class="mid">b58</td><td>\u{1F9EA} See-Spotter</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">14</td><td class="mid">uk_mercator_illusion</td><td>Mercator-Illusion</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">15</td><td class="mid">uk_kartenausschnitt</td><td>Kartenausschnitt</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">16</td><td class="mid">b60</td><td>\u{1F9EA} Nacht-Satellit</td><td class="dc"></td></tr>
+<tr class="gh"><td colspan="4">🧪 Neue Modi <span class="cnt">(7)</span></td></tr>
+<tr class="mr"><td class="n">1</td><td class="mid">logic_grid</td><td>Logik-Gitter</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">2</td><td class="mid">travel_route</td><td>Reiseroute</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">3</td><td class="mid">flag_fusion</td><td>Flaggen-Fusion</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">4</td><td class="mid">climate_mystery</td><td>Klima-Krimi</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">5</td><td class="mid">alpha_sprint</td><td>Alphabet-Sprint</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">6</td><td class="mid">wort_schmiede</td><td>Wort-Schmiede</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">7</td><td class="mid">timezone_jumper</td><td>Zeitzonen-Jumper</td><td class="dc"></td></tr>
+<tr class="gh"><td colspan="4">✈️ Flughäfen & Klima <span class="cnt">(34)</span></td></tr>
+<tr class="mr"><td class="n">1</td><td class="mid">iata</td><td>IATA-Code?</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">2</td><td class="mid">tz_quiz</td><td>Welche Uhrzeit?</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">3</td><td class="mid">climate_quiz</td><td>Klima-Krimi</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">4</td><td class="mid">flagcolor</td><td>Flaggen-Farben</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">5</td><td class="mid">landlocked_quiz</td><td>Binnenstaat?</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">6</td><td class="mid">airport_map</td><td>\u{1F9EA} Flugh\u00e4fen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">7</td><td class="mid">flugrouten_duell</td><td>Flugrouten-Duell</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">8</td><td class="mid">inlandsflug_intl</td><td>Inland oder International?</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">9</td><td class="mid">sunrise_guesser</td><td>Fr\u00fchere Sonne?</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">10</td><td class="mid">sonnen_kompass</td><td>Sonnen-Kompass</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">11</td><td class="mid">aequator_magnet</td><td>\u00c4quator-Magnet</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">12</td><td class="mid">kontinent_klicker</td><td>Kontinent-Klicker</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">13</td><td class="mid">hauptstadt_distanz</td><td>Hauptstadt-Distanz</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">14</td><td class="mid">naechster_airport</td><td>N\u00e4chster Flughafen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">15</td><td class="mid">airport_pin</td><td>Airport Pinnen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">16</td><td class="mid">iata_reverse</td><td>IATA Reverse</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">17</td><td class="mid">jetlag_rechner</td><td>Jetlag-Rechner</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">18</td><td class="mid">kuehlschrank_backofen</td><td>K\u00fchlschrank vs. Backofen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">19</td><td class="mid">regen_radar</td><td>Regen-Radar</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">20</td><td class="mid">hoehenmeter_schaetzer</td><td>H\u00f6henmeter-Sch\u00e4tzer</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">21</td><td class="mid">klima_ausreisser</td><td>Klima-Ausrei\u00dfer</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">22</td><td class="mid">insel_festland</td><td>Insel oder Festland?</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">23</td><td class="mid">sprachen_kompass</td><td>Sprachen-Kompass</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">24</td><td class="mid">uk_automarken</td><td>Automarken-Heimat</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">25</td><td class="mid">uk_fluggesellschaften</td><td>Airlines zuordnen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">26</td><td class="mid">uk_bahnstrecken</td><td>Ber\u00fchmte Bahnstrecken</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">27</td><td class="mid">uk_hafen_world</td><td>Welthafen zuordnen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">28</td><td class="mid">uk_kanaele</td><td>Kan\u00e4le zuordnen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">29</td><td class="mid">uk_reedereien</td><td>Reedereien zuordnen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">30</td><td class="mid">uk_autobahnen_beruhmt</td><td>Autobahnsysteme</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">31</td><td class="mid">uk_metrostaedte</td><td>Metro-Systeme zuordnen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">32</td><td class="mid">uk_luft_rekorde</td><td>Luftfahrt-Rekorde</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">33</td><td class="mid">uk_distanz_schaetzer</td><td>Distanz-Sch\u00e4tzer</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">34</td><td class="mid">uk_flugzeit_schaetzer</td><td>Flugzeit-Sch\u00e4tzer</td><td class="dc"></td></tr>
+<tr class="gh"><td colspan="4">🎨 Kultur <span class="cnt">(27)</span></td></tr>
+<tr class="mr"><td class="n">1</td><td class="mid">uk_getraenke</td><td>Getr\u00e4nke & Herkunft</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">2</td><td class="mid">uk_streetfood</td><td>Streetfood-Klassiker</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">3</td><td class="mid">uk_kaese</td><td>K\u00e4se & Herk.</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">4</td><td class="mid">uk_suessspeisen</td><td>S\u00fc\u00dfes aus aller Welt</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">5</td><td class="mid">uk_kaffee</td><td>Kaffee-Kulturen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">6</td><td class="mid">uk_taenze</td><td>T\u00e4nze & Herkunft</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">7</td><td class="mid">uk_kleidung</td><td>Trachten & Kleidung</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">8</td><td class="mid">uk_instrumente</td><td>Musikinstrumente</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">9</td><td class="mid">uk_literatur</td><td>Ber\u00fchmte Autoren</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">10</td><td class="mid">uk_wahrzeichen</td><td>Weltliche Wahrzeichen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">11</td><td class="mid">uk_feste</td><td>Weltber\u00fchmte Feste</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">12</td><td class="mid">uk_begruessung</td><td>Begr\u00fc\u00dfungsrituale</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">13</td><td class="mid">uk_feiertage</td><td>Nationale Feiertage</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">14</td><td class="mid">uk_erfindungen</td><td>Gro\u00dfe Erfindungen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">15</td><td class="mid">uk_exporte</td><td>Ber\u00fchmte Exporte</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">16</td><td class="mid">uk_blumen</td><td>Nationalblumen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">17</td><td class="mid">uk_entdecker</td><td>Ber\u00fchmte Entdecker</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">18</td><td class="mid">uk_sport</td><td>Nationalsportarten</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">19</td><td class="mid">uk_brettspiele</td><td>Brettspiel-Urspr\u00fcnge</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">20</td><td class="mid">uk_weinregionen</td><td>Weinregionen pinnen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">21</td><td class="mid">uk_museen</td><td>Ber\u00fchmte Museen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">22</td><td class="mid">uk_kunstwerke</td><td>Kunstwerke \u2192 Ort</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">23</td><td class="mid">uk_filmsets</td><td>Ber\u00fchmte Filmsets</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">24</td><td class="mid">uk_ruinen</td><td>Historische Ruinen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">25</td><td class="mid">uk_bruecken</td><td>Ber\u00fchmte Br\u00fccken</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">26</td><td class="mid">uk_kirchen</td><td>Sakralbauten der Welt</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">27</td><td class="mid">uk_wolkenkratzer</td><td>Wolkenkratzer-Duell</td><td class="dc"></td></tr>
+<tr class="gh"><td colspan="4">🐾 Tiere & Natur <span class="cnt">(63)</span></td></tr>
+<tr class="mr"><td class="n">1</td><td class="mid">uk_tiere_endemisch</td><td>Endemische Arten</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">2</td><td class="mid">uk_tiere_bigfive</td><td>Big Five Afrikas</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">3</td><td class="mid">uk_tiere_grosskatzen</td><td>Großkatzen-Habitate</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">4</td><td class="mid">uk_tiere_invasiv</td><td>Invasive Arten</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">5</td><td class="mid">uk_tiere_vogelzug</td><td>Vogelzug-Knotenpunkte</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">6</td><td class="mid">uk_tiere_haustiere</td><td>Ursprung der Haustiere</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">7</td><td class="mid">uk_tiere_nationaltier_pin</td><td>Nationaltiere Pin</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">8</td><td class="mid">uk_tiere_primaten</td><td>Primaten-Zentren</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">9</td><td class="mid">uk_tiere_hai</td><td>Hai-Hotspots</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">10</td><td class="mid">uk_tiere_baeren</td><td>Bären-Verbreitung</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">11</td><td class="mid">hl_tiere_gewicht_land</td><td>H/L Gewicht Landtiere</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">12</td><td class="mid">hl_tiere_gewicht_meer</td><td>H/L Gewicht Meerestiere</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">13</td><td class="mid">hl_tiere_speed_land</td><td>H/L Speed: Land</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">14</td><td class="mid">hl_tiere_speed_luft</td><td>H/L Speed: Luft</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">15</td><td class="mid">hl_tiere_speed_wasser</td><td>H/L Speed: Wasser</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">16</td><td class="mid">hl_tiere_lebenserwartung</td><td>H/L Lebenserwartung</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">17</td><td class="mid">hl_tiere_traechtigkeit</td><td>H/L Tr\u00e4chtigkeit</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">18</td><td class="mid">hl_tiere_wurf</td><td>H/L Wurfgr\u00f6\u00dfe</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">19</td><td class="mid">hl_tiere_gift</td><td>H/L Giftigkeit</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">20</td><td class="mid">hl_tiere_population</td><td>H/L Wildpopulation</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">21</td><td class="mid">hl_tiere_schlaf</td><td>H/L Schlafbedarf</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">22</td><td class="mid">uk_tiere_faehrten</td><td>F\u00e4hrten & Spuren</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">23</td><td class="mid">uk_tiere_architekten</td><td>Tierische Architekten</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">24</td><td class="mid">uk_tiere_tarnung</td><td>Tarnungsk\u00fcnstler</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">25</td><td class="mid">uk_tiere_ernaehrung</td><td>Ern\u00e4hrungstypen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">26</td><td class="mid">uk_tiere_symbiose</td><td>Symbiosen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">27</td><td class="mid">uk_tiere_tauchtiefe</td><td>Tauchtiefen-Rekorde</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">28</td><td class="mid">uk_tiere_mimikry</td><td>Mimikry & Doppelg\u00e4nger</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">29</td><td class="mid">uk_tiere_metamorphose</td><td>Insekten-Metamorphose</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">30</td><td class="mid">uk_tiere_biolumineszenz</td><td>Biolumineszenz</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">31</td><td class="mid">uk_tiere_anatomie</td><td>Skelett-Anatomie</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">32</td><td class="mid">uk_tiere_laute</td><td>Tierlaute</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">33</td><td class="mid">uk_tiere_sinne</td><td>Sinnesleistungen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">34</td><td class="mid">ws_tiere_schnabeltier</td><td>WS: Schnabeltier</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">35</td><td class="mid">ws_tiere_gottesanbeterin</td><td>WS: Gottesanbeterin</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">36</td><td class="mid">ws_tiere_komodowaran</td><td>WS: Komodowaran</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">37</td><td class="mid">ws_tiere_korallenriff</td><td>WS: Korallenriff</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">38</td><td class="mid">ws_tiere_silberruecken</td><td>WS: Silberr\u00fccken</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">39</td><td class="mid">ws_tiere_wanderfalke</td><td>WS: Wanderfalke</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">40</td><td class="mid">ws_tiere_mauersegler</td><td>WS: Mauersegler</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">41</td><td class="mid">ws_tiere_baertierchen</td><td>WS: B\u00e4rtierchen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">42</td><td class="mid">ws_tiere_lederschildkroete</td><td>WS: Lederschildkr\u00f6te</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">43</td><td class="mid">ws_tiere_pfeilgiftfrosch</td><td>WS: Pfeilgiftfrosch</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">44</td><td class="mid">uk_tiere_darwin_finken</td><td>Darwins Finken</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">45</td><td class="mid">uk_tiere_schutzgebiete</td><td>Schutzgebiete</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">46</td><td class="mid">uk_tiere_zoos</td><td>Zoos der Welt</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">47</td><td class="mid">uk_tiere_nutztier_rassen</td><td>Nutztier-Rassen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">48</td><td class="mid">uk_tiere_fossilien</td><td>Fossil-Fundst\u00e4tten</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">49</td><td class="mid">uk_tiere_arktis_antarktis</td><td>Arktis vs. Antarktis</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">50</td><td class="mid">uk_tiere_forscher_eponyme</td><td>Forscher-Eponyme</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">51</td><td class="mid">uk_tiere_pelagial</td><td>Pelagial-Zonen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">52</td><td class="mid">uk_tiere_wuesten_spezialisten</td><td>W\u00fcsten-Spezialisten</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">53</td><td class="mid">uk_tiere_gift_hotspots</td><td>Gift-Hotspots</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">54</td><td class="mid">uk_tiere_migranten</td><td>Tier-Migranten</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">55</td><td class="mid">hl_tiere_haustier_dichte</td><td>H/L Rinder-Dichte</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">56</td><td class="mid">uk_pferde_rassen</td><td>Pferderassen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">57</td><td class="mid">uk_pferde_fachbegriffe</td><td>Pferde-Fachbegriffe</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">58</td><td class="mid">hl_pferde_stockmass</td><td>H/L Stockma\u00df</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">59</td><td class="mid">ws_pferde_fluesterer</td><td>WS: Pferdefl\u00fcsterer</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">60</td><td class="mid">hl_pferde_speed</td><td>H/L Galopp-Speed</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">61</td><td class="mid">hl_pferde_gewicht</td><td>H/L K\u00f6rpergewicht</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">62</td><td class="mid">uk_pferde_reitsport</td><td>Reitsport-Disziplinen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">63</td><td class="mid">ws_pferde_hufeisen</td><td>WS: Hufeisen</td><td class="dc"></td></tr>
+<tr class="gh"><td colspan="4">🌿 Pflanzen <span class="cnt">(48)</span></td></tr>
+<tr class="mr"><td class="n">1</td><td class="mid">uk_pflanzen_nutzpflanzen</td><td>Nutzpflanzen-Ursprung</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">2</td><td class="mid">uk_pflanzen_einzelbaeume</td><td>Ber\u00fchmte B\u00e4ume</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">3</td><td class="mid">uk_pflanzen_botanische_gaerten</td><td>Botanische G\u00e4rten</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">4</td><td class="mid">uk_pflanzen_tropenwald</td><td>Tropenwälder</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">5</td><td class="mid">uk_pflanzen_weinanbau</td><td>Weinanbaugebiete</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">6</td><td class="mid">uk_pflanzen_heilpflanzen</td><td>Heilpflanzen-Regionen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">7</td><td class="mid">uk_pflanzen_mangroven</td><td>Mangrovenwälder</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">8</td><td class="mid">uk_pflanzen_kakao_ursprung</td><td>Kakao-Ursprungsgebiete</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">9</td><td class="mid">uk_pflanzen_reisanbau</td><td>Reisanbauregionen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">10</td><td class="mid">uk_pflanzen_bambus</td><td>Bambuswälder</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">11</td><td class="mid">uk_pflanzen_endemisch</td><td>Endemische Pflanzenzonen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">12</td><td class="mid">uk_pflanzen_nationalblumen</td><td>Nationalblumen-Heimat</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">13</td><td class="mid">hl_pflanzen_wuchshoehe</td><td>H/L Wuchsh\u00f6he</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">14</td><td class="mid">hl_pflanzen_alter</td><td>H/L Baumalter</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">15</td><td class="mid">hl_pflanzen_fruchtgewicht</td><td>H/L Fruchtgewicht</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">16</td><td class="mid">hl_pflanzen_samenlaenge</td><td>H/L Samengr\u00f6\u00dfe</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">17</td><td class="mid">hl_pflanzen_kaffeeproduktion</td><td>H/L Kaffeeproduktion</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">18</td><td class="mid">hl_pflanzen_weinproduktion</td><td>H/L Weinproduktion</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">19</td><td class="mid">hl_pflanzen_reisproduktion</td><td>H/L Reisproduktion</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">20</td><td class="mid">hl_pflanzen_waldflaeche</td><td>H/L Waldanteil</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">21</td><td class="mid">hl_pflanzen_stammumfang</td><td>H/L Stammumfang</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">22</td><td class="mid">hl_pflanzen_blattflaeche</td><td>H/L Blattfl\u00e4che</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">23</td><td class="mid">hl_pflanzen_bluehdauer</td><td>H/L Bl\u00fchtdauer</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">24</td><td class="mid">hl_pflanzen_genomgroesse</td><td>H/L Genomgr\u00f6\u00dfe</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">25</td><td class="mid">uk_pflanzen_gewuerze</td><td>Gew\u00fcrze-Herkunft</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">26</td><td class="mid">uk_pflanzen_familien</td><td>Pflanzenfamilien</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">27</td><td class="mid">uk_pflanzen_bluetezeit</td><td>Bl\u00fctezeit</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">28</td><td class="mid">uk_pflanzen_giftstoffe</td><td>Giftstoffe</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">29</td><td class="mid">uk_pflanzen_fruchttyp</td><td>Fruchttypen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">30</td><td class="mid">uk_pflanzen_vermehrung</td><td>Vermehrungsarten</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">31</td><td class="mid">uk_pflanzen_lebensraum</td><td>Pflanzen-Lebensraum</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">32</td><td class="mid">uk_pflanzen_bestuaeber</td><td>Best\u00e4uber</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">33</td><td class="mid">uk_pflanzen_herkunft</td><td>Kulturpflanzen-Herkunft</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">34</td><td class="mid">uk_pflanzen_nutzung</td><td>Pflanzennutzung</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">35</td><td class="mid">uk_pflanzen_blattform</td><td>Blattformen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">36</td><td class="mid">uk_pflanzen_klimazone</td><td>Klimazonen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">37</td><td class="mid">uk_pflanzen_scheinfruchte</td><td>Scheinfrüchte</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">38</td><td class="mid">uk_pflanzen_baum_des_jahres</td><td>Baum des Jahres</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">39</td><td class="mid">uk_pflanzen_giftpflanze_jahres</td><td>Giftpflanze des Jahres</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">40</td><td class="mid">ws_pflanzen_trauerweide</td><td>WS: Trauerweide</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">41</td><td class="mid">ws_pflanzen_rhododendron</td><td>WS: Rhododendron</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">42</td><td class="mid">ws_pflanzen_sonnenblume</td><td>WS: Sonnenblume</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">43</td><td class="mid">ws_pflanzen_pusteblume</td><td>WS: Pusteblume</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">44</td><td class="mid">ws_pflanzen_nachtschatten</td><td>WS: Nachtschatten</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">45</td><td class="mid">ws_pflanzen_vergissmeinnicht</td><td>WS: Vergissmeinnicht</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">46</td><td class="mid">ws_pflanzen_kaffeebohne</td><td>WS: Kaffeebohne</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">47</td><td class="mid">ws_pflanzen_weihnachtsstern</td><td>WS: Weihnachtsstern</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">48</td><td class="mid">ws_pflanzen_ginkgobaum</td><td>WS: Ginkgobaum</td><td class="dc"></td></tr>
+<tr class="gh"><td colspan="4">🍽️ Gastronomie <span class="cnt">(51)</span></td></tr>
+<tr class="mr"><td class="n">1</td><td class="mid">uk_gastro_nationalgerichte</td><td>Nationalgerichte pinnen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">2</td><td class="mid">uk_gastro_kaffee_anbau</td><td>Kaffee-Anbaugebiete</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">3</td><td class="mid">uk_gastro_brauereien</td><td>Brauereien pinnen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">4</td><td class="mid">uk_gastro_gewuerze_selten</td><td>Seltene Gewürze orten</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">5</td><td class="mid">uk_gastro_kaffeehaeuser</td><td>Historische Kaffeehäuser</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">6</td><td class="mid">uk_gastro_schokoladen</td><td>Schokoladenfabriken</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">7</td><td class="mid">uk_gastro_weinlagen</td><td>Weinlagen & Châteaux</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">8</td><td class="mid">uk_gastro_fermentation_orte</td><td>Fermentations-Orte</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">9</td><td class="mid">uk_gastro_kulinarische_feste</td><td>Kulinarische Festivals</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">10</td><td class="mid">hl_gastro_kalorien</td><td>HL: Kalorien</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">11</td><td class="mid">hl_gastro_kerntemperatur</td><td>HL: Kerntemperatur</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">12</td><td class="mid">hl_gastro_zubereitungszeit</td><td>HL: Zubereitungszeit</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">13</td><td class="mid">hl_gastro_fermentationsdauer</td><td>HL: Fermentationsdauer</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">14</td><td class="mid">hl_gastro_scoville</td><td>HL: Scoville-Skala</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">15</td><td class="mid">hl_gastro_preis_kg</td><td>HL: Preis pro Kilo</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">16</td><td class="mid">hl_gastro_wasseranteil</td><td>HL: Wasseranteil</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">17</td><td class="mid">hl_gastro_backtemperatur</td><td>HL: Backtemperatur</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">18</td><td class="mid">hl_gastro_rezept_alter</td><td>HL: Rezept-Alter</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">19</td><td class="mid">hl_gastro_alkoholgehalt</td><td>HL: Alkoholgehalt</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">20</td><td class="mid">hl_gastro_zutaten_anzahl</td><td>HL: Zutaten-Anzahl</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">21</td><td class="mid">hl_gastro_schmelzpunkt</td><td>HL: Schmelzpunkt</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">22</td><td class="mid">hl_gastro_prokopf_verbrauch</td><td>HL: Pro-Kopf-Verbrauch</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">23</td><td class="mid">hl_gastro_haltbarkeit</td><td>HL: Haltbarkeit</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">24</td><td class="mid">hl_gastro_rekord_gewicht</td><td>HL: Rekord-Gewicht</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">25</td><td class="mid">uk_gastro_hausmannskost</td><td>Hausmannskost zuordnen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">26</td><td class="mid">uk_gastro_kuechengeraete</td><td>Küchengeräte sortieren</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">27</td><td class="mid">uk_gastro_schnitttechniken</td><td>Schnitttechniken</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">28</td><td class="mid">uk_gastro_originalrezept</td><td>Geburtsort-Rezept</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">29</td><td class="mid">uk_gastro_teigtaschen</td><td>Teigtaschen der Welt</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">30</td><td class="mid">uk_gastro_gewuerzmischungen</td><td>Gewürzmischungen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">31</td><td class="mid">uk_gastro_fleisch_cuts</td><td>Fleischzuschnitte</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">32</td><td class="mid">uk_gastro_bakterien_pilze</td><td>Mikroorganismen & Fermentation</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">33</td><td class="mid">uk_gastro_kaffeespezialitaeten</td><td>Kaffeespezialitäten</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">34</td><td class="mid">uk_gastro_pasta_formen</td><td>Pasta & Saucen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">35</td><td class="mid">uk_gastro_exotische_fruechte</td><td>Exotische Früchte</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">36</td><td class="mid">uk_gastro_brotsorten</td><td>Brotsorten der Welt</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">37</td><td class="mid">uk_gastro_vegan_alternativen</td><td>Vegane Alternativen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">38</td><td class="mid">uk_gastro_fruehstueck_welt</td><td>Frühstück der Welt</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">39</td><td class="mid">uk_gastro_fachbegriffe_herd</td><td>Kochfachbegriffe</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">40</td><td class="mid">uk_gastro_sushi_arten</td><td>Sushi-Stile</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">41</td><td class="mid">uk_gastro_ess_etikette</td><td>Ess-Etikette weltweit</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">42</td><td class="mid">uk_gastro_tabus</td><td>Nahrungstabus</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">43</td><td class="mid">uk_gastro_film_food</td><td>Essen im Film</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">44</td><td class="mid">uk_gastro_seidenstrasse</td><td>Seidenstraße & Gewürze</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">45</td><td class="mid">ws_gastro_zitruspresse</td><td>WS: Zitruspresse</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">46</td><td class="mid">ws_gastro_kuechenmaschine</td><td>WS: Küchenmaschine</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">47</td><td class="mid">ws_gastro_sauerteigbrot</td><td>WS: Sauerteigbrot</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">48</td><td class="mid">ws_gastro_fermentation</td><td>WS: Fermentation</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">49</td><td class="mid">ws_gastro_wurzelgemuese</td><td>WS: Wurzelgemüse</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">50</td><td class="mid">ws_gastro_schwarzwaelder</td><td>WS: Schwarzwälder</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">51</td><td class="mid">ws_gastro_kaltentsafter</td><td>WS: Kaltentsafter</td><td class="dc"></td></tr>
+<tr class="gh"><td colspan="4">💻 Technologie <span class="cnt">(43)</span></td></tr>
+<tr class="mr"><td class="n">1</td><td class="mid">uk_tech_programmiersprachen</td><td>Tech: Programmiersprachen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">2</td><td class="mid">uk_tech_wettbewerbe</td><td>Tech: Wettbewerbe</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">3</td><td class="mid">uk_tech_halbleiter</td><td>Tech: Halbleiter-Fabs</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">4</td><td class="mid">uk_tech_heimcomputer</td><td>Tech: Heimcomputer</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">5</td><td class="mid">uk_tech_rechenzentren</td><td>Tech: Rechenzentren</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">6</td><td class="mid">uk_tech_pioniere</td><td>Tech: Pioniere</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">7</td><td class="mid">uk_tech_tech_museen</td><td>Tech: Technologiemuseen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">8</td><td class="mid">uk_tech_supercomputer</td><td>Tech: Supercomputer</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">9</td><td class="mid">hl_tech_transistoren</td><td>Tech: Transistorenanzahl</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">10</td><td class="mid">hl_tech_taktfrequenz</td><td>Tech: Taktfrequenz</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">11</td><td class="mid">hl_tech_freiheitsgrade</td><td>Tech: Freiheitsgrade</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">12</td><td class="mid">hl_tech_code_zeilen</td><td>Tech: Codezeilen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">13</td><td class="mid">hl_tech_release_jahr</td><td>Tech: Release-Jahr</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">14</td><td class="mid">hl_tech_rechenleistung</td><td>Tech: Rechenleistung</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">15</td><td class="mid">hl_tech_internet_speed</td><td>Tech: Internetgeschwindigkeit</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">16</td><td class="mid">hl_tech_tdp</td><td>Tech: TDP-Wert</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">17</td><td class="mid">uk_tech_sensoren</td><td>Tech: Sensoren</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">18</td><td class="mid">uk_tech_syntax</td><td>Tech: Code-Syntax</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">19</td><td class="mid">uk_tech_linux</td><td>Tech: Linux-Distros</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">20</td><td class="mid">uk_tech_osi</td><td>Tech: OSI-Modell</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">21</td><td class="mid">uk_tech_bigo</td><td>Tech: Big-O</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">22</td><td class="mid">uk_tech_http</td><td>Tech: HTTP-Statuscodes</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">23</td><td class="mid">uk_tech_wahrheitstabellen</td><td>Tech: Logikgatter</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">24</td><td class="mid">uk_tech_hardware</td><td>Tech: Hardware-Komponenten</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">25</td><td class="mid">uk_tech_erfinder</td><td>Tech: Technik-Erfinder</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">26</td><td class="mid">uk_tech_portnummern</td><td>Tech: Portnummern</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">27</td><td class="mid">uk_tech_dateiendungen</td><td>Tech: Dateiendungen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">28</td><td class="mid">uk_tech_smart_home</td><td>Tech: Smart Home</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">29</td><td class="mid">uk_tech_akronyme</td><td>Tech: Akronyme</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">30</td><td class="mid">uk_tech_turing_award</td><td>Tech: Turing Award</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">31</td><td class="mid">uk_tech_erste_videospiele</td><td>Tech: Erste Videospiele</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">32</td><td class="mid">uk_tech_malware</td><td>Tech: Malware-Typen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">33</td><td class="mid">uk_tech_tech_ma</td><td>Tech: Uebernahmen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">34</td><td class="mid">ws_tech_mikrocontroller</td><td>WS: Mikrocontroller</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">35</td><td class="mid">ws_tech_datenbankmanagement</td><td>WS: Datenbankmanagement</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">36</td><td class="mid">ws_tech_algorithmus</td><td>WS: Algorithmus</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">37</td><td class="mid">ws_tech_quantencomputer</td><td>WS: Quantencomputer</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">38</td><td class="mid">ws_tech_prozessorarchitektur</td><td>WS: Prozessorarchitektur</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">39</td><td class="mid">ws_tech_grafikprozessor</td><td>WS: Grafikprozessor</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">40</td><td class="mid">ws_tech_cybersicherheit</td><td>WS: Cybersicherheit</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">41</td><td class="mid">ws_tech_softwareentwicklung</td><td>WS: Softwareentwicklung</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">42</td><td class="mid">ws_tech_compilerbau</td><td>WS: Compilerbau</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">43</td><td class="mid">ws_tech_betriebssystem</td><td>WS: Betriebssystem</td><td class="dc"></td></tr>
+<tr class="gh"><td colspan="4">⚡ E-Mobilität <span class="cnt">(57)</span></td></tr>
+<tr class="mr"><td class="n">1</td><td class="mid">uk_emob_gigafactories</td><td>E-Mob: Gigafactories</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">2</td><td class="mid">uk_emob_ev_startups</td><td>E-Mob: EV-Startups</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">3</td><td class="mid">uk_emob_ladeparks</td><td>E-Mob: Ladeparks</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">4</td><td class="mid">uk_emob_lithium</td><td>E-Mob: Lithiumvorkommen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">5</td><td class="mid">uk_emob_historische_werke</td><td>E-Mob: Historische Werke</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">6</td><td class="mid">uk_emob_formel_e</td><td>E-Mob: Formel E</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">7</td><td class="mid">uk_emob_solarparks</td><td>E-Mob: Solarparks</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">8</td><td class="mid">uk_emob_autonom_tests</td><td>E-Mob: Autonome Tests</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">9</td><td class="mid">uk_emob_batterie_forschung</td><td>E-Mob: Batterieforschung</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">10</td><td class="mid">uk_emob_ev_dichte_staedte</td><td>E-Mob: EV-Dichte-Staedte</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">11</td><td class="mid">uk_emob_recycling</td><td>E-Mob: Batterie-Recycling</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">12</td><td class="mid">uk_emob_erste_evs</td><td>E-Mob: Erste EVs</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">13</td><td class="mid">uk_emob_roadtrips</td><td>E-Mob: EV-Roadtrips</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">14</td><td class="mid">hl_emob_kapazitaet</td><td>E-Mob: Batteriekapazitaet</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">15</td><td class="mid">hl_emob_ladeleistung</td><td>E-Mob: Ladeleistung</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">16</td><td class="mid">hl_emob_wltp</td><td>E-Mob: WLTP-Reichweite</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">17</td><td class="mid">hl_emob_0_100</td><td>E-Mob: 0–100 km/h</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">18</td><td class="mid">hl_emob_gewicht</td><td>E-Mob: Fahrzeuggewicht</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">19</td><td class="mid">hl_emob_ladezeit_10_80</td><td>E-Mob: Ladezeit 10–80%</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">20</td><td class="mid">hl_emob_cw_wert</td><td>E-Mob: cw-Wert</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">21</td><td class="mid">hl_emob_systemspannung</td><td>E-Mob: Systemspannung</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">22</td><td class="mid">hl_emob_ladeanschluesse</td><td>E-Mob: Ladeanschluesse</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">23</td><td class="mid">hl_emob_drehmoment</td><td>E-Mob: Drehmoment</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">24</td><td class="mid">hl_emob_preis</td><td>E-Mob: Basispreis</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">25</td><td class="mid">hl_emob_zell_anzahl</td><td>E-Mob: Zellenanzahl</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">26</td><td class="mid">uk_emob_stecker</td><td>E-Mob: Ladestecker</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">27</td><td class="mid">uk_emob_plattformen</td><td>E-Mob: EV-Plattformen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">28</td><td class="mid">uk_emob_zellchemie</td><td>E-Mob: Zellchemie</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">29</td><td class="mid">uk_emob_akronyme</td><td>E-Mob: Akronyme</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">30</td><td class="mid">uk_emob_level_autonomy</td><td>E-Mob: Autonomiegrade</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">31</td><td class="mid">uk_emob_motorentypen</td><td>E-Mob: Motorentypen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">32</td><td class="mid">uk_emob_thermomanagement</td><td>E-Mob: Thermomanagement</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">33</td><td class="mid">uk_emob_bidirektional</td><td>E-Mob: V2X-Technologie</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">34</td><td class="mid">uk_emob_ladekurven</td><td>E-Mob: Ladekurven</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">35</td><td class="mid">uk_emob_smart_home</td><td>E-Mob: EV & Smart Home</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">36</td><td class="mid">uk_emob_privilegien</td><td>E-Mob: EV-Privilegien</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">37</td><td class="mid">uk_emob_port_position</td><td>E-Mob: Ladeanschluss-Position</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">38</td><td class="mid">uk_emob_ev_reifen</td><td>E-Mob: EV-Reifen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">39</td><td class="mid">uk_emob_roaming</td><td>E-Mob: Lade-Roaming</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">40</td><td class="mid">uk_emob_warnleuchten</td><td>E-Mob: Warnleuchten</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">41</td><td class="mid">uk_emob_startups_match</td><td>E-Mob: Startup-Laender</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">42</td><td class="mid">uk_emob_reichweiten_killer</td><td>E-Mob: Reichweiten-Killer</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">43</td><td class="mid">uk_emob_avas</td><td>E-Mob: AVAS-Vorschriften</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">44</td><td class="mid">uk_emob_subventionen</td><td>E-Mob: Subventionen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">45</td><td class="mid">uk_emob_etikette</td><td>E-Mob: Ladetikette</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">46</td><td class="mid">uk_emob_konzeptautos</td><td>E-Mob: Konzeptfahrzeuge</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">47</td><td class="mid">uk_emob_strommix</td><td>E-Mob: Strommix</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">48</td><td class="mid">ws_emob_schnellladestation</td><td>WS: Schnellladestation</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">49</td><td class="mid">ws_emob_rekuperation</td><td>WS: Rekuperation</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">50</td><td class="mid">ws_emob_reichweitenangst</td><td>WS: Reichweitenangst</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">51</td><td class="mid">ws_emob_fahrassistenzsystem</td><td>WS: Fahrassistenzsystem</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">52</td><td class="mid">ws_emob_bordnetzspannung</td><td>WS: Bordnetzspannung</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">53</td><td class="mid">ws_emob_elektroantrieb</td><td>WS: Elektroantrieb</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">54</td><td class="mid">ws_emob_wechselstromladen</td><td>WS: Wechselstromladen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">55</td><td class="mid">ws_emob_gleichstromladen</td><td>WS: Gleichstromladen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">56</td><td class="mid">ws_emob_batteriemanagement</td><td>WS: Batteriemanagement</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">57</td><td class="mid">ws_emob_bidirektionalladen</td><td>WS: Bidirektionalladen</td><td class="dc"></td></tr>
+<tr class="gh"><td colspan="4">🏛️ Archäologie <span class="cnt">(60)</span></td></tr>
+<tr class="mr"><td class="n">1</td><td class="mid">uk_arch_artefakte</td><td>Artefakt-Standorte</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">2</td><td class="mid">uk_arch_megalithanlagen</td><td>Megalith-Anlagen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">3</td><td class="mid">uk_arch_versunkene_staedte</td><td>Versunkene St\u00e4dte</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">4</td><td class="mid">uk_arch_hoehlenmalerien</td><td>H\u00f6hlenmalereien</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">5</td><td class="mid">uk_arch_digitalprojekte</td><td>Digital-Arch\u00e4ologie</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">6</td><td class="mid">uk_arch_graberfelder</td><td>Nekropolen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">7</td><td class="mid">uk_arch_schiffswracks</td><td>Schiffswracks</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">8</td><td class="mid">uk_arch_maya_inka</td><td>Maya & Inka-Ruinen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">9</td><td class="mid">uk_arch_roemische_limes</td><td>R\u00f6mischer Limes</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">10</td><td class="mid">uk_arch_pfahlbauten</td><td>Pfahlbauten</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">11</td><td class="mid">uk_arch_wuestenstaedte</td><td>W\u00fcstenkulturen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">12</td><td class="mid">uk_arch_fossilien</td><td>Fossilienfundst\u00e4tten</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">13</td><td class="mid">uk_arch_sensationsfunde</td><td>Sensationsfunde</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">14</td><td class="mid">hl_arch_alter_artefakte</td><td>H/L: Alter von Artefakten</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">15</td><td class="mid">hl_arch_gewicht_megalithen</td><td>H/L: Megalith-Gewicht</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">16</td><td class="mid">hl_arch_entdeckungsjahr</td><td>H/L: Entdeckungsjahr</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">17</td><td class="mid">hl_arch_fundtiefe</td><td>H/L: Fundtiefe</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">18</td><td class="mid">hl_arch_groesse_ruinen</td><td>H/L: Gr\u00f6\u00dfe von Ruinen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">19</td><td class="mid">hl_arch_grabbeigaben</td><td>H/L: Grabbeigaben</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">20</td><td class="mid">hl_arch_strassenlaenge</td><td>H/L: Antike Stra\u00dfenl\u00e4nge</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">21</td><td class="mid">hl_arch_c14_alter</td><td>H/L: C14-Alter</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">22</td><td class="mid">hl_arch_scandatenvolumen</td><td>H/L: 3D-Scan-Daten</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">23</td><td class="mid">hl_arch_bauzeit</td><td>H/L: Bauzeit</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">24</td><td class="mid">hl_arch_hoehe_bauwerke</td><td>H/L: H\u00f6he antiker Bauwerke</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">25</td><td class="mid">hl_arch_versicherungswert</td><td>H/L: Artefakt-Wert</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">26</td><td class="mid">uk_arch_epochen</td><td>Artefakt-Epochen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">27</td><td class="mid">uk_arch_werkzeuge</td><td>Antike Werkzeuge</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">28</td><td class="mid">uk_arch_archaeologen</td><td>Ber\u00fchmte Arch\u00e4ologen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">29</td><td class="mid">uk_arch_datierungsmethoden</td><td>Datierungsmethoden</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">30</td><td class="mid">uk_arch_3d_methoden</td><td>3D-Dokumentation</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">31</td><td class="mid">uk_arch_schriften</td><td>Antike Schriften</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">32</td><td class="mid">uk_arch_goetter</td><td>Antike G\u00f6tter</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">33</td><td class="mid">uk_arch_bestattungsriten</td><td>Bestattungsr\u00e4ten</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">34</td><td class="mid">uk_arch_stratigraphie</td><td>Stratigraphie-Prinzipien</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">35</td><td class="mid">uk_arch_keramikstile</td><td>Keramikstile</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">36</td><td class="mid">uk_arch_numismatik</td><td>Antike M\u00fcnzen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">37</td><td class="mid">uk_arch_isotopenanalyse</td><td>Isotopenanalyse</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">38</td><td class="mid">uk_arch_museen</td><td>Artefakte & Museen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">39</td><td class="mid">uk_arch_archaeobotanik</td><td>Arch\u00e4obotanik</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">40</td><td class="mid">uk_arch_handelsrouten</td><td>Antike Handelsrouten</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">41</td><td class="mid">uk_arch_waehrungen</td><td>Antike W\u00e4hrungen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">42</td><td class="mid">uk_arch_faelschungen</td><td>Arch\u00e4ologische F\u00e4lschungen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">43</td><td class="mid">uk_arch_tempel_ordnungen</td><td>Griechische Tempelordnungen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">44</td><td class="mid">uk_arch_indus_tal</td><td>Indus-Tal-Kulturst\u00e4tten</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">45</td><td class="mid">uk_arch_wikinger</td><td>Wikinger-Siedlungen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">46</td><td class="mid">uk_arch_repatriierung</td><td>Repatriierung</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">47</td><td class="mid">uk_arch_popkultur_vs_realitaet</td><td>Popkultur vs. Realit\u00e4t</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">48</td><td class="mid">uk_arch_welterbe_gefahr</td><td>UNESCO: Bedrohte Welterbe</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">49</td><td class="mid">uk_arch_zufallsfunde</td><td>Zufallsfunde</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">50</td><td class="mid">uk_arch_digifund_epochen</td><td>Digitalprojekte nach Epoche</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">51</td><td class="mid">uk_arch_antike_medizin</td><td>Antike Medizin</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">52</td><td class="mid">uk_arch_schatzsuche_methoden</td><td>Surveymethoden</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">53</td><td class="mid">uk_arch_antike_astronomie</td><td>Antike Astronomie</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">54</td><td class="mid">ws_arch_ausgrabungsstaette</td><td>WS: Ausgrabungsst\u00e4tte</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">55</td><td class="mid">ws_arch_antiquitaet</td><td>WS: Antiquit\u00e4t</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">56</td><td class="mid">ws_arch_dendrochronologie</td><td>WS: Dendrochronologie</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">57</td><td class="mid">ws_arch_hieroglyphen</td><td>WS: Hieroglyphen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">58</td><td class="mid">ws_arch_photogrammetrie</td><td>WS: Photogrammetrie</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">59</td><td class="mid">ws_arch_stratigraphie</td><td>WS: Stratigraphie</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">60</td><td class="mid">ws_arch_radiocarbondatierung</td><td>WS: Radiocarbondatierung</td><td class="dc"></td></tr>
+<tr class="gh"><td colspan="4">🔭 Astronomie <span class="cnt">(28)</span></td></tr>
+<tr class="mr"><td class="n">1</td><td class="mid">uk_astro_observatorien</td><td>Observatorien-Standorte</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">2</td><td class="mid">uk_astro_startrampen</td><td>Startrampen-Standorte</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">3</td><td class="mid">hl_astro_planet_groesse</td><td>H/L: Planetengröße</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">4</td><td class="mid">hl_astro_monde_anzahl</td><td>H/L: Monde-Anzahl</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">5</td><td class="mid">hl_astro_sonnenentfernung</td><td>H/L: Sonnenentfernung</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">6</td><td class="mid">uk_astro_missionen</td><td>Raumfahrt-Missionen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">7</td><td class="mid">uk_astro_planeten</td><td>Planeten-Fakten</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">8</td><td class="mid">uk_astro_kosmologie</td><td>Kosmologie-Fakten</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">9</td><td class="mid">ws_astro_sternwarte</td><td>WS: Sternwarte</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">10</td><td class="mid">ws_astro_raumstation</td><td>WS: Raumstation</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">11</td><td class="mid">ws_astro_astronaut</td><td>WS: Astronaut</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">12</td><td class="mid">uk_astro_esa_nasa_zentren</td><td>Kontrollzentren & Raumfahrtbehörden</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">13</td><td class="mid">uk_astro_weltraumteleskope</td><td>Teleskop-Standorte weltweit</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">14</td><td class="mid">uk_astro_meteoritenkrater</td><td>Meteoritenkrater orten</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">15</td><td class="mid">uk_astro_dark_sky</td><td>Dark-Sky-Reservate</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">16</td><td class="mid">hl_astro_raketen_nutzlast</td><td>H/L: Raketen-Nutzlast</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">17</td><td class="mid">hl_astro_missionsdauer</td><td>H/L: Missionsdauer</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">18</td><td class="mid">hl_astro_schwerkraft</td><td>H/L: Oberflächengravitation</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">19</td><td class="mid">hl_astro_temperaturen</td><td>H/L: Oberflächentemperatur</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">20</td><td class="mid">hl_astro_entdeckungsjahr</td><td>H/L: Entdeckungsjahr</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">21</td><td class="mid">hl_astro_exoplaneten_distanz</td><td>H/L: Exoplaneten-Distanz</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">22</td><td class="mid">uk_astro_sonden_ziele</td><td>Raumsonden & Ziele</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">23</td><td class="mid">uk_astro_himmelskoerper_typ</td><td>Himmelskörper-Typen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">24</td><td class="mid">uk_astro_sternbilder_himmel</td><td>Sternbilder zuordnen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">25</td><td class="mid">uk_astro_pioniere</td><td>Astronomie-Pioniere</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">26</td><td class="mid">uk_astro_antriebe</td><td>Raketenantriebe</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">27</td><td class="mid">uk_astro_galaxien_typen</td><td>Galaxien-Typen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">28</td><td class="mid">ws_astro_schwarzesloch</td><td>WS: Schwarzes Loch</td><td class="dc"></td></tr>
+<tr class="gh"><td colspan="4">⛰️ Geologie <span class="cnt">(51)</span></td></tr>
+<tr class="mr"><td class="n">1</td><td class="mid">uk_geo_vulkane</td><td>Vulkan-Standorte</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">2</td><td class="mid">uk_geo_geothermal</td><td>Geothermie-Standorte</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">3</td><td class="mid">hl_geo_berghoehen</td><td>H/L: Berghöhen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">4</td><td class="mid">hl_geo_vulkan_hoehen</td><td>H/L: Vulkanhöhen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">5</td><td class="mid">hl_geo_erdbeben</td><td>H/L: Erdbeben-Magnitude</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">6</td><td class="mid">uk_geo_gesteinsarten</td><td>Gesteinsarten-Quiz</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">7</td><td class="mid">uk_geo_tektonik</td><td>Tektonische Platten</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">8</td><td class="mid">uk_geo_mineralien</td><td>Mineralien-Quiz</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">9</td><td class="mid">ws_geo_stalaktiten</td><td>WS: Stalaktiten</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">10</td><td class="mid">ws_geo_vulkanismus</td><td>WS: Vulkanismus</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">11</td><td class="mid">ws_geo_erdbeben</td><td>WS: Erdbeben</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">12</td><td class="mid">uk_geo_felsformationen</td><td>Felsformationen weltweit</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">13</td><td class="mid">uk_geo_hoehlensysteme</td><td>Höhlensysteme orten</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">14</td><td class="mid">uk_geo_canyons</td><td>Canyons & Schluchten</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">15</td><td class="mid">uk_geo_geysire</td><td>Geysire orten</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">16</td><td class="mid">uk_geo_fossilien_fundstaetten</td><td>Fossilien-Fundstätten</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">17</td><td class="mid">uk_geo_ozeangraeben</td><td>Ozeangraben-Standorte</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">18</td><td class="mid">uk_geo_gletscher</td><td>Gletscher orten</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">19</td><td class="mid">uk_geo_wuesten</td><td>Wüsten & Dünenlandschaften</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">20</td><td class="mid">uk_geo_minen_bohrungen</td><td>Minen & Tiefbohrungen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">21</td><td class="mid">uk_geo_rifts</td><td>Tektonische Gräben & Rifts</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">22</td><td class="mid">uk_geo_nationalparks_geologie</td><td>Geologische Nationalparks</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">23</td><td class="mid">uk_geo_steilkuesten</td><td>Steilküsten & Klippen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">24</td><td class="mid">hl_geo_mohshaerte</td><td>H/L: Mohs-Härte</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">25</td><td class="mid">hl_geo_vei_ausbruch</td><td>H/L: Vulkan-Explosivität</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">26</td><td class="mid">hl_geo_hoehlen_laenge</td><td>H/L: Höhlenlänge</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">27</td><td class="mid">hl_geo_gesteins_alter</td><td>H/L: Gesteinsalter</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">28</td><td class="mid">hl_geo_schluchten_tiefe</td><td>H/L: Schluchten-Tiefe</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">29</td><td class="mid">hl_geo_kontinentaldrift</td><td>H/L: Kontinentaldrift</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">30</td><td class="mid">hl_geo_schmelztemperatur</td><td>H/L: Schmelztemperatur</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">31</td><td class="mid">hl_geo_gletscher_volumen</td><td>H/L: Gletschervolumen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">32</td><td class="mid">hl_geo_tsunami_hoehe</td><td>H/L: Tsunami-Höhe</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">33</td><td class="mid">hl_geo_bohrtiefe</td><td>H/L: Bohrtiefe</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">34</td><td class="mid">uk_geo_vulkan_land</td><td>Vulkan-Länder zuordnen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">35</td><td class="mid">uk_geo_berg_gebirge</td><td>Berg zum Gebirge</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">36</td><td class="mid">uk_geo_wunder_entstehung</td><td>Naturwunder & Entstehung</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">37</td><td class="mid">uk_geo_fossil_zeitalter</td><td>Fossilien & Erdzeitalter</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">38</td><td class="mid">uk_geo_erdbeben_jahr</td><td>Historische Erdbeben</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">39</td><td class="mid">uk_geo_gestein_nutzung</td><td>Gestein & Nutzung</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">40</td><td class="mid">uk_geo_landschaft_ursprung</td><td>Landschaftsformen & Ursprung</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">41</td><td class="mid">uk_geo_mineral_farbe</td><td>Mineral-Farben</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">42</td><td class="mid">uk_geo_kontinent_platte</td><td>Kontinente & Platten</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">43</td><td class="mid">uk_geo_hoehlen_land</td><td>Höhlensystem → Land</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">44</td><td class="mid">uk_geo_mineral_kristall</td><td>Mineral-Kristallsysteme</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">45</td><td class="mid">uk_geo_gebirge_entstehung</td><td>Gebirge & Entstehung</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">46</td><td class="mid">ws_geo_tropfstein</td><td>WS: Tropfstein</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">47</td><td class="mid">ws_geo_magmakammer</td><td>WS: Magmakammer</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">48</td><td class="mid">ws_geo_kontinent</td><td>WS: Kontinent</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">49</td><td class="mid">ws_geo_fossilien</td><td>WS: Fossilien</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">50</td><td class="mid">ws_geo_erdkruste</td><td>WS: Erdkruste</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">51</td><td class="mid">ws_geo_mineralien</td><td>WS: Mineralien</td><td class="dc"></td></tr>
+<tr class="gh"><td colspan="4">🏆 Sport-Wissen <span class="cnt">(40)</span></td></tr>
+<tr class="mr"><td class="n">1</td><td class="mid">uk_sportwissen_olympiastadien</td><td>Olympiastadien-Standorte</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">2</td><td class="mid">uk_sportwissen_marathonstrecken</td><td>Marathon-Standorte</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">3</td><td class="mid">hl_sportwissen_marathon_alter</td><td>H/L: Marathon-Geschichte</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">4</td><td class="mid">hl_sportwissen_stadien_kapazitaet</td><td>H/L: Stadion-Kapazität</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">5</td><td class="mid">uk_sportwissen_herkunft</td><td>Sportarten-Herkunft</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">6</td><td class="mid">uk_sportwissen_teamgroesse</td><td>Teamgrößen-Quiz</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">7</td><td class="mid">uk_sportwissen_olympia_standort</td><td>Olympia-Austragungsorte</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">8</td><td class="mid">ws_sportwissen_marathon</td><td>WS: Marathon</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">9</td><td class="mid">ws_sportwissen_triathlon</td><td>WS: Triathlon</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">10</td><td class="mid">ws_sportwissen_staffellauf</td><td>WS: Staffellauf</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">11</td><td class="mid">uk_sportwissen_fussballstadien</td><td>Fussballstadien</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">12</td><td class="mid">uk_sportwissen_motorsport_strecken</td><td>Motorsport-Rennstrecken</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">13</td><td class="mid">uk_sportwissen_wintersport_orte</td><td>Wintersport-Orte</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">14</td><td class="mid">uk_sportwissen_grand_slam_arenen</td><td>Grand-Slam-Arenen</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">15</td><td class="mid">uk_sportwissen_ski_pisten</td><td>Ski-Pisten weltweit</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">16</td><td class="mid">uk_sportwissen_golf_platze</td><td>Golfplaetze weltweit</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">17</td><td class="mid">uk_sportwissen_surfspots_welt</td><td>Surf-Spots weltweit</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">18</td><td class="mid">uk_sportwissen_klettergebiete</td><td>Klettergebiete</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">19</td><td class="mid">hl_sportwissen_transferrekorde</td><td>H/L: Transferrekorde</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">20</td><td class="mid">hl_sportwissen_hochsprung_rekorde</td><td>H/L: Hochsprung-Rekorde</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">21</td><td class="mid">hl_sportwissen_sportler_gehalt</td><td>H/L: Sportler-Gehaelter</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">22</td><td class="mid">hl_sportwissen_olympia_goldmedaillen</td><td>H/L: Olympia-Gold</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">23</td><td class="mid">hl_sportwissen_fussball_marktwert</td><td>H/L: Fussball-Marktwert</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">24</td><td class="mid">hl_sportwissen_gewichtheben_rekorde</td><td>H/L: Gewichtheben-Rekorde</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">25</td><td class="mid">hl_sportwissen_stadion_baujahr</td><td>H/L: Stadion-Baujahr</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">26</td><td class="mid">hl_sportwissen_tore_saison</td><td>H/L: Tore pro Saison</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">27</td><td class="mid">uk_sportwissen_weltverband</td><td>Sport-Weltverband</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">28</td><td class="mid">uk_sportwissen_olympisch</td><td>Olympisch?</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">29</td><td class="mid">uk_sportwissen_nationalsport_match</td><td>Nationalsport weltweit</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">30</td><td class="mid">uk_sportwissen_sportlegende_land</td><td>Sportlegenden-Herkunft</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">31</td><td class="mid">uk_sportwissen_rekordhalter</td><td>Weltrekord-Halter</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">32</td><td class="mid">uk_sportwissen_wm_gastgeber_match</td><td>WM-Gastgeber</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">33</td><td class="mid">uk_sportwissen_disziplin_kategorie</td><td>Disziplin-Zuordnung</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">34</td><td class="mid">uk_sportwissen_sportart_kontinent</td><td>Sportart & Kontinent</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">35</td><td class="mid">ws_sportwissen_fussball</td><td>WS: Fussball</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">36</td><td class="mid">ws_sportwissen_olympiade</td><td>WS: Olympiade</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">37</td><td class="mid">ws_sportwissen_weltmeister</td><td>WS: Weltmeister</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">38</td><td class="mid">ws_sportwissen_startschuss</td><td>WS: Startschuss</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">39</td><td class="mid">ws_sportwissen_athletik</td><td>WS: Athletik</td><td class="dc"></td></tr>
+<tr class="mr"><td class="n">40</td><td class="mid">ws_sportwissen_sportgeist</td><td>WS: Sportgeist</td><td class="dc"></td></tr>
+</tbody>
+</table>
 </div>
 
-<!-- ─── EU KENNZEICHEN ─────────────────────────────────── -->
-<div class="section">
-  <div class="section-title">🚗 EU-Kennzeichen</div>
-  <div class="grid">
+<footer>Generiert automatisch aus gen.py · GeoQuest Phase 258 · 681 Modi</footer>
 
-    <div class="card">
-      <div class="card-icon">🚗</div>
-      <div class="card-body">
-        <div class="card-name">EU-Kennzeichen (Casual)</div>
-        <div class="card-source">EU-Plates-Datensatz</div>
-        <div><span class="badge badge-teal">EU Plates</span></div>
-        <div class="count">Datenbasis: <span>~50+</span> Kennzeichen mit Tipps</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">🚦</div>
-      <div class="card-body">
-        <div class="card-name">Kennzeichen Pro (Hardcore)</div>
-        <div class="card-source">EU-Plates-Datensatz</div>
-        <div><span class="badge badge-teal">EU Plates</span></div>
-        <div class="count">Datenbasis: <span>~50+</span> Kennzeichen ohne Tipps</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">🌐</div>
-      <div class="card-body">
-        <div class="card-name">Karten-IVR (Map Guesser)</div>
-        <div class="card-source">IVR-Codes + Weltkarte</div>
-        <div><span class="badge badge-teal">EU Plates</span></div>
-        <div class="count">Datenbasis: <span>~195</span> IVR-Ländercodes</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">🚗</div>
-      <div class="card-body">
-        <div class="card-name">🧪 DE-Kennzeichen</div>
-        <div class="card-source">DE_PLATES_DATA (289 Kreise)</div>
-        <div><span class="badge badge-teal">EU Plates</span> <span class="badge badge-blue">NEU Phase 203</span></div>
-        <div class="count">Datenbasis: <span>289</span> deutsche KFZ-Kennzeichen mit Ort</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">📋</div>
-      <div class="card-body">
-        <div class="card-name">Kennzeichen Album</div>
-        <div class="card-source">EU-Plates-Datensatz</div>
-        <div><span class="badge badge-teal">EU Plates</span></div>
-        <div class="count">Sammelalbum aller gesammelten Kennzeichen</div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- ─── HIGHER / LOWER ─────────────────────────────────── -->
-<div class="section">
-  <div class="section-title">⬆⬇ Higher / Lower Vergleiche</div>
-  <div class="grid">
-
-    <div class="card">
-      <div class="card-icon">👥</div>
-      <div class="card-body">
-        <div class="card-name">H/L Einwohner</div>
-        <div class="card-source">Bevölkerungs-Datensatz</div>
-        <div><span class="badge badge-orange">H/L Vergleich</span></div>
-        <div class="count">Datenbasis: <span>~195</span> Länder</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">🌊</div>
-      <div class="card-body">
-        <div class="card-name">H/L Flusslänge</div>
-        <div class="card-source">rivers.json</div>
-        <div><span class="badge badge-orange">H/L Vergleich</span></div>
-        <div class="count">Datenbasis: <span>~51</span> Flüsse mit Länge</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">🗺</div>
-      <div class="card-body">
-        <div class="card-name">H/L Landfläche</div>
-        <div class="card-source">Länder-Flächendaten</div>
-        <div><span class="badge badge-orange">H/L Vergleich</span></div>
-        <div class="count">Datenbasis: <span>~195</span> Länder</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">💰</div>
-      <div class="card-body">
-        <div class="card-name">H/L BIP</div>
-        <div class="card-source">BIP-Daten (Weltbank)</div>
-        <div><span class="badge badge-orange">H/L Vergleich</span></div>
-        <div class="count">Datenbasis: <span>~195</span> Länder</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">🏘</div>
-      <div class="card-body">
-        <div class="card-name">H/L Bevölkerungsdichte</div>
-        <div class="card-source">Bevölkerungs-Datensatz</div>
-        <div><span class="badge badge-orange">H/L Vergleich</span></div>
-        <div class="count">Datenbasis: <span>~195</span> Länder</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">⛰</div>
-      <div class="card-body">
-        <div class="card-name">H/L Höchster Punkt</div>
-        <div class="card-source">Gebirgs-/Elevationsdaten</div>
-        <div><span class="badge badge-orange">H/L Vergleich</span></div>
-        <div class="count">Datenbasis: <span>~195</span> Länder</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">🏖</div>
-      <div class="card-body">
-        <div class="card-name">H/L Küstenlänge</div>
-        <div class="card-source">Küstenlängen-Datensatz</div>
-        <div><span class="badge badge-orange">H/L Vergleich</span></div>
-        <div class="count">Datenbasis: <span>~195</span> Länder</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">🤝</div>
-      <div class="card-body">
-        <div class="card-name">H/L Grenzen</div>
-        <div class="card-source">Nachbarschafts-Datensatz</div>
-        <div><span class="badge badge-orange">H/L Vergleich</span></div>
-        <div class="count">Datenbasis: <span>~195</span> Länder</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">❤️</div>
-      <div class="card-body">
-        <div class="card-name">H/L Lebenserwartung</div>
-        <div class="card-source">WHO / Weltbank Daten</div>
-        <div><span class="badge badge-orange">H/L Vergleich</span></div>
-        <div class="count">Datenbasis: <span>~195</span> Länder</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">👶</div>
-      <div class="card-body">
-        <div class="card-name">H/L Medianalter</div>
-        <div class="card-source">Demografische Daten</div>
-        <div><span class="badge badge-orange">H/L Vergleich</span></div>
-        <div class="count">Datenbasis: <span>~195</span> Länder</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">🌲</div>
-      <div class="card-body">
-        <div class="card-name">H/L Waldanteil</div>
-        <div class="card-source">FAO-Forstdaten</div>
-        <div><span class="badge badge-orange">H/L Vergleich</span></div>
-        <div class="count">Datenbasis: <span>~195</span> Länder</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">🌿</div>
-      <div class="card-body">
-        <div class="card-name">Nationalpark-Vergleich (HL)</div>
-        <div class="card-source">parks.json</div>
-        <div><span class="badge badge-orange">H/L Vergleich</span></div>
-        <div class="count">Datenbasis: <span>113</span> Parks</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">🛣</div>
-      <div class="card-body">
-        <div class="card-name">Straßennetz-Vergleich (HL)</div>
-        <div class="card-source">Infrastruktur-Daten</div>
-        <div><span class="badge badge-orange">H/L Vergleich</span></div>
-        <div class="count">Datenbasis: <span>~195</span> Länder</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">🚂</div>
-      <div class="card-body">
-        <div class="card-name">Schienennetz-Vergleich (HL)</div>
-        <div class="card-source">Infrastruktur-Daten</div>
-        <div><span class="badge badge-orange">H/L Vergleich</span></div>
-        <div class="count">Datenbasis: <span>~195</span> Länder</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">📶</div>
-      <div class="card-body">
-        <div class="card-name">Internet-Nutzung (HL)</div>
-        <div class="card-source">ITU-Daten</div>
-        <div><span class="badge badge-orange">H/L Vergleich</span></div>
-        <div class="count">Datenbasis: <span>~195</span> Länder</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">🔋</div>
-      <div class="card-body">
-        <div class="card-name">E-Mobility (HL)</div>
-        <div class="card-source">EV-Infrastruktur-Daten</div>
-        <div><span class="badge badge-orange">H/L Vergleich</span></div>
-        <div class="count">Datenbasis: <span>~195</span> Länder</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">🏙</div>
-      <div class="card-body">
-        <div class="card-name">Urbanisierungsgrad (HL)</div>
-        <div class="card-source">Urbanisierungs-Daten</div>
-        <div><span class="badge badge-orange">H/L Vergleich</span></div>
-        <div class="count">Datenbasis: <span>~195</span> Länder</div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- ─── DIREKTE VERGLEICHE ─────────────────────────────── -->
-<div class="section">
-  <div class="section-title">⚖️ Direkte Länder-Vergleiche</div>
-  <div class="grid">
-
-    <div class="card"><div class="card-icon">🗺</div><div class="card-body"><div class="card-name">Vergleich Fläche</div><div class="card-source">Flächendaten</div><div><span class="badge badge-purple">Vergleich</span></div><div class="count">Datenbasis: <span>~195</span> Länder</div></div></div>
-    <div class="card"><div class="card-icon">👥</div><div class="card-body"><div class="card-name">Vergleich Einwohner</div><div class="card-source">Bevölkerungsdaten</div><div><span class="badge badge-purple">Vergleich</span></div><div class="count">Datenbasis: <span>~195</span> Länder</div></div></div>
-    <div class="card"><div class="card-icon">🧭</div><div class="card-body"><div class="card-name">Vergleich Nördlichstes</div><div class="card-source">Koordinaten-Daten</div><div><span class="badge badge-purple">Vergleich</span></div><div class="count">Datenbasis: <span>~195</span> Länder</div></div></div>
-    <div class="card"><div class="card-icon">💰</div><div class="card-body"><div class="card-name">Vergleich BIP</div><div class="card-source">BIP-Daten (Weltbank)</div><div><span class="badge badge-purple">Vergleich</span></div><div class="count">Datenbasis: <span>~195</span> Länder</div></div></div>
-    <div class="card"><div class="card-icon">🏘</div><div class="card-body"><div class="card-name">Vergleich Bevölkerungsdichte</div><div class="card-source">Bevölkerungsdaten</div><div><span class="badge badge-purple">Vergleich</span></div><div class="count">Datenbasis: <span>~195</span> Länder</div></div></div>
-    <div class="card"><div class="card-icon">⛰</div><div class="card-body"><div class="card-name">Vergleich Elevation</div><div class="card-source">Geländedaten</div><div><span class="badge badge-purple">Vergleich</span></div><div class="count">Datenbasis: <span>~195</span> Länder</div></div></div>
-    <div class="card"><div class="card-icon">🏖</div><div class="card-body"><div class="card-name">Vergleich Küstenlänge</div><div class="card-source">Küstendaten</div><div><span class="badge badge-purple">Vergleich</span></div><div class="count">Datenbasis: <span>~195</span> Länder</div></div></div>
-    <div class="card"><div class="card-icon">🤝</div><div class="card-body"><div class="card-name">Vergleich Grenzen</div><div class="card-source">Nachbarschafts-Daten</div><div><span class="badge badge-purple">Vergleich</span></div><div class="count">Datenbasis: <span>~195</span> Länder</div></div></div>
-    <div class="card"><div class="card-icon">❤️</div><div class="card-body"><div class="card-name">Vergleich Lebenserwartung</div><div class="card-source">WHO-Daten</div><div><span class="badge badge-purple">Vergleich</span></div><div class="count">Datenbasis: <span>~195</span> Länder</div></div></div>
-    <div class="card"><div class="card-icon">👶</div><div class="card-body"><div class="card-name">Vergleich Medianalter</div><div class="card-source">Demografiedaten</div><div><span class="badge badge-purple">Vergleich</span></div><div class="count">Datenbasis: <span>~195</span> Länder</div></div></div>
-    <div class="card"><div class="card-icon">🌲</div><div class="card-body"><div class="card-name">Vergleich Waldanteil</div><div class="card-source">FAO-Forstdaten</div><div><span class="badge badge-purple">Vergleich</span></div><div class="count">Datenbasis: <span>~195</span> Länder</div></div></div>
-    <div class="card"><div class="card-icon">✈️</div><div class="card-body"><div class="card-name">Vergleich Flughäfen</div><div class="card-source">IATA-Daten</div><div><span class="badge badge-purple">Vergleich</span></div><div class="count">Datenbasis: <span>~195</span> Länder</div></div></div>
-    <div class="card"><div class="card-icon">🏔</div><div class="card-body"><div class="card-name">Vergleich Berge</div><div class="card-source">Gebirgs-Daten</div><div><span class="badge badge-purple">Vergleich</span></div><div class="count">Datenbasis: <span>~195</span> Länder</div></div></div>
-    <div class="card"><div class="card-icon">🧭</div><div class="card-body"><div class="card-name">Vergleich N/S-Ausdehnung</div><div class="card-source">Koordinaten-Daten</div><div><span class="badge badge-purple">Vergleich</span></div><div class="count">Datenbasis: <span>~195</span> Länder</div></div></div>
-  </div>
-</div>
-
-<!-- ─── NACHBARN ─────────────────────────────────────────── -->
-<div class="section">
-  <div class="section-title">🤝 Nachbarschafts-Modi</div>
-  <div class="grid">
-    <div class="card"><div class="card-icon">🌍</div><div class="card-body"><div class="card-name">Nachbar-Erkennung</div><div class="card-source">Nachbarschafts-Datensatz</div><div><span class="badge badge-indigo">Nachbarn</span></div><div class="count">Datenbasis: <span>~195</span> Länder mit Nachbarn</div></div></div>
-    <div class="card"><div class="card-icon">🧩</div><div class="card-body"><div class="card-name">Falscher Nachbar</div><div class="card-source">Nachbarschafts-Datensatz</div><div><span class="badge badge-indigo">Nachbarn</span></div><div class="count">Datenbasis: <span>~195</span> Länder (Intrus-Modus)</div></div></div>
-    <div class="card"><div class="card-icon">🔢</div><div class="card-body"><div class="card-name">Nachbar-Anzahl</div><div class="card-source">Nachbarschafts-Datensatz</div><div><span class="badge badge-indigo">Nachbarn</span></div><div class="count">Datenbasis: <span>~195</span> Länder</div></div></div>
-    <div class="card"><div class="card-icon">🤝</div><div class="card-body"><div class="card-name">🧪 Grenze oder nicht?</div><div class="card-source">NEIGHBORS-Datensatz</div><div><span class="badge badge-indigo">Nachbarn</span> <span class="badge badge-blue">NEU Phase 203</span></div><div class="count">Datenbasis: <span>~195</span> Länder-Nachbarschaften · 50/50 ja/nein</div></div></div>
-  </div>
-</div>
-
-<!-- ─── KARTEN-MODI ─────────────────────────────────────── -->
-<div class="section">
-  <div class="section-title">🗺 Karten-Modi</div>
-  <div class="grid">
-    <div class="card"><div class="card-icon">📍</div><div class="card-body"><div class="card-name">Karte: Stadt pinnen</div><div class="card-source">cities.json + D3.js Weltkarte</div><div><span class="badge badge-teal">Karte</span></div><div class="count">Datenbasis: <span>2.315</span> Städte</div></div></div>
-    <div class="card"><div class="card-icon">🔍</div><div class="card-body"><div class="card-name">Karte: Stadt finden</div><div class="card-source">cities.json + D3.js Weltkarte</div><div><span class="badge badge-teal">Karte</span></div><div class="count">Datenbasis: <span>2.315</span> Städte</div></div></div>
-    <div class="card"><div class="card-icon">🏛</div><div class="card-body"><div class="card-name">Karte: Hauptstadt-Guesser</div><div class="card-source">Capitals + D3.js Weltkarte</div><div><span class="badge badge-teal">Karte</span></div><div class="count">Datenbasis: <span>~195</span> Hauptstädte</div></div></div>
-  </div>
-</div>
-
-<!-- ─── AIRPORTS & SONDER ─────────────────────────────────── -->
-<div class="section">
-  <div class="section-title">✈️ Flughäfen &amp; Spezial-Quiz</div>
-  <div class="grid">
-    <div class="card"><div class="card-icon">✈️</div><div class="card-body"><div class="card-name">IATA-Code Quiz</div><div class="card-source">IATA-Flughafencodes</div><div><span class="badge badge-red">Spezial</span></div><div class="count">Datenbasis: Wichtigste <span>~100+</span> Flughäfen</div></div></div>
-    <div class="card"><div class="card-icon">🕐</div><div class="card-body"><div class="card-name">Timezone Quiz</div><div class="card-source">Zeitzonen-Datensatz</div><div><span class="badge badge-red">Spezial</span></div><div class="count">Datenbasis: <span>~195</span> Länder</div></div></div>
-    <div class="card"><div class="card-icon">🌤</div><div class="card-body"><div class="card-name">Klima Quiz</div><div class="card-source">Klimadaten (intern)</div><div><span class="badge badge-red">Spezial</span></div><div class="count">Datenbasis: <span>~195</span> Länder-Klimaprofile</div></div></div>
-    <div class="card"><div class="card-icon">🎨</div><div class="card-body"><div class="card-name">Flaggenfarben Quiz</div><div class="card-source">Flaggen-Farbanalyse</div><div><span class="badge badge-red">Spezial</span></div><div class="count">Datenbasis: <span>~195</span> Flaggen</div></div></div>
-    <div class="card"><div class="card-icon">🏝</div><div class="card-body"><div class="card-name">Binnenstaat-Quiz</div><div class="card-source">Landlocked-Datensatz</div><div><span class="badge badge-red">Spezial</span></div><div class="count">Datenbasis: <span>44</span> Binnenstaaten weltweit</div></div></div>
-  </div>
-</div>
-
-<!-- ─── SPORT POI ─────────────────────────────────────────── -->
-<div class="section">
-  <div class="section-title">⚽ Sport &amp; Olympia – POI-Ortungsspiele (18 Modi)</div>
-  <div class="grid">
-
-    <div class="card"><div class="card-icon">⚽</div><div class="card-body"><div class="card-name">Derby-Hotspots</div><div class="card-source">Stadion-Koordinaten</div><div><span class="badge badge-pink">Sport POI</span></div><div class="count">Datenbasis: <span>14</span> Derby-Orte</div></div></div>
-    <div class="card"><div class="card-icon">🏒</div><div class="card-body"><div class="card-name">Eishockey-Nationen</div><div class="card-source">Arena-Koordinaten</div><div><span class="badge badge-pink">Sport POI</span></div><div class="count">Datenbasis: <span>12</span> Eishockey-Hochburgen</div></div></div>
-    <div class="card"><div class="card-icon">🏎</div><div class="card-body"><div class="card-name">F1 Historische Strecken</div><div class="card-source">Rennstrecken-Koordinaten</div><div><span class="badge badge-pink">Sport POI</span></div><div class="count">Datenbasis: <span>13</span> F1-Strecken</div></div></div>
-    <div class="card"><div class="card-icon">🚴</div><div class="card-body"><div class="card-name">Tour de France Pässe</div><div class="card-source">Bergpass-Koordinaten</div><div><span class="badge badge-pink">Sport POI</span></div><div class="count">Datenbasis: <span>12</span> TdF-Pässe</div></div></div>
-    <div class="card"><div class="card-icon">⛷</div><div class="card-body"><div class="card-name">Olympische Winter-Historie</div><div class="card-source">Olympia-Stadtkoordinaten</div><div><span class="badge badge-pink">Sport POI</span></div><div class="count">Datenbasis: <span>14</span> Wintersportorte</div></div></div>
-    <div class="card"><div class="card-icon">🌍</div><div class="card-body"><div class="card-name">WM-Gastgeber-Historie</div><div class="card-source">Länder-Koordinaten</div><div><span class="badge badge-pink">Sport POI</span></div><div class="count">Datenbasis: <span>15</span> WM-Gastgeber</div></div></div>
-    <div class="card"><div class="card-icon">🏟</div><div class="card-body"><div class="card-name">Legendäre WM-Finalstadien</div><div class="card-source">Stadion-Koordinaten</div><div><span class="badge badge-pink">Sport POI</span></div><div class="count">Datenbasis: <span>13</span> WM-Finalstätten</div></div></div>
-    <div class="card"><div class="card-icon">🏆</div><div class="card-body"><div class="card-name">Weltmeister-Nationen</div><div class="card-source">Länder-Koordinaten</div><div><span class="badge badge-pink">Sport POI</span></div><div class="count">Datenbasis: <span>8</span> WM-Titelträger</div></div></div>
-    <div class="card"><div class="card-icon">⭐</div><div class="card-body"><div class="card-name">Heimat der Fußball-Legenden</div><div class="card-source">Geburtsort-Koordinaten</div><div><span class="badge badge-pink">Sport POI</span></div><div class="count">Datenbasis: <span>13</span> Legenden-Geburtsorte</div></div></div>
-    <div class="card"><div class="card-icon">🗺</div><div class="card-body"><div class="card-name">Road to 2026</div><div class="card-source">WM-2026-Stadionkoordinaten</div><div><span class="badge badge-pink">Sport POI</span></div><div class="count">Datenbasis: <span>13</span> WM-2026-Stadien</div></div></div>
-    <div class="card"><div class="card-icon">👩</div><div class="card-body"><div class="card-name">Frauen-WM-Meilensteine</div><div class="card-source">Frauen-WM-Koordinaten</div><div><span class="badge badge-pink">Sport POI</span></div><div class="count">Datenbasis: <span>9</span> Frauen-WM-Stätten</div></div></div>
-    <div class="card"><div class="card-icon">🏅</div><div class="card-body"><div class="card-name">Sommerspiele-Metropolen</div><div class="card-source">Olympia-Stadtkoordinaten</div><div><span class="badge badge-pink">Sport POI</span></div><div class="count">Datenbasis: <span>17</span> Sommerspiele-Städte</div></div></div>
-    <div class="card"><div class="card-icon">🛷</div><div class="card-body"><div class="card-name">Winter-Exoten &amp; Klassiker</div><div class="card-source">Olympia-Stadtkoordinaten</div><div><span class="badge badge-pink">Sport POI</span></div><div class="count">Datenbasis: <span>12</span> Winter-Olympia-Orte</div></div></div>
-    <div class="card"><div class="card-icon">🥇</div><div class="card-body"><div class="card-name">Olympische Rekordhalter</div><div class="card-source">Geburtsort-Koordinaten</div><div><span class="badge badge-pink">Sport POI</span></div><div class="count">Datenbasis: <span>12</span> Rekordathleten</div></div></div>
-    <div class="card"><div class="card-icon">⛰</div><div class="card-body"><div class="card-name">Olympia in extremer Höhe</div><div class="card-source">Olympia-Höhendaten</div><div><span class="badge badge-pink">Sport POI</span></div><div class="count">Datenbasis: <span>9</span> Höhenlagen-Schauplätze</div></div></div>
-    <div class="card"><div class="card-icon">🚫</div><div class="card-body"><div class="card-name">Die Boykott-Spiele</div><div class="card-source">Historische Olympia-Daten</div><div><span class="badge badge-pink">Sport POI</span></div><div class="count">Datenbasis: <span>8</span> Boykott-Schauplätze</div></div></div>
-    <div class="card"><div class="card-icon">🇪🇺</div><div class="card-body"><div class="card-name">EM-Gastgeber-Historie</div><div class="card-source">UEFA-EM-Daten</div><div><span class="badge badge-pink">Sport POI</span></div><div class="count">Datenbasis: <span>13</span> EM-Gastgeberländer</div></div></div>
-    <div class="card"><div class="card-icon">🏟</div><div class="card-body"><div class="card-name">Finalstadien der EM</div><div class="card-source">UEFA-Stadion-Koordinaten</div><div><span class="badge badge-pink">Sport POI</span></div><div class="count">Datenbasis: <span>12</span> EM-Finalstadien</div></div></div>
-    <div class="card"><div class="card-icon">🏎</div><div class="card-body"><div class="card-name">🧪 F1 Strecken (Karte)</div><div class="card-source">F1_TRACKS_DATA</div><div><span class="badge badge-pink">Sport POI</span> <span class="badge badge-blue">NEU Phase 202</span></div><div class="count">Datenbasis: <span>30</span> F1-Strecken mit Koordinaten</div></div></div>
-    <div class="card"><div class="card-icon">🏟</div><div class="card-body"><div class="card-name">🧪 Europastadien (Karte)</div><div class="card-source">UEFA_STADIUMS_DATA</div><div><span class="badge badge-pink">Sport POI</span> <span class="badge badge-blue">NEU Phase 202</span></div><div class="count">Datenbasis: <span>28</span> UEFA-Stadien mit Koordinaten</div></div></div>
-    <div class="card"><div class="card-icon">✈️</div><div class="card-body"><div class="card-name">🧪 Flughäfen (Karte)</div><div class="card-source">AIRPORTS_GEO_DATA</div><div><span class="badge badge-pink">Sport POI</span> <span class="badge badge-blue">NEU Phase 202</span></div><div class="count">Datenbasis: <span>~100+</span> Flughäfen mit IATA-Codes</div></div></div>
-
-  </div>
-</div>
-
-<div style="margin-top:32px;padding:16px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);font-size:.8rem;color:var(--text2)">
-  <strong style="color:var(--green)">Gesamt:</strong> 85 Spielmodi ·
-  <strong style="color:var(--blue)">Datenpunkte:</strong> 2.315 Städte · 219 Sport-POIs · 176 Landmarks · 149 UNESCO · 113 Parks · 221 Gerichte · 42 Marken · 35 Währungen · 57 U-Bahn-Netze · ~195 Länder (diverse Attribute) · ~51 Flüsse · 289 DE-Kennzeichen · 30 F1-Strecken · 28 UEFA-Stadien · 30.461 Städte (worldCitiesData)<br>
-  <span style="opacity:.7">Stand: Mai 2026 (Phase 203) · Generiert aus gen.py</span>
-</div>
-
+<script>
+function filter(q){
+  q=q.toLowerCase();
+  document.querySelectorAll('#tbl tbody tr.mr').forEach(function(r){
+    var txt=r.textContent.toLowerCase();
+    r.classList.toggle('hidden',q.length>1&&!txt.includes(q));
+  });
+  document.querySelectorAll('#tbl tbody tr.gh').forEach(function(r){
+    var next=r.nextElementSibling;
+    var anyVisible=false;
+    while(next&&next.classList.contains('mr')){
+      if(!next.classList.contains('hidden'))anyVisible=true;
+      next=next.nextElementSibling;
+    }
+    r.classList.toggle('hidden',!anyVisible&&q.length>1);
+  });
+}
+</script>
 </body>
 </html>
