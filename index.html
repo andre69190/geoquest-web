@@ -7543,7 +7543,7 @@ function flagOf(name){const cc=ccFromCountry(name);return cc?`<img src="https://
 /* Phase 97-1: Zombie-SW-Killer – läuft vor Supabase-Init */
 /* Tötet veraltete Service Worker, die Updates blockieren   */
 (function _zombieKiller(){
-  var SW_VER='gq-6c62b252',LS_KEY='__gq_sw_ver'; /* Phase 295: auto-injected by gen.py */
+  var SW_VER='gq-555a23e3',LS_KEY='__gq_sw_ver'; /* Phase 295: auto-injected by gen.py */
   try{
     if(localStorage.getItem(LS_KEY)===SW_VER)return; /* aktuell – nichts zu tun */
     if(!('serviceWorker' in navigator)){localStorage.setItem(LS_KEY,SW_VER);return;}
@@ -158106,7 +158106,7 @@ function genUniversalMatchQ(cat){
     "insel_match","ehemalige_hauptstaedte","philosophen","nationalpflanzen","nationaltiere","religionen","schriften","nationalsport_off",
     "enklave","grenzfluesse","halbinseln","deltamuendungen","kaps","meerbusen","inselgruppen","gebirge_match","seen_match",
     "automarken","fluggesellschaften","bahnstrecken","hafen_world","kanaele","reedereien","autobahnen_beruhmt","metrostaedte","luft_rekorde",
-    "breitengrad_match","zug_routen"];
+    "zug_routen"];
   const allC=[...new Set(_matchCats.flatMap(k=>(KULTUR_DATA[k]||[]).map(d=>d.c)).filter(c=>c!==cor))];
   const wrong=sh(allC).slice(0,3);
   if(wrong.length<3)return null;
