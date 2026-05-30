@@ -3177,7 +3177,9 @@ const MODES=[
     {id:"zug_vkm",            icon:"\u{1F3F7}\uFE0F",title:"Halterk\u00fcrzel (VKM)",   group:"zuege",prompt:"Aus welchem Land kommt dieses Fahrzeughalter-K\u00fcrzel?",     desc:"D-DB, A-OBB, CH-SBB — europ\u00e4ische VKM-Codes"},
     {id:"hl_zug_speed",      icon:"\u26A1",title:"H/L: Zuggeschwindigkeit",        group:"zuege",prompt:"Höhere Betriebsgeschwindigkeit?",                         desc:"ICE vs. Shinkansen vs. TGV vs. Maglev"},
     {id:"hl_zug_jahr",       icon:"\u{1F4C5}",title:"H/L: Bahn-Geschichte",          group:"zuege",prompt:"Früher in Betrieb genommen?",                              desc:"Wann eröffnete dieses Netz oder dieser Zug?"},
+    {id:"hl_zug_taktfrequenz",icon:"\u23F1",title:"H/L: Taktfrequenz",          group:"zuege",prompt:"Höhere Taktfrequenz (Züge/Stunde)?",               desc:"Shinkansen vs. ICE vs. U-Bahn — wer faehrt oefter?"},
     {id:"hl_zug_km",         icon:"\u{1F4CF}",title:"H/L: Streckenkil. Fernzug",     group:"zuege",prompt:"Längere Strecke?",                                        desc:"Trans-Sibirisch vs. Glacier Express — Streckenlängen"},
+    {id:"timeline_zug_bahnhof_bau",icon:"\u{1F3DB}\uFE0F",title:"Timeline: Bahnhofs-Bau",    group:"zuege",prompt:"Wann wurde dieser Bahnhof eroeffnet?",                desc:"Grand Central, Gare du Nord, Shinjuku — wann oeffneten die Groessten?"},
     {id:"timeline_zug_hsb",  icon:"\u{1F686}",title:"Bahn-Timeline",                 group:"zuege",prompt:"Chronologisch sortieren — Bahn-Meilensteine!",                 desc:"Erste HSR, Metro-Eröffnungen & Zuggeschichte"},
     {id:"ws_zug_intercity",        icon:"\u{1F524}",title:"WS: Intercity",              group:"zuege",prompt:"Bilde Wörter aus dem Zugnamen!",                     desc:"Anagramm-Rätsel: INTERCITY — 9 Buchstaben"},
     {id:"ws_zug_shinkansen",        icon:"\u{1F524}",title:"WS: Shinkansen",              group:"zuege",prompt:"Bilde Wörter aus dem Zugnamen!",                     desc:"Anagramm-Rätsel: SHINKANSEN — 10 Buchstaben"},
@@ -3194,6 +3196,7 @@ const MODES=[
     {id:"ws_zug_maglev",        icon:"\u{1F524}",title:"WS: Maglev",              group:"zuege",prompt:"Bilde Wörter aus dem Zugnamen!",                     desc:"Anagramm-Rätsel: MAGLEV — 6 Buchstaben"},
     {id:"ws_zug_flixzug",        icon:"\u{1F524}",title:"WS: Flixzug",              group:"zuege",prompt:"Bilde Wörter aus dem Zugnamen!",                     desc:"Anagramm-Rätsel: FLIXZUG — 7 Buchstaben"},
     {id:"ws_zug_acela",        icon:"\u{1F524}",title:"WS: Acela",              group:"zuege",prompt:"Bilde Wörter aus dem Zugnamen!",                     desc:"Anagramm-Rätsel: ACELA — 5 Buchstaben"},
+    {id:"zug_rekorde_pin",  icon:"\u{1F3C6}",title:"Bahn-Rekorde: Wo liegt das?",group:"zuege",prompt:"\u{1F4CD} Wo auf der Karte liegt diese Rekord-Strecke?",  desc:"Schnellster Zug, laengster Tunnel, hoechste Bahn — pin sie!"},
     {id:"uk_bahnhof_pin",   icon:"\u{1F689}",title:"Bahnhöfe weltweit",             group:"zuege",prompt:"\u{1F4CD} Wo auf der Karte liegt dieser Bahnhof?",       desc:"Grand Central, Tokyo Station, Estação da Luz & 77 weitere"},
     {id:"zug_ds100",          icon:"\u{1F3AB}",title:"DS100 (Auswahl)",              group:"zuege",prompt:"Welches Betriebsstellenkürzel hat dieser Bahnhof?",        desc:"FF=Frankfurt, MH=München — das Alphabet der Eisenbahn"},
     {id:"zug_metro_logos", icon:"\u{1F687}",title:"Metro-Logos weltweit",  group:"zuege",prompt:"Welchem Nahverkehrsnetz gehört dieses Logo?",desc:"Underground, Métro, U-Bahn — erkennst du die Logos der Weltmetropolen?"},
@@ -3703,7 +3706,7 @@ const MODE_CATS={
   pure_geo:{label:"Pure Geo",icon:"\u{1F30D}",modes:["city","flag","capital","river","landmark","park","unesco","citymark","subway","flagsel","rcapital","rcity","rriver","river_real","logic_grid","travel_route","flag_fusion","climate_mystery","alpha_sprint","timezone_jumper","wappen_meister","slf","hl_b_rain","hl_b_temp","hl_b_sun","hl_b_vulc","hl_b_isl","hl_b_tz","hl_b_founded","river_map","unesco_map","wort_schmiede","uk_kontinent_mitte","uk_sort_kontinente","uk_sort_ozeane","uk_breitengrad_match"],cost:0},
   lifestyle:{label:"Kultur & Lifestyle",icon:"\u{1F3A8}",modes:["outline","food","brand","currency","curr_real","pop_compare","hl_b_tour","hl_b_unesco","hl_b_lang","uk_getraenke","uk_streetfood","uk_kaese","uk_suessspeisen","uk_kaffee","uk_taenze","uk_kleidung","uk_instrumente","uk_literatur","uk_wahrzeichen","uk_feste","uk_begruessung","uk_feiertage","uk_erfindungen","uk_exporte","uk_blumen","uk_entdecker","uk_sport","uk_brettspiele","uk_museen","uk_wolkenkratzer","uk_wuesten","uk_berggipfel","uk_meerengen","uk_wasserfaelle","uk_canyons","uk_surf_spots","uk_insel_match","uk_ehemalige_hauptstaedte","uk_philosophen","uk_nationalpflanzen","uk_nationaltiere","uk_religionen","uk_schriften","uk_schatten_gedreht","hl_b_coffee","uk_weinregionen","uk_kunstwerke","uk_filmsets","uk_ruinen","uk_bruecken","uk_kirchen"],cost:1000},
   eu_plates:{label:"Kennzeichen",icon:"\u{1F697}",modes:["plate_casual","plate_hard","map_ivr","de_plate"],cost:500},
-  zuege:{label:"Z\u00fcge & Bahn",icon:"\u{1F686}",modes:["zug_panorama","zug_vkm","uk_bahnstrecken","hl_b_rail","hl_zug_speed","hl_zug_jahr","hl_zug_km","timeline_zug_hsb","ws_zug_intercity","ws_zug_shinkansen","ws_zug_frecciarossa","ws_zug_pendolino","ws_zug_railjet","ws_zug_eurostar","ws_zug_thalys","ws_zug_velaro","ws_zug_bernina","ws_zug_trenitalia","ws_zug_itineraire","ws_zug_talgo","ws_zug_maglev","ws_zug_flixzug","ws_zug_acela","uk_bahnhof_pin","zug_ds100","zug_ds100_input","zug_metro_logos","zug_routen","zug_bahnhof_typ","zug_hersteller"],cost:0},
+  zuege:{label:"Z\u00fcge & Bahn",icon:"\u{1F686}",modes:["zug_panorama","zug_vkm","uk_bahnstrecken","hl_b_rail","hl_zug_speed","hl_zug_jahr","hl_zug_km","hl_zug_taktfrequenz","timeline_zug_hsb","timeline_zug_bahnhof_bau","ws_zug_intercity","ws_zug_shinkansen","ws_zug_frecciarossa","ws_zug_pendolino","ws_zug_railjet","ws_zug_eurostar","ws_zug_thalys","ws_zug_velaro","ws_zug_bernina","ws_zug_trenitalia","ws_zug_itineraire","ws_zug_talgo","ws_zug_maglev","ws_zug_flixzug","ws_zug_acela","uk_bahnhof_pin","zug_rekorde_pin","zug_ds100","zug_ds100_input","zug_metro_logos","zug_routen","zug_bahnhof_typ","zug_hersteller"],cost:0},
   hl_compare:{label:"Higher / Lower",icon:"\u2b06\ufe0f",modes:["hl_pop","hl_river","hl_area","hl_gdp","hl_density","hl_elevation","hl_coastline","hl_borders","hl_lifeexp","hl_median_age","hl_forest"],cost:0},
   comparisons:{label:"Vergleiche",icon:"\u2696\ufe0f",modes:["comp_area","comp_pop","comp_north","comp_gdp","comp_density","comp_elevation","comp_coast","comp_borders","comp_life","comp_age","comp_forest","comp_airports","comp_mountain","comp_nsextent","hl_b_parks","hl_b_roads","hl_b_rail","hl_b_net","hl_b_ev","hl_b_urban","plate_compare","hl_b_total_lang","hl_b_nobel","hl_b_medals","hl_b_ns_km","hl_b_bikes","hl_b_land_border","hl_b_military","hl_b_renewable"],cost:0},
   airports:{label:"Airports & Spezial",icon:"\u2708\uFE0F",modes:["airport_pin","iata","tz_quiz","airport_map","flugrouten_duell","inlandsflug_intl","sunrise_guesser","sonnen_kompass","aequator_magnet","hauptstadt_distanz","naechster_airport","iata_reverse","jetlag_rechner","kuehlschrank_backofen","regen_radar","hoehenmeter_schaetzer","klima_ausreisser","uk_automarken","uk_fluggesellschaften","uk_bahnstrecken","uk_hafen_world","uk_kanaele","uk_reedereien","uk_autobahnen_beruhmt","uk_metrostaedte","uk_luft_rekorde","uk_distanz_schaetzer","uk_flugzeit_schaetzer"]/* PHASE204_CATS */,cost:0},
@@ -7558,7 +7561,7 @@ function flagOf(name){const cc=ccFromCountry(name);return cc?`<img src="https://
 /* Phase 97-1: Zombie-SW-Killer – läuft vor Supabase-Init */
 /* Tötet veraltete Service Worker, die Updates blockieren   */
 (function _zombieKiller(){
-  var SW_VER='gq-0d1d9ee6',LS_KEY='__gq_sw_ver'; /* Phase 295: auto-injected by gen.py */
+  var SW_VER='gq-c5ac47a4',LS_KEY='__gq_sw_ver'; /* Phase 295: auto-injected by gen.py */
   try{
     if(localStorage.getItem(LS_KEY)===SW_VER)return; /* aktuell – nichts zu tun */
     if(!('serviceWorker' in navigator)){localStorage.setItem(LS_KEY,SW_VER);return;}
@@ -38428,6 +38431,194 @@ const KULTUR_DATA={
     {
       "n": "NS Intercity Direct",
       "c": "Niederlande"
+    }
+  ],
+  "zug_rekorde_pin": [
+    {
+      "n": "Shanghai Maglev (schnellster kommerz. Zug, 430 km/h)",
+      "lat": 31.205,
+      "lng": 121.59,
+      "c": "China"
+    },
+    {
+      "n": "Peking–Shanghai HSR (Geschwindigkeitsrekord 486 km/h)",
+      "lat": 39.904,
+      "lng": 116.407,
+      "c": "China"
+    },
+    {
+      "n": "Chengdu–Chongqing HSR (neueste chin. Hochgeschw.-Linie)",
+      "lat": 30.572,
+      "lng": 104.066,
+      "c": "China"
+    },
+    {
+      "n": "Tokio–Osaka (Shinkansen, Nozomi, 285 km/h Betrieb)",
+      "lat": 35.682,
+      "lng": 139.767,
+      "c": "Japan"
+    },
+    {
+      "n": "Tokio–Sapporo (Hokkaido Shinkansen, längste HSR Japans)",
+      "lat": 43.065,
+      "lng": 141.347,
+      "c": "Japan"
+    },
+    {
+      "n": "Paris–Lyon (TGV, erster europ. Hochgeschw.-Betrieb 1981)",
+      "lat": 48.856,
+      "lng": 2.352,
+      "c": "Frankreich"
+    },
+    {
+      "n": "Paris–Marseille (LGV Méditerranée, 300 km/h)",
+      "lat": 43.296,
+      "lng": 5.37,
+      "c": "Frankreich"
+    },
+    {
+      "n": "Madrid–Sevilla (erste span. HSR, 1992)",
+      "lat": 40.416,
+      "lng": -3.703,
+      "c": "Spanien"
+    },
+    {
+      "n": "Madrid–Barcelona (AVE, 500 km Direktverbindung)",
+      "lat": 41.386,
+      "lng": 2.17,
+      "c": "Spanien"
+    },
+    {
+      "n": "Frankfurt–Koeln HSR (300 km/h, Neubaustreck)",
+      "lat": 50.11,
+      "lng": 8.682,
+      "c": "Deutschland"
+    },
+    {
+      "n": "Nuernberg–Ingolstadt HSR (erster ICE-Neubau 300 km/h DE)",
+      "lat": 49.453,
+      "lng": 11.077,
+      "c": "Deutschland"
+    },
+    {
+      "n": "Milano–Roma (Frecciarossa, 300 km/h)",
+      "lat": 45.464,
+      "lng": 9.189,
+      "c": "Italien"
+    },
+    {
+      "n": "Seoul–Busan KTX (300 km/h, laengste KTX-Linie)",
+      "lat": 37.566,
+      "lng": 126.977,
+      "c": "Suedkorea"
+    },
+    {
+      "n": "Taipei–Kaohsiung THSR (300 km/h, 2007)",
+      "lat": 25.048,
+      "lng": 121.514,
+      "c": "Taiwan"
+    },
+    {
+      "n": "London–Paris Eurotunnel (Weltrekord Unterwassertunnel 50 km)",
+      "lat": 51.127,
+      "lng": 1.32,
+      "c": "Grossbritannien"
+    },
+    {
+      "n": "Gotthard-Basistunnel (laengster Eisenbahntunnel 57 km)",
+      "lat": 46.63,
+      "lng": 8.617,
+      "c": "Schweiz"
+    },
+    {
+      "n": "Trans-Sibirische Eisenbahn (laengste Bahnlinie 9289 km)",
+      "lat": 55.751,
+      "lng": 37.617,
+      "c": "Russland"
+    },
+    {
+      "n": "Indian Pacific (zweitlaengste Direktverbindung 4352 km)",
+      "lat": -33.868,
+      "lng": 151.209,
+      "c": "Australien"
+    },
+    {
+      "n": "The Ghan (Adelaide–Darwin, 2979 km)",
+      "lat": -34.929,
+      "lng": 138.6,
+      "c": "Australien"
+    },
+    {
+      "n": "Glacier Express (langsamster Schnellzug, Zermatt–St. Moritz)",
+      "lat": 46.417,
+      "lng": 7.987,
+      "c": "Schweiz"
+    },
+    {
+      "n": "Bernina Express (höchster Alpenpass-Eisenbahn 2253 m)",
+      "lat": 46.498,
+      "lng": 10.02,
+      "c": "Schweiz"
+    },
+    {
+      "n": "Qinghai–Tibet Railway (hoechste Eisenbahn 5072 m)",
+      "lat": 29.652,
+      "lng": 91.172,
+      "c": "China"
+    },
+    {
+      "n": "Rocky Mountaineer (malerischste Bergbahn Kanadas)",
+      "lat": 49.282,
+      "lng": -123.12,
+      "c": "Kanada"
+    },
+    {
+      "n": "Rhaetische Bahn (UNESCO-Welterbe, steilste Zahnradbahn)",
+      "lat": 46.849,
+      "lng": 9.533,
+      "c": "Schweiz"
+    },
+    {
+      "n": "Haramain HSR (Mekka–Medina, 300 km/h, 450 km)",
+      "lat": 21.389,
+      "lng": 39.857,
+      "c": "Saudi-Arabien"
+    },
+    {
+      "n": "Afrosiyob HSR Taschkent–Samarkand (erste HSR Zentralasiens)",
+      "lat": 41.299,
+      "lng": 69.24,
+      "c": "Usbekistan"
+    },
+    {
+      "n": "Ankara–Istanbul YHT (erste tuerk. HSR, 250 km/h)",
+      "lat": 39.92,
+      "lng": 32.854,
+      "c": "Tuerkei"
+    },
+    {
+      "n": "Moscow–St. Petersburg Sapsan (250 km/h, 4h Fahrzeit)",
+      "lat": 55.751,
+      "lng": 37.617,
+      "c": "Russland"
+    },
+    {
+      "n": "Mumbai–Ahmedabad HSR (erste indische HSR im Bau)",
+      "lat": 19.076,
+      "lng": 72.877,
+      "c": "Indien"
+    },
+    {
+      "n": "Narita Express (schnellster Flughafenzug Japans, 130 km/h)",
+      "lat": 35.773,
+      "lng": 140.387,
+      "c": "Japan"
+    },
+    {
+      "n": "BART Flughafen San Francisco (laengste US-Metro 181 km)",
+      "lat": 37.617,
+      "lng": -122.384,
+      "c": "USA"
     }
   ]
 };
@@ -150502,6 +150693,220 @@ const SPORT_HL_DATA={
         "val": 1200
       }
     ]
+  },
+  "zug_taktfrequenz": {
+    "prompt": "Hoehere Taktfrequenz (Zuege pro Stunde)?",
+    "unit": "Zuege/h",
+    "items": [
+      {
+        "name": "Tokio Yamanote-Linie (Stosszeit)",
+        "val": 25
+      },
+      {
+        "name": "Hongkong MTR Island Line (Peak)",
+        "val": 30
+      },
+      {
+        "name": "London Central Line (Peak)",
+        "val": 32
+      },
+      {
+        "name": "Paris RER A (Peak)",
+        "val": 30
+      },
+      {
+        "name": "New York Subway 8th Ave Line",
+        "val": 24
+      },
+      {
+        "name": "Berlin U2 (Stosszeit)",
+        "val": 12
+      },
+      {
+        "name": "Berlin S-Bahn Ring (Stosszeit)",
+        "val": 10
+      },
+      {
+        "name": "Muenchen U3/U6 (HVZ)",
+        "val": 10
+      },
+      {
+        "name": "Wien U4 (Stosszeit)",
+        "val": 15
+      },
+      {
+        "name": "Moskau Metro (Stosszeit)",
+        "val": 40
+      },
+      {
+        "name": "Shanghai Metro Linie 2 (Peak)",
+        "val": 36
+      },
+      {
+        "name": "Peking Metro Linie 10 (Peak)",
+        "val": 30
+      },
+      {
+        "name": "Singapur MRT North-South (Peak)",
+        "val": 30
+      },
+      {
+        "name": "Seoul Metro Linie 2 (Peak)",
+        "val": 40
+      },
+      {
+        "name": "Madrid Metro L6 (HVZ)",
+        "val": 20
+      },
+      {
+        "name": "ICE Frankfurt–Koeln (HVZ)",
+        "val": 4
+      },
+      {
+        "name": "TGV Paris–Lyon (HVZ)",
+        "val": 8
+      },
+      {
+        "name": "Shinkansen Nozomi Tokyo–Osaka (HVZ)",
+        "val": 13
+      },
+      {
+        "name": "AVE Madrid–Sevilla (HVZ)",
+        "val": 2
+      },
+      {
+        "name": "Eurostar London–Paris (HVZ)",
+        "val": 2
+      },
+      {
+        "name": "SBB IC Zuerich–Bern (HVZ)",
+        "val": 4
+      },
+      {
+        "name": "OeBB Railjet Wien–Salzburg (HVZ)",
+        "val": 2
+      },
+      {
+        "name": "Frecciarossa Milano–Roma (HVZ)",
+        "val": 4
+      },
+      {
+        "name": "Renfe AVE Madrid–Barcelona (HVZ)",
+        "val": 3
+      },
+      {
+        "name": "NS Intercity Amsterdam–Rotterdam (HVZ)",
+        "val": 6
+      },
+      {
+        "name": "SNCF TER Paris–Chartres (HVZ)",
+        "val": 4
+      },
+      {
+        "name": "DB RE Frankfurt–Mannheim (HVZ)",
+        "val": 4
+      },
+      {
+        "name": "Thameslink London Bridge–St Pancras (HVZ)",
+        "val": 24
+      },
+      {
+        "name": "RER B Paris CDG–Innenstadt (HVZ)",
+        "val": 12
+      },
+      {
+        "name": "S-Bahn Zuerich (HVZ)",
+        "val": 8
+      },
+      {
+        "name": "Oslo T-bane Linie 1 (HVZ)",
+        "val": 10
+      },
+      {
+        "name": "Stockholm T-bana (HVZ)",
+        "val": 15
+      },
+      {
+        "name": "Copenhagen Metro M1 (HVZ)",
+        "val": 20
+      },
+      {
+        "name": "Bruessel Metro Linie 5 (HVZ)",
+        "val": 10
+      },
+      {
+        "name": "Amsterdam Metro Linie 54 (HVZ)",
+        "val": 12
+      },
+      {
+        "name": "Prag Metro Linie A (HVZ)",
+        "val": 12
+      },
+      {
+        "name": "Warschau Metro M1 (HVZ)",
+        "val": 10
+      },
+      {
+        "name": "Athen Metro Linie 3 (HVZ)",
+        "val": 10
+      },
+      {
+        "name": "Istanbul Metro M1 (HVZ)",
+        "val": 10
+      },
+      {
+        "name": "Kairo Metro Linie 1 (HVZ)",
+        "val": 15
+      },
+      {
+        "name": "Buenos Aires Subte C (HVZ)",
+        "val": 10
+      },
+      {
+        "name": "Sao Paulo Metro Linie 1 (HVZ)",
+        "val": 20
+      },
+      {
+        "name": "Mexico City Metro Linie 1 (HVZ)",
+        "val": 30
+      },
+      {
+        "name": "Sydney Metro Northwest (HVZ)",
+        "val": 10
+      },
+      {
+        "name": "Taipei MRT Bannan Line (HVZ)",
+        "val": 24
+      },
+      {
+        "name": "Osaka Midosuji Line (Stosszeit)",
+        "val": 30
+      },
+      {
+        "name": "Chicago L Red Line (HVZ)",
+        "val": 10
+      },
+      {
+        "name": "Washington DC Metro Red Line (HVZ)",
+        "val": 15
+      },
+      {
+        "name": "San Francisco BART (HVZ)",
+        "val": 12
+      },
+      {
+        "name": "Montreal STM Orange Line (HVZ)",
+        "val": 12
+      },
+      {
+        "name": "Mumbai Local Western Railway (HVZ)",
+        "val": 30
+      },
+      {
+        "name": "Bangkok BTS Silom (HVZ)",
+        "val": 10
+      }
+    ]
   }
 };
 const SPORT_MATCH_DATA={
@@ -156424,6 +156829,212 @@ const TIMELINE_DATA={
         "hint": "Tschechien–Schweiz via Deutschland"
       }
     ]
+  },
+  "zug_bahnhof_bau": {
+    "prompt": "Chronologisch sortieren — Bahnhofs-Eroeffnungen!",
+    "unit": "Jahr",
+    "items": [
+      {
+        "n": "Liverpool Lime Street (erster Stadtterminus der Welt)",
+        "year": 1836,
+        "hint": "England — ältester noch betriebener Grossbahnhof"
+      },
+      {
+        "n": "Frankfurter Bahnhof (erste Fernbahn DE)",
+        "year": 1840,
+        "hint": "Frankfurt — Verbindung Frankfurt–Mannheim"
+      },
+      {
+        "n": "Gare de Paris-Austerlitz (erste Pariser Fernbahn)",
+        "year": 1840,
+        "hint": "Paris — ältester noch bestehender Pariser Bahnhof"
+      },
+      {
+        "n": "Wien Nordbahnhof (erste Wiener Fernbahn)",
+        "year": 1837,
+        "hint": "Wien — Verbindung Wien–Floridsdorf"
+      },
+      {
+        "n": "Anhalter Bahnhof Berlin (einst groesster Bahnhof Europas)",
+        "year": 1841,
+        "hint": "Berlin — heute nur noch eine Ruine"
+      },
+      {
+        "n": "Milano Centrale (Eroeffnung des heutigen Gebaeudes)",
+        "year": 1931,
+        "hint": "Mailand — Jugendstil trifft Faschismus"
+      },
+      {
+        "n": "Grand Central Terminal New York",
+        "year": 1913,
+        "hint": "New York — Beaux-Arts Meisterwerk, 44 Gleise"
+      },
+      {
+        "n": "Gare de Lyon Paris (Weltausstellungs-Bahnhof)",
+        "year": 1900,
+        "hint": "Paris — Tour de l'Horloge als Wahrzeichen"
+      },
+      {
+        "n": "Victoria Station London",
+        "year": 1860,
+        "hint": "London — zweitgroessteres Passagieraufkommen UK"
+      },
+      {
+        "n": "St Pancras Station London (Neugotik)",
+        "year": 1868,
+        "hint": "London — Scott's Hotel, Midland Railway"
+      },
+      {
+        "n": "Antwerpen-Centraal (Kathedrale der Bahnhöfe)",
+        "year": 1905,
+        "hint": "Belgien — Diamantenstadt, prachtvoller Dom"
+      },
+      {
+        "n": "Leipzig Hauptbahnhof (groesster Kopfbahnhof Europas)",
+        "year": 1915,
+        "hint": "Leipzig — 26 Gleise, 83.640 m² Flaeche"
+      },
+      {
+        "n": "Frankfurt Hauptbahnhof",
+        "year": 1888,
+        "hint": "Frankfurt — damals drittgroesster Bahnhof der Welt"
+      },
+      {
+        "n": "Hamburg Hauptbahnhof",
+        "year": 1906,
+        "hint": "Hamburg — Glasdach, 450.000 Reisende/Tag"
+      },
+      {
+        "n": "Muenchen Hauptbahnhof (erster Muenchner Bahnhof)",
+        "year": 1839,
+        "hint": "Muenchen — Terminus der Muenchen–Augsburg Bahn"
+      },
+      {
+        "n": "Koeln Hauptbahnhof (neben dem Dom)",
+        "year": 1859,
+        "hint": "Koeln — zweiter Neubau, jetzt 280.000 Reisende/Tag"
+      },
+      {
+        "n": "Berlin Ostbahnhof (erster Berliner Bahnhof)",
+        "year": 1842,
+        "hint": "Berlin — Frankfurter Bahnhof, 1842"
+      },
+      {
+        "n": "Berlin Hauptbahnhof (Lehrter Stadtbahnhof)",
+        "year": 2006,
+        "hint": "Berlin — groesster Kreuzungsbahnhof Europas"
+      },
+      {
+        "n": "Tokyo Station (Marunouchi)",
+        "year": 1914,
+        "hint": "Tokio — rotes Backsteingebaeude, Nationalschatz"
+      },
+      {
+        "n": "Shinjuku Station Tokyo (meistgenutzte Station der Welt)",
+        "year": 1885,
+        "hint": "Tokio — 3,64 Mio. Passagiere pro Tag"
+      },
+      {
+        "n": "Gare du Nord Paris (Meistbesuchter Bahnhof Europas)",
+        "year": 1864,
+        "hint": "Paris — 214 Mio. Reisende/Jahr"
+      },
+      {
+        "n": "Waterloo Station London",
+        "year": 1848,
+        "hint": "London — groesste Zahl an Gleisen UK (24)"
+      },
+      {
+        "n": "Union Station Washington DC",
+        "year": 1907,
+        "hint": "Washington — Beaux-Arts, 120 Mio. Besucher/Jahr"
+      },
+      {
+        "n": "Union Station Chicago",
+        "year": 1925,
+        "hint": "Chicago — Amtrak Hub, neoklassizistisch"
+      },
+      {
+        "n": "Estacao da Luz Sao Paulo",
+        "year": 1901,
+        "hint": "Brasilien — englisches Eisendach, heute Kulturzentrum"
+      },
+      {
+        "n": "Flinders Street Station Melbourne",
+        "year": 1910,
+        "hint": "Australien — gelbe Kuppeln, Treffpunkt unter der Uhr"
+      },
+      {
+        "n": "Howrah Station Kolkata (aeltester indischer Grossbahnhof)",
+        "year": 1854,
+        "hint": "Indien — 23 Gleise, Millionen Reisende/Tag"
+      },
+      {
+        "n": "Chhatrapati Shivaji Terminus Mumbai (UNESCO)",
+        "year": 1887,
+        "hint": "Indien — neugotisch, Weltkultur­erbe"
+      },
+      {
+        "n": "Liege-Guillemins (Santiago Calatrava)",
+        "year": 2009,
+        "hint": "Belgien — weisse Stahlbogen-Skulptur"
+      },
+      {
+        "n": "Keleti Bahnhof Budapest",
+        "year": 1884,
+        "hint": "Ungarn — Historismus, Fassade mit Loks"
+      },
+      {
+        "n": "Gare de Strasbourg (Glasdach-Erweiterung)",
+        "year": 2007,
+        "hint": "Strassburg — riesige Glaskuppel vor Jugendstilbau"
+      },
+      {
+        "n": "Atocha Madrid (heute mit Regenwald-Garten)",
+        "year": 1851,
+        "hint": "Madrid — Eisenglaspalast, heute mit trop. Gaerten"
+      },
+      {
+        "n": "Sirkeci Bahnhof Istanbul (Endpunkt Orient-Express)",
+        "year": 1890,
+        "hint": "Istanbul — orientalischer Stil, letzter Stopp des OE"
+      },
+      {
+        "n": "Kievsky Bahnhof Moskau",
+        "year": 1918,
+        "hint": "Moskau — stalinistisches Mosaikgewölbe"
+      },
+      {
+        "n": "Haydarpasa Istanbul (asiat. Endpunkt des Orient-Express)",
+        "year": 1908,
+        "hint": "Istanbul — deutsch-osmanisch, Bosporus-Ufer"
+      },
+      {
+        "n": "Porto Sao Bento (Azulejo-Bahnhof)",
+        "year": 1916,
+        "hint": "Porto — 20.000 Azulejos-Kacheln im Innenraum"
+      },
+      {
+        "n": "Bahnhof Luzern (Brand und Wiedereroeffnung)",
+        "year": 1991,
+        "hint": "Luzern — nach Brand neues Bahnhofgebaeude"
+      },
+      {
+        "n": "Shin-Osaka (erster Shinkansen-Bahnhof ausserhalb Tokios)",
+        "year": 1964,
+        "hint": "Osaka — Eroefffnung zur Olympiade"
+      },
+      {
+        "n": "Gare de Montparnasse Paris (Turmbahnhof)",
+        "year": 1969,
+        "hint": "Paris — moderner Turmbahnhof, Tour Montparnasse"
+      },
+      {
+        "n": "King's Cross Station London (Euston Arch abgerissen)",
+        "year": 1852,
+        "hint": "London — Lewis Cubitt, Doppelbogenfenster"
+      }
+    ]
   }
 };
 
@@ -157477,7 +158088,9 @@ const GEN={
   zug_vkm:()=>genUniversalMatchQ("zug_vkm"),
   hl_zug_speed:()=>genSportWissenHL("zug_speed"),
   hl_zug_jahr:()=>genSportWissenHL("zug_jahr"),
+  hl_zug_taktfrequenz:()=>genSportWissenHL("zug_taktfrequenz"),
   hl_zug_km:()=>genSportWissenHL("zug_km"),
+  timeline_zug_bahnhof_bau:()=>genTimelineQ("zug_bahnhof_bau"),
   timeline_zug_hsb:()=>genTimelineQ("zug_hsb"),
   ws_zug_intercity:()=>initTierWortSchmiede("zug_intercity"),
   ws_zug_shinkansen:()=>initTierWortSchmiede("zug_shinkansen"),
@@ -157494,6 +158107,7 @@ const GEN={
   ws_zug_maglev:()=>initTierWortSchmiede("zug_maglev"),
   ws_zug_flixzug:()=>initTierWortSchmiede("zug_flixzug"),
   ws_zug_acela:()=>initTierWortSchmiede("zug_acela"),
+  zug_rekorde_pin:()=>genUniversalPinQ("zug_rekorde_pin"),
   uk_bahnhof_pin:()=>genUniversalPinQ("bahnhof_pin"),
   zug_ds100:()=>genDS100McQ(),
   zug_metro_logos:()=>genMetroLogoQ(),
