@@ -7561,7 +7561,7 @@ function flagOf(name){const cc=ccFromCountry(name);return cc?`<img src="https://
 /* Phase 97-1: Zombie-SW-Killer – läuft vor Supabase-Init */
 /* Tötet veraltete Service Worker, die Updates blockieren   */
 (function _zombieKiller(){
-  var SW_VER='gq-c5ac47a4',LS_KEY='__gq_sw_ver'; /* Phase 295: auto-injected by gen.py */
+  var SW_VER='gq-f648ca54',LS_KEY='__gq_sw_ver'; /* Phase 295: auto-injected by gen.py */
   try{
     if(localStorage.getItem(LS_KEY)===SW_VER)return; /* aktuell – nichts zu tun */
     if(!('serviceWorker' in navigator)){localStorage.setItem(LS_KEY,SW_VER);return;}
@@ -38431,6 +38431,146 @@ const KULTUR_DATA={
     {
       "n": "NS Intercity Direct",
       "c": "Niederlande"
+    },
+    {
+      "n": "California Zephyr (Chicago–San Francisco)",
+      "c": "USA"
+    },
+    {
+      "n": "Empire Builder (Chicago–Seattle)",
+      "c": "USA"
+    },
+    {
+      "n": "Southwest Chief (Chicago–Los Angeles)",
+      "c": "USA"
+    },
+    {
+      "n": "Coast Starlight (Los Angeles–Seattle)",
+      "c": "USA"
+    },
+    {
+      "n": "Acela (Boston–Washington DC)",
+      "c": "USA"
+    },
+    {
+      "n": "Auto Train (Washington–Orlando)",
+      "c": "USA"
+    },
+    {
+      "n": "NightJet Wien–Hamburg",
+      "c": "Oesterreich"
+    },
+    {
+      "n": "NightJet Wien–Bruessel",
+      "c": "Oesterreich"
+    },
+    {
+      "n": "NightJet Innsbruck–Berlin",
+      "c": "Oesterreich"
+    },
+    {
+      "n": "NightJet Zuerich–Barcelona",
+      "c": "Schweiz"
+    },
+    {
+      "n": "FlixTrain Hamburg–Koeln",
+      "c": "Deutschland"
+    },
+    {
+      "n": "ICE Berlin–Muenchen",
+      "c": "Deutschland"
+    },
+    {
+      "n": "DB IC2 Hamburg–Stuttgart",
+      "c": "Deutschland"
+    },
+    {
+      "n": "Hokkaido Shinkansen (Shin-Aomori–Shin-Hakodate)",
+      "c": "Japan"
+    },
+    {
+      "n": "Kyushu Shinkansen (Hakata–Kagoshima)",
+      "c": "Japan"
+    },
+    {
+      "n": "Sanyo Shinkansen (Osaka–Hakata)",
+      "c": "Japan"
+    },
+    {
+      "n": "Joetsu Shinkansen (Tokio–Niigata)",
+      "c": "Japan"
+    },
+    {
+      "n": "Hokuriku Shinkansen (Tokio–Kanazawa)",
+      "c": "Japan"
+    },
+    {
+      "n": "SRT Suseo (Seoul–Busan, Linie 2)",
+      "c": "Suedkorea"
+    },
+    {
+      "n": "Mugunghwa Express (Seoul–Mokpo)",
+      "c": "Suedkorea"
+    },
+    {
+      "n": "IRYO Trenitalia ES (Madrid–Barcelona)",
+      "c": "Spanien"
+    },
+    {
+      "n": "Ouigo Espana (Madrid–Valencia)",
+      "c": "Spanien"
+    },
+    {
+      "n": "Talgo Alvia (Madrid–Bilbao)",
+      "c": "Spanien"
+    },
+    {
+      "n": "Renfe AVE Madrid–Valencia",
+      "c": "Spanien"
+    },
+    {
+      "n": "Intercites de Nuit Paris–Nice",
+      "c": "Frankreich"
+    },
+    {
+      "n": "InOui TGV Paris–Bordeaux",
+      "c": "Frankreich"
+    },
+    {
+      "n": "LEO Express Praha–Wien",
+      "c": "Tschechien"
+    },
+    {
+      "n": "PKP Pendolino (Warszawa–Gdansk)",
+      "c": "Polen"
+    },
+    {
+      "n": "Eurostar (London–Amsterdam)",
+      "c": "Grossbritannien"
+    },
+    {
+      "n": "Avanti West Coast (London–Manchester)",
+      "c": "Grossbritannien"
+    },
+    {
+      "n": "LNER Azuma (London–Edinburgh)",
+      "c": "Grossbritannien"
+    },
+    {
+      "n": "GWR IET (London–Bristol)",
+      "c": "Grossbritannien"
+    },
+    {
+      "n": "EuroCity Hamburg–Kopenhagen",
+      "c": "Deutschland"
+    },
+    {
+      "n": "Haramain HSR (Mekka–Medina)",
+      "c": "Saudi-Arabien"
+    },
+    {
+      "n": "Afrosiyob (Taschkent–Samarkand)",
+      "c": "Usbekistan"
     }
   ],
   "zug_rekorde_pin": [
@@ -54729,6 +54869,150 @@ const TIER_MATCH_DATA={
       {
         "n": "Strassburg",
         "c": "Kopfbahnhof"
+      },
+      {
+        "n": "Grand Central Terminal New York",
+        "c": "Kopfbahnhof"
+      },
+      {
+        "n": "Antwerpen-Centraal",
+        "c": "Kopfbahnhof"
+      },
+      {
+        "n": "Venezia Santa Lucia",
+        "c": "Kopfbahnhof"
+      },
+      {
+        "n": "Napoli Centrale",
+        "c": "Kopfbahnhof"
+      },
+      {
+        "n": "Torino Porta Nuova",
+        "c": "Kopfbahnhof"
+      },
+      {
+        "n": "Porto Sao Bento",
+        "c": "Kopfbahnhof"
+      },
+      {
+        "n": "Paddington London",
+        "c": "Kopfbahnhof"
+      },
+      {
+        "n": "Liverpool Street London",
+        "c": "Kopfbahnhof"
+      },
+      {
+        "n": "Euston London",
+        "c": "Kopfbahnhof"
+      },
+      {
+        "n": "Charing Cross London",
+        "c": "Kopfbahnhof"
+      },
+      {
+        "n": "King's Cross London",
+        "c": "Kopfbahnhof"
+      },
+      {
+        "n": "Gare Saint-Lazare Paris",
+        "c": "Kopfbahnhof"
+      },
+      {
+        "n": "Gare de l'Est Paris",
+        "c": "Kopfbahnhof"
+      },
+      {
+        "n": "Gare Montparnasse Paris",
+        "c": "Kopfbahnhof"
+      },
+      {
+        "n": "Marseille Saint-Charles",
+        "c": "Kopfbahnhof"
+      },
+      {
+        "n": "Toulouse Matabiau",
+        "c": "Kopfbahnhof"
+      },
+      {
+        "n": "Bordeaux Saint-Jean",
+        "c": "Kopfbahnhof"
+      },
+      {
+        "n": "Helsinki Paarautatieasema",
+        "c": "Kopfbahnhof"
+      },
+      {
+        "n": "Innsbruck Hbf",
+        "c": "Kopfbahnhof"
+      },
+      {
+        "n": "Graz Hbf",
+        "c": "Kopfbahnhof"
+      },
+      {
+        "n": "Sirkeci Istanbul",
+        "c": "Kopfbahnhof"
+      },
+      {
+        "n": "Haydarpasa Istanbul",
+        "c": "Kopfbahnhof"
+      },
+      {
+        "n": "Zagreb Glavni Kolodvor",
+        "c": "Kopfbahnhof"
+      },
+      {
+        "n": "Sofia Zentralbahnhof",
+        "c": "Kopfbahnhof"
+      },
+      {
+        "n": "Oslo Sentralstasjon",
+        "c": "Durchgangsbahnhof"
+      },
+      {
+        "n": "Lausanne",
+        "c": "Durchgangsbahnhof"
+      },
+      {
+        "n": "Linz Hbf",
+        "c": "Durchgangsbahnhof"
+      },
+      {
+        "n": "Lyon Part-Dieu",
+        "c": "Durchgangsbahnhof"
+      },
+      {
+        "n": "Lisboa Oriente",
+        "c": "Durchgangsbahnhof"
+      },
+      {
+        "n": "Bukarest Nord",
+        "c": "Durchgangsbahnhof"
+      },
+      {
+        "n": "Katowice Hbf",
+        "c": "Durchgangsbahnhof"
+      },
+      {
+        "n": "Beograd Prokop",
+        "c": "Durchgangsbahnhof"
+      },
+      {
+        "n": "Muenchen Pasing",
+        "c": "Turmbahnhof"
+      },
+      {
+        "n": "Berlin Suedkreuz",
+        "c": "Turmbahnhof"
+      },
+      {
+        "n": "Flensburg Hbf",
+        "c": "Keilbahnhof"
+      },
+      {
+        "n": "Ulm Hbf",
+        "c": "Keilbahnhof"
       }
     ]
   },
@@ -54916,6 +55200,150 @@ const TIER_MATCH_DATA={
       {
         "n": "Scorpio (Italo EVO)",
         "c": "Hitachi Rail"
+      },
+      {
+        "n": "TALENT 3 (DB Regio)",
+        "c": "Alstom"
+      },
+      {
+        "n": "TALENT 2 (Eurobahn)",
+        "c": "Alstom"
+      },
+      {
+        "n": "Omneo Premium (SNCF TER)",
+        "c": "Alstom"
+      },
+      {
+        "n": "Avelia Pendolino (NTV)",
+        "c": "Alstom"
+      },
+      {
+        "n": "X'Trapolis M (Metro Trains AU)",
+        "c": "Alstom"
+      },
+      {
+        "n": "Coradia Nordic (SJ)",
+        "c": "Alstom"
+      },
+      {
+        "n": "Coradia Stream (DB AG)",
+        "c": "Alstom"
+      },
+      {
+        "n": "TGV POS (SNCF)",
+        "c": "Alstom"
+      },
+      {
+        "n": "Avelia Ocean (SNCF M)",
+        "c": "Alstom"
+      },
+      {
+        "n": "ICE 1 (BR 401)",
+        "c": "Siemens Mobility"
+      },
+      {
+        "n": "ICE 2 (BR 402)",
+        "c": "Siemens Mobility"
+      },
+      {
+        "n": "ICE T (BR 411)",
+        "c": "Siemens Mobility"
+      },
+      {
+        "n": "Velaro TR (TCDD YHT)",
+        "c": "Siemens Mobility"
+      },
+      {
+        "n": "Desiro ML (DB Regio)",
+        "c": "Siemens Mobility"
+      },
+      {
+        "n": "Desiro HC (RRX)",
+        "c": "Siemens Mobility"
+      },
+      {
+        "n": "Inspiro (Warschau Metro)",
+        "c": "Siemens Mobility"
+      },
+      {
+        "n": "ES64U4 Taurus (OeBB)",
+        "c": "Siemens Mobility"
+      },
+      {
+        "n": "Viaggio Comfort (RJ600)",
+        "c": "Siemens Mobility"
+      },
+      {
+        "n": "Mireo Smart (DB)",
+        "c": "Siemens Mobility"
+      },
+      {
+        "n": "Class 385 (ScotRail)",
+        "c": "Hitachi Rail"
+      },
+      {
+        "n": "AT100 (Class 717 GN Metroland)",
+        "c": "Hitachi Rail"
+      },
+      {
+        "n": "Class 387 (GWR/Thameslink)",
+        "c": "Hitachi Rail"
+      },
+      {
+        "n": "Shinkansen E6 (Komachi)",
+        "c": "Hitachi Rail"
+      },
+      {
+        "n": "Shinkansen E7/W7 (Kagayaki)",
+        "c": "Hitachi Rail"
+      },
+      {
+        "n": "Class 810 (Avanti Evero)",
+        "c": "Hitachi Rail"
+      },
+      {
+        "n": "Caravaggio ETR 700 (NS Intercity)",
+        "c": "Hitachi Rail"
+      },
+      {
+        "n": "FLIRT 3 (DB Regio BA)",
+        "c": "Stadler Rail"
+      },
+      {
+        "n": "FLIRT Akku (Batterie-Triebwagen)",
+        "c": "Stadler Rail"
+      },
+      {
+        "n": "RABe 521 FLIRT (BLS)",
+        "c": "Stadler Rail"
+      },
+      {
+        "n": "RABe 524 FLIRT (Ticino/Vaud)",
+        "c": "Stadler Rail"
+      },
+      {
+        "n": "KISS Westbahn (WB 3)",
+        "c": "Stadler Rail"
+      },
+      {
+        "n": "Flirt 3XL (Infrabel)",
+        "c": "Stadler Rail"
+      },
+      {
+        "n": "GTW 6/10 (Arriva NL)",
+        "c": "Stadler Rail"
+      },
+      {
+        "n": "TANGO (Bernmobil Strassenbahn)",
+        "c": "Stadler Rail"
+      },
+      {
+        "n": "WINK (Niederflurzug DE)",
+        "c": "Stadler Rail"
+      },
+      {
+        "n": "RABe 501 Traverso (SBB/TILO)",
+        "c": "Stadler Rail"
       }
     ]
   }
@@ -161464,7 +161892,7 @@ function renderReiseroute(sc){
 /* â”€â”€ WAPPEN-MEISTER DATA â”€â”€ (Phase 106) */
 const WAPPEN_DATA=[{"cc":"de","c":"Deutschland","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Germany.svg"},{"cc":"fr","c":"Frankreich","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_France.svg"},{"cc":"at","c":"Österreich","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Austria.svg"},{"cc":"ch","c":"Schweiz","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Switzerland.svg"},{"cc":"nl","c":"Niederlande","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_the_Netherlands.svg"},{"cc":"be","c":"Belgien","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Belgium.svg"},{"cc":"lu","c":"Luxemburg","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Luxembourg.svg"},{"cc":"li","c":"Liechtenstein","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Liechtenstein.svg"},{"cc":"mc","c":"Monaco","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Monaco.svg"},{"cc":"ad","c":"Andorra","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Andorra.svg"},{"cc":"gb","c":"Vereinigtes Königreich","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Royal_Coat_of_Arms_of_the_United_Kingdom.svg"},{"cc":"ie","c":"Irland","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Ireland.svg"},{"cc":"se","c":"Schweden","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Sweden.svg"},{"cc":"no","c":"Norwegen","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Norway.svg"},{"cc":"dk","c":"Dänemark","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Denmark.svg"},{"cc":"fi","c":"Finnland","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Finland.svg"},{"cc":"is","c":"Island","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Iceland.svg"},{"cc":"ee","c":"Estland","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Estonia.svg"},{"cc":"lv","c":"Lettland","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Latvia.svg"},{"cc":"lt","c":"Litauen","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Lithuania.svg"},{"cc":"it","c":"Italien","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Emblem_of_Italy.svg"},{"cc":"es","c":"Spanien","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Spain.svg"},{"cc":"pt","c":"Portugal","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Portugal.svg"},{"cc":"gr","c":"Griechenland","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Greece.svg"},{"cc":"hr","c":"Kroatien","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Croatia.svg"},{"cc":"si","c":"Slowenien","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Slovenia.svg"},{"cc":"ba","c":"Bosnien und Herzegowina","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Bosnia_and_Herzegovina.svg"},{"cc":"rs","c":"Serbien","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Serbia.svg"},{"cc":"me","c":"Montenegro","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Montenegro.svg"},{"cc":"mk","c":"Nordmazedonien","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_North_Macedonia.svg"},{"cc":"al","c":"Albanien","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Albania.svg"},{"cc":"mt","c":"Malta","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Malta.svg"},{"cc":"sm","c":"San Marino","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_San_Marino.svg"},{"cc":"va","c":"Vatikanstadt","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Vatican_City.svg"},{"cc":"cy","c":"Zypern","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Cyprus.svg"},{"cc":"pl","c":"Polen","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Poland.svg"},{"cc":"cz","c":"Tschechien","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_the_Czech_Republic.svg"},{"cc":"sk","c":"Slowakei","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Slovakia.svg"},{"cc":"hu","c":"Ungarn","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Hungary.svg"},{"cc":"ro","c":"Rumänien","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Romania.svg"},{"cc":"bg","c":"Bulgarien","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Bulgaria.svg"},{"cc":"ua","c":"Ukraine","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Ukraine.svg"},{"cc":"by","c":"Belarus","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Belarus.svg"},{"cc":"md","c":"Moldau","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Moldova.svg"},{"cc":"ru","c":"Russland","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Russia.svg"},{"cc":"cn","c":"China","img":"https://commons.wikimedia.org/wiki/Special:FilePath/National_Emblem_of_the_People%27s_Republic_of_China.svg"},{"cc":"jp","c":"Japan","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Imperial_Seal_of_Japan.svg"},{"cc":"kr","c":"Südkorea","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Emblem_of_South_Korea.svg"},{"cc":"kp","c":"Nordkorea","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Emblem_of_North_Korea.svg"},{"cc":"mn","c":"Mongolei","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Mongolia.svg"},{"cc":"in","c":"Indien","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Emblem_of_India.svg"},{"cc":"pk","c":"Pakistan","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Pakistan.svg"},{"cc":"bd","c":"Bangladesch","img":"https://commons.wikimedia.org/wiki/Special:FilePath/National_emblem_of_Bangladesh.svg"},{"cc":"lk","c":"Sri Lanka","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Sri_Lanka.svg"},{"cc":"np","c":"Nepal","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Nepal.svg"},{"cc":"bt","c":"Bhutan","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Bhutan.svg"},{"cc":"mv","c":"Malediven","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Maldives.svg"},{"cc":"af","c":"Afghanistan","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Afghanistan.svg"},{"cc":"th","c":"Thailand","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Emblem_of_Thailand.svg"},{"cc":"vn","c":"Vietnam","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Vietnam.svg"},{"cc":"id","c":"Indonesien","img":"https://commons.wikimedia.org/wiki/Special:FilePath/National_emblem_of_Indonesia_Garuda_Pancasila.svg"},{"cc":"my","c":"Malaysia","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Malaysia.svg"},{"cc":"ph","c":"Philippinen","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_the_Philippines.svg"},{"cc":"sg","c":"Singapur","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Singapore.svg"},{"cc":"mm","c":"Myanmar","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Myanmar.svg"},{"cc":"kh","c":"Kambodscha","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Cambodia.svg"},{"cc":"la","c":"Laos","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Laos.svg"},{"cc":"tl","c":"Osttimor","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_East_Timor.svg"},{"cc":"bn","c":"Brunei","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Brunei.svg"},{"cc":"tr","c":"Türkei","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Turkey.svg"},{"cc":"ir","c":"Iran","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Iran.svg"},{"cc":"iq","c":"Irak","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Iraq.svg"},{"cc":"sa","c":"Saudi-Arabien","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Saudi_Arabia.svg"},{"cc":"ae","c":"Vereinigte Arabische Emirate","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_the_United_Arab_Emirates.svg"},{"cc":"il","c":"Israel","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Emblem_of_Israel.svg"},{"cc":"jo","c":"Jordanien","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Jordan.svg"},{"cc":"lb","c":"Libanon","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Lebanon.svg"},{"cc":"sy","c":"Syrien","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Syria.svg"},{"cc":"ye","c":"Jemen","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Yemen.svg"},{"cc":"kw","c":"Kuwait","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Kuwait.svg"},{"cc":"bh","c":"Bahrain","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Bahrain.svg"},{"cc":"qa","c":"Katar","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Qatar.svg"},{"cc":"om","c":"Oman","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Oman.svg"},{"cc":"ge","c":"Georgien","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Georgia.svg"},{"cc":"am","c":"Armenien","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Armenia.svg"},{"cc":"az","c":"Aserbaidschan","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Azerbaijan.svg"},{"cc":"kz","c":"Kasachstan","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Kazakhstan.svg"},{"cc":"uz","c":"Usbekistan","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Uzbekistan.svg"},{"cc":"tm","c":"Turkmenistan","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Turkmenistan.svg"},{"cc":"kg","c":"Kirgisistan","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Kyrgyzstan.svg"},{"cc":"tj","c":"Tadschikistan","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Tajikistan.svg"},{"cc":"eg","c":"Ägypten","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Egypt.svg"},{"cc":"ma","c":"Marokko","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Morocco.svg"},{"cc":"dz","c":"Algerien","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Algeria.svg"},{"cc":"tn","c":"Tunesien","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Tunisia.svg"},{"cc":"ly","c":"Libyen","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Libya.svg"},{"cc":"sd","c":"Sudan","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Sudan.svg"},{"cc":"ng","c":"Nigeria","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Nigeria.svg"},{"cc":"gh","c":"Ghana","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Ghana.svg"},{"cc":"sn","c":"Senegal","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Senegal.svg"},{"cc":"ci","c":"Elfenbeinküste","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Ivory_Coast.svg"},{"cc":"ml","c":"Mali","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Mali.svg"},{"cc":"ne","c":"Niger","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Niger.svg"},{"cc":"bf","c":"Burkina Faso","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Burkina_Faso.svg"},{"cc":"gn","c":"Guinea","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Guinea.svg"},{"cc":"sl","c":"Sierra Leone","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Sierra_Leone.svg"},{"cc":"lr","c":"Liberia","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Liberia.svg"},{"cc":"tg","c":"Togo","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Togo.svg"},{"cc":"bj","c":"Benin","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Benin.svg"},{"cc":"mr","c":"Mauretanien","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Mauritania.svg"},{"cc":"cv","c":"Kap Verde","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Cape_Verde.svg"},{"cc":"gm","c":"Gambia","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_the_Gambia.svg"},{"cc":"ke","c":"Kenia","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Kenya.svg"},{"cc":"tz","c":"Tansania","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Tanzania.svg"},{"cc":"et","c":"Äthiopien","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Ethiopia.svg"},{"cc":"ug","c":"Uganda","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Uganda.svg"},{"cc":"rw","c":"Ruanda","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Rwanda.svg"},{"cc":"mz","c":"Mosambik","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Mozambique.svg"},{"cc":"mg","c":"Madagaskar","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Madagascar.svg"},{"cc":"zm","c":"Sambia","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Zambia.svg"},{"cc":"zw","c":"Simbabwe","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Zimbabwe.svg"},{"cc":"so","c":"Somalia","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Somalia.svg"},{"cc":"dj","c":"Dschibuti","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Djibouti.svg"},{"cc":"er","c":"Eritrea","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Eritrea.svg"},{"cc":"ss","c":"Südsudan","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_South_Sudan.svg"},{"cc":"cm","c":"Kamerun","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Cameroon.svg"},{"cc":"cd","c":"DR Kongo","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_the_Democratic_Republic_of_the_Congo.svg"},{"cc":"cg","c":"Republik Kongo","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_the_Republic_of_the_Congo.svg"},{"cc":"ao","c":"Angola","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Angola.svg"},{"cc":"ga","c":"Gabun","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Gabon.svg"},{"cc":"cf","c":"Zentralafrikanische Republik","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_the_Central_African_Republic.svg"},{"cc":"td","c":"Tschad","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Chad.svg"},{"cc":"gq","c":"Äquatorialguinea","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Equatorial_Guinea.svg"},{"cc":"za","c":"Südafrika","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_South_Africa.svg"},{"cc":"bw","c":"Botswana","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Botswana.svg"},{"cc":"na","c":"Namibia","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Namibia.svg"},{"cc":"ls","c":"Lesotho","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Lesotho.svg"},{"cc":"sz","c":"Eswatini","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Eswatini.svg"},{"cc":"mw","c":"Malawi","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Malawi.svg"},{"cc":"us","c":"Vereinigte Staaten","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_the_United_States.svg"},{"cc":"ca","c":"Kanada","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Canada.svg"},{"cc":"mx","c":"Mexiko","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Mexico.svg"},{"cc":"br","c":"Brasilien","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Brazil.svg"},{"cc":"ar","c":"Argentinien","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Argentina.svg"},{"cc":"cl","c":"Chile","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Chile.svg"},{"cc":"co","c":"Kolumbien","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Colombia.svg"},{"cc":"pe","c":"Peru","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Peru.svg"},{"cc":"ve","c":"Venezuela","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Venezuela.svg"},{"cc":"ec","c":"Ecuador","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Ecuador.svg"},{"cc":"bo","c":"Bolivien","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Bolivia.svg"},{"cc":"py","c":"Paraguay","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Paraguay.svg"},{"cc":"uy","c":"Uruguay","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Uruguay.svg"},{"cc":"gt","c":"Guatemala","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Guatemala.svg"},{"cc":"hn","c":"Honduras","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Honduras.svg"},{"cc":"ni","c":"Nicaragua","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Nicaragua.svg"},{"cc":"cr","c":"Costa Rica","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Costa_Rica.svg"},{"cc":"pa","c":"Panama","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Panama.svg"},{"cc":"cu","c":"Kuba","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Cuba.svg"},{"cc":"do","c":"Dominikanische Republik","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_the_Dominican_Republic.svg"},{"cc":"jm","c":"Jamaika","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Jamaica.svg"},{"cc":"ht","c":"Haiti","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Haiti.svg"},{"cc":"tt","c":"Trinidad und Tobago","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Trinidad_and_Tobago.svg"},{"cc":"bb","c":"Barbados","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Barbados.svg"},{"cc":"bs","c":"Bahamas","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_the_Bahamas.svg"},{"cc":"au","c":"Australien","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Australia.svg"},{"cc":"nz","c":"Neuseeland","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_New_Zealand.svg"},{"cc":"pg","c":"Papua-Neuguinea","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Papua_New_Guinea.svg"},{"cc":"fj","c":"Fidschi","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Fiji.svg"},{"cc":"sb","c":"Salomonen","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Solomon_Islands.svg"},{"cc":"vu","c":"Vanuatu","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Vanuatu.svg"},{"cc":"ws","c":"Samoa","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Samoa.svg"},{"cc":"to","c":"Tonga","img":"https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Tonga.svg"}]
 /* Phase 298.2: Metro-Logos */
-const METRO_LOGO_DATA=[{"svg":"<svg viewBox='0 0 120 60' xmlns='http://www.w3.org/2000/svg'><circle cx='60' cy='30' r='27' fill='none' stroke='#DA0019' stroke-width='9'/><rect x='6' y='22' width='108' height='16' fill='#003594'/></svg>","city":"London (Underground)","cc":"gb"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><rect x='2' y='2' width='96' height='96' rx='8' fill='#003082' stroke='#FFD700' stroke-width='4'/><text x='50' y='80' font-size='80' fill='#FFD700' font-family='serif' font-weight='bold' text-anchor='middle'>M</text></svg>","city":"Paris (Métro)","cc":"fr"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#1B5FAD'/><text x='50' y='77' font-size='70' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>U</text></svg>","city":"Berlin (U-Bahn)","cc":"de"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#009036'/><text x='50' y='77' font-size='70' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>S</text></svg>","city":"Berlin (S-Bahn)","cc":"de2"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#CC0000'/><text x='50' y='72' font-size='52' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>NYC</text></svg>","city":"New York (Subway)","cc":"us"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><polygon points='50,2 98,50 50,98 2,50' fill='#CC0000'/><text x='50' y='67' font-size='52' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>M</text></svg>","city":"Madrid (Metro)","cc":"es"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#CC0000'/><text x='50' y='70' font-size='52' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>М</text></svg>","city":"Moskau (Metro)","cc":"ru"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#1A3668'/><path d='M20,30 L50,60 L80,30 L80,70 L50,45 L20,70 Z' fill='white'/></svg>","city":"Tokyo (Metro)","cc":"jp"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><rect x='2' y='2' width='96' height='96' rx='12' fill='#E30613'/><text x='50' y='77' font-size='72' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>M</text></svg>","city":"Barcelona (Metro)","cc":"es2"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#E30613'/><text x='50' y='72' font-size='52' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>M</text></svg>","city":"Rom (Metro)","cc":"it"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#0047AB'/><text x='50' y='77' font-size='70' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>U</text></svg>","city":"Wien (U-Bahn)","cc":"at"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#003E8A'/><text x='50' y='75' font-size='68' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>U</text></svg>","city":"München (U-Bahn)","cc":"de3"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#00843D'/><text x='50' y='75' font-size='68' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>S</text></svg>","city":"München (S-Bahn)","cc":"de4"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#003082'/><text x='50' y='72' font-size='52' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>M</text></svg>","city":"Brüssel (Métro)","cc":"be"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#006AB4'/><text x='50' y='72' font-size='60' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>T</text></svg>","city":"Stockholm (T-bana)","cc":"se"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#C8102E'/><text x='50' y='72' font-size='52' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>T</text></svg>","city":"Boston (MBTA)","cc":"us2"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><polygon points='50,4 96,27 96,73 50,96 4,73 4,27' fill='#007AC2'/><text x='50' y='68' font-size='50' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>M</text></svg>","city":"Washington DC (Metro)","cc":"us3"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><ellipse cx='50' cy='50' rx='48' ry='32' fill='#F57C00'/><text x='50' y='60' font-size='44' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>M</text></svg>","city":"Mexico City (Metro)","cc":"mx"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#003580'/><rect x='15' y='32' width='70' height='8' fill='white' rx='4'/><rect x='15' y='48' width='70' height='8' fill='white' rx='4'/><rect x='15' y='64' width='70' height='8' fill='white' rx='4'/></svg>","city":"Singapur (MRT)","cc":"sg"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#CC0000'/><line x1='25' y1='30' x2='75' y2='70' stroke='white' stroke-width='12'/><line x1='75' y1='30' x2='25' y2='70' stroke='white' stroke-width='12'/></svg>","city":"Hongkong (MTR)","cc":"hk"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#003F87'/><text x='50' y='65' font-size='36' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>BART</text></svg>","city":"San Francisco (BART)","cc":"us4"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><rect x='5' y='20' width='90' height='60' rx='30' fill='#003F8A'/><text x='50' y='62' font-size='38' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>Métro</text></svg>","city":"Montreal (STM)","cc":"ca"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#E8192C'/><text x='50' y='72' font-size='52' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>M</text></svg>","city":"Prag (Metro)","cc":"cz"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><rect x='5' y='5' width='90' height='90' rx='8' fill='#EF3340'/><text x='50' y='72' font-size='72' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>M</text></svg>","city":"Warschau (Metro)","cc":"pl"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#0033A0'/><text x='50' y='68' font-size='36' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>MRT</text></svg>","city":"Taipei (MRT)","cc":"tw"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><rect x='5' y='5' width='90' height='90' rx='8' fill='#003580'/><text x='50' y='68' font-size='40' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>SBahn</text></svg>","city":"Zürich (S-Bahn)","cc":"ch"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#FF6600'/><text x='50' y='72' font-size='52' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>A</text></svg>","city":"Buenos Aires (Subte)","cc":"ar"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#003087'/><text x='50' y='72' font-size='52' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>M</text></svg>","city":"São Paulo (Metrô)","cc":"br"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#0066CC'/><text x='50' y='65' font-size='36' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>SEÚL</text></svg>","city":"Seoul (Metro)","cc":"kr"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#0061A0'/><text x='50' y='65' font-size='36' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>地铁</text></svg>","city":"Shanghai (Metro)","cc":"cn"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#003082'/><text x='50' y='65' font-size='36' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>地铁</text></svg>","city":"Peking (Subway)","cc":"cn2"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><polygon points='50,2 98,50 50,98 2,50' fill='#003F8A'/><text x='50' y='67' font-size='42' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>M</text></svg>","city":"Athen (Metro)","cc":"gr"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#E30613'/><text x='50' y='72' font-size='52' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>M</text></svg>","city":"Istanbul (Metro)","cc":"tr"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><rect x='5' y='5' width='90' height='90' rx='8' fill='#FF6200'/><text x='50' y='72' font-size='72' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>M</text></svg>","city":"Amsterdam (GVB)","cc":"nl"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#003087'/><text x='50' y='65' font-size='36' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>MBTA</text></svg>","city":"Chicago (L-Train)","cc":"us5"}]
+const METRO_LOGO_DATA=[{"svg":"<svg viewBox='0 0 120 60' xmlns='http://www.w3.org/2000/svg'><circle cx='60' cy='30' r='27' fill='none' stroke='#DA0019' stroke-width='9'/><rect x='6' y='22' width='108' height='16' fill='#003594'/></svg>","city":"London (Underground)","cc":"gb"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><rect x='2' y='2' width='96' height='96' rx='8' fill='#003082' stroke='#FFD700' stroke-width='4'/><text x='50' y='80' font-size='80' fill='#FFD700' font-family='serif' font-weight='bold' text-anchor='middle'>M</text></svg>","city":"Paris (Métro)","cc":"fr"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#1B5FAD'/><text x='50' y='77' font-size='70' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>U</text></svg>","city":"Berlin (U-Bahn)","cc":"de"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#009036'/><text x='50' y='77' font-size='70' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>S</text></svg>","city":"Berlin (S-Bahn)","cc":"de2"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#CC0000'/><text x='50' y='72' font-size='52' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>NYC</text></svg>","city":"New York (Subway)","cc":"us"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><polygon points='50,2 98,50 50,98 2,50' fill='#CC0000'/><text x='50' y='67' font-size='52' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>M</text></svg>","city":"Madrid (Metro)","cc":"es"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#CC0000'/><text x='50' y='70' font-size='52' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>М</text></svg>","city":"Moskau (Metro)","cc":"ru"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#1A3668'/><path d='M20,30 L50,60 L80,30 L80,70 L50,45 L20,70 Z' fill='white'/></svg>","city":"Tokyo (Metro)","cc":"jp"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><rect x='2' y='2' width='96' height='96' rx='12' fill='#E30613'/><text x='50' y='77' font-size='72' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>M</text></svg>","city":"Barcelona (Metro)","cc":"es2"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#E30613'/><text x='50' y='72' font-size='52' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>M</text></svg>","city":"Rom (Metro)","cc":"it"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#0047AB'/><text x='50' y='77' font-size='70' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>U</text></svg>","city":"Wien (U-Bahn)","cc":"at"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#003E8A'/><text x='50' y='75' font-size='68' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>U</text></svg>","city":"München (U-Bahn)","cc":"de3"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#00843D'/><text x='50' y='75' font-size='68' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>S</text></svg>","city":"München (S-Bahn)","cc":"de4"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#003082'/><text x='50' y='72' font-size='52' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>M</text></svg>","city":"Brüssel (Métro)","cc":"be"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#006AB4'/><text x='50' y='72' font-size='60' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>T</text></svg>","city":"Stockholm (T-bana)","cc":"se"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#C8102E'/><text x='50' y='72' font-size='52' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>T</text></svg>","city":"Boston (MBTA)","cc":"us2"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><polygon points='50,4 96,27 96,73 50,96 4,73 4,27' fill='#007AC2'/><text x='50' y='68' font-size='50' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>M</text></svg>","city":"Washington DC (Metro)","cc":"us3"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><ellipse cx='50' cy='50' rx='48' ry='32' fill='#F57C00'/><text x='50' y='60' font-size='44' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>M</text></svg>","city":"Mexico City (Metro)","cc":"mx"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#003580'/><rect x='15' y='32' width='70' height='8' fill='white' rx='4'/><rect x='15' y='48' width='70' height='8' fill='white' rx='4'/><rect x='15' y='64' width='70' height='8' fill='white' rx='4'/></svg>","city":"Singapur (MRT)","cc":"sg"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#CC0000'/><line x1='25' y1='30' x2='75' y2='70' stroke='white' stroke-width='12'/><line x1='75' y1='30' x2='25' y2='70' stroke='white' stroke-width='12'/></svg>","city":"Hongkong (MTR)","cc":"hk"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#003F87'/><text x='50' y='65' font-size='36' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>BART</text></svg>","city":"San Francisco (BART)","cc":"us4"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><rect x='5' y='20' width='90' height='60' rx='30' fill='#003F8A'/><text x='50' y='62' font-size='38' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>Métro</text></svg>","city":"Montreal (STM)","cc":"ca"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#E8192C'/><text x='50' y='72' font-size='52' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>M</text></svg>","city":"Prag (Metro)","cc":"cz"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><rect x='5' y='5' width='90' height='90' rx='8' fill='#EF3340'/><text x='50' y='72' font-size='72' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>M</text></svg>","city":"Warschau (Metro)","cc":"pl"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#0033A0'/><text x='50' y='68' font-size='36' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>MRT</text></svg>","city":"Taipei (MRT)","cc":"tw"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><rect x='5' y='5' width='90' height='90' rx='8' fill='#003580'/><text x='50' y='68' font-size='40' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>SBahn</text></svg>","city":"Zürich (S-Bahn)","cc":"ch"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#FF6600'/><text x='50' y='72' font-size='52' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>A</text></svg>","city":"Buenos Aires (Subte)","cc":"ar"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#003087'/><text x='50' y='72' font-size='52' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>M</text></svg>","city":"São Paulo (Metrô)","cc":"br"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#0066CC'/><text x='50' y='65' font-size='36' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>SEÚL</text></svg>","city":"Seoul (Metro)","cc":"kr"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#0061A0'/><text x='50' y='65' font-size='36' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>地铁</text></svg>","city":"Shanghai (Metro)","cc":"cn"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#003082'/><text x='50' y='65' font-size='36' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>地铁</text></svg>","city":"Peking (Subway)","cc":"cn2"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><polygon points='50,2 98,50 50,98 2,50' fill='#003F8A'/><text x='50' y='67' font-size='42' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>M</text></svg>","city":"Athen (Metro)","cc":"gr"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#E30613'/><text x='50' y='72' font-size='52' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>M</text></svg>","city":"Istanbul (Metro)","cc":"tr"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><rect x='5' y='5' width='90' height='90' rx='8' fill='#FF6200'/><text x='50' y='72' font-size='72' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>M</text></svg>","city":"Amsterdam (GVB)","cc":"nl"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#003087'/><text x='50' y='65' font-size='36' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>MBTA</text></svg>","city":"Chicago (L-Train)","cc":"us5"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#8B1A8B'/><text x='50' y='72' font-size='52' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>M</text></svg>","city":"Osaka (Metro)","cc":"jp2"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#003087'/><text x='50' y='65' font-size='36' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>DMRC</text></svg>","city":"Delhi (Metro)","cc":"in"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><rect x='5' y='5' width='90' height='90' rx='8' fill='#E30613'/><text x='50' y='68' font-size='40' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>نقل</text></svg>","city":"Dubai (Metro)","cc":"ae"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#0057A8'/><text x='50' y='65' font-size='36' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>EMN</text></svg>","city":"Kairo (Metro)","cc":"eg"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><polygon points='50,4 96,27 96,73 50,96 4,73 4,27' fill='#ED1C24'/><text x='50' y='68' font-size='46' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>M</text></svg>","city":"Kopenhagen (Metro)","cc":"dk"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#F7901E'/><text x='50' y='72' font-size='52' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>M</text></svg>","city":"Helsinki (Metro)","cc":"fi"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#FFD700'/><circle cx='50' cy='50' r='35' fill='#003082'/><text x='50' y='65' font-size='36' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>ML</text></svg>","city":"Lissabon (Metro)","cc":"pt"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><rect x='5' y='5' width='90' height='90' rx='8' fill='#E30613'/><text x='50' y='65' font-size='40' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>BM</text></svg>","city":"Bilbao (Metro)","cc":"es3"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#F5A800'/><text x='50' y='72' font-size='52' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>M</text></svg>","city":"Lyon (Métro)","cc":"fr2"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#E30613'/><text x='50' y='65' font-size='36' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>TISSÉO</text></svg>","city":"Toulouse (Métro)","cc":"fr3"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#009FE3'/><text x='50' y='72' font-size='52' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>M</text></svg>","city":"Marseille (Métro)","cc":"fr4"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#E30613'/><rect x='20' y='44' width='60' height='12' fill='white' rx='2'/><circle cx='50' cy='50' r='12' fill='white'/><text x='50' y='56' font-size='14' fill='#E30613' font-family='Arial' font-weight='bold' text-anchor='middle'>MM</text></svg>","city":"Mailand (MM)","cc":"it2"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#003082'/><text x='50' y='65' font-size='36' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>GTT</text></svg>","city":"Turin (Metro)","cc":"it3"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#003580'/><text x='50' y='72' font-size='52' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>M</text></svg>","city":"Sofia (Metro)","cc":"bg"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#003F8A'/><text x='50' y='72' font-size='52' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>M</text></svg>","city":"Bukarest (Metro)","cc":"ro"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><rect x='5' y='5' width='90' height='90' rx='8' fill='#EF3340'/><text x='50' y='72' font-size='52' fill='#FFD700' font-family='Arial' font-weight='bold' text-anchor='middle'>M</text></svg>","city":"Budapest (Metro)","cc":"hu"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#003082'/><text x='50' y='65' font-size='36' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>KMЖ</text></svg>","city":"Kiew (Metro)","cc":"ua"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#C8102E'/><text x='50' y='72' font-size='52' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>M</text></svg>","city":"Minsk (Metro)","cc":"by"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#E30613'/><text x='50' y='65' font-size='36' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>Tbil</text></svg>","city":"Tiflis (Metro)","cc":"ge"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#D62D20'/><text x='50' y='65' font-size='36' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>TTC</text></svg>","city":"Toronto (TTC)","cc":"ca2"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#003F8A'/><text x='50' y='65' font-size='28' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>SkyTrain</text></svg>","city":"Vancouver (SkyTrain)","cc":"ca3"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#0072BC'/><text x='50' y='65' font-size='36' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>LA</text></svg>","city":"Los Angeles (Metro)","cc":"us6"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#FF6600'/><text x='50' y='65' font-size='28' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>MARTA</text></svg>","city":"Atlanta (MARTA)","cc":"us7"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#FF6600'/><text x='50' y='65' font-size='24' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>Metrorail</text></svg>","city":"Miami (Metrorail)","cc":"us8"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#003087'/><text x='50' y='65' font-size='28' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>SEPTA</text></svg>","city":"Philadelphia (SEPTA)","cc":"us9"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#003F8A'/><text x='50' y='72' font-size='52' fill='#FFD700' font-family='Arial' font-weight='bold' text-anchor='middle'>M</text></svg>","city":"Rio de Janeiro (Metro)","cc":"br2"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#CC0000'/><text x='50' y='72' font-size='52' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>M</text></svg>","city":"Santiago (Metro)","cc":"cl"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#009B3A'/><text x='50' y='72' font-size='52' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>M</text></svg>","city":"Medellin (Metro)","cc":"co"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#003F8A'/><text x='50' y='65' font-size='36' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>Lima</text></svg>","city":"Lima (Metro)","cc":"pe"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#009944'/><text x='50' y='65' font-size='28' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>BTS</text></svg>","city":"Bangkok (BTS)","cc":"th"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><rect x='5' y='5' width='90' height='90' rx='8' fill='#003F8A'/><text x='50' y='65' font-size='28' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>RapidKL</text></svg>","city":"Kuala Lumpur (LRT)","cc":"my"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#003F8A'/><text x='50' y='65' font-size='28' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>MRT</text></svg>","city":"Jakarta (MRT)","cc":"id"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#E30613'/><text x='50' y='65' font-size='28' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>名古屋</text></svg>","city":"Nagoya (Subway)","cc":"jp3"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#009F6B'/><text x='50' y='65' font-size='28' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>福岡</text></svg>","city":"Fukuoka (Subway)","cc":"jp4"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#E30613'/><text x='50' y='65' font-size='28' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>Busan</text></svg>","city":"Busan (Metro)","cc":"kr2"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#E30613'/><text x='50' y='65' font-size='28' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>Mumbai</text></svg>","city":"Mumbai (Metro)","cc":"in2"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#003F8A'/><text x='50' y='65' font-size='28' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>Namma</text></svg>","city":"Bengaluru (Metro)","cc":"in3"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#7B2D8B'/><text x='50' y='65' font-size='28' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>HMRL</text></svg>","city":"Hyderabad (Metro)","cc":"in4"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#CC0000'/><text x='50' y='65' font-size='28' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>CMRL</text></svg>","city":"Chennai (Metro)","cc":"in5"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#003F8A'/><text x='50' y='65' font-size='28' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>Tehran</text></svg>","city":"Teheran (Metro)","cc":"ir"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#8B4513'/><text x='50' y='65' font-size='28' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>Doha</text></svg>","city":"Doha (Metro)","cc":"qa"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#006400'/><text x='50' y='65' font-size='28' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>RRX</text></svg>","city":"Riad (Metro)","cc":"sa"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#E30613'/><text x='50' y='72' font-size='52' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>M</text></svg>","city":"Valencia (Metro)","cc":"es4"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#003082'/><text x='50' y='72' font-size='52' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>M</text></svg>","city":"Porto (Metro)","cc":"pt2"},{"svg":"<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='48' fill='#003580'/><text x='50' y='65' font-size='28' fill='white' font-family='Arial' font-weight='bold' text-anchor='middle'>Kolkata</text></svg>","city":"Kolkata (Metro)","cc":"in6"}]
 function genWappenQ(){
   if(!WAPPEN_DATA||WAPPEN_DATA.length<4)return null;
   const _r=arr=>arr[~~(rng()*arr.length)];
