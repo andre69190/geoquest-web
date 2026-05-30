@@ -7543,7 +7543,7 @@ function flagOf(name){const cc=ccFromCountry(name);return cc?`<img src="https://
 /* Phase 97-1: Zombie-SW-Killer – läuft vor Supabase-Init */
 /* Tötet veraltete Service Worker, die Updates blockieren   */
 (function _zombieKiller(){
-  var SW_VER='gq-5dbea369',LS_KEY='__gq_sw_ver'; /* Phase 295: auto-injected by gen.py */
+  var SW_VER='gq-6c62b252',LS_KEY='__gq_sw_ver'; /* Phase 295: auto-injected by gen.py */
   try{
     if(localStorage.getItem(LS_KEY)===SW_VER)return; /* aktuell – nichts zu tun */
     if(!('serviceWorker' in navigator)){localStorage.setItem(LS_KEY,SW_VER);return;}
@@ -37412,6 +37412,134 @@ const KULTUR_DATA={
     {
       "n": "Casablanca–Tanger (Al Boraq, schnellster Zug Afrikas)",
       "c": "Marokko"
+    },
+    {
+      "n": "TranzAlpine (Christchurch–Greymouth, Neuseeland)",
+      "c": "Neuseeland"
+    },
+    {
+      "n": "Coastal Pacific (Picton–Christchurch)",
+      "c": "Neuseeland"
+    },
+    {
+      "n": "Northern Explorer (Auckland–Wellington)",
+      "c": "Neuseeland"
+    },
+    {
+      "n": "Inlandsbahn (Inlandsbanan, Gaelvare–Kristinehamn)",
+      "c": "Schweden"
+    },
+    {
+      "n": "Nariz del Diablo (Teufelsnase, Ecuador)",
+      "c": "Ecuador"
+    },
+    {
+      "n": "Serra Verde Express (Curitiba–Morretes)",
+      "c": "Brasilien"
+    },
+    {
+      "n": "White Pass & Yukon Route (Skagway–Whitehorse)",
+      "c": "USA"
+    },
+    {
+      "n": "Harz-Schmalspurbahn (Wernigerode–Brocken)",
+      "c": "Deutschland"
+    },
+    {
+      "n": "Chepe Express (Chihuahua–Los Mochis)",
+      "c": "Mexiko"
+    },
+    {
+      "n": "Shunka Shuutou (Herbst-Express Tohoku, Japan)",
+      "c": "Japan"
+    },
+    {
+      "n": "Puffing Billy Railway (Melbourne, Dampfzug)",
+      "c": "Australien"
+    },
+    {
+      "n": "Kuranda Scenic Railway (Cairns, Queensland)",
+      "c": "Australien"
+    },
+    {
+      "n": "Reunionbahn (seilgesteuerter Bergzug)",
+      "c": "Frankreich"
+    },
+    {
+      "n": "Maeklong Railway (Bangkok Markt-Bahn)",
+      "c": "Thailand"
+    },
+    {
+      "n": "Konkan Railway (Mumbai–Goa, Viadukte)",
+      "c": "Indien"
+    },
+    {
+      "n": "Kalka-Shimla Railway (UNESCO)",
+      "c": "Indien"
+    },
+    {
+      "n": "Qinghai-Tibet Railway (Lhasa, hoechste Bahn)",
+      "c": "China"
+    },
+    {
+      "n": "Yunnan–Vietnam Bahn (Meter-Spur Yunnan)",
+      "c": "China"
+    },
+    {
+      "n": "Llanberis Lake Railway (Nordwales)",
+      "c": "Grossbritannien"
+    },
+    {
+      "n": "Talyllyn Railway (erste erhaltene Schmalspurbahn)",
+      "c": "Grossbritannien"
+    },
+    {
+      "n": "Cog Railway Mount Washington (steilste USA)",
+      "c": "USA"
+    },
+    {
+      "n": "Durango & Silverton Narrow Gauge",
+      "c": "USA"
+    },
+    {
+      "n": "Cumbres & Toltec Scenic Railroad",
+      "c": "USA"
+    },
+    {
+      "n": "Verde Canyon Railroad (Arizona)",
+      "c": "USA"
+    },
+    {
+      "n": "Inca Rail Aguas Calientes–Machu Picchu",
+      "c": "Peru"
+    },
+    {
+      "n": "Tren a las Nubes (Zug zu den Wolken, Argentinien)",
+      "c": "Argentinien"
+    },
+    {
+      "n": "Patagonia Express (El Maiten–Esquel)",
+      "c": "Argentinien"
+    },
+    {
+      "n": "Rovos Rail Kapstadt–Daressalam",
+      "c": "Suedafrika"
+    },
+    {
+      "n": "Namibia Desert Express (Windhoek–Swakopmund)",
+      "c": "Namibia"
+    },
+    {
+      "n": "Uganda Railway (Mombasa–Kampala, historisch)",
+      "c": "Kenia"
+    },
+    {
+      "n": "Ethiopian Railways (Addis Abeba–Dschibuti)",
+      "c": "Aethiopien"
+    },
+    {
+      "n": "Hedjaz Railway (historisch, Damaskus–Medina)",
+      "c": "Saudi-Arabien"
     }
   ],
   "zug_vkm": [
@@ -37622,6 +37750,118 @@ const KULTUR_DATA={
     {
       "n": "H-MAVSTART",
       "c": "Ungarn"
+    },
+    {
+      "n": "CH-RhB",
+      "c": "Schweiz"
+    },
+    {
+      "n": "F-OUIGO",
+      "c": "Frankreich"
+    },
+    {
+      "n": "F-TGVLYRIA",
+      "c": "Frankreich"
+    },
+    {
+      "n": "I-TI",
+      "c": "Italien"
+    },
+    {
+      "n": "I-TRENITALIA",
+      "c": "Italien"
+    },
+    {
+      "n": "E-IRYO",
+      "c": "Spanien"
+    },
+    {
+      "n": "NL-ABELLIO",
+      "c": "Niederlande"
+    },
+    {
+      "n": "B-NMBS",
+      "c": "Belgien"
+    },
+    {
+      "n": "GB-GWR",
+      "c": "Grossbritannien"
+    },
+    {
+      "n": "GB-LNER",
+      "c": "Grossbritannien"
+    },
+    {
+      "n": "GB-TPE",
+      "c": "Grossbritannien"
+    },
+    {
+      "n": "GB-AVANTI",
+      "c": "Grossbritannien"
+    },
+    {
+      "n": "PL-REGIO",
+      "c": "Polen"
+    },
+    {
+      "n": "CZ-LEO",
+      "c": "Tschechien"
+    },
+    {
+      "n": "SK-ZSSK",
+      "c": "Slowakei"
+    },
+    {
+      "n": "RO-CFR",
+      "c": "Rumaenien"
+    },
+    {
+      "n": "BG-BDZ",
+      "c": "Bulgarien"
+    },
+    {
+      "n": "GR-OSE",
+      "c": "Griechenland"
+    },
+    {
+      "n": "TR-TCDD",
+      "c": "Tuerkei"
+    },
+    {
+      "n": "N-NSB",
+      "c": "Norwegen"
+    },
+    {
+      "n": "FIN-VR",
+      "c": "Finnland"
+    },
+    {
+      "n": "DK-DSB",
+      "c": "Daenemark"
+    },
+    {
+      "n": "IRL-IE",
+      "c": "Irland"
+    },
+    {
+      "n": "P-CP",
+      "c": "Portugal"
+    },
+    {
+      "n": "GB-EUROSTAR",
+      "c": "Grossbritannien"
+    },
+    {
+      "n": "F-EUROSTAR",
+      "c": "Frankreich"
+    },
+    {
+      "n": "D-FLIX",
+      "c": "Deutschland"
+    },
+    {
+      "n": "HR-HZ",
+      "c": "Kroatien"
     }
   ],
   "ds100": [
@@ -39014,24 +39254,9 @@ const TIER_PIN_DATA={
         "lng": 29.88
       },
       {
-        "n": "Ruaha National Park (Tansania)",
-        "lat": -7.77,
-        "lng": 35.1
-      },
-      {
-        "n": "Mikumi National Park (Tansania)",
-        "lat": -7.4,
-        "lng": 37.1
-      },
-      {
         "n": "South Luangwa NP (Sambia)",
         "lat": -13.0,
         "lng": 31.7
-      },
-      {
-        "n": "Hluhluwe-iMfolozi Park (Südafrika)",
-        "lat": -28.0,
-        "lng": 31.9
       },
       {
         "n": "Gonarezhou National Park (Simbabwe)",
@@ -39039,19 +39264,9 @@ const TIER_PIN_DATA={
         "lng": 32.3
       },
       {
-        "n": "Selous Game Reserve (Tansania)",
-        "lat": -9.0,
-        "lng": 37.5
-      },
-      {
         "n": "Kgalagadi Transfrontier Park (Botswana/SA)",
         "lat": -25.6,
         "lng": 20.7
-      },
-      {
-        "n": "Murchison Falls NP (Uganda)",
-        "lat": 2.28,
-        "lng": 31.73
       },
       {
         "n": "Zakouma National Park (Tschad)",
@@ -39074,11 +39289,6 @@ const TIER_PIN_DATA={
         "lng": 35.27
       },
       {
-        "n": "Niassa Reserve (Mosambik)",
-        "lat": -12.5,
-        "lng": 37.5
-      },
-      {
         "n": "Mana Pools NP (Simbabwe)",
         "lat": -15.8,
         "lng": 29.3
@@ -39089,24 +39299,9 @@ const TIER_PIN_DATA={
         "lng": 31.9
       },
       {
-        "n": "Samburu National Reserve (Kenia)",
-        "lat": 0.62,
-        "lng": 37.57
-      },
-      {
         "n": "Tsavo East NP (Kenia)",
         "lat": -2.8,
         "lng": 38.5
-      },
-      {
-        "n": "Addo Elephant NP (Südafrika)",
-        "lat": -33.45,
-        "lng": 25.75
-      },
-      {
-        "n": "Moremi Game Reserve (Botswana)",
-        "lat": -19.14,
-        "lng": 23.35
       },
       {
         "n": "Chizarira NP (Simbabwe)",
@@ -83526,18 +83721,6 @@ const TECH_MATCH_DATA={
         "c": "NAND"
       },
       {
-        "n": "A=0, B=0 → 1",
-        "c": "NOR"
-      },
-      {
-        "n": "A=0, B=0 → 1",
-        "c": "XNOR"
-      },
-      {
-        "n": "A=0, B=0 → 1",
-        "c": "NAND"
-      },
-      {
         "n": "A=0, B=0 → 1 (NAND)",
         "c": "NAND"
       },
@@ -105153,11 +105336,6 @@ const ARCH_PIN_DATA={
         "lng": 40.6
       },
       {
-        "n": "Olduvai Gorge (Tansania)",
-        "lat": -3.0,
-        "lng": 35.3
-      },
-      {
         "n": "Red Deer River (Alberta, Kanada)",
         "lat": 52.3,
         "lng": -111.6
@@ -105166,11 +105344,6 @@ const ARCH_PIN_DATA={
         "n": "Niobrara Chalk (Kansas, USA)",
         "lat": 39.5,
         "lng": -99.5
-      },
-      {
-        "n": "Wheeler Shale (Utah)",
-        "lat": 39.1,
-        "lng": -113.0
       },
       {
         "n": "Mazon Creek (Illinois, USA)",
@@ -105196,11 +105369,6 @@ const ARCH_PIN_DATA={
         "n": "Fayum Depression Primaten (Ägypten)",
         "lat": 29.3,
         "lng": 30.5
-      },
-      {
-        "n": "Monte Hermoso (Argentinien)",
-        "lat": -39.0,
-        "lng": -61.3
       },
       {
         "n": "Naracoorte Caves (Südaustralien)",
@@ -127062,10 +127230,6 @@ const ASTRO_MATCH_DATA={
         "c": "Südhimmel"
       },
       {
-        "n": "Schütze (Sagittarius)",
-        "c": "Äquatorbereich"
-      },
-      {
         "n": "Ophiuchus",
         "c": "Äquatorbereich"
       },
@@ -127329,10 +127493,6 @@ const ASTRO_MATCH_DATA={
       {
         "n": "Didier Queloz",
         "c": "Mitentdeckung des ersten Exoplaneten (51 Peg b)"
-      },
-      {
-        "n": "Georges Lemaître",
-        "c": "Urknall-Theorie"
       },
       {
         "n": "Alexei Leonov",
@@ -128633,11 +128793,6 @@ const GEO_PIN_DATA={
         "lng": -60.65
       },
       {
-        "n": "Tungurahua (Ecuador)",
-        "lat": -1.47,
-        "lng": -78.44
-      },
-      {
         "n": "Fuego (Guatemala)",
         "lat": 14.47,
         "lng": -90.88
@@ -129803,11 +129958,6 @@ const GEO_PIN_DATA={
         "lng": 3.4
       },
       {
-        "n": "Cueva del Viento (Teneriffa, Spanien)",
-        "lat": 28.35,
-        "lng": -16.55
-      },
-      {
         "n": "Coves del Drac (Mallorca, Spanien)",
         "lat": 39.53,
         "lng": 3.33
@@ -130198,11 +130348,6 @@ const GEO_PIN_DATA={
         "lng": -116.72
       },
       {
-        "n": "Royal Gorge (Colorado, USA)",
-        "lat": 38.45,
-        "lng": -105.35
-      },
-      {
         "n": "Rio Grande Gorge (New Mexico)",
         "lat": 36.45,
         "lng": -105.72
@@ -130211,11 +130356,6 @@ const GEO_PIN_DATA={
         "n": "Yarlung Tsangpo (Tibet, China)",
         "lat": 29.75,
         "lng": 95.0
-      },
-      {
-        "n": "Three Gorges (Yangtze, China)",
-        "lat": 30.8,
-        "lng": 111.1
       },
       {
         "n": "Tara River Canyon (Montenegro)",
@@ -130246,11 +130386,6 @@ const GEO_PIN_DATA={
         "n": "Blyde River Canyon (Suedafrika)",
         "lat": -24.63,
         "lng": 30.82
-      },
-      {
-        "n": "Fish River Canyon (Namibia)",
-        "lat": -27.59,
-        "lng": 17.63
       },
       {
         "n": "Canyon de Chelly (Arizona, USA)",
@@ -130598,11 +130733,6 @@ const GEO_PIN_DATA={
         "lng": -16.82
       },
       {
-        "n": "Soda Springs Geyser (Idaho, USA)",
-        "lat": 42.65,
-        "lng": -111.6
-      },
-      {
         "n": "Tatio Geysers (Chile)",
         "lat": -22.33,
         "lng": -67.92
@@ -130621,11 +130751,6 @@ const GEO_PIN_DATA={
         "n": "Krisuvik Hot Springs (Island)",
         "lat": 63.88,
         "lng": -22.06
-      },
-      {
-        "n": "Beowawe Geysers (Nevada, USA)",
-        "lat": 40.59,
-        "lng": -116.67
       },
       {
         "n": "Riverside Geyser (Yellowstone, USA)",
@@ -130946,16 +131071,6 @@ const GEO_PIN_DATA={
         "n": "Green River Formation (Wyoming, USA)",
         "lat": 41.5,
         "lng": -109.5
-      },
-      {
-        "n": "Hell Creek Formation (Montana, USA)",
-        "lat": 47.5,
-        "lng": -106.5
-      },
-      {
-        "n": "Morrison Formation (Colorado, USA)",
-        "lat": 39.0,
-        "lng": -108.5
       },
       {
         "n": "Edmonton Formation (Kanada)",
@@ -131693,11 +131808,6 @@ const GEO_PIN_DATA={
         "lng": 77.1
       },
       {
-        "n": "Biafo Glacier (Pakistan)",
-        "lat": 35.9,
-        "lng": 75.8
-      },
-      {
         "n": "Hispar Glacier (Pakistan)",
         "lat": 36.1,
         "lng": 75.0
@@ -131978,24 +132088,9 @@ const GEO_PIN_DATA={
         "lng": -67.0
       },
       {
-        "n": "Karakum (Turkmenistan)",
-        "lat": 39.5,
-        "lng": 58.0
-      },
-      {
-        "n": "Kyzylkum (Usbekistan/Kasachstan)",
-        "lat": 42.0,
-        "lng": 63.0
-      },
-      {
         "n": "Lut Desert (Iran)",
         "lat": 30.0,
         "lng": 59.0
-      },
-      {
-        "n": "Dasht-e Kavir (Iran)",
-        "lat": 34.0,
-        "lng": 54.0
       },
       {
         "n": "Syrian Desert (Syrien/Jordanien)",
@@ -132026,16 +132121,6 @@ const GEO_PIN_DATA={
         "n": "Tirari Desert (Australien)",
         "lat": -28.0,
         "lng": 138.5
-      },
-      {
-        "n": "Strzelecki Desert (Australien)",
-        "lat": -29.0,
-        "lng": 140.0
-      },
-      {
-        "n": "Tanami Desert (Australien)",
-        "lat": -20.0,
-        "lng": 130.0
       },
       {
         "n": "Ustyurt Plateau (Kasachstan)",
@@ -132648,11 +132733,6 @@ const GEO_PIN_DATA={
         "lng": 112.5
       },
       {
-        "n": "Limagne-Graben (Auvergne, Frankreich)",
-        "lat": 45.75,
-        "lng": 3.13
-      },
-      {
         "n": "Massif Central Rift (Frankreich)",
         "lat": 45.5,
         "lng": 3.0
@@ -132786,11 +132866,6 @@ const GEO_PIN_DATA={
         "n": "Weihe Graben (China)",
         "lat": 34.5,
         "lng": 109.0
-      },
-      {
-        "n": "Gulf of California Rift (Mexiko)",
-        "lat": 27.0,
-        "lng": -111.0
       },
       {
         "n": "Salton Sea Rift (Kalifornien, USA)",
@@ -151307,6 +151382,118 @@ const SPORT_HL_DATA={
       {
         "name": "Bangkok BTS Silom (HVZ)",
         "val": 10
+      },
+      {
+        "name": "Paris Metro Linie 13 (HVZ)",
+        "val": 20
+      },
+      {
+        "name": "London Elizabeth Line (HVZ)",
+        "val": 24
+      },
+      {
+        "name": "London Northern Line (HVZ)",
+        "val": 24
+      },
+      {
+        "name": "London Victoria Line (HVZ)",
+        "val": 36
+      },
+      {
+        "name": "Berlin U6 Stosszeit",
+        "val": 12
+      },
+      {
+        "name": "Berlin S1 (HVZ)",
+        "val": 10
+      },
+      {
+        "name": "Muenchen S8 Stosszeit",
+        "val": 10
+      },
+      {
+        "name": "Hamburg U1 (HVZ)",
+        "val": 10
+      },
+      {
+        "name": "Hamburg S3 Stosszeit",
+        "val": 10
+      },
+      {
+        "name": "Wien S45 Stadtbahn (HVZ)",
+        "val": 10
+      },
+      {
+        "name": "Zuerich S2 S-Bahn (HVZ)",
+        "val": 6
+      },
+      {
+        "name": "Basel S-Bahn (HVZ)",
+        "val": 6
+      },
+      {
+        "name": "Kopenhagen Metro M2 (24h)",
+        "val": 20
+      },
+      {
+        "name": "Stockholm T-bana T14 (HVZ)",
+        "val": 15
+      },
+      {
+        "name": "Oslo Metro Linie 4 (HVZ)",
+        "val": 10
+      },
+      {
+        "name": "Madrid Cercanias C1 (HVZ)",
+        "val": 12
+      },
+      {
+        "name": "Barcelona Metro L5 (HVZ)",
+        "val": 15
+      },
+      {
+        "name": "Mailand Metro M1 (HVZ)",
+        "val": 12
+      },
+      {
+        "name": "Tokio Chuo Rapid Line (Stosszeit)",
+        "val": 22
+      },
+      {
+        "name": "Tokio Keio Linie (Stosszeit)",
+        "val": 24
+      },
+      {
+        "name": "Osaka Keihan Main Line (Stosszeit)",
+        "val": 20
+      },
+      {
+        "name": "Delhi Metro Yellow Line (HVZ)",
+        "val": 20
+      },
+      {
+        "name": "Mumbai Suburban Western (Stosszeit)",
+        "val": 30
+      },
+      {
+        "name": "RER D Paris (HVZ)",
+        "val": 12
+      },
+      {
+        "name": "Thalys Paris–Bruessel (HVZ)",
+        "val": 2
+      },
+      {
+        "name": "ICE Berlin–Hamburg (HVZ)",
+        "val": 2
+      },
+      {
+        "name": "DB RE1 Koeln–Aachen (HVZ)",
+        "val": 4
+      },
+      {
+        "name": "S-Bahn Stuttgart S1 (HVZ)",
+        "val": 10
       }
     ]
   }
@@ -157435,6 +157622,206 @@ const TIMELINE_DATA={
         "n": "King's Cross Station London (Euston Arch abgerissen)",
         "year": 1852,
         "hint": "London — Lewis Cubitt, Doppelbogenfenster"
+      },
+      {
+        "n": "Baltimore & Ohio Station (erste US-Eisenbahn)",
+        "year": 1830,
+        "hint": "Baltimore, USA — Beginn des amerikanischen Schienenzeitalters"
+      },
+      {
+        "n": "Koeln Hauptbahnhof (erster Neubau)",
+        "year": 1859,
+        "hint": "Koeln — nahe dem Dom, zweiter Neubau 1894"
+      },
+      {
+        "n": "Dresden Hauptbahnhof",
+        "year": 1898,
+        "hint": "Dresden — Jugendstil, Glasdach"
+      },
+      {
+        "n": "Muenchen Hauptbahnhof (erster Bau)",
+        "year": 1839,
+        "hint": "Muenchen — erster Terminus Bayerns"
+      },
+      {
+        "n": "Berlin Lehrter Stadtbahnhof (historisch)",
+        "year": 1871,
+        "hint": "Berlin — Vorlaefer des heutigen Hauptbahnhofs"
+      },
+      {
+        "n": "Zurich Hauptbahnhof (historischer Bau)",
+        "year": 1871,
+        "hint": "Zuerich — seither mehrfach erweitert"
+      },
+      {
+        "n": "Gare d'Orsay Paris (heute Musee d'Orsay)",
+        "year": 1900,
+        "hint": "Paris — zur Weltausstellung gebaut, heute Museum"
+      },
+      {
+        "n": "Budapest Nyugati (Westbahnhof, Eiffel)",
+        "year": 1877,
+        "hint": "Budapest — von Gustave Eiffel erbaut"
+      },
+      {
+        "n": "Wroclaw Hauptbahnhof (historisch)",
+        "year": 1857,
+        "hint": "Breslau/Wroclaw — Neugotik, Niederschlesien"
+      },
+      {
+        "n": "Amsterdam Centraal",
+        "year": 1889,
+        "hint": "Amsterdam — P.J.H. Cuypers, hollaendischer Neorenaissance"
+      },
+      {
+        "n": "Gare Centrale Bruessel",
+        "year": 1952,
+        "hint": "Bruessel — Victor Horta, Art Deco"
+      },
+      {
+        "n": "Gdansk Hauptbahnhof",
+        "year": 1900,
+        "hint": "Danzig/Gdansk — Backstein-Gotik"
+      },
+      {
+        "n": "Warszawa Wileńska (erster Warschauer Bf)",
+        "year": 1862,
+        "hint": "Warschau — Verbindung zum zaristischen Russland"
+      },
+      {
+        "n": "Lviv Hauptbahnhof",
+        "year": 1904,
+        "hint": "Lwiw/Lemberg — Secessionsstil, k.u.k. Erbe"
+      },
+      {
+        "n": "Kyiw Hauptbahnhof (sowjet. Umbau)",
+        "year": 1932,
+        "hint": "Kiew — Stalinist. Architektur"
+      },
+      {
+        "n": "Moskau Komsomolskaya (drei Bahnhöfe)",
+        "year": 1849,
+        "hint": "Moskau — drei Fernbahnhöfe auf einem Platz"
+      },
+      {
+        "n": "Helsinki Zentralbahnhof (neues Gebaeude)",
+        "year": 1919,
+        "hint": "Helsinki — Eliel Saarinen, Jugendstilikone"
+      },
+      {
+        "n": "Oslo Ostbahnhof (Histor. Gebaeude)",
+        "year": 1854,
+        "hint": "Oslo — erster Bahnhof Norwegens"
+      },
+      {
+        "n": "Kopenhagen Hauptbahnhof",
+        "year": 1911,
+        "hint": "Kopenhagen — Heinrich Wenck, Nationalromantik"
+      },
+      {
+        "n": "Stockholms Centralstation",
+        "year": 1871,
+        "hint": "Stockholm — Adolf Wilhelm Edelsvaerd, Nordisch-Romanisch"
+      },
+      {
+        "n": "Lissabon Rossio Bahnhof",
+        "year": 1890,
+        "hint": "Lissabon — neo-manuelinischer Stil"
+      },
+      {
+        "n": "Barcelona Passeig de Gracia (unterirdisch)",
+        "year": 1863,
+        "hint": "Barcelona — oberster Knoten des Cercanias-Netzes"
+      },
+      {
+        "n": "Florenz Santa Maria Novella",
+        "year": 1935,
+        "hint": "Florenz — Modernistisches Manifest, Gruppo Toscano"
+      },
+      {
+        "n": "Athen Larissa Bahnhof",
+        "year": 1902,
+        "hint": "Athen — griechischer Normalspurnetz-Kopfbahnhof"
+      },
+      {
+        "n": "Istanbul Pendik (neuer Hauptbahnhof)",
+        "year": 2023,
+        "hint": "Istanbul — ersetzt Haydarpasha nach Jahrzehnten"
+      },
+      {
+        "n": "Union Station Los Angeles",
+        "year": 1939,
+        "hint": "Los Angeles — Spanish Colonial Revival, letzter grosser US-Bahnhof"
+      },
+      {
+        "n": "Union Station Toronto",
+        "year": 1927,
+        "hint": "Toronto — Beaux Arts, Canadian Pacific/National"
+      },
+      {
+        "n": "Gare du Palais Quebec City",
+        "year": 1915,
+        "hint": "Quebec — Chateaustil, Wahrzeichen"
+      },
+      {
+        "n": "Estacion de Francia Barcelona",
+        "year": 1929,
+        "hint": "Barcelona — Glasdach, Art Deco"
+      },
+      {
+        "n": "Termini Roma (neues Gebaeude)",
+        "year": 1950,
+        "hint": "Rom — Nachkriegsmodernismus, laengste Fassade"
+      },
+      {
+        "n": "Shin-Osaka (erster Shinkansen-Halt ausserh. Tokio)",
+        "year": 1964,
+        "hint": "Osaka — zur Olympiade 1964 eroeffnet"
+      },
+      {
+        "n": "Kyoto Station (moderner Neubau)",
+        "year": 1997,
+        "hint": "Kyoto — Hiroshi Hara, futuristisch, 70m hoch"
+      },
+      {
+        "n": "Narita International Terminal (JR-Haltestelle)",
+        "year": 1991,
+        "hint": "Tokio — Verbindung Innenstadt–Flughafen"
+      },
+      {
+        "n": "Shanghai Hongqiao Station (groesste Bahnhof Welt)",
+        "year": 2010,
+        "hint": "Shanghai — 1300m lang, 30 Gleise"
+      },
+      {
+        "n": "Haramain West Station Mekka",
+        "year": 2018,
+        "hint": "Mekka — Saudi-Arabiens HSR, 50 Mio. Pilger/Jahr"
+      },
+      {
+        "n": "Riyadh King Abdullah Financial District Station",
+        "year": 2021,
+        "hint": "Riad — Zaha Hadid Architects"
+      },
+      {
+        "n": "Expo 2020 Dubai Metro Station",
+        "year": 2020,
+        "hint": "Dubai — Architekturreferenz fuer Wuestenbahnhof"
+      },
+      {
+        "n": "Kairo Ramses Bahnhof (historisch)",
+        "year": 1892,
+        "hint": "Kairo — erster Bahnhof Afrikas und des Nahen Ostens"
+      },
+      {
+        "n": "Dakar Hauptbahnhof (historisch)",
+        "year": 1914,
+        "hint": "Dakar — Westafrika, ehemals laengste Strecke Afrikas"
+      },
+      {
+        "n": "Buenos Aires Retiro Station",
+        "year": 1915,
+        "hint": "Buenos Aires — britische Eisenbahninfrastruktur"
       }
     ]
   }
