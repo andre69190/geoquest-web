@@ -7561,7 +7561,7 @@ function flagOf(name){const cc=ccFromCountry(name);return cc?`<img src="https://
 /* Phase 97-1: Zombie-SW-Killer – läuft vor Supabase-Init */
 /* Tötet veraltete Service Worker, die Updates blockieren   */
 (function _zombieKiller(){
-  var SW_VER='gq-ac08542f',LS_KEY='__gq_sw_ver'; /* Phase 295: auto-injected by gen.py */
+  var SW_VER='gq-a5d16601',LS_KEY='__gq_sw_ver'; /* Phase 295: auto-injected by gen.py */
   try{
     if(localStorage.getItem(LS_KEY)===SW_VER)return; /* aktuell – nichts zu tun */
     if(!('serviceWorker' in navigator)){localStorage.setItem(LS_KEY,SW_VER);return;}
@@ -160716,7 +160716,7 @@ if(mode==="slf"&&S.ph==="playing"){
         qBody=`<div class="qprompt">${q.prompt}</div><div style="display:flex;justify-content:center;margin:.75rem 0">${_csvg}</div>`;
       }
       { const _isFootball=(q.type==="stadium"||q.type==="jersey"||q.type==="crest");const _isHLBeta=(q.type&&q.type.startsWith('hl_b_'));
-  const btns=q.opts.map((o,i)=>{let cls="btn-a";const os=o.replace(/'/g,"\'");if(sel!==null){if(o===q.ans)cls+=" ok";else if(o===sel)cls+=" ng";else cls+=" dm";}const mk=sel?(o===q.ans?`<span>\u2713</span>`:o===sel?`<span>\u2717</span>`:""):"";const _omk=(S.mpOpponent&&S.mpOppLid===q.lid&&S.mpOppSel!=null&&o===S.mpOppSel)?`<span class="opp-pick" title="Wahl des Gegners" style="margin-left:5px;font-size:.62rem;font-weight:800;color:${S.mpOppSelOk?"#10b981":"#ef4444"}">\u2694</span>`:"";return`<button class="${cls}" ${sel?"disabled":""} onclick="answerByIdx(${i})">${(_isHLBeta&&HL_BETA_CC[o])?`<img src="https://flagcdn.com/w40/${HL_BETA_CC[o].toLowerCase()}.png" style="height:14px;vertical-align:middle;margin-right:3px;border-radius:2px" onerror="this.style.display=\'none\'">`:_isFootball&&String(o).length===2?`<img src="https://flagcdn.com/w40/${String(o).toLowerCase()}.png" style="height:14px;vertical-align:middle;margin-right:3px;border-radius:2px" onerror="this.style.display=\'none\'">`:""}${esc(q.type==="map_ivr"?o:_isHLBeta?(displayCountry(HL_BETA_CC[o])||o):_isFootball?(displayCountry(String(o))||String(o)):displayCountry(o))}${mk}${_omk}</button>`;}).join("");
+  const btns=(q.opts||[]).map((o,i)=>{let cls="btn-a";const os=o.replace(/'/g,"\'");if(sel!==null){if(o===q.ans)cls+=" ok";else if(o===sel)cls+=" ng";else cls+=" dm";}const mk=sel?(o===q.ans?`<span>\u2713</span>`:o===sel?`<span>\u2717</span>`:""):"";const _omk=(S.mpOpponent&&S.mpOppLid===q.lid&&S.mpOppSel!=null&&o===S.mpOppSel)?`<span class="opp-pick" title="Wahl des Gegners" style="margin-left:5px;font-size:.62rem;font-weight:800;color:${S.mpOppSelOk?"#10b981":"#ef4444"}">\u2694</span>`:"";return`<button class="${cls}" ${sel?"disabled":""} onclick="answerByIdx(${i})">${(_isHLBeta&&HL_BETA_CC[o])?`<img src="https://flagcdn.com/w40/${HL_BETA_CC[o].toLowerCase()}.png" style="height:14px;vertical-align:middle;margin-right:3px;border-radius:2px" onerror="this.style.display=\'none\'">`:_isFootball&&String(o).length===2?`<img src="https://flagcdn.com/w40/${String(o).toLowerCase()}.png" style="height:14px;vertical-align:middle;margin-right:3px;border-radius:2px" onerror="this.style.display=\'none\'">`:""}${esc(q.type==="map_ivr"?o:_isHLBeta?(displayCountry(HL_BETA_CC[o])||o):_isFootball?(displayCountry(String(o))||String(o)):displayCountry(o))}${mk}${_omk}</button>`;}).join("");
       const _twoOpts=q.opts&&q.opts.length===2?' two-opts':'';
       answerHtml=`<div class="answers${_twoOpts}">${btns}</div>`;
     }
