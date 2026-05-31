@@ -7790,7 +7790,7 @@ function flagOf(name){const cc=ccFromCountry(name);return cc?`<img src="https://
 /* Phase 97-1: Zombie-SW-Killer – läuft vor Supabase-Init */
 /* Tötet veraltete Service Worker, die Updates blockieren   */
 (function _zombieKiller(){
-  var SW_VER='gq-dd5cc2a5',LS_KEY='__gq_sw_ver'; /* Phase 295: auto-injected by gen.py */
+  var SW_VER='gq-1ae90090',LS_KEY='__gq_sw_ver'; /* Phase 295: auto-injected by gen.py */
   try{
     if(localStorage.getItem(LS_KEY)===SW_VER)return; /* aktuell – nichts zu tun */
     if(!('serviceWorker' in navigator)){localStorage.setItem(LS_KEY,SW_VER);return;}
@@ -11069,6 +11069,102 @@ const KULTUR_DATA={
     {
       "n": "Rum Zuckerrohr destilliert",
       "c": "Karibik"
+    },
+    {
+      "n": "Żubrówka (Bison Grass Vodka)",
+      "c": "Polen"
+    },
+    {
+      "n": "Tyskie (Bier)",
+      "c": "Polen"
+    },
+    {
+      "n": "Pilsner Urquell",
+      "c": "Tschechien"
+    },
+    {
+      "n": "Becherovka (Kräuterlikör)",
+      "c": "Tschechien"
+    },
+    {
+      "n": "Tuica (Pflaumenschnaps)",
+      "c": "Rumänien"
+    },
+    {
+      "n": "Vişinată (Sauerkirschlikör)",
+      "c": "Rumänien"
+    },
+    {
+      "n": "Absolut Vodka",
+      "c": "Schweden"
+    },
+    {
+      "n": "Glögg (Glühwein)",
+      "c": "Schweden"
+    },
+    {
+      "n": "Aquavit",
+      "c": "Norwegen"
+    },
+    {
+      "n": "Ringnes (Bier)",
+      "c": "Norwegen"
+    },
+    {
+      "n": "Carlsberg (Bier)",
+      "c": "Dänemark"
+    },
+    {
+      "n": "Gammel Dansk (Kräuterbitter)",
+      "c": "Dänemark"
+    },
+    {
+      "n": "Travarica (Kräuterschnaps)",
+      "c": "Kroatien"
+    },
+    {
+      "n": "Karlovačko (Bier)",
+      "c": "Kroatien"
+    },
+    {
+      "n": "Mastika (Anisschnaps)",
+      "c": "Bulgarien"
+    },
+    {
+      "n": "Boza (Getreidebier)",
+      "c": "Bulgarien"
+    },
+    {
+      "n": "Ginjinha (Sauerkirschlikör)",
+      "c": "Portugal"
+    },
+    {
+      "n": "Sagres (Bier)",
+      "c": "Portugal"
+    },
+    {
+      "n": "Jenever (Wacholderbranntwein)",
+      "c": "Niederlande"
+    },
+    {
+      "n": "Heineken (Bier)",
+      "c": "Niederlande"
+    },
+    {
+      "n": "Lambic (Spontangärbier)",
+      "c": "Belgien"
+    },
+    {
+      "n": "Kriek (Kirschbier)",
+      "c": "Belgien"
+    },
+    {
+      "n": "Borovička (Wacholderbranntwein)",
+      "c": "Slowakei"
+    },
+    {
+      "n": "Kofola (Softdrink)",
+      "c": "Slowakei"
     }
   ],
   "streetfood": [
@@ -11391,6 +11487,70 @@ const KULTUR_DATA={
     {
       "n": "Gyoza Teigtasche gebraten",
       "c": "Japan"
+    },
+    {
+      "n": "Zapiekanka (polnisches Streetfood)",
+      "c": "Polen"
+    },
+    {
+      "n": "Trdelník (Schornsteinkuchen)",
+      "c": "Tschechien"
+    },
+    {
+      "n": "Lángos (frittiertes Fladenbrot)",
+      "c": "Ungarn"
+    },
+    {
+      "n": "Kürtőskalács (Schornsteinkuchen)",
+      "c": "Rumänien"
+    },
+    {
+      "n": "Grillad korv (Grillwurst)",
+      "c": "Schweden"
+    },
+    {
+      "n": "Vafler (Waffeln mit Sauerrahm)",
+      "c": "Norwegen"
+    },
+    {
+      "n": "Munkki (Berliner)",
+      "c": "Finnland"
+    },
+    {
+      "n": "Ristet hotdog (dänischer Hotdog)",
+      "c": "Dänemark"
+    },
+    {
+      "n": "Burek sa sirom (Käsegebäck)",
+      "c": "Kroatien"
+    },
+    {
+      "n": "Mekitsa (frittierter Teig)",
+      "c": "Bulgarien"
+    },
+    {
+      "n": "Koulouri (Sesamkringel)",
+      "c": "Griechenland"
+    },
+    {
+      "n": "Pastel de Nata (Puddingtörtchen)",
+      "c": "Portugal"
+    },
+    {
+      "n": "Stroopwafel",
+      "c": "Niederlande"
+    },
+    {
+      "n": "Gaufre de Liège (Lütticher Waffel)",
+      "c": "Belgien"
+    },
+    {
+      "n": "Langoše (frittiertes Fladenbrot)",
+      "c": "Slowakei"
+    },
+    {
+      "n": "Simit (Sesamkringel)",
+      "c": "Türkei"
     }
   ],
   "kaese": [
@@ -11713,6 +11873,54 @@ const KULTUR_DATA={
     {
       "n": "Mahón-Menorca",
       "c": "Spanien"
+    },
+    {
+      "n": "Oscypek (geräucherter Schafskäse)",
+      "c": "Polen"
+    },
+    {
+      "n": "Olomoucké tvarůžky (Olmützer Quargel)",
+      "c": "Tschechien"
+    },
+    {
+      "n": "Hermelin (tschechischer Weichkäse)",
+      "c": "Tschechien"
+    },
+    {
+      "n": "Pálpusztai (ungarischer Streichkäse)",
+      "c": "Ungarn"
+    },
+    {
+      "n": "Kashkaval (Balkankäse)",
+      "c": "Rumänien"
+    },
+    {
+      "n": "Brânză de burduf (rumänischer Schafskäse)",
+      "c": "Rumänien"
+    },
+    {
+      "n": "Västerbottensost (schwedischer Hartkäse)",
+      "c": "Schweden"
+    },
+    {
+      "n": "Brunost (norwegischer Molkenkäse)",
+      "c": "Norwegen"
+    },
+    {
+      "n": "Emmental (Schweizer im finnischen Stil)",
+      "c": "Finnland"
+    },
+    {
+      "n": "Paški sir (dalmatinischer Schafskäse)",
+      "c": "Kroatien"
+    },
+    {
+      "n": "Kačkavalj (bulgarischer Hartkäse)",
+      "c": "Bulgarien"
+    },
+    {
+      "n": "Feta (griechischer Weichkäse)",
+      "c": "Griechenland"
     }
   ],
   "suessspeisen": [
@@ -12035,6 +12243,82 @@ const KULTUR_DATA={
     {
       "n": "Madeleine",
       "c": "Frankreich"
+    },
+    {
+      "n": "Pączki (polnische Krapfen)",
+      "c": "Polen"
+    },
+    {
+      "n": "Kremówka papieska (Vanillecreme-Schnitte)",
+      "c": "Polen"
+    },
+    {
+      "n": "Svíčková-Knödel mit Preiselbeersauce",
+      "c": "Tschechien"
+    },
+    {
+      "n": "Trdelník mit Eis",
+      "c": "Tschechien"
+    },
+    {
+      "n": "Kürtőskalács (Schornsteinkuchen)",
+      "c": "Rumänien"
+    },
+    {
+      "n": "Papanași (frittierte Quarkbällchen)",
+      "c": "Rumänien"
+    },
+    {
+      "n": "Kanelbulle (Zimtschnecke)",
+      "c": "Schweden"
+    },
+    {
+      "n": "Semlor (Faschingskrapfen)",
+      "c": "Schweden"
+    },
+    {
+      "n": "Lefse (Kartoffelfladen)",
+      "c": "Norwegen"
+    },
+    {
+      "n": "Pulla (Kardamongebäck)",
+      "c": "Finnland"
+    },
+    {
+      "n": "Aebleskiver (dänische Pfannkuchenbällchen)",
+      "c": "Dänemark"
+    },
+    {
+      "n": "Rožata (kroatische Crème brûlée)",
+      "c": "Kroatien"
+    },
+    {
+      "n": "Fritule (kroatische Mini-Donuts)",
+      "c": "Kroatien"
+    },
+    {
+      "n": "Banitsa (bulgarisches Blätterteiggebäck)",
+      "c": "Bulgarien"
+    },
+    {
+      "n": "Tulumba (frittierter Teig in Sirup)",
+      "c": "Bulgarien"
+    },
+    {
+      "n": "Speculaas (Gewürzplätzchen)",
+      "c": "Belgien"
+    },
+    {
+      "n": "Pralines (belgische Pralinen)",
+      "c": "Belgien"
+    },
+    {
+      "n": "Trdelník mit Sahne (Bratislava)",
+      "c": "Slowakei"
+    },
+    {
+      "n": "Medovník (tschechisch-slowakischer Honigkuchen)",
+      "c": "Slowakei"
     }
   ],
   "kaffee": [
@@ -12680,6 +12964,70 @@ const KULTUR_DATA={
     {
       "n": "Djembe Tanz",
       "c": "Guinea/Westafrika"
+    },
+    {
+      "n": "Căluș",
+      "c": "Rumänien"
+    },
+    {
+      "n": "Hambo",
+      "c": "Schweden"
+    },
+    {
+      "n": "Polska (Tanz)",
+      "c": "Schweden"
+    },
+    {
+      "n": "Halling",
+      "c": "Norwegen"
+    },
+    {
+      "n": "Springar",
+      "c": "Norwegen"
+    },
+    {
+      "n": "Jenkka",
+      "c": "Finnland"
+    },
+    {
+      "n": "Polska (Finnland)",
+      "c": "Finnland"
+    },
+    {
+      "n": "Sekstur",
+      "c": "Dänemark"
+    },
+    {
+      "n": "Masurka (Dänemark)",
+      "c": "Dänemark"
+    },
+    {
+      "n": "Linđo",
+      "c": "Kroatien"
+    },
+    {
+      "n": "Klompendans",
+      "c": "Niederlande"
+    },
+    {
+      "n": "Driekusman",
+      "c": "Niederlande"
+    },
+    {
+      "n": "Ballo del Fiocco",
+      "c": "Belgien"
+    },
+    {
+      "n": "Vlaamse Bal Folklorique",
+      "c": "Belgien"
+    },
+    {
+      "n": "Odzemok",
+      "c": "Slowakei"
+    },
+    {
+      "n": "Verbunk (Slowakei)",
+      "c": "Slowakei"
     }
   ],
   "kleidung": [
@@ -13002,6 +13350,118 @@ const KULTUR_DATA={
     {
       "n": "Panama Hut",
       "c": "Ecuador"
+    },
+    {
+      "n": "Strój łowicki",
+      "c": "Polen"
+    },
+    {
+      "n": "Krakowiak-Tracht",
+      "c": "Polen"
+    },
+    {
+      "n": "Mährische Volkstracht",
+      "c": "Tschechien"
+    },
+    {
+      "n": "Kroj (böhmisch)",
+      "c": "Tschechien"
+    },
+    {
+      "n": "Magyar Szűr (Schafwollmantel)",
+      "c": "Ungarn"
+    },
+    {
+      "n": "Kalocsa-Stickereikleid",
+      "c": "Ungarn"
+    },
+    {
+      "n": "Ie (rumänische Bluse)",
+      "c": "Rumänien"
+    },
+    {
+      "n": "Cojoc (Schafspelzweste)",
+      "c": "Rumänien"
+    },
+    {
+      "n": "Folkdräkt (Schweden)",
+      "c": "Schweden"
+    },
+    {
+      "n": "Dalarna-Tracht",
+      "c": "Schweden"
+    },
+    {
+      "n": "Kansallispuku",
+      "c": "Finnland"
+    },
+    {
+      "n": "Sámi-Gákti",
+      "c": "Finnland"
+    },
+    {
+      "n": "Amager-Tracht",
+      "c": "Dänemark"
+    },
+    {
+      "n": "Hedebo-Tracht",
+      "c": "Dänemark"
+    },
+    {
+      "n": "Šokačka Nošnja",
+      "c": "Kroatien"
+    },
+    {
+      "n": "Lijerica-Tracht (Dubrovnik)",
+      "c": "Kroatien"
+    },
+    {
+      "n": "Saya (bulgar. Volkskleid)",
+      "c": "Bulgarien"
+    },
+    {
+      "n": "Shayak-Wollmantel",
+      "c": "Bulgarien"
+    },
+    {
+      "n": "Fustanella",
+      "c": "Griechenland"
+    },
+    {
+      "n": "Evzone-Uniform",
+      "c": "Griechenland"
+    },
+    {
+      "n": "Traje à Vianesa",
+      "c": "Portugal"
+    },
+    {
+      "n": "Capote Alentejano",
+      "c": "Portugal"
+    },
+    {
+      "n": "Volendam-Tracht",
+      "c": "Niederlande"
+    },
+    {
+      "n": "Zeeland-Haube",
+      "c": "Niederlande"
+    },
+    {
+      "n": "Brügger Spitzentracht",
+      "c": "Belgien"
+    },
+    {
+      "n": "Antwerpener Sonntagstracht",
+      "c": "Belgien"
+    },
+    {
+      "n": "Čičmany-Tracht",
+      "c": "Slowakei"
+    },
+    {
+      "n": "Detva-Volkstracht",
+      "c": "Slowakei"
     }
   ],
   "instrumente": [
@@ -13324,6 +13784,110 @@ const KULTUR_DATA={
     {
       "n": "Rudra Vina",
       "c": "Indien"
+    },
+    {
+      "n": "Mazanki (Geige)",
+      "c": "Polen"
+    },
+    {
+      "n": "Suka biłgorajska",
+      "c": "Polen"
+    },
+    {
+      "n": "Fujara (Hirtenflöte)",
+      "c": "Tschechien"
+    },
+    {
+      "n": "Dudy (böhmischer Dudelsack)",
+      "c": "Tschechien"
+    },
+    {
+      "n": "Tárogató",
+      "c": "Ungarn"
+    },
+    {
+      "n": "Koboz (Laute)",
+      "c": "Ungarn"
+    },
+    {
+      "n": "Nai (Panflöte)",
+      "c": "Rumänien"
+    },
+    {
+      "n": "Cobza (Laute)",
+      "c": "Rumänien"
+    },
+    {
+      "n": "Hardingfele",
+      "c": "Norwegen"
+    },
+    {
+      "n": "Langeleik",
+      "c": "Norwegen"
+    },
+    {
+      "n": "Kantele",
+      "c": "Finnland"
+    },
+    {
+      "n": "Jouhikko",
+      "c": "Finnland"
+    },
+    {
+      "n": "Lur (Bronzehorn)",
+      "c": "Dänemark"
+    },
+    {
+      "n": "Humle (Tischzither)",
+      "c": "Dänemark"
+    },
+    {
+      "n": "Lijerica",
+      "c": "Kroatien"
+    },
+    {
+      "n": "Tamburica",
+      "c": "Kroatien"
+    },
+    {
+      "n": "Gaida (bulgar. Sackpfeife)",
+      "c": "Bulgarien"
+    },
+    {
+      "n": "Gadulka",
+      "c": "Bulgarien"
+    },
+    {
+      "n": "Guitarra Portuguesa",
+      "c": "Portugal"
+    },
+    {
+      "n": "Cavaquinho",
+      "c": "Portugal"
+    },
+    {
+      "n": "Boerenfluit",
+      "c": "Niederlande"
+    },
+    {
+      "n": "Klompenklapper",
+      "c": "Niederlande"
+    },
+    {
+      "n": "Carillon (Glockenspiel)",
+      "c": "Belgien"
+    },
+    {
+      "n": "Vlaamse Doedelzak",
+      "c": "Belgien"
+    },
+    {
+      "n": "Fujara (Slowakei)",
+      "c": "Slowakei"
+    },
+    {
+      "n": "Gajdy (slowak. Dudelsack)",
+      "c": "Slowakei"
     }
   ],
   "literatur": [
@@ -31858,6 +32422,122 @@ const KULTUR_DATA={
     {
       "n": "Mimosa (Acacia)",
       "c": "Australien"
+    },
+    {
+      "n": "Kornblume (Centaurea cyanus)",
+      "c": "Polen"
+    },
+    {
+      "n": "Linde (Tilia cordata)",
+      "c": "Polen"
+    },
+    {
+      "n": "Weißer Klee",
+      "c": "Tschechien"
+    },
+    {
+      "n": "Linde (Tschechien)",
+      "c": "Tschechien"
+    },
+    {
+      "n": "Akazie (Robinia pseudoacacia)",
+      "c": "Ungarn"
+    },
+    {
+      "n": "Hundsrose (Rosa canina)",
+      "c": "Rumänien"
+    },
+    {
+      "n": "Päonie (Rumänien)",
+      "c": "Rumänien"
+    },
+    {
+      "n": "Linnaea (Linnaea borealis)",
+      "c": "Schweden"
+    },
+    {
+      "n": "Trollblume (Trollius europaeus)",
+      "c": "Schweden"
+    },
+    {
+      "n": "Weiß-Seerose (Nymphaea alba)",
+      "c": "Norwegen"
+    },
+    {
+      "n": "Purpurheidekraut (Calluna vulgaris)",
+      "c": "Norwegen"
+    },
+    {
+      "n": "Maiglöckchen (Convallaria majalis)",
+      "c": "Finnland"
+    },
+    {
+      "n": "Sumpf-Labkraut",
+      "c": "Finnland"
+    },
+    {
+      "n": "Roter Klee (Trifolium pratense)",
+      "c": "Dänemark"
+    },
+    {
+      "n": "Buchweizen (Fagopyrum esculentum)",
+      "c": "Dänemark"
+    },
+    {
+      "n": "Iris (Iris adriatica)",
+      "c": "Kroatien"
+    },
+    {
+      "n": "Degenia (Degenia velebitica)",
+      "c": "Kroatien"
+    },
+    {
+      "n": "Traubenpfingstrose (Paeonia mascula)",
+      "c": "Bulgarien"
+    },
+    {
+      "n": "Rose (Rosa damascena, Rosenöl)",
+      "c": "Bulgarien"
+    },
+    {
+      "n": "Acanthus (Bärenklau)",
+      "c": "Griechenland"
+    },
+    {
+      "n": "Olive (Olea europaea)",
+      "c": "Griechenland"
+    },
+    {
+      "n": "Lavendelblüte",
+      "c": "Portugal"
+    },
+    {
+      "n": "Arbutus (Erdbeerbaum)",
+      "c": "Portugal"
+    },
+    {
+      "n": "Iris xiphium",
+      "c": "Belgien"
+    },
+    {
+      "n": "Azalee (Flandern)",
+      "c": "Belgien"
+    },
+    {
+      "n": "Edelweiß (Tatra)",
+      "c": "Slowakei"
+    },
+    {
+      "n": "Linde (Slowakei)",
+      "c": "Slowakei"
+    },
+    {
+      "n": "Tulpe (Osmanisches Reich)",
+      "c": "Türkei"
+    },
+    {
+      "n": "Roter Mohn (Papaver rhoeas)",
+      "c": "Türkei"
     }
   ],
   "nationaltiere": [
@@ -32032,6 +32712,126 @@ const KULTUR_DATA={
     {
       "n": "Leopard",
       "c": "Somalia"
+    },
+    {
+      "n": "Weißer Adler",
+      "c": "Polen"
+    },
+    {
+      "n": "Doppelzahnotter (Viper berus)",
+      "c": "Tschechien"
+    },
+    {
+      "n": "Hermelin",
+      "c": "Tschechien"
+    },
+    {
+      "n": "Turul (myth. Greifvogel)",
+      "c": "Ungarn"
+    },
+    {
+      "n": "Ungarisches Graurind",
+      "c": "Ungarn"
+    },
+    {
+      "n": "Luchs (Lynx lynx)",
+      "c": "Rumänien"
+    },
+    {
+      "n": "Braunbär (Karpaten)",
+      "c": "Rumänien"
+    },
+    {
+      "n": "Stockente (Anas platyrhynchos)",
+      "c": "Schweden"
+    },
+    {
+      "n": "Braunbär (Skandinavien)",
+      "c": "Norwegen"
+    },
+    {
+      "n": "Löwe (heraldisch)",
+      "c": "Norwegen"
+    },
+    {
+      "n": "Braunbär (Suomi)",
+      "c": "Finnland"
+    },
+    {
+      "n": "Whooper-Schwan",
+      "c": "Finnland"
+    },
+    {
+      "n": "Schwan (Sangsvane)",
+      "c": "Dänemark"
+    },
+    {
+      "n": "Rotmilan",
+      "c": "Dänemark"
+    },
+    {
+      "n": "Marder (Kuna Marten)",
+      "c": "Kroatien"
+    },
+    {
+      "n": "Griffon-Geier (Gyps fulvus)",
+      "c": "Kroatien"
+    },
+    {
+      "n": "Löwe (heraldisch bulgar.)",
+      "c": "Bulgarien"
+    },
+    {
+      "n": "Bulgarische Stockente",
+      "c": "Bulgarien"
+    },
+    {
+      "n": "Phönix (mythol. Griechenland)",
+      "c": "Griechenland"
+    },
+    {
+      "n": "Kleine Eule (Athene noctua)",
+      "c": "Griechenland"
+    },
+    {
+      "n": "Iberischer Wolf",
+      "c": "Portugal"
+    },
+    {
+      "n": "Gallo de Barcelos (Hahn)",
+      "c": "Portugal"
+    },
+    {
+      "n": "Löwe (heraldisch niederl.)",
+      "c": "Niederlande"
+    },
+    {
+      "n": "Schwarzschwanz-Godwit",
+      "c": "Niederlande"
+    },
+    {
+      "n": "Löwe (heraldisch belgisch)",
+      "c": "Belgien"
+    },
+    {
+      "n": "Rotkehlchen",
+      "c": "Belgien"
+    },
+    {
+      "n": "Tatra-Steinbock (Capra ibex)",
+      "c": "Slowakei"
+    },
+    {
+      "n": "Luchs (Lynx lynx, Tatra)",
+      "c": "Slowakei"
+    },
+    {
+      "n": "Grauer Wolf (Türkei)",
+      "c": "Türkei"
+    },
+    {
+      "n": "Anatolischer Leopard",
+      "c": "Türkei"
     }
   ],
   "religionen": [
@@ -61124,6 +61924,86 @@ const PFLANZEN_PIN_DATA={
         "n": "Rafflesia arnoldii (Borneo-Regenwald)",
         "lat": 1.5533,
         "lng": 110.3592
+      },
+      {
+        "n": "Kornblumenfelder Masowien (Polen)",
+        "lat": 52.0,
+        "lng": 21.0
+      },
+      {
+        "n": "Lindenallee Prag (Tschechien)",
+        "lat": 50.0755,
+        "lng": 14.4378
+      },
+      {
+        "n": "Tulpenfelder Debrecen (Ungarn)",
+        "lat": 47.5316,
+        "lng": 21.6273
+      },
+      {
+        "n": "Rosengärten Kazanlak-Stil (Rumänien)",
+        "lat": 45.9432,
+        "lng": 24.9668
+      },
+      {
+        "n": "Linnaea-Vorkommen Dalarna (Schweden)",
+        "lat": 61.0,
+        "lng": 14.5
+      },
+      {
+        "n": "Seerosen-See Mjøsa (Norwegen)",
+        "lat": 60.6,
+        "lng": 10.7
+      },
+      {
+        "n": "Maiglöckchen-Wälder Turku (Finnland)",
+        "lat": 60.4518,
+        "lng": 22.2666
+      },
+      {
+        "n": "Kleefelder Fünen (Dänemark)",
+        "lat": 55.4,
+        "lng": 10.4
+      },
+      {
+        "n": "Iris adriatica (Dalmatien, Kroatien)",
+        "lat": 43.5,
+        "lng": 16.4
+      },
+      {
+        "n": "Rosental Kazanlak (Bulgarien)",
+        "lat": 42.619,
+        "lng": 25.398
+      },
+      {
+        "n": "Olive Athen / Akropolis (Griechenland)",
+        "lat": 37.9715,
+        "lng": 23.7257
+      },
+      {
+        "n": "Lavendelfelder Alentejo (Portugal)",
+        "lat": 38.5,
+        "lng": -7.9
+      },
+      {
+        "n": "Keukenhof Tulpenpark Lisse (Niederlande)",
+        "lat": 52.27,
+        "lng": 4.55
+      },
+      {
+        "n": "Azaleengärten Gent (Belgien)",
+        "lat": 51.0543,
+        "lng": 3.7174
+      },
+      {
+        "n": "Edelweiß Hohe Tatra (Slowakei)",
+        "lat": 49.18,
+        "lng": 20.13
+      },
+      {
+        "n": "Tulpengärten Istanbul (Türkei)",
+        "lat": 41.0082,
+        "lng": 28.9784
       }
     ]
   }
@@ -65241,6 +66121,82 @@ const PFLANZEN_MATCH_DATA={
       {
         "n": "Langer Pfeffer (Piper longum)",
         "c": "Indien/Indonesien"
+      },
+      {
+        "n": "Bärlauch (Allium ursinum)",
+        "c": "Polen"
+      },
+      {
+        "n": "Kümmel (Carum carvi, Polnisch)",
+        "c": "Polen"
+      },
+      {
+        "n": "Kürbiskernöl-Gewürz",
+        "c": "Tschechien"
+      },
+      {
+        "n": "Bohnenkraut (Satureja hortensis)",
+        "c": "Rumänien"
+      },
+      {
+        "n": "Liebstöckel (Levisticum officinale)",
+        "c": "Rumänien"
+      },
+      {
+        "n": "Dill (Anethum graveolens)",
+        "c": "Schweden"
+      },
+      {
+        "n": "Angelika (Angelica archangelica)",
+        "c": "Norwegen"
+      },
+      {
+        "n": "Meerrettich (Armoracia rusticana)",
+        "c": "Finnland"
+      },
+      {
+        "n": "Kümmel (Carum carvi, Dänisch)",
+        "c": "Dänemark"
+      },
+      {
+        "n": "Salbei (Salvia officinalis, Dalmatien)",
+        "c": "Kroatien"
+      },
+      {
+        "n": "Rosenöl-Kraut (Rosa damascena)",
+        "c": "Bulgarien"
+      },
+      {
+        "n": "Oregano (Origanum vulgare)",
+        "c": "Griechenland"
+      },
+      {
+        "n": "Mastixa (Pistacia lentiscus)",
+        "c": "Griechenland"
+      },
+      {
+        "n": "Koriander (Coriandrum sativum, Portug.)",
+        "c": "Portugal"
+      },
+      {
+        "n": "Piri-Piri (Capsicum frutescens)",
+        "c": "Portugal"
+      },
+      {
+        "n": "Fenchelsamen (Foeniculum vulgare, NL)",
+        "c": "Niederlande"
+      },
+      {
+        "n": "Senf (Brassica juncea, Gent)",
+        "c": "Belgien"
+      },
+      {
+        "n": "Majoran (Origanum majorana, Slowakei)",
+        "c": "Slowakei"
+      },
+      {
+        "n": "Bockshornklee (Trigonella)",
+        "c": "Türkei"
       }
     ]
   },
@@ -69250,6 +70206,156 @@ const GASTRO_PIN_DATA={
         "n": "Moussaka (Griechenland)",
         "lat": 37.98,
         "lng": 23.73
+      },
+      {
+        "n": "Svíčková (Prag, Tschechien)",
+        "lat": 50.0755,
+        "lng": 14.4378
+      },
+      {
+        "n": "Vepřo-knedlo-zelo (Brünn, Tschechien)",
+        "lat": 49.1951,
+        "lng": 16.6068
+      },
+      {
+        "n": "Trdelník (Bratislava / Prag)",
+        "lat": 50.0755,
+        "lng": 14.4378
+      },
+      {
+        "n": "Mămăligă (Bukarest, Rumänien)",
+        "lat": 44.4268,
+        "lng": 26.1025
+      },
+      {
+        "n": "Sarmale (Cluj-Napoca, Rumänien)",
+        "lat": 46.7712,
+        "lng": 23.6236
+      },
+      {
+        "n": "Ciorbă de burtă (Bukarest, Rumänien)",
+        "lat": 44.4268,
+        "lng": 26.1025
+      },
+      {
+        "n": "Köttbullar (Stockholm, Schweden)",
+        "lat": 59.3293,
+        "lng": 18.0686
+      },
+      {
+        "n": "Gravlax (Göteborg, Schweden)",
+        "lat": 57.7089,
+        "lng": 11.9746
+      },
+      {
+        "n": "Smörgåsbord (Uppsala, Schweden)",
+        "lat": 59.8586,
+        "lng": 17.6389
+      },
+      {
+        "n": "Rakfisk (Valdres, Norwegen)",
+        "lat": 61.0,
+        "lng": 9.1
+      },
+      {
+        "n": "Fårikål (Oslo, Norwegen)",
+        "lat": 59.9139,
+        "lng": 10.7522
+      },
+      {
+        "n": "Lutefisk (Bergen, Norwegen)",
+        "lat": 60.3913,
+        "lng": 5.3221
+      },
+      {
+        "n": "Karjalanpiirakka (Joensuu, Finnland)",
+        "lat": 62.601,
+        "lng": 29.7636
+      },
+      {
+        "n": "Poronkäristys (Rovaniemi, Finnland)",
+        "lat": 66.5039,
+        "lng": 25.7294
+      },
+      {
+        "n": "Kalakukko (Kuopio, Finnland)",
+        "lat": 62.8924,
+        "lng": 27.678
+      },
+      {
+        "n": "Smørrebrød (Kopenhagen, Dänemark)",
+        "lat": 55.6761,
+        "lng": 12.5683
+      },
+      {
+        "n": "Flæskesteg (Odense, Dänemark)",
+        "lat": 55.4038,
+        "lng": 10.4024
+      },
+      {
+        "n": "Æbleskiver (Aarhus, Dänemark)",
+        "lat": 56.1629,
+        "lng": 10.2039
+      },
+      {
+        "n": "Peka (Split, Kroatien)",
+        "lat": 43.5081,
+        "lng": 16.4402
+      },
+      {
+        "n": "Štrukli (Zagreb, Kroatien)",
+        "lat": 45.815,
+        "lng": 15.9819
+      },
+      {
+        "n": "Pasticada (Dubrovnik, Kroatien)",
+        "lat": 42.6507,
+        "lng": 18.0944
+      },
+      {
+        "n": "Banitsa (Sofia, Bulgarien)",
+        "lat": 42.6977,
+        "lng": 23.3219
+      },
+      {
+        "n": "Kavarma (Plovdiv, Bulgarien)",
+        "lat": 42.1354,
+        "lng": 24.7453
+      },
+      {
+        "n": "Shkembe Chorba (Sofia, Bulgarien)",
+        "lat": 42.6977,
+        "lng": 23.3219
+      },
+      {
+        "n": "Moules-frites (Brüssel, Belgien)",
+        "lat": 50.8503,
+        "lng": 4.3517
+      },
+      {
+        "n": "Stoofvlees (Gent, Belgien)",
+        "lat": 51.0543,
+        "lng": 3.7174
+      },
+      {
+        "n": "Waterzooi (Gent, Belgien)",
+        "lat": 51.0543,
+        "lng": 3.7174
+      },
+      {
+        "n": "Bryndzové halušky (Bratislava, Slowakei)",
+        "lat": 48.1486,
+        "lng": 17.1077
+      },
+      {
+        "n": "Kapustnica (Košice, Slowakei)",
+        "lat": 48.7164,
+        "lng": 21.2611
+      },
+      {
+        "n": "Lokše (Bratislava, Slowakei)",
+        "lat": 48.1486,
+        "lng": 17.1077
       }
     ]
   },
@@ -71290,6 +72396,171 @@ const GASTRO_PIN_DATA={
         "n": "Poutine-Festival (Montreal, Kanada)",
         "lat": 45.5017,
         "lng": -73.5673
+      }
+    ]
+  },
+  "streetfood": {
+    "prompt": "Wo findet man dieses Street-Food-Gericht?",
+    "items": [
+      {
+        "n": "Zapiekanka (Krakau, Polen)",
+        "lat": 50.0647,
+        "lng": 19.945
+      },
+      {
+        "n": "Obwarzanek Krakowski (Krakau, Polen)",
+        "lat": 50.0647,
+        "lng": 19.945
+      },
+      {
+        "n": "Párek v rohlíku (Prag, Tschechien)",
+        "lat": 50.0755,
+        "lng": 14.4378
+      },
+      {
+        "n": "Trdelník-Eis (Prag, Tschechien)",
+        "lat": 50.0755,
+        "lng": 14.4378
+      },
+      {
+        "n": "Kürtőskalács (Budapest, Ungarn)",
+        "lat": 47.4979,
+        "lng": 19.0402
+      },
+      {
+        "n": "Lángos (Budapest, Ungarn)",
+        "lat": 47.4979,
+        "lng": 19.0402
+      },
+      {
+        "n": "Covrigi (Bukarest, Rumänien)",
+        "lat": 44.4268,
+        "lng": 26.1025
+      },
+      {
+        "n": "Mici (Bukarest, Rumänien)",
+        "lat": 44.4268,
+        "lng": 26.1025
+      },
+      {
+        "n": "Tunnbrödsrulle (Stockholm, Schweden)",
+        "lat": 59.3293,
+        "lng": 18.0686
+      },
+      {
+        "n": "Räkmacka (Göteborg, Schweden)",
+        "lat": 57.7089,
+        "lng": 11.9746
+      },
+      {
+        "n": "Vafler (Oslo, Norwegen)",
+        "lat": 59.9139,
+        "lng": 10.7522
+      },
+      {
+        "n": "Pølse med lompe (Bergen, Norwegen)",
+        "lat": 60.3913,
+        "lng": 5.3221
+      },
+      {
+        "n": "Makkara (Tampere, Finnland)",
+        "lat": 61.4978,
+        "lng": 23.761
+      },
+      {
+        "n": "Munkki (Helsinki, Finnland)",
+        "lat": 60.1699,
+        "lng": 24.9384
+      },
+      {
+        "n": "Rød Pølse (Kopenhagen, Dänemark)",
+        "lat": 55.6761,
+        "lng": 12.5683
+      },
+      {
+        "n": "Friturestegt flæsk (Aarhus, Dänemark)",
+        "lat": 56.1629,
+        "lng": 10.2039
+      },
+      {
+        "n": "Burek (Zagreb, Kroatien)",
+        "lat": 45.815,
+        "lng": 15.9819
+      },
+      {
+        "n": "Ćevapi (Split, Kroatien)",
+        "lat": 43.5081,
+        "lng": 16.4402
+      },
+      {
+        "n": "Mekitsa (Sofia, Bulgarien)",
+        "lat": 42.6977,
+        "lng": 23.3219
+      },
+      {
+        "n": "Banitsa (Plovdiv, Bulgarien)",
+        "lat": 42.1354,
+        "lng": 24.7453
+      },
+      {
+        "n": "Souvlaki (Athen, Griechenland)",
+        "lat": 37.9838,
+        "lng": 23.7275
+      },
+      {
+        "n": "Koulouri (Thessaloniki, Griechenland)",
+        "lat": 40.6401,
+        "lng": 22.9444
+      },
+      {
+        "n": "Pastel de Nata (Lissabon, Portugal)",
+        "lat": 38.7223,
+        "lng": -9.1393
+      },
+      {
+        "n": "Bifanas (Porto, Portugal)",
+        "lat": 41.1579,
+        "lng": -8.6291
+      },
+      {
+        "n": "Stroopwafel (Gouda, Niederlande)",
+        "lat": 52.0116,
+        "lng": 4.7083
+      },
+      {
+        "n": "Haring (Amsterdam, Niederlande)",
+        "lat": 52.3676,
+        "lng": 4.9041
+      },
+      {
+        "n": "Gaufre de Liège (Lüttich, Belgien)",
+        "lat": 50.6326,
+        "lng": 5.5797
+      },
+      {
+        "n": "Frieten / Frites (Brüssel, Belgien)",
+        "lat": 50.8503,
+        "lng": 4.3517
+      },
+      {
+        "n": "Langoše (Bratislava, Slowakei)",
+        "lat": 48.1486,
+        "lng": 17.1077
+      },
+      {
+        "n": "Trdelník (Bratislava, Slowakei)",
+        "lat": 48.1486,
+        "lng": 17.1077
+      },
+      {
+        "n": "Simit (Istanbul, Türkei)",
+        "lat": 41.0082,
+        "lng": 28.9784
+      },
+      {
+        "n": "Balık Ekmek (Istanbul, Türkei)",
+        "lat": 41.0082,
+        "lng": 28.9784
       }
     ]
   }
@@ -76391,6 +77662,86 @@ const GASTRO_MATCH_DATA={
       {
         "n": "Goulash (Gulyás)",
         "c": "Ungarn"
+      },
+      {
+        "n": "Svíčková na smetaně",
+        "c": "Tschechien"
+      },
+      {
+        "n": "Vepřo-knedlo-zelo",
+        "c": "Tschechien"
+      },
+      {
+        "n": "Sarmale",
+        "c": "Rumänien"
+      },
+      {
+        "n": "Mămăligă",
+        "c": "Rumänien"
+      },
+      {
+        "n": "Köttbullar",
+        "c": "Schweden"
+      },
+      {
+        "n": "Janssons Frestelse",
+        "c": "Schweden"
+      },
+      {
+        "n": "Fårikål",
+        "c": "Norwegen"
+      },
+      {
+        "n": "Raspeball",
+        "c": "Norwegen"
+      },
+      {
+        "n": "Karjalanpiirakka",
+        "c": "Finnland"
+      },
+      {
+        "n": "Poronkäristys",
+        "c": "Finnland"
+      },
+      {
+        "n": "Peka",
+        "c": "Kroatien"
+      },
+      {
+        "n": "Štrukli",
+        "c": "Kroatien"
+      },
+      {
+        "n": "Kavarma",
+        "c": "Bulgarien"
+      },
+      {
+        "n": "Shkembe Chorba",
+        "c": "Bulgarien"
+      },
+      {
+        "n": "Bacalhau à Brás",
+        "c": "Portugal"
+      },
+      {
+        "n": "Caldo Verde",
+        "c": "Portugal"
+      },
+      {
+        "n": "Stoofvlees met friet",
+        "c": "Belgien"
+      },
+      {
+        "n": "Waterzooi",
+        "c": "Belgien"
+      },
+      {
+        "n": "Bryndzové halušky",
+        "c": "Slowakei"
+      },
+      {
+        "n": "Kapustnica",
+        "c": "Slowakei"
       }
     ]
   },
@@ -80364,6 +81715,135 @@ const GASTRO_MATCH_DATA={
       {
         "n": "Transoxanien (Sogdia) — Händlerregion",
         "c": "Zentralasien"
+      }
+    ]
+  },
+  "suessspeisen": {
+    "prompt": "Aus welchem Land stammt diese Süßspeise?",
+    "items": [
+      {
+        "n": "Pączki",
+        "c": "Polen"
+      },
+      {
+        "n": "Makowiec",
+        "c": "Polen"
+      },
+      {
+        "n": "Kolache",
+        "c": "Tschechien"
+      },
+      {
+        "n": "Trdelník",
+        "c": "Tschechien"
+      },
+      {
+        "n": "Kürtőskalács",
+        "c": "Ungarn"
+      },
+      {
+        "n": "Dobostorte",
+        "c": "Ungarn"
+      },
+      {
+        "n": "Cozonac",
+        "c": "Rumänien"
+      },
+      {
+        "n": "Papanași",
+        "c": "Rumänien"
+      },
+      {
+        "n": "Kanelbulle",
+        "c": "Schweden"
+      },
+      {
+        "n": "Kladdkaka",
+        "c": "Schweden"
+      },
+      {
+        "n": "Krumkake",
+        "c": "Norwegen"
+      },
+      {
+        "n": "Rømmegrøt",
+        "c": "Norwegen"
+      },
+      {
+        "n": "Pulla",
+        "c": "Finnland"
+      },
+      {
+        "n": "Runebergintorttu",
+        "c": "Finnland"
+      },
+      {
+        "n": "Æbleskiver",
+        "c": "Dänemark"
+      },
+      {
+        "n": "Wienerbrød",
+        "c": "Dänemark"
+      },
+      {
+        "n": "Fritule",
+        "c": "Kroatien"
+      },
+      {
+        "n": "Rožata",
+        "c": "Kroatien"
+      },
+      {
+        "n": "Baklava",
+        "c": "Bulgarien"
+      },
+      {
+        "n": "Tikvenik",
+        "c": "Bulgarien"
+      },
+      {
+        "n": "Loukoumades",
+        "c": "Griechenland"
+      },
+      {
+        "n": "Galaktoboureko",
+        "c": "Griechenland"
+      },
+      {
+        "n": "Pastel de Nata",
+        "c": "Portugal"
+      },
+      {
+        "n": "Arroz Doce",
+        "c": "Portugal"
+      },
+      {
+        "n": "Stroopwafel",
+        "c": "Niederlande"
+      },
+      {
+        "n": "Poffertjes",
+        "c": "Niederlande"
+      },
+      {
+        "n": "Speculoos",
+        "c": "Belgien"
+      },
+      {
+        "n": "Gaufre de Bruxelles",
+        "c": "Belgien"
+      },
+      {
+        "n": "Medovník",
+        "c": "Slowakei"
+      },
+      {
+        "n": "Šúľance s makom",
+        "c": "Slowakei"
+      },
+      {
+        "n": "Lokum",
+        "c": "Türkei"
       }
     ]
   }
@@ -103929,6 +105409,116 @@ const ARCH_PIN_DATA={
         "n": "Carrowkeel Megalith-Friedhof (Sligo, Irland)",
         "lat": 54.08,
         "lng": -8.44
+      },
+      {
+        "n": "Wietrzychowice Langhügel (Polen)",
+        "lat": 52.26,
+        "lng": 18.95
+      },
+      {
+        "n": "Gaj-Megalith (Kujawy, Polen)",
+        "lat": 52.5,
+        "lng": 18.7
+      },
+      {
+        "n": "Mšecké Žehrovice Megalith (Tschechien)",
+        "lat": 50.15,
+        "lng": 13.94
+      },
+      {
+        "n": "Ság-hegy Megalith-Areal (Ungarn)",
+        "lat": 47.53,
+        "lng": 17.19
+      },
+      {
+        "n": "Sarmizegetusa Regia (Dakische Festung, Rumänien)",
+        "lat": 45.62,
+        "lng": 23.31
+      },
+      {
+        "n": "Ales Stenar (Schiffssetzung, Schweden)",
+        "lat": 55.38,
+        "lng": 14.05
+      },
+      {
+        "n": "Blomsholm Schiffssetzung (Schweden)",
+        "lat": 58.67,
+        "lng": 11.4
+      },
+      {
+        "n": "Borre-Grabhügel (Vestfold, Norwegen)",
+        "lat": 59.38,
+        "lng": 10.46
+      },
+      {
+        "n": "Raknehaugen (größter Grabhügel Norwegens)",
+        "lat": 60.09,
+        "lng": 11.35
+      },
+      {
+        "n": "Kong Askers Høj (Dysse, Dänemark)",
+        "lat": 55.79,
+        "lng": 12.02
+      },
+      {
+        "n": "Klekkende Høj (Megalithgrab, Møn)",
+        "lat": 54.97,
+        "lng": 12.5
+      },
+      {
+        "n": "Vela Spila Megalith-Gebiet (Korčula)",
+        "lat": 42.96,
+        "lng": 16.87
+      },
+      {
+        "n": "Thrakische Großgrabhügel Kazanlak (Bulgarien)",
+        "lat": 42.6,
+        "lng": 25.4
+      },
+      {
+        "n": "Svetitsata Megalith-Komplex (Bulgarien)",
+        "lat": 42.39,
+        "lng": 25.64
+      },
+      {
+        "n": "Sesklo (älteste Siedlung Europas, Griechenland)",
+        "lat": 39.38,
+        "lng": 22.7
+      },
+      {
+        "n": "Hunebedden D27 (Borger, Niederlande)",
+        "lat": 52.92,
+        "lng": 6.8
+      },
+      {
+        "n": "Hunebed D53 (Drenthe, Niederlande)",
+        "lat": 52.84,
+        "lng": 6.63
+      },
+      {
+        "n": "Dolmen du Pont d'Arcole (Wallonien, Belgien)",
+        "lat": 50.46,
+        "lng": 4.39
+      },
+      {
+        "n": "Pierre Brunehault (Menhir, Belgien)",
+        "lat": 50.56,
+        "lng": 3.85
+      },
+      {
+        "n": "Svodín Rondell (Neolithikum, Slowakei)",
+        "lat": 47.88,
+        "lng": 18.42
+      },
+      {
+        "n": "Göbekli Tepe (ältestes Heiligtum der Welt)",
+        "lat": 37.22,
+        "lng": 38.92
+      },
+      {
+        "n": "Karahan Tepe (Taş Tepeler, Türkei)",
+        "lat": 37.05,
+        "lng": 39.27
       }
     ]
   },
@@ -119122,6 +120712,62 @@ const ARCH_MATCH_DATA={
       {
         "n": "Cambodian Looted Bronzes (Leiden Museum)",
         "c": "Kambodscha fordert von Niederlanden"
+      },
+      {
+        "n": "Böhmische Kunstwerke aus Berliner Museen",
+        "c": "Tschechien"
+      },
+      {
+        "n": "Seuso-Schatz (spätantike Silberservices)",
+        "c": "Ungarn"
+      },
+      {
+        "n": "Dakische Goldhelme aus Budapest-Museum",
+        "c": "Rumänien"
+      },
+      {
+        "n": "Sámi-Kulturerbe (ethnografische Sammlungen)",
+        "c": "Schweden"
+      },
+      {
+        "n": "Grönländische Artefakte (Kopenhagener Museen)",
+        "c": "Norwegen"
+      },
+      {
+        "n": "Karelische Kulturgüter aus Leningrader Museen",
+        "c": "Finnland"
+      },
+      {
+        "n": "Qilakitsoq-Mumien (grönländisches Erbe)",
+        "c": "Dänemark"
+      },
+      {
+        "n": "Illyrische Bronzehelme aus Wien",
+        "c": "Kroatien"
+      },
+      {
+        "n": "Thrakischer Goldschatz von Panagyurischte (Replik-Streit)",
+        "c": "Bulgarien"
+      },
+      {
+        "n": "Rogozen-Silberschatz (teilweise in Auslandssammlungen)",
+        "c": "Bulgarien"
+      },
+      {
+        "n": "Luanda-Kunstobjekte aus portugiesischer Kolonialzeit",
+        "c": "Portugal"
+      },
+      {
+        "n": "Indonesische Kulturgüter (700 Objekte, Rückgabe 2023)",
+        "c": "Niederlande"
+      },
+      {
+        "n": "Kongostaat-Artefakte (AfricaMuseum Tervuren)",
+        "c": "Belgien"
+      },
+      {
+        "n": "Großmährische Artefakte aus tschechischen Museen",
+        "c": "Slowakei"
       }
     ]
   },
@@ -144608,6 +146254,86 @@ const GEO_MATCH_DATA={
       {
         "n": "Cueva de La Pileta",
         "c": "Spanien"
+      },
+      {
+        "n": "Tatra-Höhlensystem (Jaskinia Mroźna)",
+        "c": "Polen"
+      },
+      {
+        "n": "Wieliczka Salzbergwerk (Schaubergwerk)",
+        "c": "Polen"
+      },
+      {
+        "n": "Macocha-Abgrund / Moravský kras",
+        "c": "Tschechien"
+      },
+      {
+        "n": "Javoříčské jeskyně (Mährischer Karst)",
+        "c": "Tschechien"
+      },
+      {
+        "n": "Peștera Scărișoara (Eishöhle)",
+        "c": "Rumänien"
+      },
+      {
+        "n": "Peștera Muierilor (Frauenhöhle)",
+        "c": "Rumänien"
+      },
+      {
+        "n": "Lummelundagrottan (Gotland)",
+        "c": "Schweden"
+      },
+      {
+        "n": "Grønligrotta (Nordlicht-Höhle, Mo i Rana)",
+        "c": "Norwegen"
+      },
+      {
+        "n": "Setergrotta (Nordnorwegen)",
+        "c": "Norwegen"
+      },
+      {
+        "n": "Baraćeve špilje (Karst-Höhlen, Plitvice)",
+        "c": "Kroatien"
+      },
+      {
+        "n": "Modra špilja (Blaue Grotte, Biševo)",
+        "c": "Kroatien"
+      },
+      {
+        "n": "Magura-Höhle (Steinzeithöhlenmalerei)",
+        "c": "Bulgarien"
+      },
+      {
+        "n": "Devetashka Höhle (Fledermaus-Kolonie)",
+        "c": "Bulgarien"
+      },
+      {
+        "n": "Diros-Grotten (Mani-Halbinsel)",
+        "c": "Griechenland"
+      },
+      {
+        "n": "Petralona-Höhle (Homo heidelbergensis-Fund)",
+        "c": "Griechenland"
+      },
+      {
+        "n": "Velvet Cave Valkenburg (Mergelhöhle)",
+        "c": "Niederlande"
+      },
+      {
+        "n": "Grotte de Han (Han-sur-Lesse)",
+        "c": "Belgien"
+      },
+      {
+        "n": "Grottes de Remouchamps (Ourthe-Fluss)",
+        "c": "Belgien"
+      },
+      {
+        "n": "İnsuyu Mağarası (Burdur)",
+        "c": "Türkei"
+      },
+      {
+        "n": "Damlataş Mağarası (Alanya)",
+        "c": "Türkei"
       }
     ]
   },
@@ -154441,6 +156167,78 @@ const SPORT_MATCH_DATA={
       {
         "n": "Schwimmen Wettkampf",
         "c": "England"
+      },
+      {
+        "n": "Palant (Schlagballspiel)",
+        "c": "Polen"
+      },
+      {
+        "n": "Sokol-Gymnastik",
+        "c": "Tschechien"
+      },
+      {
+        "n": "Wasserball (internationale Regelentwicklung)",
+        "c": "Ungarn"
+      },
+      {
+        "n": "Oina (rumänisches Schlagballspiel)",
+        "c": "Rumänien"
+      },
+      {
+        "n": "Bandy (Eissport)",
+        "c": "Schweden"
+      },
+      {
+        "n": "Orientierungslauf",
+        "c": "Schweden"
+      },
+      {
+        "n": "Pesäpallo (Finnisches Baseball)",
+        "c": "Finnland"
+      },
+      {
+        "n": "Handball (Feldhandball)",
+        "c": "Dänemark"
+      },
+      {
+        "n": "Picigin (Strandwasserspiel)",
+        "c": "Kroatien"
+      },
+      {
+        "n": "Bulgarisches Ringen (Kabakçı güreş)",
+        "c": "Bulgarien"
+      },
+      {
+        "n": "Antike Olympische Spiele",
+        "c": "Griechenland"
+      },
+      {
+        "n": "Diskuswurf (antike Disziplin)",
+        "c": "Griechenland"
+      },
+      {
+        "n": "Jogo do Pau (Stockfechten)",
+        "c": "Portugal"
+      },
+      {
+        "n": "Korfball",
+        "c": "Niederlande"
+      },
+      {
+        "n": "Fierljeppen (Polsstokspringen)",
+        "c": "Niederlande"
+      },
+      {
+        "n": "Brieftaubenrennen (Colombophilie)",
+        "c": "Belgien"
+      },
+      {
+        "n": "Yağlı güreş / Kırkpınar (Öl-Ringen)",
+        "c": "Türkei"
+      },
+      {
+        "n": "Cirit (Reiterlanzenspiel)",
+        "c": "Türkei"
       }
     ]
   },
@@ -156391,6 +158189,78 @@ const SPORT_MATCH_DATA={
       {
         "n": "Steffi Graf Tennis",
         "c": "Deutschland"
+      },
+      {
+        "n": "Robert Lewandowski (Fußball)",
+        "c": "Polen"
+      },
+      {
+        "n": "Anita Włodarczyk (Hammerwurf-Weltrekord)",
+        "c": "Polen"
+      },
+      {
+        "n": "Emil Zátopek (Leichtathletik, 3× Gold Helsinki 1952)",
+        "c": "Tschechien"
+      },
+      {
+        "n": "Jaromír Jágr (Eishockey)",
+        "c": "Tschechien"
+      },
+      {
+        "n": "Nadia Comăneci (Turnen, erste 10,0)",
+        "c": "Rumänien"
+      },
+      {
+        "n": "Gheorghe Hagi (Fußball)",
+        "c": "Rumänien"
+      },
+      {
+        "n": "Paavo Nurmi (Leichtathletik, 9× Olympiagold)",
+        "c": "Finnland"
+      },
+      {
+        "n": "Mika Häkkinen (Formel 1, 2× Weltmeister)",
+        "c": "Finnland"
+      },
+      {
+        "n": "Peter Schmeichel (Fußball-Torwart)",
+        "c": "Dänemark"
+      },
+      {
+        "n": "Caroline Wozniacki (Tennis, US-Open-Siegerin)",
+        "c": "Dänemark"
+      },
+      {
+        "n": "Luka Modrić (Fußball, Ballon d'Or 2018)",
+        "c": "Kroatien"
+      },
+      {
+        "n": "Janica Kostelić (4× Olympiagold Ski Alpin)",
+        "c": "Kroatien"
+      },
+      {
+        "n": "Hristo Stoichkov (Fußball, Ballon d'Or 1994)",
+        "c": "Bulgarien"
+      },
+      {
+        "n": "Stefka Kostadinova (Hochsprung-Weltrekord 2,09 m)",
+        "c": "Bulgarien"
+      },
+      {
+        "n": "Peter Šatan (Eishockey)",
+        "c": "Slowakei"
+      },
+      {
+        "n": "Stan Mikita (Eishockey, NHL-Legende)",
+        "c": "Slowakei"
+      },
+      {
+        "n": "Naim Süleymanoğlu (Gewichtheben, 3× Olympiagold)",
+        "c": "Türkei"
+      },
+      {
+        "n": "Burhan Felek (Leichtathletik-Pionier Türkei)",
+        "c": "Türkei"
       }
     ]
   },
@@ -160536,7 +162406,25 @@ function _mkMatchQ(DATA){
     var d=DATA[cat];
     if(!d||!d.items||!d.items.length)return null;
     var items=d.items;
-    var idx=~~(rng()*items.length);
+    /* Phase 328: Heimvorteil 70/30 — bevorzuge Einträge aus Nutzer-Land */
+    var _hv_lang=(S&&S.language)||"de";
+    var _hv_cmap={
+      "de":"Deutschland","at":"Österreich","ch":"Schweiz",
+      "fr":"Frankreich","it":"Italien","es":"Spanien",
+      "pt":"Portugal","nl":"Niederlande","be":"Belgien",
+      "pl":"Polen","cs":"Tschechien","sk":"Slowakei",
+      "hu":"Ungarn","ro":"Rumänien","bg":"Bulgarien",
+      "el":"Griechenland","hr":"Kroatien","tr":"Türkei",
+      "sv":"Schweden","no":"Norwegen","da":"Dänemark","fi":"Finnland",
+      "en":"Großbritannien","ru":"Russland","uk":"Ukraine",
+      "ja":"Japan","zh":"China","ko":"Südkorea",
+      "ar":"Ägypten","hi":"Indien","id":"Indonesien"
+    };
+    var _hv_cn=_hv_cmap[_hv_lang];
+    var _hv_lp=_hv_cn?items.filter(function(x){return x.c===_hv_cn;}):[];
+    var idx=(_hv_lp.length>0&&rng()<0.7)
+      ?items.indexOf(_hv_lp[~~(rng()*_hv_lp.length)])
+      :~~(rng()*items.length);
     var correct=items[idx];
     var opts;
     if(d.fixedOpts){
