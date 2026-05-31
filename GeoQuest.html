@@ -2672,6 +2672,9 @@ const _CONTENT_I18N={"pl": {"Auf welchem Kontinent wurde diese Sportart erfunden
 "Zug-Depot": "Depot Pociągów",
 "Zurück": "Wstecz",
 "Zum Zug-Depot": "Do Depotu Pociągów",
+"gesammelt": "zebrane",
+"Dein Fortschritt": "Twój postęp",
+"Sammlung vervollständigen": "Uzupełnij kolekcję",
 "Halterkürzel (VKM)": "Kody VKM",
 "Panoramabahnen": "Koleje widokowe",
 "Bahnhofskürzel (DS100)": "Kody stacji (DS100)",
@@ -2698,6 +2701,9 @@ const _CONTENT_I18N={"pl": {"Auf welchem Kontinent wurde diese Sportart erfunden
 "Zug-Depot": "Train Depot",
 "Zurück": "Back",
 "Zum Zug-Depot": "To Train Depot",
+"gesammelt": "collected",
+"Dein Fortschritt": "Your Progress",
+"Sammlung vervollständigen": "Complete the Collection",
 "Halterkürzel (VKM)": "Keeper Codes (VKM)",
 "Panoramabahnen": "Panoramic Railways",
 "Bahnhofskürzel (DS100)": "Station Codes (DS100)",
@@ -3247,6 +3253,8 @@ const MODES=[
     {id:"ws_zug_talgo",        icon:"\u{1F524}",title:"WS: Talgo",              group:"zuege",prompt:"Bilde Wörter aus dem Zugnamen!",                     desc:"Anagramm-Rätsel: TALGO — 5 Buchstaben"},
     {id:"ws_zug_maglev",        icon:"\u{1F524}",title:"WS: Maglev",              group:"zuege",prompt:"Bilde Wörter aus dem Zugnamen!",                     desc:"Anagramm-Rätsel: MAGLEV — 6 Buchstaben"},
     {id:"ws_zug_flixzug",        icon:"\u{1F524}",title:"WS: Flixzug",              group:"zuege",prompt:"Bilde Wörter aus dem Zugnamen!",                     desc:"Anagramm-Rätsel: FLIXZUG — 7 Buchstaben"},
+    {id:"ws_zug_panorama",  icon:"\u{1F5BC}\uFE0F",title:"WS: Panorama",         group:"zuege",prompt:"Bilde Wörter aus PANORAMA!",         desc:"Panoramabahn — 8 Buchstaben, unendlich viele Wörter"},
+    {id:"ws_zug_nightjet",  icon:"\u{1F319}",      title:"WS: NightJet",          group:"zuege",prompt:"Bilde Wörter aus NIGHTJET!",          desc:"ÖBBs Nachtzug — 8 Buchstaben, viele versteckte Wörter"},
     {id:"ws_zug_acela",        icon:"\u{1F524}",title:"WS: Acela",              group:"zuege",prompt:"Bilde Wörter aus dem Zugnamen!",                     desc:"Anagramm-Rätsel: ACELA — 5 Buchstaben"},
     {id:"zug_rekorde_pin",  icon:"\u{1F3C6}",title:"Bahn-Rekorde: Wo liegt das?",group:"zuege",prompt:"\u{1F4CD} Wo auf der Karte liegt diese Rekord-Strecke?",  desc:"Schnellster Zug, laengster Tunnel, hoechste Bahn — pin sie!"},
     {id:"uk_bahnhof_pin",   icon:"\u{1F689}",title:"Bahnhöfe weltweit",             group:"zuege",prompt:"\u{1F4CD} Wo auf der Karte liegt dieser Bahnhof?",       desc:"Grand Central, Tokyo Station, Estação da Luz & 77 weitere"},
@@ -3758,7 +3766,7 @@ const MODE_CATS={
   pure_geo:{label:"Pure Geo",icon:"\u{1F30D}",modes:["city","flag","capital","river","landmark","park","unesco","citymark","subway","flagsel","rcapital","rcity","rriver","river_real","logic_grid","travel_route","flag_fusion","climate_mystery","alpha_sprint","timezone_jumper","wappen_meister","slf","hl_b_rain","hl_b_temp","hl_b_sun","hl_b_vulc","hl_b_isl","hl_b_tz","hl_b_founded","river_map","unesco_map","wort_schmiede","uk_kontinent_mitte","uk_sort_kontinente","uk_sort_ozeane","uk_breitengrad_match"],cost:0},
   lifestyle:{label:"Kultur & Lifestyle",icon:"\u{1F3A8}",modes:["outline","food","brand","currency","curr_real","pop_compare","hl_b_tour","hl_b_unesco","hl_b_lang","uk_getraenke","uk_streetfood","uk_kaese","uk_suessspeisen","uk_kaffee","uk_taenze","uk_kleidung","uk_instrumente","uk_literatur","uk_wahrzeichen","uk_feste","uk_begruessung","uk_feiertage","uk_erfindungen","uk_exporte","uk_blumen","uk_entdecker","uk_sport","uk_brettspiele","uk_museen","uk_wolkenkratzer","uk_wuesten","uk_berggipfel","uk_meerengen","uk_wasserfaelle","uk_canyons","uk_surf_spots","uk_insel_match","uk_ehemalige_hauptstaedte","uk_philosophen","uk_nationalpflanzen","uk_nationaltiere","uk_religionen","uk_schriften","uk_schatten_gedreht","hl_b_coffee","uk_weinregionen","uk_kunstwerke","uk_filmsets","uk_ruinen","uk_bruecken","uk_kirchen"],cost:1000},
   eu_plates:{label:"Kennzeichen",icon:"\u{1F697}",modes:["plate_casual","plate_hard","map_ivr","de_plate"],cost:500},
-  zuege:{label:"Z\u00fcge & Bahn",icon:"\u{1F686}",modes:["zug_panorama","zug_vkm","uk_bahnstrecken","hl_b_rail","hl_zug_speed","hl_zug_jahr","hl_zug_km","hl_zug_taktfrequenz","timeline_zug_hsb","timeline_zug_bahnhof_bau","ws_zug_intercity","ws_zug_shinkansen","ws_zug_frecciarossa","ws_zug_pendolino","ws_zug_railjet","ws_zug_eurostar","ws_zug_thalys","ws_zug_velaro","ws_zug_bernina","ws_zug_trenitalia","ws_zug_itineraire","ws_zug_talgo","ws_zug_maglev","ws_zug_flixzug","ws_zug_acela","uk_bahnhof_pin","zug_rekorde_pin","zug_ds100","zug_ds100_input","zug_metro_logos","zug_routen","zug_bahnhof_typ","zug_hersteller"],cost:0},
+  zuege:{label:"Z\u00fcge & Bahn",icon:"\u{1F686}",modes:["zug_panorama","zug_vkm","uk_bahnstrecken","hl_b_rail","hl_zug_speed","hl_zug_jahr","hl_zug_km","hl_zug_taktfrequenz","timeline_zug_hsb","timeline_zug_bahnhof_bau","ws_zug_intercity","ws_zug_shinkansen","ws_zug_frecciarossa","ws_zug_pendolino","ws_zug_railjet","ws_zug_eurostar","ws_zug_thalys","ws_zug_velaro","ws_zug_bernina","ws_zug_trenitalia","ws_zug_itineraire","ws_zug_talgo","ws_zug_maglev","ws_zug_flixzug","ws_zug_panorama","ws_zug_nightjet","ws_zug_acela","uk_bahnhof_pin","zug_rekorde_pin","zug_ds100","zug_ds100_input","zug_metro_logos","zug_routen","zug_bahnhof_typ","zug_hersteller"],cost:0},
   hl_compare:{label:"Higher / Lower",icon:"\u2b06\ufe0f",modes:["hl_pop","hl_river","hl_area","hl_gdp","hl_density","hl_elevation","hl_coastline","hl_borders","hl_lifeexp","hl_median_age","hl_forest"],cost:0},
   comparisons:{label:"Vergleiche",icon:"\u2696\ufe0f",modes:["comp_area","comp_pop","comp_north","comp_gdp","comp_density","comp_elevation","comp_coast","comp_borders","comp_life","comp_age","comp_forest","comp_airports","comp_mountain","comp_nsextent","hl_b_parks","hl_b_roads","hl_b_rail","hl_b_net","hl_b_ev","hl_b_urban","plate_compare","hl_b_total_lang","hl_b_nobel","hl_b_medals","hl_b_ns_km","hl_b_bikes","hl_b_land_border","hl_b_military","hl_b_renewable"],cost:0},
   airports:{label:"Airports & Spezial",icon:"\u2708\uFE0F",modes:["airport_pin","iata","tz_quiz","airport_map","flugrouten_duell","inlandsflug_intl","sunrise_guesser","sonnen_kompass","aequator_magnet","hauptstadt_distanz","naechster_airport","iata_reverse","jetlag_rechner","kuehlschrank_backofen","regen_radar","hoehenmeter_schaetzer","klima_ausreisser","uk_automarken","uk_fluggesellschaften","uk_bahnstrecken","uk_hafen_world","uk_kanaele","uk_reedereien","uk_autobahnen_beruhmt","uk_metrostaedte","uk_luft_rekorde","uk_distanz_schaetzer","uk_flugzeit_schaetzer"]/* PHASE204_CATS */,cost:0},
@@ -5668,7 +5676,6 @@ const TIER_WS_DATA={
       "en": [
         "TRAIN",
         "REIN",
-        "REIN",
         "RAIN",
         "INTER",
         "INERT",
@@ -5723,11 +5730,22 @@ const TIER_WS_DATA={
     "validWords": {
       "de": [
         "GLUF",
-        "GILF"
+        "GILF",
+        "FIG",
+        "GUL",
+        "FLU",
+        "LUG",
+        "FULIG",
+        "FIX"
       ],
       "en": [
         "FLUX",
-        "GILF"
+        "GILF",
+        "FIG",
+        "GUL",
+        "FLU",
+        "LUG",
+        "FIX"
       ]
     }
   },
@@ -5736,7 +5754,11 @@ const TIER_WS_DATA={
     "validWords": {
       "de": [
         "CALE",
-        "LACE"
+        "LACE",
+        "ACE",
+        "ALE",
+        "ALEC",
+        "ACEA"
       ],
       "en": [
         "LACE",
@@ -5744,8 +5766,92 @@ const TIER_WS_DATA={
         "ALCE",
         "ALEC",
         "CELA",
-        "LACE",
-        "ACEA"
+        "ACEA",
+        "ACE",
+        "ALE"
+      ]
+    }
+  },
+  "zug_panorama": {
+    "word": "PANORAMA",
+    "validWords": {
+      "de": [
+        "PAN",
+        "MAN",
+        "RAN",
+        "MANOR",
+        "ROMAN",
+        "MOAN",
+        "ROAN",
+        "PRAM",
+        "NORM",
+        "ROAM",
+        "PARA",
+        "ANOA",
+        "NOMA",
+        "OMAN",
+        "MARA",
+        "NAPA",
+        "RAMP",
+        "AROMA",
+        "PRANA"
+      ],
+      "en": [
+        "PAN",
+        "MAN",
+        "RAN",
+        "MANOR",
+        "ROMAN",
+        "MOAN",
+        "ROAN",
+        "PRAM",
+        "NORM",
+        "ROAM",
+        "PARA",
+        "ANOA",
+        "RAMP",
+        "AROMA"
+      ]
+    }
+  },
+  "zug_nightjet": {
+    "word": "NIGHTJET",
+    "validWords": {
+      "de": [
+        "JET",
+        "NET",
+        "HIT",
+        "HINT",
+        "THIN",
+        "THEN",
+        "GENT",
+        "TINGE",
+        "NIGHT",
+        "NIGH",
+        "TING",
+        "HINGE",
+        "HEIT",
+        "GETH",
+        "GITE",
+        "JETTING",
+        "TIGHT",
+        "EIGHT"
+      ],
+      "en": [
+        "JET",
+        "GET",
+        "NET",
+        "HIT",
+        "HINT",
+        "THIN",
+        "THEN",
+        "GENT",
+        "TINGE",
+        "NIGHT",
+        "EIGHT",
+        "NIGH",
+        "TING",
+        "HINGE"
       ]
     }
   }
@@ -7595,7 +7701,7 @@ function flagOf(name){const cc=ccFromCountry(name);return cc?`<img src="https://
 /* Phase 97-1: Zombie-SW-Killer – läuft vor Supabase-Init */
 /* Tötet veraltete Service Worker, die Updates blockieren   */
 (function _zombieKiller(){
-  var SW_VER='gq-158440c2',LS_KEY='__gq_sw_ver'; /* Phase 295: auto-injected by gen.py */
+  var SW_VER='gq-0b7aa819',LS_KEY='__gq_sw_ver'; /* Phase 295: auto-injected by gen.py */
   try{
     if(localStorage.getItem(LS_KEY)===SW_VER)return; /* aktuell – nichts zu tun */
     if(!('serviceWorker' in navigator)){localStorage.setItem(LS_KEY,SW_VER);return;}
@@ -38116,6 +38222,130 @@ const KULTUR_DATA={
     {
       "q": "Hamburg-Altona",
       "a": "AHAT"
+    },
+    {
+      "q": "Nuernberg Hbf",
+      "a": "NN"
+    },
+    {
+      "q": "Duesseldorf Hbf",
+      "a": "DU"
+    },
+    {
+      "q": "Wuppertal Hbf",
+      "a": "EWP"
+    },
+    {
+      "q": "Freiburg Hbf",
+      "a": "RF"
+    },
+    {
+      "q": "Luebeck Hbf",
+      "a": "ALR"
+    },
+    {
+      "q": "Halle Hbf",
+      "a": "HLH"
+    },
+    {
+      "q": "Braunschweig Hbf",
+      "a": "BS"
+    },
+    {
+      "q": "Osnabrueck Hbf",
+      "a": "EON"
+    },
+    {
+      "q": "Muenster Hbf",
+      "a": "EMU"
+    },
+    {
+      "q": "Aachen Hbf",
+      "a": "KA"
+    },
+    {
+      "q": "Bonn Hbf",
+      "a": "BN"
+    },
+    {
+      "q": "Saarbruecken Hbf",
+      "a": "SB"
+    },
+    {
+      "q": "Regensburg Hbf",
+      "a": "MR"
+    },
+    {
+      "q": "Ingolstadt Hbf",
+      "a": "MI"
+    },
+    {
+      "q": "Ulm Hbf",
+      "a": "TU"
+    },
+    {
+      "q": "Heilbronn Hbf",
+      "a": "RHN"
+    },
+    {
+      "q": "Heidelberg Hbf",
+      "a": "RHE"
+    },
+    {
+      "q": "Pforzheim Hbf",
+      "a": "RPF"
+    },
+    {
+      "q": "Fulda Bahnhof",
+      "a": "FD"
+    },
+    {
+      "q": "Wuerzburg Hbf",
+      "a": "NWZ"
+    },
+    {
+      "q": "Bamberg Bahnhof",
+      "a": "NBM"
+    },
+    {
+      "q": "Bayreuth Hbf",
+      "a": "NBT"
+    },
+    {
+      "q": "Passau Hbf",
+      "a": "PAS"
+    },
+    {
+      "q": "Kempten Hbf",
+      "a": "MKE"
+    },
+    {
+      "q": "Lindau Hbf",
+      "a": "MLD"
+    },
+    {
+      "q": "Konstanz Bahnhof",
+      "a": "RKN"
+    },
+    {
+      "q": "Singen Bahnhof",
+      "a": "RSI"
+    },
+    {
+      "q": "Offenburg Hbf",
+      "a": "ROG"
+    },
+    {
+      "q": "Flensburg Bahnhof",
+      "a": "AFL"
+    },
+    {
+      "q": "Stralsund Hbf",
+      "a": "ANS"
+    },
+    {
+      "q": "Greifswald Bahnhof",
+      "a": "AGF"
     }
   ],
   "bahnhof_pin": [
@@ -39033,6 +39263,300 @@ const KULTUR_DATA={
       "lat": 37.617,
       "lng": -122.384,
       "c": "USA"
+    },
+    {
+      "n": "Brennerbahn (niedrigster Alpenpass, 1371m)",
+      "lat": 47.002,
+      "lng": 11.507,
+      "c": "Oesterreich"
+    },
+    {
+      "n": "Mont-Cenis-Tunnel (erster Eisenbahntunnel durch Alpen)",
+      "lat": 45.164,
+      "lng": 6.673,
+      "c": "Frankreich"
+    },
+    {
+      "n": "Simplon-Tunnel (laengster Eisenbahntunnel Europas bis 2016)",
+      "lat": 46.196,
+      "lng": 8.101,
+      "c": "Schweiz"
+    },
+    {
+      "n": "Channel Tunnel (laengster Unterwassertunnel)",
+      "lat": 51.093,
+      "lng": 1.337,
+      "c": "Grossbritannien"
+    },
+    {
+      "n": "Seikan-Tunnel (laengster Unterwassertunnel Japans)",
+      "lat": 41.543,
+      "lng": 140.319,
+      "c": "Japan"
+    },
+    {
+      "n": "Lötschberg-Basistunnel (34,6 km, 2007)",
+      "lat": 46.558,
+      "lng": 7.697,
+      "c": "Schweiz"
+    },
+    {
+      "n": "Ceneri-Basistunnel (15,4 km, 2020)",
+      "lat": 46.13,
+      "lng": 8.965,
+      "c": "Schweiz"
+    },
+    {
+      "n": "Takeshima-Bahn (steilste Zahnradbahn, 48 Promille)",
+      "lat": 36.227,
+      "lng": 137.972,
+      "c": "Japan"
+    },
+    {
+      "n": "Pilatus-Bahn (steilste Zahnradbahn Europas, 480 Promille)",
+      "lat": 46.978,
+      "lng": 8.252,
+      "c": "Schweiz"
+    },
+    {
+      "n": "Wendelstein-Bahn (erste elektrische Bergbahn Deutschlands)",
+      "lat": 47.706,
+      "lng": 12.003,
+      "c": "Deutschland"
+    },
+    {
+      "n": "Zugspitzbahn (hoechste Bergbahn Deutschlands)",
+      "lat": 47.421,
+      "lng": 10.985,
+      "c": "Deutschland"
+    },
+    {
+      "n": "Jungfraujoch-Bahn (hoechster Bahnhof Europas, 3454m)",
+      "lat": 46.547,
+      "lng": 7.971,
+      "c": "Schweiz"
+    },
+    {
+      "n": "Snowdon Mountain Railway (hoechste Bahn Grossbritanniens)",
+      "lat": 53.068,
+      "lng": -4.076,
+      "c": "Grossbritannien"
+    },
+    {
+      "n": "White Pass & Yukon Route (historische Goldrausch-Bahn)",
+      "lat": 59.449,
+      "lng": -135.313,
+      "c": "USA"
+    },
+    {
+      "n": "Pikes Peak Cog Railway (hoechste Bahn USA, 4302m)",
+      "lat": 38.842,
+      "lng": -105.044,
+      "c": "USA"
+    },
+    {
+      "n": "Nariz del Diablo (Teufelsnase, Ecuadors Andenbahn)",
+      "lat": -2.163,
+      "lng": -78.849,
+      "c": "Ecuador"
+    },
+    {
+      "n": "Virunga-Bahn (Zahnradbahn im Kongo-Regenwald)",
+      "lat": -1.691,
+      "lng": 29.296,
+      "c": "Kongo"
+    },
+    {
+      "n": "Andes-Bahn Lima–Huancayo (hoechste Bahn Suedamerikas)",
+      "lat": -11.996,
+      "lng": -75.212,
+      "c": "Peru"
+    },
+    {
+      "n": "Trans-Sahara-Eisenbahn Algier–Niamey (geplant)",
+      "lat": 36.737,
+      "lng": 3.086,
+      "c": "Algerien"
+    },
+    {
+      "n": "Uganda–Mombasa SGR (neue Ostafrika-Standardspur)",
+      "lat": -1.292,
+      "lng": 36.821,
+      "c": "Kenia"
+    },
+    {
+      "n": "Transiranische Eisenbahn (UNESCO-Welterbe)",
+      "lat": 35.689,
+      "lng": 51.388,
+      "c": "Iran"
+    },
+    {
+      "n": "Hijaz Railway (historisch, Osmanisches Reich)",
+      "lat": 24.469,
+      "lng": 39.612,
+      "c": "Saudi-Arabien"
+    },
+    {
+      "n": "Karakorum Highway Bahnprojekt (geplant CPEC)",
+      "lat": 36.893,
+      "lng": 75.522,
+      "c": "Pakistan"
+    },
+    {
+      "n": "Kuala Lumpur–Singapur HSR (geplant/gestoppt)",
+      "lat": 3.139,
+      "lng": 101.686,
+      "c": "Malaysia"
+    },
+    {
+      "n": "Jakarta–Bandung HSR (erste HSR Suedostasiens)",
+      "lat": -6.909,
+      "lng": 107.613,
+      "c": "Indonesien"
+    },
+    {
+      "n": "Addis Abeba–Dschibuti Bahn (erste elektr. Bahn Afrikas)",
+      "lat": 9.025,
+      "lng": 38.747,
+      "c": "Aethiopien"
+    },
+    {
+      "n": "Mombasa–Nairobi SGR (Madaraka Express)",
+      "lat": -4.043,
+      "lng": 39.668,
+      "c": "Kenia"
+    },
+    {
+      "n": "Cape Town–Cairo Railway (Rhodes' Vision, nie vollendet)",
+      "lat": -33.924,
+      "lng": 18.424,
+      "c": "Suedafrika"
+    },
+    {
+      "n": "Belem–Brasilia Bahnprojekt (geplant)",
+      "lat": -1.455,
+      "lng": -48.503,
+      "c": "Brasilien"
+    },
+    {
+      "n": "Rio de Janeiro–Sao Paulo HSR (geplant TAV)",
+      "lat": -22.906,
+      "lng": -43.172,
+      "c": "Brasilien"
+    },
+    {
+      "n": "Alaska Railroad (einzige US-Staatsbahn)",
+      "lat": 61.218,
+      "lng": -149.9,
+      "c": "USA"
+    },
+    {
+      "n": "Churchill Manitoba (noerdlichste regulaere Bahnlinie Kanadas)",
+      "lat": 58.768,
+      "lng": -94.165,
+      "c": "Kanada"
+    },
+    {
+      "n": "Kuranda Scenic Railway (Queensland, Regenwaldstrecke)",
+      "lat": -16.82,
+      "lng": 145.638,
+      "c": "Australien"
+    },
+    {
+      "n": "Zig Zag Railway (steile Bergbahn NSW, Australien)",
+      "lat": -33.354,
+      "lng": 150.161,
+      "c": "Australien"
+    },
+    {
+      "n": "Dunedin Railway Station (schoenster Bahnhof NZ)",
+      "lat": -45.874,
+      "lng": 170.503,
+      "c": "Neuseeland"
+    },
+    {
+      "n": "TranzAlpine-Endpunkt Greymouth (Westküste NZ)",
+      "lat": -42.455,
+      "lng": 171.209,
+      "c": "Neuseeland"
+    },
+    {
+      "n": "Irkutsk (Trans-Sibirische, Baikalsee-Abschnitt)",
+      "lat": 52.29,
+      "lng": 104.296,
+      "c": "Russland"
+    },
+    {
+      "n": "Circum-Baikal Railway (malerischste Strecke Russlands)",
+      "lat": 51.748,
+      "lng": 104.012,
+      "c": "Russland"
+    },
+    {
+      "n": "Severomuisk-Tunnel (laengster Tunnel Russlands, 15,3 km)",
+      "lat": 56.524,
+      "lng": 113.274,
+      "c": "Russland"
+    },
+    {
+      "n": "Baikal-Amur Magistrale BAM (zweite Trans-Sib.)",
+      "lat": 53.741,
+      "lng": 108.148,
+      "c": "Russland"
+    },
+    {
+      "n": "Erlian–Zamyn-Uud Grenze (Spurwechsel China–Mongolei)",
+      "lat": 43.648,
+      "lng": 111.977,
+      "c": "Mongolei"
+    },
+    {
+      "n": "Norilsk (einzige Bahn noerdlich des Polarkreises Russland)",
+      "lat": 69.346,
+      "lng": 88.202,
+      "c": "Russland"
+    },
+    {
+      "n": "Inlandsbanan (laengste Schmalspurbahn Schwedens, 1288 km)",
+      "lat": 63.826,
+      "lng": 20.264,
+      "c": "Schweden"
+    },
+    {
+      "n": "Ofotbahn (Narvik, eisfreier Hafen–Eisenerzminen)",
+      "lat": 68.438,
+      "lng": 17.427,
+      "c": "Norwegen"
+    },
+    {
+      "n": "Flaamsbana (steilste Normalspurbahn Europas)",
+      "lat": 60.865,
+      "lng": 7.114,
+      "c": "Norwegen"
+    },
+    {
+      "n": "Bergensbahn (hoechster Bahnhof Nordeuropas, 1301m)",
+      "lat": 60.626,
+      "lng": 7.345,
+      "c": "Norwegen"
+    },
+    {
+      "n": "Malmbanan (Eisenerzbahn Schweden–Norwegen)",
+      "lat": 68.348,
+      "lng": 18.828,
+      "c": "Schweden"
+    },
+    {
+      "n": "Tallinn–Helsinki Tunnel Rail Baltica (geplant)",
+      "lat": 59.437,
+      "lng": 24.753,
+      "c": "Estland"
+    },
+    {
+      "n": "Lyon–Turin HSR (Mont-Cenis Basistunnel, im Bau)",
+      "lat": 45.765,
+      "lng": 4.835,
+      "c": "Frankreich"
     }
   ]
 };
@@ -39394,6 +39918,51 @@ const TIER_PIN_DATA={
         "n": "Okapi Wildlife Reserve (DRC)",
         "lat": 2.25,
         "lng": 28.5
+      },
+      {
+        "n": "Limpopo NP (Mozambik)",
+        "lat": -23.5,
+        "lng": 32.0
+      },
+      {
+        "n": "Gonarezhou NP (Simbabwe)",
+        "lat": -21.5,
+        "lng": 32.4
+      },
+      {
+        "n": "Chobe National Park (Botswana, groesste Elefantenpopulation)",
+        "lat": -18.75,
+        "lng": 24.5
+      },
+      {
+        "n": "Niokolo-Koba (Senegal, westafrik. Big Five)",
+        "lat": 13.05,
+        "lng": -13.02
+      },
+      {
+        "n": "Zakouma NP (Tschad)",
+        "lat": 10.79,
+        "lng": 19.64
+      },
+      {
+        "n": "Garamba NP (Kongo, letztes Weisses Rhinozeros)",
+        "lat": 4.06,
+        "lng": 28.9
+      },
+      {
+        "n": "Tsavo West NP (Kenia)",
+        "lat": -3.3,
+        "lng": 38.0
+      },
+      {
+        "n": "Ruaha-Rungwa Complex (Tansania)",
+        "lat": -7.7,
+        "lng": 34.3
+      },
+      {
+        "n": "Nyerere NP (Tansania, ehem. Selous Kern)",
+        "lat": -8.1,
+        "lng": 36.5
       }
     ]
   },
@@ -128918,6 +129487,11 @@ const GEO_PIN_DATA={
         "n": "Augustine (Alaska, USA)",
         "lat": 59.36,
         "lng": -153.43
+      },
+      {
+        "n": "Ubinas (Peru, aktivster Vulkan Perus)",
+        "lat": -16.355,
+        "lng": -70.903
       }
     ]
   },
@@ -130128,6 +130702,11 @@ const GEO_PIN_DATA={
         "n": "Lewis and Clark Caverns (Montana)",
         "lat": 45.83,
         "lng": -111.83
+      },
+      {
+        "n": "Waitomo Caves (Neuseeland, Gluehwuermchen)",
+        "lat": -38.261,
+        "lng": 175.107
       }
     ]
   },
@@ -130518,6 +131097,21 @@ const GEO_PIN_DATA={
         "n": "Quebrada de Humahuaca (Argentinien)",
         "lat": -23.2,
         "lng": -65.35
+      },
+      {
+        "n": "Kali Gandaki Gorge (Nepal, tiefster Canyon der Welt)",
+        "lat": 28.596,
+        "lng": 83.718
+      },
+      {
+        "n": "Vikos Gorge (Griechenland, tiefster Canyon Europas)",
+        "lat": 39.895,
+        "lng": 20.742
+      },
+      {
+        "n": "Colca Canyon (Peru, zweittiefster Canyon der Welt)",
+        "lat": -15.53,
+        "lng": -71.897
       }
     ]
   },
@@ -130913,6 +131507,16 @@ const GEO_PIN_DATA={
         "n": "Waipio Valley Springs (Hawaii)",
         "lat": 20.12,
         "lng": -155.59
+      },
+      {
+        "n": "Wai-O-Tapu Champagne Pool (Neuseeland)",
+        "lat": -38.362,
+        "lng": 176.369
+      },
+      {
+        "n": "Deildartunguhver (Island, heisseste Quelle Europas)",
+        "lat": 64.685,
+        "lng": -21.4
       }
     ]
   },
@@ -131308,6 +131912,16 @@ const GEO_PIN_DATA={
         "n": "Liaoning Feather Dino Site (China)",
         "lat": 41.88,
         "lng": 121.6
+      },
+      {
+        "n": "Messel Pit (Deutschland, UNESCO Welterbe Eozaen)",
+        "lat": 49.92,
+        "lng": 8.751
+      },
+      {
+        "n": "Hadar (Aethiopien, Fundort Lucy/Australopithecus)",
+        "lat": 11.082,
+        "lng": 40.582
       }
     ]
   },
@@ -131863,6 +132477,11 @@ const GEO_PIN_DATA={
         "n": "Hispar Glacier (Pakistan)",
         "lat": 36.1,
         "lng": 75.0
+      },
+      {
+        "n": "Vatnajokull (Island, groesster Gletscher Europas)",
+        "lat": 64.411,
+        "lng": -16.965
       }
     ]
   },
@@ -132243,6 +132862,31 @@ const GEO_PIN_DATA={
         "n": "Taudeni Basin (Mali)",
         "lat": 22.5,
         "lng": -4.0
+      },
+      {
+        "n": "Namib (aelteste Wueste der Welt, 55 Mio. Jahre)",
+        "lat": -24.75,
+        "lng": 15.667
+      },
+      {
+        "n": "Rub al-Khali (groesstes Sandmeer der Welt)",
+        "lat": 21.0,
+        "lng": 51.0
+      },
+      {
+        "n": "Taklamakan (China, zweite groesste Wueste Asiens)",
+        "lat": 38.853,
+        "lng": 83.647
+      },
+      {
+        "n": "Mojave Desert (USA, Death Valley)",
+        "lat": 36.588,
+        "lng": -116.941
+      },
+      {
+        "n": "Dasht-e Lut (Iran, heisseste Oberflaeche der Erde)",
+        "lat": 31.085,
+        "lng": 58.556
       }
     ]
   },
@@ -133043,6 +133687,16 @@ const GEO_PIN_DATA={
         "n": "Eger Rift Cheb Basin (Tschechien)",
         "lat": 50.1,
         "lng": 12.4
+      },
+      {
+        "n": "Thingvellir (Island, einziger sichtbarer Kontinentaldrift)",
+        "lat": 64.255,
+        "lng": -21.131
+      },
+      {
+        "n": "Afar-Dreieck (Aethiopien, kuenftiger Ozean)",
+        "lat": 11.8,
+        "lng": 41.0
       }
     ]
   },
@@ -158947,6 +159601,8 @@ const GEN={
   ws_zug_talgo:()=>initTierWortSchmiede("zug_talgo"),
   ws_zug_maglev:()=>initTierWortSchmiede("zug_maglev"),
   ws_zug_flixzug:()=>initTierWortSchmiede("zug_flixzug"),
+  ws_zug_panorama:()=>initTierWortSchmiede("zug_panorama"),
+  ws_zug_nightjet:()=>initTierWortSchmiede("zug_nightjet"),
   ws_zug_acela:()=>initTierWortSchmiede("zug_acela"),
   zug_rekorde_pin:()=>genUniversalPinQ("zug_rekorde_pin"),
   uk_bahnhof_pin:()=>genUniversalPinQ("bahnhof_pin"),
@@ -161734,7 +162390,21 @@ function renderCollectionScreen(){
 
   const backBtn=`<button onclick="S.tab='home';render()" style="display:inline-flex;align-items:center;gap:6px;background:var(--bg3);border:1px solid var(--border);color:var(--text2);font-size:.82rem;font-weight:700;cursor:pointer;padding:.45rem .85rem;border-radius:8px;margin-bottom:.75rem;transition:background .15s" onmouseenter="this.style.background='var(--border)'" onmouseleave="this.style.background='var(--bg3)'"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>${t('btn_back')}</button>`;
   const exitFooter=`<div style="margin-top:1.2rem;padding-top:.8rem;border-top:1px solid var(--border)"><button onclick="S.tab='home';render()" class="btn-g" style="width:100%;font-size:.9rem">\u{1F3E0} ${t('btn_menu')||'Hauptmen\u00fc'}</button></div>`;
-  const _depotBtn=`<div style="text-align:center;margin:8px 0"><button onclick="showTrainDepot()" class="btn-g" style="background:#006064;color:#fff">🚉 '+_tc("Zum Zug-Depot")+'</button></div>`;return`<div>${backBtn}${_depotBtn}${spotter}${progressBar}${achBar}${controls}${listContent}${mapContent}${exitFooter}</div>`;
+  const _trainDepotItems=loadTrainDepot();
+  const _trainTotal=721;
+  const _trainCount=_trainDepotItems.length;
+  const _trainPct=Math.round(_trainCount/_trainTotal*100);
+  const _depotBtn=_trainCount>=10?`<div style="background:linear-gradient(135deg,#004d40,#00695c);border-radius:12px;padding:10px 14px;margin:10px 0;display:flex;align-items:center;gap:10px;cursor:pointer" onclick="showTrainDepot()">
+    <div style="font-size:1.8rem">🚉</div>
+    <div style="flex:1">
+      <div style="color:#fff;font-weight:800;font-size:.9rem">${_tc("Zug-Depot")}</div>
+      <div style="color:#b2dfdb;font-size:.72rem;margin-top:1px">${_trainCount} / ${_trainTotal} ${_tc("gesammelt")}</div>
+      <div style="background:rgba(255,255,255,.2);border-radius:4px;height:5px;margin-top:5px;overflow:hidden">
+        <div style="background:#4db6ac;height:100%;width:${_trainPct}%;border-radius:4px;transition:width .4s"></div>
+      </div>
+    </div>
+    <div style="color:#4db6ac;font-weight:900;font-size:.85rem">${_trainPct}%</div>
+  </div>`:"";return`<div>${backBtn}${_depotBtn}${spotter}${progressBar}${achBar}${controls}${listContent}${mapContent}${exitFooter}</div>`;
 }
 
 /* â”€â”€ Trophy Map â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€*/
