@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="de"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>GeoQuest Spielübersicht Phase 329</title>
+<title>GeoQuest Spielübersicht Phase 330</title>
 <style>:root{--bg:#0f172a;--bg2:#1e293b;--bg3:#334155;--text:#e2e8f0;--ac:#6366f1}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:13px}
@@ -35,7 +35,7 @@ thead th{background:var(--bg3);padding:.38rem .55rem;text-align:left;font-size:.
 <div class="hs"><span class="hn">90/90</span><span class="hl2">Tests ✓</span></div>
 <div class="hs"><span class="hn">70,949</span><span class="hl2">Datenbasis (Items)</span></div>
 </div>
-<p class="meta">Phase 329 · Juni 2026 · Auto-generiert aus gen.py + data/*.json</p></header>
+<p class="meta">Phase 330 · Juni 2026 · Auto-generiert aus gen.py + data/*.json</p></header>
 <div class="bar"><input type="search" id="q" placeholder="🔍 Modus, ID oder Beschreibung suchen…" oninput="filt()">
 <button class="btn" onclick="clr()">Alle anzeigen</button></div>
 <div class="cats" id="cats">
@@ -824,5 +824,5 @@ thead th{background:var(--bg3);padding:.38rem .55rem;text-align:left;font-size:.
 <tr class="mr" data-group="autos"><td class="n">724</td><td class="mid">hl_auto_accel</td><td class="ttl">Auto-Quartett: 0-100 km/h<div class="sub">Höherer Wert = langsamer = höher in diesem Modus</div></td><td class="db"><span style="display:inline-flex;align-items:center;gap:.22rem;border-radius:5px;padding:.15rem .42rem;font-size:.7rem;font-weight:600;border:1px solid #60a5fa30;background:#0a1929;color:#60a5fa">↕️ H/L</span></td><td class="dc"><span style="color:#ef4444;font-weight:700">—</span></td></tr>
 <tr class="mr" data-group="autos"><td class="n">725</td><td class="mid">hl_auto_ccm</td><td class="ttl">Auto-Quartett: Hubraum<div class="sub">Nur Verbrenner — 375 ccm bis 7993 ccm</div></td><td class="db"><span style="display:inline-flex;align-items:center;gap:.22rem;border-radius:5px;padding:.15rem .42rem;font-size:.7rem;font-weight:600;border:1px solid #60a5fa30;background:#0a1929;color:#60a5fa">↕️ H/L</span></td><td class="dc"><span style="color:#ef4444;font-weight:700">—</span></td></tr>
 </tbody></table></div>
-<footer>Auto-generiert aus gen.py · Phase 329 · 725 Modi in 22 Kategorien</footer>
+<footer>Auto-generiert aus gen.py · Phase 330 · 725 Modi in 22 Kategorien</footer>
 <script>var all=document.querySelectorAll(".mr,.gh");function filt(){var q=document.getElementById("q").value.toLowerCase();all.forEach(function(r){if(r.classList.contains("gh"))return;r.classList.toggle("hidden",!!q&&!r.textContent.toLowerCase().includes(q));});document.querySelectorAll(".gh").forEach(function(h){var g=h.getAttribute("data-group"),any=false;document.querySelectorAll(".mr[data-group=""+g+""]").forEach(function(r){if(!r.classList.contains("hidden"))any=true;});h.classList.toggle("hidden",!any);});}function clr(){document.getElementById("q").value="";filt();fg(null);}function fg(g){document.querySelectorAll(".sc").forEach(function(b){b.classList.toggle("on",b.getAttribute("data-group")===g);});all.forEach(function(r){r.classList.toggle("hidden",!!g&&r.getAttribute("data-group")!==g);});}</script></body></html>
