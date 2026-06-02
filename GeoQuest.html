@@ -74,7 +74,7 @@ input[type=text]::placeholder{color:var(--text3)}
 .mode-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:8px;width:100%;box-sizing:border-box;margin-bottom:.6rem}
 .mode-grid-4{display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:5px;width:100%;box-sizing:border-box;margin-bottom:.5rem}
 .mode-grid-life{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:.5rem}
-.mode-card{position:relative;box-sizing:border-box;max-width:100%;min-width:0;overflow:hidden;background:var(--bg2);border:2px solid var(--border);border-radius:12px;padding:.6rem .4rem 30px;cursor:pointer;transition:border-color .15s,background .15s;text-align:center;box-shadow:var(--shadow)}
+.mode-card{position:relative;box-sizing:border-box;max-width:100%;min-width:0;overflow:hidden;background:var(--bg2);border:2px solid var(--border);border-radius:11px;padding:.5rem .32rem 28px;cursor:pointer;transition:border-color .15s,background .15s;text-align:center;box-shadow:var(--shadow)}
 .mode-card:hover{border-color:#10b981;background:var(--bg3)}
 .mode-card.mini{border-radius:9px;padding:.38rem .25rem}
 .mode-card.mini .mode-icon{font-size:1.1rem;margin-bottom:2px}
@@ -83,7 +83,7 @@ input[type=text]::placeholder{color:var(--text3)}
 .mode-card.life .mode-icon{font-size:1.2rem;margin-bottom:2px}
 .mode-card.life .mode-title{font-size:.62rem}
 .mode-card.active{border-color:#10b981;background:rgba(16,185,129,.08)}
-.mode-icon{font-size:1.4rem;margin-bottom:3px;display:block}
+.mode-icon{font-size:1.25rem;margin-bottom:2px;display:block}
 .mode-title{color:var(--text);font-size:.78rem;font-weight:700;line-height:1.3;margin-bottom:2px;word-break:normal;overflow-wrap:break-word;-webkit-hyphens:auto;-moz-hyphens:auto;hyphens:auto}
 .mode-card.locked-card{opacity:.35;filter:grayscale(.8);pointer-events:none}
 .cat-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:.45rem;margin-top:.5rem}
@@ -742,8 +742,7 @@ input[type=text]::placeholder{color:var(--text3)}
   .pu-bar{max-width:840px;margin-left:auto;margin-right:auto}
   .map-container{height:calc(100vh - 160px)!important;max-height:none!important;min-height:320px!important}
   .map-scr{display:grid;grid-template-columns:1fr 280px;grid-template-rows:auto auto 1fr auto auto;column-gap:1.2rem;max-width:100%}
-  .map-scr>.hud{grid-column:1/-1}
-
+  .map-scr>.hud{grid-column:1/-1
 </style>
 </head>
 <body>
@@ -7817,7 +7816,7 @@ function flagOf(name){const cc=ccFromCountry(name);return cc?`<img src="https://
 /* Phase 97-1: Zombie-SW-Killer – läuft vor Supabase-Init */
 /* Tötet veraltete Service Worker, die Updates blockieren   */
 (function _zombieKiller(){
-  var SW_VER='gq-20e08770',LS_KEY='__gq_sw_ver'; /* Phase 295: auto-injected by gen.py */
+  var SW_VER='gq-ad9c6323',LS_KEY='__gq_sw_ver'; /* Phase 295: auto-injected by gen.py */
   try{
     if(localStorage.getItem(LS_KEY)===SW_VER)return; /* aktuell – nichts zu tun */
     if(!('serviceWorker' in navigator)){localStorage.setItem(LS_KEY,SW_VER);return;}
@@ -177949,7 +177948,7 @@ function renderHomeTab(){
         ${isLocked?`<span style="position:absolute;top:4px;right:4px;font-size:.75rem">\u{1F512}</span>`:""}
         <span class="mode-icon">${m.icon}</span><div class="mode-title">${modeTitle(m)}</div>
         ${!cs&&unlocked?`<button type="button" class="fav-btn" data-fav-id="${m.id}" onclick="event.preventDefault();event.stopPropagation();window.toggleFavorite('${m.id}',event);" onpointerdown="event.stopPropagation();" ontouchstart="event.stopPropagation();" style="position:absolute;bottom:4px;left:4px;z-index:2;width:28px;height:28px;background:transparent;border:none;font-size:.75rem;cursor:pointer;line-height:1;padding:0;touch-action:manipulation;opacity:${isFav?'1':'.35'}">❤️</button>`:""}
-        ${!cs&&unlocked?`<button type="button" class="info-btn-fix" onclick="event.preventDefault();event.stopPropagation();window.showGameInfo('${m.id}',event);" onpointerdown="event.stopPropagation();" ontouchstart="event.stopPropagation();" style="position:absolute;bottom:4px;right:4px;z-index:2;width:32px;height:32px;background:#3b82f6;color:#fff;border:none;border-radius:8px;font-size:.75rem;font-weight:900;cursor:pointer;line-height:1;padding:0;touch-action:manipulation">i</button>`:""}
+        ${!cs&&unlocked?`<button type="button" class="info-btn-fix" onclick="event.preventDefault();event.stopPropagation();window.showGameInfo('${m.id}',event);" onpointerdown="event.stopPropagation();" ontouchstart="event.stopPropagation();" style="position:absolute;bottom:4px;right:4px;z-index:2;width:28px;height:28px;background:#3b82f6;color:#fff;border:none;border-radius:7px;font-size:.72rem;font-weight:900;cursor:pointer;line-height:1;padding:0;touch-action:manipulation">i</button>`:""}
       </div>`;
     });
     if(catId==='eu_plates')cardArr.push(`<div class="mode-card" data-category="eu_plates" onclick="S.tab='album';render()" role="button" data-title="Kennzeichen-Album" style="background:linear-gradient(135deg,#1d4ed8,#3b82f6);border-color:#3b82f6"><span class="mode-icon">\u{1F4D4}</span><div class="mode-title" style="color:#fff">Album</div><div class="mode-desc" style="color:rgba(255,255,255,.8)">${S.collectedPlates.length} ges.</div></div>`);
