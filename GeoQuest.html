@@ -10007,7 +10007,7 @@ function flagOf(name){const cc=ccFromCountry(name);return cc?`<img src="https://
 /* Phase 97-1: Zombie-SW-Killer – läuft vor Supabase-Init */
 /* Tötet veraltete Service Worker, die Updates blockieren   */
 (function _zombieKiller(){
-  var SW_VER='gq-b019f896',LS_KEY='__gq_sw_ver'; /* Phase 295: auto-injected by gen.py */
+  var SW_VER='gq-8deb7cf4',LS_KEY='__gq_sw_ver'; /* Phase 295: auto-injected by gen.py */
   try{
     if(localStorage.getItem(LS_KEY)===SW_VER)return; /* aktuell – nichts zu tun */
     if(!('serviceWorker' in navigator)){localStorage.setItem(LS_KEY,SW_VER);return;}
@@ -10193,9 +10193,9 @@ function togglePw(id,btn){const el=document.getElementById(id);if(!el)return;con
 function _authErrMsg(err){
   if(!err)return'';
   const m=err?.message||err?.error_description||'';
-  if(m&&m.trim())return m.trim();
-  /* err exists but has no readable message (e.g. {} from 503 body) */
-  return'Verbindungsfehler zum Server.';
+  /* filter out JSON garbage like "{}" or "[]" that Supabase sends on 503/paused */
+  if(m&&m.trim()&&!/^[\[{]/.test(m.trim()))return m.trim();
+  return'Verbindungsfehler zum Server. Bitte versuche es später erneut.';
 }
 /* Phase 27: Register */
 async function doRegister(){
@@ -10274,7 +10274,8 @@ async function doLogin(){
       const _m=error?.message||"";
       S.authError=_m==="Invalid login credentials"?"E-Mail oder Passwort falsch.":
         _m.includes("Email not confirmed")?"Bitte bestätige zuerst deine E-Mail-Adresse!":
-        _m.includes("Too many requests")?"Zu viele Versuche. Bitte kurz warten.":_m||"Verbindungsfehler zum Server.";
+        _m.includes("Too many requests")?"Zu viele Versuche. Bitte kurz warten.":
+        (_m&&!/^[\[{]/.test(_m.trim()))?_m:"Verbindungsfehler zum Server. Bitte versuche es später erneut.";
       return;
     }
     sbUser=data.user;
